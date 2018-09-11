@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import Login from './Login'
 import DataManager from '../data/DataManager'
 
-import GearForm from './gear/GearForm'
 import GearList from './gear/GearList'
 import GearEdit from './gear/GearEdit'
 
@@ -65,11 +64,6 @@ export default class AppViews extends Component {
                         } else {
                             return <Redirect to="/login" />
                         }
-                    }} />
-
-                    <Route path="/gear/new" render={(props) => {
-                        return <GearForm {...props}
-                            addGearEntry={this.addGearEntry} />
                     }} />
                     <Route path="/entries/edit/:entryId(\d+)" render={(props) => {
                         return <GearEdit {...props}
