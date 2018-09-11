@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export default class ArticleEdit extends Component {
+export default class GearEdit extends Component {
     state = {
         name: "",
         date: "",

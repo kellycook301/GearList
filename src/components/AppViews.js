@@ -3,18 +3,16 @@ import React, { Component } from "react"
 import Login from './Login'
 import DataManager from '../data/DataManager'
 
-import ArticleForm from './article/ArticleForm'
-import ArticleList from './article/ArticleList'
-import ArticleEdit from './article/ArticleEdit'
-
+import GearForm from './gear/GearForm'
+import GearList from './gear/GearList'
+import GearEdit from './gear/GearEdit'
 
 export default class AppViews extends Component {
 
-
+    // check if credentials are in session storage
     isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
     state = {
-        articles: [],
         users: []
     }
 
@@ -23,30 +21,29 @@ export default class AppViews extends Component {
             users: users
         }))
 
-    // ARTICLES. getAllArticles is used because I (Kelly) wanted to have them display is descending order by date. Couldn't figure out how to the other way.
-    addArticle = (article, link) => DataManager.post(article, link)
-        .then(() => DataManager.getAllArticles("articles"))
-        .then(articles => this.setState({
-            articles: articles
+    addGearEntry = (article, link) => DataManager.post(article, link)
+        .then(() => DataManager.getAll("entries"))
+        .then(entries => this.setState({
+            entries: entries
         }))
-    editArticle = (article, id, link) => DataManager.put(article, id, link)
-        .then(() => DataManager.getAll("articles"))
-        .then(articles => this.setState({
-            articles: articles
+    editGearEntry = (article, id, link) => DataManager.put(article, id, link)
+        .then(() => DataManager.getAll("entries"))
+        .then(entries => this.setState({
+            entries: entries
         }))
-    deleteArticle = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("articles"))
-        .then(articles => this.setState({
-            articles: articles
+    deleteGearEntry = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("entries"))
+        .then(entries => this.setState({
+            entries: entries
         }))
 
 
-    componentDidMount() {
-        const _state = {}
-        DataManager.getAll("articles").then(articles => _state.articles = articles)
-            .then(() => DataManager.getAll("users").then(users => _state.users = users))
-            .then(() => { this.setState(_state) })
-    }
+    // componentDidMount() {
+    //     const _state = {}
+    //     DataManager.getAll("entries").then(entries => _state.entries = entries)
+    //         .then(() => DataManager.getAll("users").then(users => _state.users = users))
+    //         .then(() => { this.setState(_state) })
+    // }
 
 
     render() {
@@ -59,25 +56,25 @@ export default class AppViews extends Component {
                             addUser={this.addUser} />
                     }} />
 
-                    {/* ARTICLES */}
-                    <Route exact path="/articles" render={(props) => {
+                    {/* gear entries */}
+                    <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
-                            return <ArticleList {...props}
-                                articles={this.state.articles}
-                                deleteArticle={this.deleteArticle} />
+                            return <GearList {...props}
+                                entries={this.state.entries}
+                                deleteGearEntry={this.deleteGearEntry} />
                         } else {
                             return <Redirect to="/login" />
                         }
                     }} />
 
-                    <Route path="/articles/new" render={(props) => {
-                        return <ArticleForm {...props}
-                            addArticle={this.addArticle} />
+                    <Route path="/gear/new" render={(props) => {
+                        return <GearForm {...props}
+                            addGearEntry={this.addGearEntry} />
                     }} />
-                    <Route path="/articles/edit/:articleId(\d+)" render={(props) => {
-                        return <ArticleEdit {...props}
-                            editArticle={this.editArticle}
-                            articles={this.state.articles} />
+                    <Route path="/entries/edit/:entryId(\d+)" render={(props) => {
+                        return <GearEdit {...props}
+                            editGearEntry={this.editGearEntry}
+                            entries={this.state.entries} />
                     }} />
                 </div>
             </React.Fragment>
