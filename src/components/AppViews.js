@@ -14,6 +14,8 @@ export default class AppViews extends Component {
         users: [],
         acoustics: [],
         electrics: [],
+        basses: [],
+        amplifiers: []
     }
 
     addUser = (user, link) => DataManager.post(user, link)
@@ -29,6 +31,16 @@ export default class AppViews extends Component {
         .then(() => DataManager.getAll("electrics"))
         .then(electrics => this.setState({
             electrics: electrics
+        }))
+    addBass = (bass, link) => DataManager.post(bass, link)
+        .then(() => DataManager.getAll("basses"))
+        .then(basses => this.setState({
+            basses: basses
+        }))
+    addAmplifier = (amplifier, link) => DataManager.post(amplifier, link)
+        .then(() => DataManager.getAll("amplifiers"))
+        .then(amplifiers => this.setState({
+            amplifiers: amplifiers
         }))
     // editGearEntry = (article, id, link) => DataManager.put(article, id, link)
     //     .then(() => DataManager.getAll("entries"))
@@ -65,7 +77,11 @@ export default class AppViews extends Component {
                                 addAcoustic={this.addAcoustic}
                                 acoustics={this.state.acoustics}
                                 addElectric={this.addElectric}
-                                electrics={this.state.electrics} />
+                                electrics={this.state.electrics}
+                                addBass={this.addBass}
+                                basses={this.state.basses}
+                                addAmplifier={this.addAmplifier}
+                                amplifiers={this.state.amplifiers} />
                         } else {
                             return <Redirect to="/login" />
                         }

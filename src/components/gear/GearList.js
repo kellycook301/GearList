@@ -42,18 +42,18 @@ export default class GearList extends Component {
             electricGuitarPickups: "",
             electricBodyWood: "",
             electricGuitarSpecialFeatures: "",
-            bassMake: "",
-            bassModel: "",
-            bassStrings: "",
-            bassPickups: "",
-            bassBodyWood: "",
-            bassSpecialFeatures: "",
+            bassGuitarMake: "",
+            bassGuitarModel: "",
+            bassGuitarStrings: "",
+            bassGuitarPickups: "",
+            bassGuitarBodyWood: "",
+            bassGuitarSpecialFeatures: "",
             amplifierMake: "",
             amplifierModel: "",
             amplifierPowerSection: "",
             amplifierPreampSection: "",
             amplifierHeadCombo: "",
-            ampliferSpecialFeatures: ""
+            amplifierSpecialFeatures: ""
         };
     }
 
@@ -155,12 +155,12 @@ export default class GearList extends Component {
         }
         else {
             const electric = {
-                make: this.state.electricMake,
-                model: this.state.electricModel,
-                strings: this.state.electricStrings,
-                pickup: this.state.electricPickup,
-                body: this.state.electricBodyWood,
-                features: this.state.electricSpecialFeatures,
+                make: this.state.electricGuitarMake,
+                model: this.state.electricGuitarModel,
+                strings: this.state.electricGuitarStrings,
+                pickups: this.state.electricGuitarPickups,
+                body: this.state.electricGuitarBodyWood,
+                features: this.state.electricGuitarSpecialFeatures,
             }
             console.log(electric, "electrics")
             // Create the post for acoustic and redirect user to the gear list page
@@ -168,6 +168,74 @@ export default class GearList extends Component {
         }
     }
 
+    createBassPost = evt => {
+        evt.preventDefault()
+        if (this.state.bassGuitarMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.bassGuitarModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.bassGuitarStrings === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.bassGuitarPickup === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.bassGuitarBodyWood === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.bassGuitarSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const bass = {
+                make: this.state.bassGuitarMake,
+                model: this.state.bassGuitarModel,
+                strings: this.state.bassGuitarStrings,
+                pickups: this.state.bassGuitarPickups,
+                body: this.state.bassGuitarBodyWood,
+                features: this.state.bassGuitarSpecialFeatures,
+            }
+            console.log(bass, "basses")
+            // Create the post for acoustic and redirect user to the gear list page
+            this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
+        }
+    }
+
+    createAmplifierPost = evt => {
+        evt.preventDefault()
+        if (this.state.amplifierMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.amplifierModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.amplifierStrings === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.amplifierPickup === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.amplifierBodyWood === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.amplifierSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const amplifier = {
+                make: this.state.amplifierMake,
+                model: this.state.amplifierModel,
+                powerSection: this.state.amplifierPowerSection,
+                preampSection: this.state.amplifierPreampSection,
+                features: this.state.amplifierSpecialFeatures,
+            }
+            console.log(amplifier, "amplifiers")
+            // Create the post for acoustic and redirect user to the gear list page
+            this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
+        }
+    }
 
     render() {
         return (
@@ -184,28 +252,28 @@ export default class GearList extends Component {
                             <ModalBody>
                                 <Form className="acousticForm">
                                     <FormGroup>
-                                        <Label for="acousticMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticMake" placeholder="Make (ex. Taylor)" />
+                                        <Label for="acousticGuitarMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="acousticModel">Model:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticModel" placeholder="Model (ex. 514ce)" />
+                                        <Label for="acousticGuitarModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarModel" placeholder="Model (ex. 514ce)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="acousticStrings">Strings:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticStrings" placeholder="Strings (ex. Elixir 12-53)" />
+                                        <Label for="acousticGuitarStrings">Strings:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarStrings" placeholder="Strings (ex. Elixir 12-53)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="acousticPickups">Pickups:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticPickup" placeholder="Pickup (if no pickup is installed, please enter 'none')" />
+                                        <Label for="acousticGuitarPickups">Pickups:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarPickup" placeholder="Pickup (if no pickup is installed, please enter 'none')" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="acousticBodyWood">Body Wood:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBodyWood" placeholder="Body Wood (ex. Indian Rosewood)" />
+                                        <Label for="acousticGuitarBodyWood">Body Wood:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarBodyWood" placeholder="Body Wood (ex. Indian Rosewood)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp)" />
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp)" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -215,6 +283,7 @@ export default class GearList extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
+
                         <Button color="primary" onClick={this.electricNested}>Electric Guitar</Button>
                         <Modal isOpen={this.state.electricModal} toggle={this.electricNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Electric Guitar Features</ModalHeader>
@@ -237,8 +306,8 @@ export default class GearList extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarPickups" placeholder="Pickups (ex. Seymour Duncan Pearly Gates)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="electricBodyWood">Body Wood:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="electricBodyWood" placeholder="Body Wood (ex. Alder)" />
+                                        <Label for="electricGuitarBodyWood">Body Wood:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarBodyWood" placeholder="Body Wood (ex. Alder)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
@@ -247,47 +316,49 @@ export default class GearList extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.toggleAll}>Submit</Button>
+                                <Button color="primary" onClick={this.createElectricPost}>Submit</Button>
                                 <Button color="secondary" onClick={this.electricNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
                         <p></p>
+
                         <Button color="primary" onClick={this.bassNested}>Bass Guitar</Button>
                         <Modal isOpen={this.state.bassModal} toggle={this.bassNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Bass Guitar Features</ModalHeader>
                             <ModalBody>
                                 <Form className="bassForm">
                                     <FormGroup>
-                                        <Label for="bassMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassMake" placeholder="Make (ex. Fender)" />
+                                        <Label for="bassGuitarMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarMake" placeholder="Make (ex. Fender)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="bassModel">Model:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassModel" placeholder="Model (ex. Precision Bass)" />
+                                        <Label for="bassGuitarModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarModel" placeholder="Model (ex. Precision Bass)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="bassStrings">Strings:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassStrings" placeholder="Strings (ex. Ernie Ball 45-105)" />
+                                        <Label for="bassGuitarStrings">Strings:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarStrings" placeholder="Strings (ex. Ernie Ball 45-105)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="bassPickups">Pickups:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassPickups" placeholder="Pickups (ex. Bareknuckle '58 Split Coil)" />
+                                        <Label for="bassGuitarPickups">Pickups:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarPickups" placeholder="Pickups (ex. Bareknuckle '58 Split Coil)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="bassBodyWood">Body Wood:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassBodyWood" placeholder="Body Wood (ex. Swamp Ash)" />
+                                        <Label for="bassGuitarBodyWood">Body Wood:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarBodyWood" placeholder="Body Wood (ex. Swamp Ash)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="bassSpecialFeatures" placeholder="Special Features (ex. Hipshot Xtender installed)" />
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarSpecialFeatures" placeholder="Special Features (ex. Hipshot Xtender installed)" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.toggleAll}>Submit</Button>
+                                <Button color="primary" onClick={this.createBassPost}>Submit</Button>
                                 <Button color="secondary" onClick={this.bassNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
+
                         <p></p>
                         <Button color="primary" onClick={this.amplifierNested}>Amplifier</Button>
                         <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
@@ -315,13 +386,13 @@ export default class GearList extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierHeadCombo" placeholder="Head or Combo Amp (ex. 2x12 Combo)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="ampliferSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids)" />
+                                        <Label for="amplifierSpecialFeatures">Special Features:</Label>
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids)" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.toggleAll}>Submit</Button>
+                                <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
                                 <Button color="secondary" onClick={this.amplifierNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
