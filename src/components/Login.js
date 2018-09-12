@@ -44,8 +44,8 @@ export default class Login extends Component {
     constructNewUser = evt => {
         evt.preventDefault()
         const user = {
-            inputEmail: this.state.email,
-            inputPassword: this.state.password,
+            email: this.state.email,
+            password: this.state.password,
         }
 
         this.props.addUser(user, "users").then(() => this.props.history.push("/"))

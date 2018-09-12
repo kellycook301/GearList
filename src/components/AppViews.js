@@ -4,7 +4,6 @@ import Login from './Login'
 import DataManager from '../data/DataManager'
 
 import GearList from './gear/GearList'
-import GearEdit from './gear/GearEdit'
 
 export default class AppViews extends Component {
 
@@ -12,38 +11,42 @@ export default class AppViews extends Component {
     isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
     state = {
-        users: []
+        users: [],
+        acoustics: [],
+        electrics: [],
     }
 
     addUser = (user, link) => DataManager.post(user, link)
         .then(users => this.setState({
             users: users
         }))
-
-    addGearEntry = (article, link) => DataManager.post(article, link)
-        .then(() => DataManager.getAll("entries"))
-        .then(entries => this.setState({
-            entries: entries
+    addAcoustic = (acoustic, link) => DataManager.post(acoustic, link)
+        .then(() => DataManager.getAll("acoustics"))
+        .then(acoustics => this.setState({
+            acoustics: acoustics
         }))
-    editGearEntry = (article, id, link) => DataManager.put(article, id, link)
-        .then(() => DataManager.getAll("entries"))
-        .then(entries => this.setState({
-            entries: entries
+    addElectric = (electric, link) => DataManager.post(electric, link)
+        .then(() => DataManager.getAll("electrics"))
+        .then(electrics => this.setState({
+            electrics: electrics
         }))
-    deleteGearEntry = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("entries"))
-        .then(entries => this.setState({
-            entries: entries
-        }))
-
+    // editGearEntry = (article, id, link) => DataManager.put(article, id, link)
+    //     .then(() => DataManager.getAll("entries"))
+    //     .then(entries => this.setState({
+    //         entries: entries
+    //     }))
+    // deleteGearEntry = (id, link) => DataManager.removeAndList(id, link)
+    //     .then(() => DataManager.getAll("entries"))
+    //     .then(entries => this.setState({
+    //         entries: entries
+    //     }))
 
     // componentDidMount() {
     //     const _state = {}
-    //     DataManager.getAll("entries").then(entries => _state.entries = entries)
+    //     DataManager.getAll("acoustics").then(acoustics => _state.acousticss = acoustics)
     //         .then(() => DataManager.getAll("users").then(users => _state.users = users))
     //         .then(() => { this.setState(_state) })
     // }
-
 
     render() {
         return (
@@ -59,16 +62,13 @@ export default class AppViews extends Component {
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <GearList {...props}
-                                entries={this.state.entries}
-                                deleteGearEntry={this.deleteGearEntry} />
+                                addAcoustic={this.addAcoustic}
+                                acoustics={this.state.acoustics}
+                                addElectric={this.addElectric}
+                                electrics={this.state.electrics} />
                         } else {
                             return <Redirect to="/login" />
                         }
-                    }} />
-                    <Route path="/entries/edit/:entryId(\d+)" render={(props) => {
-                        return <GearEdit {...props}
-                            editGearEntry={this.editGearEntry}
-                            entries={this.state.entries} />
                     }} />
                 </div>
             </React.Fragment>

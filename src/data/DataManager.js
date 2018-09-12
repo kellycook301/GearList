@@ -22,6 +22,7 @@ export default Object.create(null, {
     },
     post: {
         value: function (newItem, link) {
+            console.log(newItem)
             return fetch(`${remoteURL}/${link}`, {
                 method: "POST",
                 headers: {
