@@ -10,7 +10,7 @@ export default class GearList extends Component {
         this.acousticNested = this.acousticNested.bind(this);
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
-        this.ampNested = this.ampNested.bind(this);
+        this.amplifierNested = this.amplifierNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
 
         this.state = {
@@ -50,7 +50,7 @@ export default class GearList extends Component {
         });
     }
 
-    ampNested() {
+    amplifierNested() {
         this.setState({
             ampModal: !this.state.ampModal,
             closeAll: false
@@ -64,6 +64,10 @@ export default class GearList extends Component {
         });
     }
 
+    createGearPost() {
+        
+    }
+
 
     render() {
         return (
@@ -71,6 +75,7 @@ export default class GearList extends Component {
                 <h1>Here Is Your Gear!</h1>
                 <div>
                     <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel} Add Gear</Button>
+
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                         <ModalBody>
@@ -81,29 +86,29 @@ export default class GearList extends Component {
                                     <Form className="acousticForm">
                                         <FormGroup>
                                             <Label for="acousticMake">Make:</Label>
-                                            <Input type="text" name="text" id="acousticMake" placeholder="Make" />
+                                            <Input type="text" name="text" id="acousticMake" placeholder="Make (ex. Taylor)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="acousticModel">Model:</Label>
-                                            <Input type="text" name="text" id="acousticModel" placeholder="Model" />
+                                            <Input type="text" name="text" id="acousticModel" placeholder="Model (ex. 514ce)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="acousticStrings">Strings:</Label>
-                                            <Input type="text" name="text" id="acousticStrings" placeholder="Strings" />
+                                            <Input type="text" name="text" id="acousticStrings" placeholder="Strings (ex. Elixir 12-53)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="acousticPickups">Pickups:</Label>
-                                            <Input type="text" name="text" id="acousticPickup" placeholder="Pickup (if none, leave blank)" />
+                                            <Input type="text" name="text" id="acousticPickup" placeholder="Pickup (if no pickup is installed, please enter 'none')" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
-                                            <Input type="textarea" name="text" id="acousticSpecialFeatures" />
+                                            <Input type="textarea" name="text" id="acousticSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp)" />
                                         </FormGroup>
                                     </Form>
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="primary" onClick={this.toggleAll}>Submit</Button>
-                                    <Button color="secondary" onClick={this.toggleNested}>Back</Button>{' '}
+                                    <Button color="secondary" onClick={this.acousticNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </Modal>
                             <p></p>
@@ -114,29 +119,29 @@ export default class GearList extends Component {
                                 <Form className="guitarForm">
                                         <FormGroup>
                                             <Label for="electricGuitarMake">Make:</Label>
-                                            <Input type="text" name="text" id="electricGuitarMake" placeholder="Make" />
+                                            <Input type="text" name="text" id="electricGuitarMake" placeholder="Make (ex. PRS)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="electricGuitarModel">Model:</Label>
-                                            <Input type="text" name="text" id="electricGuitarModel" placeholder="Model" />
+                                            <Input type="text" name="text" id="electricGuitarModel" placeholder="Model (ex. Custom 22)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="electricGuitarStrings">Strings:</Label>
-                                            <Input type="text" name="text" id="electricGuitarStrings" placeholder="Strings" />
+                                            <Input type="text" name="text" id="electricGuitarStrings" placeholder="Strings (ex. Ernie Ball 10-46)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="electricGuitarPickups">Pickups:</Label>
-                                            <Input type="text" name="text" id="electricGuitarPickup" placeholder="Pickups" />
+                                            <Input type="text" name="text" id="electricGuitarPickup" placeholder="Pickups (ex. Seymour Duncan Pearly Gates)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
-                                            <Input type="textarea" name="text" id="electricGuitarSpecialFeatures" />
+                                            <Input type="textarea" name="text" id="electricGuitarSpecialFeatures" placeholder="Special Features (ex. Evertune bridge installed)" />
                                         </FormGroup>
                                     </Form>
                                 </ModalBody>
                                 <ModalFooter>
-                                    <Button color="primary" onClick={this.toggleNested}>Back</Button>{' '}
-                                    <Button color="secondary" onClick={this.toggleAll}>All Done</Button>
+                                    <Button color="primary" onClick={this.toggleAll}>Submit</Button>
+                                    <Button color="secondary" onClick={this.electricNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </Modal>
                             <p></p>
@@ -147,44 +152,44 @@ export default class GearList extends Component {
                                     <Form className="bassForm">
                                         <FormGroup>
                                             <Label for="bassMake">Make:</Label>
-                                            <Input type="text" name="text" id="bassMake" placeholder="Make" />
+                                            <Input type="text" name="text" id="bassMake" placeholder="Make (ex. Fender)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="bassModel">Model:</Label>
-                                            <Input type="text" name="text" id="bassModel" placeholder="Model" />
+                                            <Input type="text" name="text" id="bassModel" placeholder="Model (ex. Precision Bass)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="bassStrings">Strings:</Label>
-                                            <Input type="text" name="text" id="bassStrings" placeholder="Strings" />
+                                            <Input type="text" name="text" id="bassStrings" placeholder="Strings (ex. Ernie Ball 45-105)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="bassPickups">Pickups:</Label>
-                                            <Input type="text" name="text" id="bassPickup" placeholder="Pickups" />
+                                            <Input type="text" name="text" id="bassPickup" placeholder="Pickups (ex. Bareknuckle '58 Split Coil)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
-                                            <Input type="textarea" name="text" id="bassSpecialFeatures" />
+                                            <Input type="textarea" name="text" id="bassSpecialFeatures" placeholder="Special Features (ex. Hipshot Xtender installed)"/>
                                         </FormGroup>
                                     </Form>
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="primary" onClick={this.toggleAll}>Submit</Button>
-                                    <Button color="secondary" onClick={this.toggleNested}>Back</Button>{' '}
+                                    <Button color="secondary" onClick={this.bassNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </Modal>
                             <p></p>
-                            <Button color="primary" onClick={this.ampNested}>Amplifier</Button>
-                            <Modal isOpen={this.state.ampModal} toggle={this.ampNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <Button color="primary" onClick={this.amplifierNested}>Amplifier</Button>
+                            <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                                 <ModalHeader>Amplifier Features</ModalHeader>
                                 <ModalBody>
                                     <Form className="amplifierForm">
                                         <FormGroup>
                                             <Label for="amplifierMake">Make:</Label>
-                                            <Input type="text" name="text" id="amplifierMake" placeholder="Make" />
+                                            <Input type="text" name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="amplifierModel">Model:</Label>
-                                            <Input type="text" name="text" id="amplifierModel" placeholder="Model" />
+                                            <Input type="text" name="text" id="amplifierModel" placeholder="Model (ex. JCM 800)" />
                                         </FormGroup>
                                         <FormGroup tag="fieldset">
                                             <Label for="powerSection">Power Section:</Label>
@@ -218,13 +223,13 @@ export default class GearList extends Component {
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
-                                            <Input type="textarea" name="text" id="ampliferSpecialFeatures" />
+                                            <Input type="textarea" name="text" id="ampliferSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother mids)" />
                                         </FormGroup>
                                     </Form>
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="primary" onClick={this.toggleAll}>Submit</Button>
-                                    <Button color="secondary" onClick={this.toggleNested}>Back</Button>{' '}
+                                    <Button color="secondary" onClick={this.amplifierNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </Modal>
                             <p></p>
