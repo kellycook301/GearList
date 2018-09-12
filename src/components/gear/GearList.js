@@ -3,6 +3,33 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default class GearList extends Component {
+    state = {
+        acousticMake: "",
+        acousticModel: "",
+        acousticStrings: "",
+        acousticPickup: "",
+        acousticBodyWood: "",
+        acousticSpecialFeatures: "",
+        electricGuitarMake: "",
+        electricGuitarModel: "",
+        electricGuitarStrings: "",
+        electricGuitarPickups: "",
+        electricBodyWood: "",
+        electricGuitarSpecialFeatures: "",
+        bassMake: "",
+        bassModel: "",
+        bassStrings: "",
+        bassPickups: "",
+        bassBodyWood: "",
+        bassSpecialFeatures: "",
+        amplifierMake: "",
+        amplifierModel: "",
+        amplifierPowerSection: "",
+        amplifierPreampSection: "",
+        amplifierHeadCombo: "",
+        ampliferSpecialFeatures: ""
+    }
+
     constructor(props) {
         super(props);
 
@@ -64,8 +91,38 @@ export default class GearList extends Component {
         });
     }
 
-    createGearPost() {
-        
+    createAcousticPost = evt => {
+        evt.preventDefault()
+        if (this.state.acousticMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticStrings === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticPickup === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticBodyWood === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const acousticPost = {
+                make: this.state.acousticMake,
+                model: this.state.acousticModel,
+                strings: this.state.acousticStrings,
+                pickup: this.state.acousticPickup,
+                body: this.state.acousticBodyWood,
+                features: this.state.acousticSpecialFeatures,
+            }
+            // Create the post for acoustic and redirect user to the gear list page
+            this.props.addArticle(acousticPost, "articles").then(() => this.props.history.push("/gear"))
+        }
     }
 
 
@@ -101,6 +158,10 @@ export default class GearList extends Component {
                                             <Input type="text" name="text" id="acousticPickup" placeholder="Pickup (if no pickup is installed, please enter 'none')" />
                                         </FormGroup>
                                         <FormGroup>
+                                            <Label for="acousticBodyWood">Body Wood:</Label>
+                                            <Input type="text" name="text" id="acousticBodyWood" placeholder="Body Wood (ex. Indian Rosewood)" />
+                                        </FormGroup>
+                                        <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
                                             <Input type="textarea" name="text" id="acousticSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp)" />
                                         </FormGroup>
@@ -131,7 +192,11 @@ export default class GearList extends Component {
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="electricGuitarPickups">Pickups:</Label>
-                                            <Input type="text" name="text" id="electricGuitarPickup" placeholder="Pickups (ex. Seymour Duncan Pearly Gates)" />
+                                            <Input type="text" name="text" id="electricGuitarPickups" placeholder="Pickups (ex. Seymour Duncan Pearly Gates)" />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="electricBodyWood">Body Wood:</Label>
+                                            <Input type="text" name="text" id="electricBodyWood" placeholder="Body Wood (ex. Alder)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
@@ -164,7 +229,11 @@ export default class GearList extends Component {
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="bassPickups">Pickups:</Label>
-                                            <Input type="text" name="text" id="bassPickup" placeholder="Pickups (ex. Bareknuckle '58 Split Coil)" />
+                                            <Input type="text" name="text" id="bassPickups" placeholder="Pickups (ex. Bareknuckle '58 Split Coil)" />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="bassBodyWood">Body Wood:</Label>
+                                            <Input type="text" name="text" id="bassBodyWood" placeholder="Body Wood (ex. Swamp Ash)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
@@ -191,39 +260,21 @@ export default class GearList extends Component {
                                             <Label for="amplifierModel">Model:</Label>
                                             <Input type="text" name="text" id="amplifierModel" placeholder="Model (ex. JCM 800)" />
                                         </FormGroup>
-                                        <FormGroup tag="fieldset">
-                                            <Label for="powerSection">Power Section:</Label>
-                                            <FormGroup check>
-                                                <Label check>
-                                                    <Input type="radio" name="radio1" />{' '}
-                                                    Tube
-                                                </Label>
-                                            </FormGroup>
-                                            <FormGroup check>
-                                                <Label check>
-                                                    <Input type="radio" name="radio1" />{' '}
-                                                    Solid State
-                                                </Label>
-                                            </FormGroup>
+                                        <FormGroup>
+                                            <Label for="amplifierPowerSection">Power Section:</Label>
+                                            <Input type="text" name="text" id="amplifierPowerSection" placeholder="Power Section (ex. Solid State Power Section)" />
                                         </FormGroup>
-                                        <FormGroup tag="fieldset">
-                                            <Label for="powerSection">Combo or Head:</Label>
-                                            <FormGroup check>
-                                                <Label check>
-                                                    <Input type="radio" name="radio1" />{' '}
-                                                    Combo
-                                                </Label>
-                                            </FormGroup>
-                                            <FormGroup check>
-                                                <Label check>
-                                                    <Input type="radio" name="radio1" />{' '}
-                                                    Head
-                                                </Label>
-                                            </FormGroup>
+                                        <FormGroup>
+                                            <Label for="amplifierPreampSection">Preamp Section:</Label>
+                                            <Input type="text" name="text" id="amplifierPreampSection" placeholder="Preamp Section (ex. Tube Preamp Section)" />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="amplifierHeadCombo">Head or Combo Amp:</Label>
+                                            <Input type="text" name="text" id="amplifierHeadCombo" placeholder="Head or Combo Amp (ex. 2x12 Combo)" />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for="exampleText">Special Features:</Label>
-                                            <Input type="textarea" name="text" id="ampliferSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother mids)" />
+                                            <Input type="textarea" name="text" id="ampliferSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids)" />
                                         </FormGroup>
                                     </Form>
                                 </ModalBody>
