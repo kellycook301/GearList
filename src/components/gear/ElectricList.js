@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+library.add(faTrash)
 
 export default class ElectricList extends Component {
     render() {
@@ -32,10 +36,9 @@ export default class ElectricList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
+                                    <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deleteElectricPost(electric.id, "electrics")} />
                                         <p></p>
-                                        <button type="button" className="btn btn-success"
-                                            onClick={() => this.props.deleteElectricPost(electric.id, "electrics")}>Delete Post</button>
-                                            <Link className="nav-link editing-button" to={`/gear/edit/electric/${electric.id}`}>Edit Post</Link>
+                                    <Link className="nav-link editing-button" to={`/gear/edit/electric/${electric.id}`}>Edit Post</Link>
                                     </h6>
                                 </div>
                             </div>

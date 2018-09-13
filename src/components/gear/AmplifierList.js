@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+library.add(faTrash)
 
 
 export default class AmplifierList extends Component {
@@ -34,11 +37,9 @@ export default class AmplifierList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
+                                        <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deleteAmplifierPost(amplifier.id, "amplifiers")} />
                                         <p></p>
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                        <button type="button" className="btn btn-success"
-                                            onClick={() => this.props.deleteAmplifierPost(amplifier.id, "amplifiers")}>Delete Post</button>
-                                            <Link className="nav-link editing-button" to={`/gear/edit/amplifier/${amplifier.id}`}>Edit Post</Link>
+                                        <Link className="nav-link editing-button" to={`/gear/edit/amplifier/${amplifier.id}`}>Edit Post</Link>
                                     </h6>
                                 </div>
                             </div>

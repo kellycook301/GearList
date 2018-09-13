@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Navbar from "./nav/Navbar"
 import AppViews from "./AppViews"
 
+
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./MyGearList.css"
 
