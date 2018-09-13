@@ -10,6 +10,8 @@ import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
 import AcousticEdit from './gear/AcousticEdit'
 import ElectricEdit from './gear/ElectricEdit'
+import BassEdit from './gear/BassEdit'
+import AmplifierEdit from './gear/AmplifierEdit'
 
 export default class AppViews extends Component {
 
@@ -70,6 +72,11 @@ export default class AppViews extends Component {
         .then(basses => this.setState({
             basses: basses
         }))
+    editBassPost = (bass, id, link) => DataManager.put(bass, id, link)
+        .then(() => DataManager.getAll("basses"))
+        .then(basses => this.setState({
+            basses: basses
+        }))
     deleteBassPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("basses"))
         .then(basses => this.setState({
@@ -81,6 +88,11 @@ export default class AppViews extends Component {
         .then(() => DataManager.getAll("amplifiers"))
         .then(amplifiers => this.setState({
             amplifiers: amplifiers
+        }))
+    editAmplifierPost = (amplifier, id, link) => DataManager.put(amplifier, id, link)
+        .then(() => DataManager.getAll("amplifiers"))
+        .then(amplifiers => this.setState({
+            amplifiers: amplifiers 
         }))
     deleteAmplifierPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("amplifiers"))
@@ -123,7 +135,9 @@ export default class AppViews extends Component {
 
                                 addBass={this.addBass}
                                 basses={this.state.basses}
+
                                 addAmplifier={this.addAmplifier}
+                                editAmplifierPost={this.editAmplifierPost}
                                 amplifiers={this.state.amplifiers} />
                         } else {
                             return <Redirect to="/login" />
@@ -172,6 +186,11 @@ export default class AppViews extends Component {
                             return <Redirect to="/login" />
                         }
                     }} />
+                    <Route path="/gear/edit/bass/:bassId(\d+)" render={(props) => {
+                        return <BassEdit {...props}
+                            editBassPost={this.editBassPost}
+                            basses={this.state.basses} />
+                    }} />
 
                     {/* Amplifier Related */}
                     <Route exact path="/gear" render={(props) => {
@@ -182,6 +201,11 @@ export default class AppViews extends Component {
                         } else {
                             return <Redirect to="/login" />
                         }
+                    }} />
+                    <Route path="/gear/edit/amplifier/:amplifierId(\d+)" render={(props) => {
+                        return <AmplifierEdit {...props}
+                            editAmplifierPost={this.editAmplifierPost}
+                            amplifiers={this.state.amplifiers} />
                     }} />
                 </div>
             </React.Fragment>

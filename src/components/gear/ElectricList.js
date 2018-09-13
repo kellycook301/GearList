@@ -22,7 +22,7 @@ export default class ElectricList extends Component {
                                         Strings: {electric.strings}
                                     </section>
                                     <section className="card-title">
-                                        Pickup: {electric.pickup}
+                                        Pickup: {electric.pickups}
                                     </section>
                                     <section className="card-title">
                                         Body: {electric.body}
