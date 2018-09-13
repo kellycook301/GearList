@@ -3,7 +3,8 @@ import React, { Component } from "react"
 import Login from './Login'
 import DataManager from '../data/DataManager'
 
-import GearList from './gear/GearList'
+import GearForm from './gear/GearForm'
+import AcousticList from './gear/AcousticList'
 
 export default class AppViews extends Component {
 
@@ -23,6 +24,11 @@ export default class AppViews extends Component {
             users: users
         }))
     addAcoustic = (acoustic, link) => DataManager.post(acoustic, link)
+        .then(() => DataManager.getAll("acoustics"))
+        .then(acoustics => this.setState({
+            acoustics: acoustics
+        }))
+    deleteAcousticPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("acoustics"))
         .then(acoustics => this.setState({
             acoustics: acoustics
@@ -47,11 +53,7 @@ export default class AppViews extends Component {
     //     .then(entries => this.setState({
     //         entries: entries
     //     }))
-    // deleteGearEntry = (id, link) => DataManager.removeAndList(id, link)
-    //     .then(() => DataManager.getAll("entries"))
-    //     .then(entries => this.setState({
-    //         entries: entries
-    //     }))
+    
 
     // componentDidMount() {
     //     const _state = {}
@@ -73,7 +75,7 @@ export default class AppViews extends Component {
                     {/* gear entries */}
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
-                            return <GearList {...props}
+                            return <GearForm {...props}
                                 addAcoustic={this.addAcoustic}
                                 acoustics={this.state.acoustics}
                                 addElectric={this.addElectric}
@@ -82,6 +84,15 @@ export default class AppViews extends Component {
                                 basses={this.state.basses}
                                 addAmplifier={this.addAmplifier}
                                 amplifiers={this.state.amplifiers} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <AcousticList {...props}
+                                acoustics={this.state.acoustics}
+                                deleteAcousticPost={this.deleteAcousticPost} />
                         } else {
                             return <Redirect to="/login" />
                         }

@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import "./GearList.css"
 
 export default class GearList extends Component {
 
@@ -30,12 +31,12 @@ export default class GearList extends Component {
             bassModal: false,
             ampModal: false,
             closeAll: false,
-            acousticMake: "",
-            acousticModel: "",
-            acousticStrings: "",
-            acousticPickup: "",
-            acousticBodyWood: "",
-            acousticSpecialFeatures: "",
+            acousticGuitarMake: "",
+            acousticGuitarModel: "",
+            acousticGuitarStrings: "",
+            acousticGuitarPickup: "",
+            acousticGuitarBodyWood: "",
+            acousticGuitarSpecialFeatures: "",
             electricGuitarMake: "",
             electricGuitarModel: "",
             electricGuitarStrings: "",
@@ -100,32 +101,32 @@ export default class GearList extends Component {
 
     createAcousticPost = evt => {
         evt.preventDefault()
-        if (this.state.acousticMake === "") {
+        if (this.state.acousticGuitarMake === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.acousticModel === "") {
+        else if (this.state.acousticGuitarModel === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.acousticStrings === "") {
+        else if (this.state.acousticGuitarStrings === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.acousticPickup === "") {
+        else if (this.state.acousticGuitarPickup === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.acousticBodyWood === "") {
+        else if (this.state.acousticGuitarBodyWood === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.acousticSpecialFeatures === "") {
+        else if (this.state.acousticGuitarSpecialFeatures === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else {
             const acoustic = {
-                make: this.state.acousticMake,
-                model: this.state.acousticModel,
-                strings: this.state.acousticStrings,
-                pickup: this.state.acousticPickup,
-                body: this.state.acousticBodyWood,
-                features: this.state.acousticSpecialFeatures,
+                make: this.state.acousticGuitarMake,
+                model: this.state.acousticGuitarModel,
+                strings: this.state.acousticGuitarStrings,
+                pickup: this.state.acousticGuitarPickup,
+                body: this.state.acousticGuitarBodyWood,
+                features: this.state.acousticGuitarSpecialFeatures,
             }
             console.log(acoustic, "acoustics")
             // Create the post for acoustic and redirect user to the gear list page
@@ -248,11 +249,11 @@ export default class GearList extends Component {
                     <ModalBody>
                         <Button color="primary" onClick={this.acousticNested}>Acoustic Guitar</Button>
                         <Modal isOpen={this.state.acousticModal} toggle={this.acousticNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                            <ModalHeader>Acoustic Guitar Features</ModalHeader>
-                            <ModalBody>
+                            <ModalHeader className="acousticHeader">Acoustic Guitar Features</ModalHeader>
+                            <ModalBody className="acousticMake">
                                 <Form className="acousticForm">
                                     <FormGroup>
-                                        <Label for="acousticGuitarMake">Make:</Label>
+                                        <Label>Make:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
@@ -260,12 +261,12 @@ export default class GearList extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarModel" placeholder="Model (ex. 514ce)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="acousticGuitarStrings">Strings:</Label>
+                                        <Label for="acousticGuitarStrings" className="acousticStrings">Strings:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarStrings" placeholder="Strings (ex. Elixir 12-53)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticGuitarPickups">Pickups:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarPickup" placeholder="Pickup (if no pickup is installed, please enter 'none')" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarPickup" placeholder="Pickup (if no pickup is installed, please enter 'none.')" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticGuitarBodyWood">Body Wood:</Label>
@@ -273,7 +274,7 @@ export default class GearList extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp)" />
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp) If no special features have been added, please enter 'none.'" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -311,7 +312,7 @@ export default class GearList extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarSpecialFeatures" placeholder="Special Features (ex. Evertune bridge installed)" />
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarSpecialFeatures" placeholder="Special Features (ex. Evertune bridge installed) If no special features have been added, please enter 'none.'" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -349,7 +350,7 @@ export default class GearList extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarSpecialFeatures" placeholder="Special Features (ex. Hipshot Xtender installed)" />
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarSpecialFeatures" placeholder="Special Features (ex. Hipshot Xtender installed) If no special features have been added, please enter 'none.'" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -387,7 +388,7 @@ export default class GearList extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="amplifierSpecialFeatures">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids)" />
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids) If no special features have been added, please enter 'none.'" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -396,7 +397,6 @@ export default class GearList extends Component {
                                 <Button color="secondary" onClick={this.amplifierNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
                     </ModalBody>
                     <ModalFooter>
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
