@@ -131,6 +131,7 @@ export default class GearForm extends Component {
             console.log(acoustic, "acoustics")
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
         }
     }
 
@@ -165,6 +166,7 @@ export default class GearForm extends Component {
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
         }
     }
 
@@ -200,6 +202,7 @@ export default class GearForm extends Component {
             console.log(bass, "basses")
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
         }
     }
 
@@ -229,11 +232,13 @@ export default class GearForm extends Component {
                 model: this.state.amplifierModel,
                 powerSection: this.state.amplifierPowerSection,
                 preampSection: this.state.amplifierPreampSection,
+                amplifierHeadCombo: this.state.amplifierHeadCombo,
                 features: this.state.amplifierSpecialFeatures,
             }
             console.log(amplifier, "amplifiers")
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
         }
     }
 
