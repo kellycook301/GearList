@@ -5,6 +5,7 @@ import DataManager from '../data/DataManager'
 
 import GearForm from './gear/GearForm'
 import AcousticList from './gear/AcousticList'
+import ElectricList from './gear/ElectricList'
 
 export default class AppViews extends Component {
 
@@ -34,6 +35,11 @@ export default class AppViews extends Component {
             acoustics: acoustics
         }))
     addElectric = (electric, link) => DataManager.post(electric, link)
+        .then(() => DataManager.getAll("electrics"))
+        .then(electrics => this.setState({
+            electrics: electrics
+        }))
+    deleteElectricPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("electrics"))
         .then(electrics => this.setState({
             electrics: electrics
@@ -93,6 +99,15 @@ export default class AppViews extends Component {
                             return <AcousticList {...props}
                                 acoustics={this.state.acoustics}
                                 deleteAcousticPost={this.deleteAcousticPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <ElectricList {...props}
+                                electrics={this.state.electrics}
+                                deleteElectricPost={this.deleteElectricPost} />
                         } else {
                             return <Redirect to="/login" />
                         }

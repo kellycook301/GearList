@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./GearList.css"
 
-export default class GearList extends Component {
+export default class GearForm extends Component {
 
     // set intial state
     state = {}
@@ -41,7 +41,7 @@ export default class GearList extends Component {
             electricGuitarModel: "",
             electricGuitarStrings: "",
             electricGuitarPickups: "",
-            electricBodyWood: "",
+            electricGuitarBodyWood: "",
             electricGuitarSpecialFeatures: "",
             bassGuitarMake: "",
             bassGuitarModel: "",
@@ -136,22 +136,22 @@ export default class GearList extends Component {
 
     createElectricPost = evt => {
         evt.preventDefault()
-        if (this.state.electricMake === "") {
+        if (this.state.electricGuitarMake === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.electricModel === "") {
+        else if (this.state.electricGuitarModel === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.electricStrings === "") {
+        else if (this.state.electricGuitarStrings === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.electricPickup === "") {
+        else if (this.state.electricGuitarPickup === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.electricBodyWood === "") {
+        else if (this.state.electricGuitarBodyWood === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.electricSpecialFeatures === "") {
+        else if (this.state.electricGuitarSpecialFeatures === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else {
@@ -163,7 +163,6 @@ export default class GearList extends Component {
                 body: this.state.electricGuitarBodyWood,
                 features: this.state.electricGuitarSpecialFeatures,
             }
-            console.log(electric, "electrics")
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
         }
