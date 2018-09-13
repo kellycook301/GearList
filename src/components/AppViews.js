@@ -22,10 +22,13 @@ export default class AppViews extends Component {
         amplifiers: []
     }
 
+    // ADDING A USER
     addUser = (user, link) => DataManager.post(user, link)
         .then(users => this.setState({
             users: users
         }))
+
+    // ACOUSTIC RELATED POSTS
     addAcoustic = (acoustic, link) => DataManager.post(acoustic, link)
         .then(() => DataManager.getAll("acoustics"))
         .then(acoustics => this.setState({
@@ -36,6 +39,8 @@ export default class AppViews extends Component {
         .then(acoustics => this.setState({
             acoustics: acoustics
         }))
+    
+    // ELECTRIC RELATED POSTS
     addElectric = (electric, link) => DataManager.post(electric, link)
         .then(() => DataManager.getAll("electrics"))
         .then(electrics => this.setState({
@@ -46,6 +51,8 @@ export default class AppViews extends Component {
         .then(electrics => this.setState({
             electrics: electrics
         }))
+
+    // BASS RELATED POSTS
     addBass = (bass, link) => DataManager.post(bass, link)
         .then(() => DataManager.getAll("basses"))
         .then(basses => this.setState({
@@ -56,6 +63,8 @@ export default class AppViews extends Component {
         .then(basses => this.setState({
             basses: basses
         }))
+
+    // AMPLIFIER RELATED POSTS
     addAmplifier = (amplifier, link) => DataManager.post(amplifier, link)
         .then(() => DataManager.getAll("amplifiers"))
         .then(amplifiers => this.setState({
@@ -66,6 +75,8 @@ export default class AppViews extends Component {
         .then(amplifiers => this.setState({
             amplifiers: amplifiers
         }))
+    
+    
     // editGearEntry = (article, id, link) => DataManager.put(article, id, link)
     //     .then(() => DataManager.getAll("entries"))
     //     .then(entries => this.setState({
@@ -73,13 +84,17 @@ export default class AppViews extends Component {
     //     }))
 
 
-    // componentDidMount() {
-    //     const _state = {}
-    //     DataManager.getAll("acoustics").then(acoustics => _state.acousticss = acoustics)
-    //         .then(() => DataManager.getAll("users").then(users => _state.users = users))
-    //         .then(() => { this.setState(_state) })
-    // }
+    componentDidMount() {
+        const _state = {}
+        DataManager.getAll("acoustics").then(acoustics => _state.acoustics = acoustics)
+            .then(() => DataManager.getAll("electrics").then(electrics => _state.electrics = electrics))
+            .then(() => DataManager.getAll("basses").then(basses => _state.basses = basses))
+            .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
+            // .then(() => DataManager.getAll("users").then(users => _state.users = users))
+            .then(() => { this.setState(_state) })
+    }
 
+    // ROUTES
     render() {
         return (
             <React.Fragment>
@@ -90,7 +105,7 @@ export default class AppViews extends Component {
                             addUser={this.addUser} />
                     }} />
 
-                    {/* gear entries */}
+                    {/* GEAR ENTRIES */}
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <GearForm {...props}
