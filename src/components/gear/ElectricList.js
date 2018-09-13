@@ -13,22 +13,22 @@ export default class ElectricList extends Component {
                                 <div className="card-header bg-success"></div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make:{electric.make}
+                                        Make: {electric.make}
                                     </section>
                                     <section className="card-title">
-                                        Model:{electric.model}
+                                        Model: {electric.model}
                                     </section>
                                     <section className="card-title">
-                                        Strings:{electric.strings}
+                                        Strings: {electric.strings}
                                     </section>
                                     <section className="card-title">
-                                        Pickup:{electric.pickup}
+                                        Pickup: {electric.pickup}
                                     </section>
                                     <section className="card-title">
-                                        Body:{electric.body}
+                                        Body: {electric.body}
                                     </section>
                                     <section className="card-title">
-                                        Special Features:{electric.features}
+                                        Special Features: {electric.features}
                                     </section>
                                     <p></p>
                                     <h6>

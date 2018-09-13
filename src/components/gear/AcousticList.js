@@ -13,22 +13,22 @@ export default class AcousticList extends Component {
                                 <div className="card-header bg-success"></div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make:{acoustic.make}
+                                        Make: {acoustic.make}
                                     </section>
                                     <section className="card-title">
-                                        Model:{acoustic.model}
+                                        Model: {acoustic.model}
                                     </section>
                                     <section className="card-title">
-                                        Strings:{acoustic.strings}
+                                        Strings: {acoustic.strings}
                                     </section>
                                     <section className="card-title">
-                                        Pickup:{acoustic.pickup}
+                                        Pickup: {acoustic.pickup}
                                     </section>
                                     <section className="card-title">
-                                        Body:{acoustic.body}
+                                        Body: {acoustic.body}
                                     </section>
                                     <section className="card-title">
-                                        Special Features:{acoustic.features}
+                                        Special Features: {acoustic.features}
                                     </section>
                                     <p></p>
                                     <h6>

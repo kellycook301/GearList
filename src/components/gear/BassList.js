@@ -13,22 +13,22 @@ export default class BassList extends Component {
                                 <div className="card-header bg-success"></div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make:{bass.make}
+                                        Make: {bass.make}
                                     </section>
                                     <section className="card-title">
-                                        Model:{bass.model}
+                                        Model: {bass.model}
                                     </section>
                                     <section className="card-title">
-                                        Strings:{bass.strings}
+                                        Strings: {bass.strings}
                                     </section>
                                     <section className="card-title">
-                                        Pickup:{bass.pickup}
+                                        Pickup: {bass.pickup}
                                     </section>
                                     <section className="card-title">
-                                        Body:{bass.body}
+                                        Body: {bass.body}
                                     </section>
                                     <section className="card-title">
-                                        Special Features:{bass.features}
+                                        Special Features: {bass.features}
                                     </section>
                                     <p></p>
                                     <h6>
