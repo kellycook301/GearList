@@ -134,6 +134,7 @@ export default class AppViews extends Component {
                                 electrics={this.state.electrics}
 
                                 addBass={this.addBass}
+                                editBassPost={this.editBassPost}
                                 basses={this.state.basses}
 
                                 addAmplifier={this.addAmplifier}
@@ -207,6 +208,7 @@ export default class AppViews extends Component {
                             editAmplifierPost={this.editAmplifierPost}
                             amplifiers={this.state.amplifiers} />
                     }} />
+                    
                 </div>
             </React.Fragment>
         )
