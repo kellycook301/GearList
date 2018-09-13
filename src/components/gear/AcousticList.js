@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default class AcousticList extends Component {
     render() {
@@ -35,6 +35,8 @@ export default class AcousticList extends Component {
                                         <p></p>
                                         <button type="button" className="btn btn-success"
                                             onClick={() => this.props.deleteAcousticPost(acoustic.id, "acoustics")}>Delete Post</button>
+                                        <Link className="nav-link editing-button" to={`/gear/edit/acoustic/${acoustic.id}`}>Edit Post</Link>
+                                        
                                     </h6>
                                 </div>
                             </div>

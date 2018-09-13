@@ -22,7 +22,7 @@ export default class BassList extends Component {
                                         Strings: {bass.strings}
                                     </section>
                                     <section className="card-title">
-                                        Pickup: {bass.pickup}
+                                        Pickup: {bass.pickups}
                                     </section>
                                     <section className="card-title">
                                         Body: {bass.body}

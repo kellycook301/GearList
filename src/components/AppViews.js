@@ -8,6 +8,8 @@ import AcousticList from './gear/AcousticList'
 import ElectricList from './gear/ElectricList'
 import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
+import AcousticEdit from './gear/AcousticEdit'
+import ElectricEdit from './gear/ElectricEdit'
 
 export default class AppViews extends Component {
 
@@ -34,14 +36,24 @@ export default class AppViews extends Component {
         .then(acoustics => this.setState({
             acoustics: acoustics
         }))
+    editAcousticPost = (acoustic, id, link) => DataManager.put(acoustic, id, link)
+        .then(() => DataManager.getAll("acoustics"))
+        .then(acoustics => this.setState({
+            acoustics: acoustics
+        }))
     deleteAcousticPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("acoustics"))
         .then(acoustics => this.setState({
             acoustics: acoustics
         }))
-    
+
     // ELECTRIC RELATED POSTS
     addElectric = (electric, link) => DataManager.post(electric, link)
+        .then(() => DataManager.getAll("electrics"))
+        .then(electrics => this.setState({
+            electrics: electrics
+        }))
+    editElectricPost = (electric, id, link) => DataManager.put(electric, id, link)
         .then(() => DataManager.getAll("electrics"))
         .then(electrics => this.setState({
             electrics: electrics
@@ -75,14 +87,6 @@ export default class AppViews extends Component {
         .then(amplifiers => this.setState({
             amplifiers: amplifiers
         }))
-    
-    
-    // editGearEntry = (article, id, link) => DataManager.put(article, id, link)
-    //     .then(() => DataManager.getAll("entries"))
-    //     .then(entries => this.setState({
-    //         entries: entries
-    //     }))
-
 
     componentDidMount() {
         const _state = {}
@@ -90,7 +94,7 @@ export default class AppViews extends Component {
             .then(() => DataManager.getAll("electrics").then(electrics => _state.electrics = electrics))
             .then(() => DataManager.getAll("basses").then(basses => _state.basses = basses))
             .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
-            // .then(() => DataManager.getAll("users").then(users => _state.users = users))
+            .then(() => DataManager.getAll("users").then(users => _state.users = users))
             .then(() => { this.setState(_state) })
     }
 
@@ -110,9 +114,13 @@ export default class AppViews extends Component {
                         if (this.isAuthenticated()) {
                             return <GearForm {...props}
                                 addAcoustic={this.addAcoustic}
+                                editAcousticPost={this.editAcousticPost}
                                 acoustics={this.state.acoustics}
+
                                 addElectric={this.addElectric}
+                                editElectricPost={this.editElectricPost}
                                 electrics={this.state.electrics}
+
                                 addBass={this.addBass}
                                 basses={this.state.basses}
                                 addAmplifier={this.addAmplifier}
@@ -121,6 +129,8 @@ export default class AppViews extends Component {
                             return <Redirect to="/login" />
                         }
                     }} />
+
+                    {/* Acoustic Related */}
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <AcousticList {...props}
@@ -130,6 +140,13 @@ export default class AppViews extends Component {
                             return <Redirect to="/login" />
                         }
                     }} />
+                    <Route path="/gear/edit/acoustic/:acousticId(\d+)" render={(props) => {
+                        return <AcousticEdit {...props}
+                            editAcousticPost={this.editAcousticPost}
+                            acoustics={this.state.acoustics} />
+                    }} />
+
+                    {/* Electric Related  */}
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <ElectricList {...props}
@@ -139,6 +156,13 @@ export default class AppViews extends Component {
                             return <Redirect to="/login" />
                         }
                     }} />
+                    <Route path="/gear/edit/electric/:electricId(\d+)" render={(props) => {
+                        return <ElectricEdit {...props}
+                            editElectricPost={this.editElectricPost}
+                            electrics={this.state.electrics} />
+                    }} />
+
+                    {/* Bass Related */}
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <BassList {...props}
@@ -148,6 +172,8 @@ export default class AppViews extends Component {
                             return <Redirect to="/login" />
                         }
                     }} />
+
+                    {/* Amplifier Related */}
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <AmplifierList {...props}
