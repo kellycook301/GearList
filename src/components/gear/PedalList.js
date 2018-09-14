@@ -39,12 +39,11 @@ export default class PedalList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
-                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deletePedalPost(pedal.id, "pedals")}; window.location.reload();}} />
-                                        <p></p>
                                         <Link to={`/gear/edit/pedal/${pedal.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" /></Link>
+                                        <p></p>
+                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deletePedalPost(pedal.id, "pedals") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>

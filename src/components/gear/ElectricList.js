@@ -20,7 +20,7 @@ export default class ElectricList extends Component {
 
                             <div key={electric.id} className="card">
                                 <div className="card-header bg-#ef5350 red lighten-1">
-                                <img src={electricGuitar} className="icon--electric" />
+                                    <img src={electricGuitar} className="icon--electric" />
                                     <h3>My {electric.make} {electric.model}</h3>
                                 </div>
                                 <div className="card-body">
@@ -44,12 +44,11 @@ export default class ElectricList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
-                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deleteElectricPost(electric.id, "electrics")}; window.location.reload();}} />
-                                        <p></p>
                                         <Link to={`/gear/edit/electric/${electric.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" /></Link>
+                                        <p></p>
+                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteElectricPost(electric.id, "electrics") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>

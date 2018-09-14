@@ -152,11 +152,12 @@ export default class GearForm extends Component {
                 body: this.state.acousticGuitarBodyWood,
                 features: this.state.acousticGuitarSpecialFeatures,
             }
-            console.log(acoustic, "acoustics")
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            this.toggle()
         }
+        
     }
 
     createElectricPost = evt => {
@@ -191,6 +192,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            this.toggle()
         }
     }
 
@@ -227,6 +229,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            this.toggle()
         }
     }
 
@@ -263,6 +266,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            this.toggle()
         }
     }
 
@@ -291,6 +295,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addPedal(pedal, "pedals").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            this.toggle()
         }
     }
 
@@ -319,6 +324,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addCabinet(pedal, "cabinets").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            this.toggle()
         }
     }
 

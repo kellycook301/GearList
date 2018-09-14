@@ -21,7 +21,7 @@ export default class BassList extends Component {
 
                             <div key={bass.id} className="card">
                                 <div className="card-header bg-#0091ea light-blue accent-4">
-                                <img src={bassGuitar} className="icon--bass" />
+                                    <img src={bassGuitar} className="icon--bass" />
                                     <h3>My {bass.make} {bass.model}</h3>
                                 </div>
                                 <div className="card-body">
@@ -45,12 +45,11 @@ export default class BassList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
-                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deleteBassPost(bass.id, "basses")}; window.location.reload();}} />
-                                        <p></p>
                                         <Link to={`/gear/edit/bass/${bass.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" /></Link>
+                                        <p></p>
+                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteBassPost(bass.id, "basses") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>

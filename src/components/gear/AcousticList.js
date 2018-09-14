@@ -21,7 +21,7 @@ export default class AcousticList extends Component {
 
                             <div key={acoustic.id} className="card">
                                 <div className="card-header bg-#a1887f brown lighten-2">
-                                <img src={acousticGuitar} className="icon--acoustic" />
+                                    <img src={acousticGuitar} className="icon--acoustic" />
                                     <h3>My {acoustic.make} {acoustic.model}</h3>
                                 </div>
                                 <div className="card-body">
@@ -45,12 +45,11 @@ export default class AcousticList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
-                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deleteAcousticPost(acoustic.id, "acoustics")}; window.location.reload();}} />
-                                        <p></p>
                                         <Link to={`/gear/edit/acoustic/${acoustic.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" /></Link>
+                                        <p></p>
+                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteAcousticPost(acoustic.id, "acoustics") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>
