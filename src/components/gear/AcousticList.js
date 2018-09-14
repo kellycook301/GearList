@@ -3,7 +3,9 @@ import { Link } from "react-router-dom"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 library.add(faTrash)
+library.add(faPen)
 
 
 export default class AcousticList extends Component {
@@ -37,9 +39,11 @@ export default class AcousticList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                    <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deleteAcousticPost(acoustic.id, "acoustics")} /> 
-                                    <p></p>
-                                        <Link className="nav-link editing-button" to={`/gear/edit/acoustic/${acoustic.id}`}>Edit Post</Link> 
+                                        <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deleteAcousticPost(acoustic.id, "acoustics")} />
+                                        <p></p>
+                                        <Link to={`/gear/edit/acoustic/${acoustic.id}`}><FontAwesomeIcon
+                                            icon="pen"
+                                            color="blue" /></Link>
                                     </h6>
                                 </div>
                             </div>

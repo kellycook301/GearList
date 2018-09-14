@@ -40,7 +40,7 @@ export default class AcousticEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3 className="edit-post">What Would You Like To Edit?</h3>
+                <h3 className="edit-post">What About Your Acoustic Guitar Would You Like To Edit?</h3>
                 <form className="acousticForm">
                     <div className="form-group">
                         <label htmlFor="acousticGuitarMake" className="acousticGuitarMake">Make:</label>

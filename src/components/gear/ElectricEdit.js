@@ -40,7 +40,7 @@ export default class ElectricEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3 className="edit-post">What Would You Like To Edit?</h3>
+                <h3 className="edit-post">What About Your Electric Guitar Would You Like To Edit?</h3>
                 <form className="electricForm">
                     <div className="form-group">
                         <label htmlFor="electricGuitarMake" className="electricGuitarMake">Make:</label>

@@ -40,7 +40,7 @@ export default class AmplifierEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3 className="edit-post">What Would You Like To Edit?</h3>
+                <h3 className="edit-post">What About Your Amplifier Would You Like To Edit?</h3>
                 <form className="amplifierForm">
                     <div className="form-group">
                         <label htmlFor="amplifierMake" className="amplifierMake">Make:</label>

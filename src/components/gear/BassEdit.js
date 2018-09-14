@@ -40,7 +40,7 @@ export default class BassEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3 className="edit-post">What Would You Like To Edit?</h3>
+                <h3 className="edit-post">What About Your Bass Would You Like To Edit?</h3>
                 <form className="bassForm">
                     <div className="form-group">
                         <label htmlFor="bassGuitarMake" className="bassGuitarMake">Make:</label>
