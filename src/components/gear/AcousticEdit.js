@@ -99,7 +99,7 @@ export default class AcousticEdit extends Component {
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createAcousticPost}
-                        className="btn btn-warning">Submit Edited Post</button>
+                        className="btn btn-#a1887f brown lighten-2">Submit Edited Post</button>
                 </form>
             </React.Fragment>
         )

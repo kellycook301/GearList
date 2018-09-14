@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import 'mdbreact/dist/css/mdb.css';
 
 export default class GearForm extends Component {
 
@@ -22,6 +23,7 @@ export default class GearForm extends Component {
         this.bassNested = this.bassNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
         this.pedalNested = this.pedalNested.bind(this);
+        this.cabinetNested = this.cabinetNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
 
         this.state = {
@@ -58,7 +60,11 @@ export default class GearForm extends Component {
             pedalMake: "",
             pedalModel: "",
             pedalType: "",
-            pedalSpecialFeatures: ""
+            pedalSpecialFeatures: "",
+            cabinetMake: "",
+            cabinetModel: "",
+            cabinetSpeakers: "",
+            cabinetWoodType: ""
         };
     }
 
@@ -99,6 +105,13 @@ export default class GearForm extends Component {
     pedalNested() {
         this.setState({
             pedalModal: !this.state.pedalModal,
+            closeAll: false
+        });
+    }
+
+    cabinetNested() {
+        this.setState({
+            cabinetModal: !this.state.cabinetModal,
             closeAll: false
         });
     }
@@ -281,6 +294,34 @@ export default class GearForm extends Component {
         }
     }
 
+    createCabinetPost = evt => {
+        evt.preventDefault()
+        if (this.state.cabinetMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.cabinetModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.cabinetSpeakers === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.cabinetWoodType === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const pedal = {
+                make: this.state.cabinetMake,
+                model: this.state.cabinetModel,
+                speakers: this.state.cabinetSpeakers,
+                woodType: this.state.cabinetWoodType,
+            }
+            console.log(pedal, "pedals")
+            // Create the post for acoustic and redirect user to the gear list page
+            this.props.addCabinet(pedal, "cabinets").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+        }
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -290,7 +331,7 @@ export default class GearForm extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                     <ModalBody>
-                        <Button color="secondary" onClick={this.amplifierNested}>Amplifier</Button>
+                        <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier</Button>
                         <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -323,11 +364,11 @@ export default class GearForm extends Component {
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
-                                <Button color="secondary" onClick={this.amplifierNested}>Back</Button>{' '}
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.amplifierNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="warning" onClick={this.acousticNested}>Acoustic Guitar</Button>
+                        <Button color="#a1887f brown lighten-2" onClick={this.acousticNested}>Acoustic Guitar</Button>
                         <Modal isOpen={this.state.acousticModal} toggle={this.acousticNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader className="acousticHeader">Acoustic Guitar Features</ModalHeader>
                             <ModalBody className="acousticMake">
@@ -360,11 +401,11 @@ export default class GearForm extends Component {
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createAcousticPost}>Submit</Button>
-                                <Button color="secondary" onClick={this.acousticNested}>Back</Button>{' '}
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.acousticNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="danger" onClick={this.electricNested}>Electric Guitar</Button>
+                        <Button color="#ef5350 red lighten-1" onClick={this.electricNested}>Electric Guitar</Button>
                         <Modal isOpen={this.state.electricModal} toggle={this.electricNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Electric Guitar Features</ModalHeader>
                             <ModalBody>
@@ -397,11 +438,11 @@ export default class GearForm extends Component {
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createElectricPost}>Submit</Button>
-                                <Button color="secondary" onClick={this.electricNested}>Back</Button>{' '}
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.electricNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="primary" onClick={this.bassNested}>Bass Guitar</Button>
+                        <Button color="#0091ea light-blue accent-4" onClick={this.bassNested}>Bass Guitar</Button>
                         <Modal isOpen={this.state.bassModal} toggle={this.bassNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Bass Guitar Features</ModalHeader>
                             <ModalBody>
@@ -434,11 +475,11 @@ export default class GearForm extends Component {
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createBassPost}>Submit</Button>
-                                <Button color="secondary" onClick={this.bassNested}>Back</Button>{' '}
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.bassNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="success" onClick={this.pedalNested}>Effects Pedal</Button>
+                        <Button color="#00e676 green accent-3" onClick={this.pedalNested}>Effects Pedal</Button>
                         <Modal isOpen={this.state.pedalModal} toggle={this.pedalNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Effect Pedal Features</ModalHeader>
                             <ModalBody>
@@ -449,7 +490,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="pedalModel">Model:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalModel" placeholder="Model (ex .Big Muff)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalModel" placeholder="Model (ex. Big Muff)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="pedalType">Type:</Label>
@@ -463,13 +504,42 @@ export default class GearForm extends Component {
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createPedalPost}>Submit</Button>
-                                <Button color="secondary" onClick={this.pedalNested}>Back</Button>{' '}
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+                        <p></p>
+                        <Button color="#ffa726 orange lighten-1" onClick={this.cabinetNested}>Speaker Cabinet</Button>
+                        <Modal isOpen={this.state.cabinetModal} toggle={this.cabinetNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Speaker Cabinet Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="cabinetForm">
+                                    <FormGroup>
+                                        <Label for="cabinetMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetMake" placeholder="Make (ex. Orange)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="cabinetModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetModel" placeholder="Model (ex. PPC412)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="cabinetSpeakers">Speakers:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetSpeakers" placeholder="Speakers (ex. Vintage 30s)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="cabinetWoodType">Wood Type:</Label>
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetWoodType" placeholder="Wood Type (ex. Birch)" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createCabinetPost}>Submit</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.cabinetNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
 
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button color="#9575cd deep-purple lighten-2" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </React.Fragment>

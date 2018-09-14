@@ -19,7 +19,7 @@ export default class BassList extends Component {
                         this.props.basses.map(bass =>
 
                             <div key={bass.id} className="card">
-                                <div className="card-header bg-primary">
+                                <div className="card-header bg-#0091ea light-blue accent-4">
                                 <img src={bassGuitar} className="icon--bass" />
                                     <h3>My {bass.make} {bass.model}</h3>
                                 </div>

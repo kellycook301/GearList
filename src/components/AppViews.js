@@ -12,6 +12,7 @@ import ElectricList from './gear/ElectricList'
 import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
 import PedalList from './gear/PedalList'
+import CabinetList from './gear/CabinetList'
 
 // The Components where gear is edited
 import AcousticEdit from './gear/AcousticEdit'
@@ -19,6 +20,7 @@ import ElectricEdit from './gear/ElectricEdit'
 import BassEdit from './gear/BassEdit'
 import AmplifierEdit from './gear/AmplifierEdit'
 import PedalEdit from './gear/PedalEdit'
+import CabinetEdit from './gear/CabinetEdit'
 
 export default class AppViews extends Component {
 
@@ -31,6 +33,7 @@ export default class AppViews extends Component {
         basses: [],
         amplifiers: [],
         pedals: [],
+        cabinets: [],
         users: []
     }
 
@@ -125,6 +128,23 @@ export default class AppViews extends Component {
             pedals: pedals
         }))
 
+    // CABINET PEDAL RELATED POSTS
+    addCabinet = (cabinet, link) => DataManager.post(cabinet, link)
+        .then(() => DataManager.getAll("cabinets"))
+        .then(cabinets => this.setState({
+            cabinets: cabinets
+        }))
+    editCabinetPost = (cabinet, id, link) => DataManager.put(cabinet, id, link)
+        .then(() => DataManager.getAll("cabinets"))
+        .then(cabinets => this.setState({
+            cabinets: cabinets 
+        }))
+    deletePedalPost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("cabinets"))
+        .then(cabinets => this.setState({
+            cabinets: cabinets
+        }))
+
     componentDidMount() {
         const _state = {}
         DataManager.getAll("acoustics").then(acoustics => _state.acoustics = acoustics)
@@ -132,6 +152,7 @@ export default class AppViews extends Component {
             .then(() => DataManager.getAll("basses").then(basses => _state.basses = basses))
             .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
             .then(() => DataManager.getAll("pedals").then(pedals => _state.pedals = pedals))
+            .then(() => DataManager.getAll("cabinets").then(cabinets => _state.cabinets = cabinets))
             .then(() => DataManager.getAll("users").then(users => _state.users = users))
             .then(() => { this.setState(_state) })
     }
@@ -170,6 +191,10 @@ export default class AppViews extends Component {
                                 addPedal={this.addPedal}
                                 editPedalPost={this.editPedalPost}
                                 pedals={this.state.pedals}
+
+                                addCabinet={this.addCabinet}
+                                editCabinetPost={this.editCabinetPost}
+                                cabinets={this.state.cabinets}
                                 />
                         } else {
                             return <Redirect to="/login" />
@@ -254,6 +279,22 @@ export default class AppViews extends Component {
                         return <PedalEdit {...props}
                             editPedalPost={this.editPedalPost}
                             pedals={this.state.pedals} />
+                    }} />
+
+                    {/* Cabinet Related */}
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <CabinetList {...props}
+                                cabinets={this.state.cabinets}
+                                deletePedalPost={this.deletePedalPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route path="/gear/edit/cabinet/:cabinetId(\d+)" render={(props) => {
+                        return <CabinetEdit {...props}
+                            editCabinetPost={this.editCabinetPost}
+                            cabinets={this.state.cabinets} />
                     }} />
                     
                 </div>

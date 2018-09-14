@@ -95,11 +95,11 @@ export default class BassEdit extends Component {
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="features"
-                            placeholder="Special Features (ex. Hipshit Xtender installed) If no special features have been added, please enter 'none.'"
+                            placeholder="Special Features (ex. Hipshot Xtender installed) If no special features have been added, please enter 'none.'"
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createBassPost}
-                        className="btn btn-primary">Submit Edited Post</button>
+                        className="btn btn-#0091ea light-blue accent-4">Submit Edited Post</button>
                 </form>
             </React.Fragment>
         )

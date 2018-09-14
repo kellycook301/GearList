@@ -99,7 +99,7 @@ export default class AmplifierEdit extends Component {
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createAmplifierPost}
-                        className="btn btn-secondary">Submit Edited Post</button>
+                        className="btn btn-#616161 grey darken-2">Submit Edited Post</button>
                 </form>
             </React.Fragment>
         )

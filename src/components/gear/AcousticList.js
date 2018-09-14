@@ -19,7 +19,7 @@ export default class AcousticList extends Component {
                         this.props.acoustics.map(acoustic =>
 
                             <div key={acoustic.id} className="card">
-                                <div className="card-header bg-warning">
+                                <div className="card-header bg-#a1887f brown lighten-2">
                                 <img src={acousticGuitar} className="icon--acoustic" />
                                     <h3>My {acoustic.make} {acoustic.model}</h3>
                                 </div>

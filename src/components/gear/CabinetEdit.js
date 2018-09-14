@@ -1,19 +1,19 @@
 import React, { Component } from "react"
-import effect from "./images/effectPedal.png"
+import effect from "./images/cabinet_(md).png"
 
-export default class PedalEdit extends Component {
+export default class CabinetEdit extends Component {
 
    state = {
-            pedalMake: "",
-            pedalModel: "",
-            pedalType: "",
-            pedalSpecialFeatures: "",
+            cabinetMake: "",
+            cabinetModel: "",
+            cabinetSpeakers: "",
+            cabinetWoodType: "",
             id: null
     }
 
     componentDidMount() {
-        const pedal = this.props.pedals.find(a => a.id === parseInt(this.props.match.params.pedalId, 0))
-        this.setState(pedal);
+        const cabinet = this.props.cabinets.find(a => a.id === parseInt(this.props.match.params.cabinetId, 0))
+        this.setState(cabinet);
     }
 
     handleFieldChange = evt => {
@@ -22,62 +22,62 @@ export default class PedalEdit extends Component {
         this.setState(stateToChange)
     }
 
-    createPedalPost = evt => {
+    createcabinetPost = evt => {
         evt.preventDefault()
-        const newPedalPost = {
+        const newCabinetPost = {
             make: this.state.make,
             model: this.state.model,
-            type: this.state.type,
-            features: this.state.features,
+            speakers: this.state.speakers,
+            woodType: this.state.woodType,
             id: this.state.id
         }
-        this.props.editPedalPost(newPedalPost, this.state.id, "pedals").then(() => this.props.history.push("/gear"))
+        this.props.editCabinetPost(newCabinetPost, this.state.id, "cabinets").then(() => this.props.history.push("/gear"))
     }
 
     render() {
         return (
             <React.Fragment>
                 <img src={effect} className="icon--effect" />
-                <h3 className="edit-post">What About Your Effect Pedal Would You Like To Edit?</h3>
-                <form className="pedalForm">
+                <h3 className="edit-post">What About Your Speaker Cabinet Would You Like To Edit?</h3>
+                <form className="cabinetForm">
                     <div className="form-group">
-                        <label htmlFor="pedalMake" className="pedalMake">Make:</label>
+                        <label htmlFor="cabinetMake" className="cabinetMake">Make:</label>
                         <input type="text" required="true"
                             className="form-control make-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="make"
-                            placeholder="Make (ex. Boss)"
+                            placeholder="Make (ex. Orange)"
                             defaultValue={this.state.make} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="pedalModel" className="pedalModel">Model:</label>
+                        <label htmlFor="cabinetModel" className="cabinetModel">Model:</label>
                         <input type="text" required="true"
                             className="form-control model-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="model"
-                            placeholder="Model (ex. Big Muff)"
+                            placeholder="Model (ex. PPC412)"
                             defaultValue={this.state.model} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="pedalType" className="pedalType">Type:</label>
+                        <label htmlFor="cabinetSpeakers" className="cabinetSpeakers">Speakers:</label>
                         <input type="text" required="true"
                             className="form-control power-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="power"
-                            placeholder="Type (ex. Delay)"
-                            defaultValue={this.state.type} />
+                            id="speakers"
+                            placeholder="Speakers (ex. Vintage 30s)"
+                            defaultValue={this.state.speakers} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="pedalSpecialFeatures" className="pedalSpecialFeatures">Special Features:</label>
+                        <label htmlFor="cabinetWoodType" className="cabinetWoodType">Wood Type:</label>
                         <input type="textarea" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="features"
-                            placeholder="Special Features (ex. Keeley 'Seeing-Eye' Mod) If no special features have been added, please enter 'none.'"
-                            defaultValue={this.state.features} />
+                            placeholder="SWood Type (ex. Birch)"
+                            defaultValue={this.state.woodType} />
                     </div>
-                    <button type="submit" onClick={this.createPedalPost}
-                        className="btn btn-#00e676 green accent-3">Submit Edited Post</button>
+                    <button type="submit" onClick={this.createCabinetPost}
+                        className="btn btn-#ffa726 orange lighten-1">Submit Edited Post</button>
                 </form>
             </React.Fragment>
         )
