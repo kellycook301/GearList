@@ -19,7 +19,7 @@ export default class PedalList extends Component {
                     {
                         this.props.pedals.map(pedal =>
 
-                            <div key={pedal.id} className="card" style={{width: 450}}>
+                            <div key={pedal.id} className="card pedalCard" style={{width: 450}}>
                                 <div className="card-header bg-#00e676 green accent-3">
                                     <img src={effectPedal} className="icon--pedal" />
                                     <h3>My {pedal.make} {pedal.model}</h3>

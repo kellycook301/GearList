@@ -18,3 +18,8 @@
 .cabinetEditDelete {
     display: flex;
 }
+
+.cabCard {
+    float: left;
+    margin: 0.5em;
+}

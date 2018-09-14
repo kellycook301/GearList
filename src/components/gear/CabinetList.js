@@ -19,7 +19,7 @@ export default class CabinetList extends Component {
                     {
                         this.props.cabinets.map(cabinet =>
 
-                            <div key={cabinet.id} className="card" style={{width: 450}}>
+                            <div key={cabinet.id} className="card cabCard" style={{width: 450}}>
                                 <div className="card-header bg-#ffa726 orange lighten-1">
                                     <img src={cab} className="icon--cab" />
                                     <h3>My {cabinet.make} {cabinet.model}</h3>

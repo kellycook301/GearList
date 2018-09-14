@@ -18,3 +18,8 @@
 .bassEditDelete {
     display: flex;
 }
+
+.bassCard {
+    float: left;
+    margin: 0.5em;
+}

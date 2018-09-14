@@ -19,7 +19,7 @@ export default class AmplifierList extends Component {
                     {
                         this.props.amplifiers.map(amplifier =>
 
-                            <div key={amplifier.id} className="card" style={{width: 450}}>
+                            <div key={amplifier.id} className="card ampCard" style={{width: 450}}>
                                 <div className="card-header bg-#bdbdbd grey lighten-1">
                                     <img src={amp} className="icon--amp" />
                                     <h3>My {amplifier.make} {amplifier.model}</h3>

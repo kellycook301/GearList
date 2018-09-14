@@ -18,3 +18,8 @@
 .electricEditDelete {
     display: flex;
 }
+
+.electricCard {
+    float: left;
+    margin: 0.5em;
+}

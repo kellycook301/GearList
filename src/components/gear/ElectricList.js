@@ -18,7 +18,7 @@ export default class ElectricList extends Component {
                     {
                         this.props.electrics.map(electric =>
 
-                            <div key={electric.id} className="card" style={{width: 450}}>
+                            <div key={electric.id} className="card electricCard" style={{width: 450}}>
                                 <div className="card-header bg-#ef5350 red lighten-1">
                                     <img src={electricGuitar} className="icon--electric" />
                                     <h3>My {electric.make} {electric.model}</h3>

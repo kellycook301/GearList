@@ -18,3 +18,8 @@
 .ampEditDelete {
     display: flex;
 }
+
+.ampCard {
+    float: left;
+    margin: 0.5em;
+}

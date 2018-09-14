@@ -18,3 +18,8 @@
 .pedalEditDelete {
     display: flex;
 }
+
+.pedalCard {
+    float: left;
+    margin: 0.5em;
+}
