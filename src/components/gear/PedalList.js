@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import effectPedal from "./images/effectPedal.png"
+import "./PedalList.css"
 
 library.add(faTrash)
 library.add(faPen)
@@ -38,7 +39,7 @@ export default class PedalList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deletePedalPost(pedal.id, "pedals")} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => this.props.deletePedalPost(pedal.id, "pedals")} />
                                         <p></p>
                                         <Link to={`/gear/edit/pedal/${pedal.id}`}><FontAwesomeIcon
                                             icon="pen"

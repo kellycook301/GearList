@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import electricGuitar from "./images/electric.png"
+import "./ElectricList.css"
 
 library.add(faTrash)
 library.add(faPen)
@@ -43,7 +44,7 @@ export default class ElectricList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deleteElectricPost(electric.id, "electrics")} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => this.props.deleteElectricPost(electric.id, "electrics")} />
                                         <p></p>
                                         <Link to={`/gear/edit/electric/${electric.id}`}><FontAwesomeIcon
                                             icon="pen"

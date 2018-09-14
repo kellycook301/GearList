@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import cab from "./images/cabinet.png"
+import "./CabinetList.css"
 
 library.add(faTrash)
 library.add(faPen)
@@ -38,7 +39,7 @@ export default class CabinetList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deleteCabinetPost(cabinet.id, "cabinets")} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => this.props.deleteCabinetPost(cabinet.id, "cabinets")} />
                                         <p></p>
                                         <Link to={`/gear/edit/cabinet/${cabinet.id}`}><FontAwesomeIcon
                                             icon="pen"
