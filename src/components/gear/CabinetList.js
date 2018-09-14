@@ -39,7 +39,8 @@ export default class CabinetList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => this.props.deleteCabinetPost(cabinet.id, "cabinets")} />
+                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
+                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deleteCabinetPost(cabinet.id, "cabinets")}; window.location.reload();}} />
                                         <p></p>
                                         <Link to={`/gear/edit/cabinet/${cabinet.id}`}><FontAwesomeIcon
                                             icon="pen"

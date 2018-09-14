@@ -527,7 +527,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="cabinetWoodType">Wood Type:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetWoodType" placeholder="Wood Type (ex. Birch)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetWoodType" placeholder="Wood Type (ex. Birch)" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>

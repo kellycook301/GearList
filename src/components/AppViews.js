@@ -139,7 +139,7 @@ export default class AppViews extends Component {
         .then(cabinets => this.setState({
             cabinets: cabinets 
         }))
-    deletePedalPost = (id, link) => DataManager.removeAndList(id, link)
+    deleteCabinetPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("cabinets"))
         .then(cabinets => this.setState({
             cabinets: cabinets
@@ -286,7 +286,7 @@ export default class AppViews extends Component {
                         if (this.isAuthenticated()) {
                             return <CabinetList {...props}
                                 cabinets={this.state.cabinets}
-                                deletePedalPost={this.deletePedalPost} />
+                                deleteCabinetPost={this.deleteCabinetPost} />
                         } else {
                             return <Redirect to="/login" />
                         }

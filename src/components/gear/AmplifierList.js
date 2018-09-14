@@ -45,7 +45,8 @@ export default class AmplifierList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => this.props.deleteAmplifierPost(amplifier.id, "amplifiers")} />
+                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
+                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deleteAmplifierPost(amplifier.id, "amplifiers")}; window.location.reload();}} />
                                         <p></p>
                                         <Link to={`/gear/edit/amplifier/${amplifier.id}`}><FontAwesomeIcon
                                             icon="pen"

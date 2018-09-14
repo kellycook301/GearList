@@ -45,9 +45,10 @@ export default class BassList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => this.props.deleteBassPost(bass.id, "basses")} />
+                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
+                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deleteBassPost(bass.id, "basses")}; window.location.reload();}} />
                                         <p></p>
-                                    <Link to={`/gear/edit/bass/${bass.id}`}><FontAwesomeIcon
+                                        <Link to={`/gear/edit/bass/${bass.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" /></Link>
                                     </h6>

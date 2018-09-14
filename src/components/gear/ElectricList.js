@@ -44,7 +44,8 @@ export default class ElectricList extends Component {
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => this.props.deleteElectricPost(electric.id, "electrics")} />
+                                    <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() =>
+                                         {if (window.confirm('Are you sure you wish to delete this item?')) {this.props.deleteElectricPost(electric.id, "electrics")}; window.location.reload();}} />
                                         <p></p>
                                         <Link to={`/gear/edit/electric/${electric.id}`}><FontAwesomeIcon
                                             icon="pen"
