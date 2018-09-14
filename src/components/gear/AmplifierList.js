@@ -44,12 +44,12 @@ export default class AmplifierList extends Component {
                                         Special Features: {amplifier.features}
                                     </section>
                                     <p></p>
-                                    <h6>
+                                    <h6 className="ampEditDelete">
                                         <Link to={`/gear/edit/amplifier/${amplifier.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteAmplifierPost(amplifier.id, "amplifiers") }; window.location.reload(); }} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="ampTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteAmplifierPost(amplifier.id, "amplifiers") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>

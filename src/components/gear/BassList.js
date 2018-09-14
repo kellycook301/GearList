@@ -44,12 +44,12 @@ export default class BassList extends Component {
                                         Special Features: {bass.features}
                                     </section>
                                     <p></p>
-                                    <h6>
+                                    <h6 className="bassEditDelete">
                                         <Link to={`/gear/edit/bass/${bass.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteBassPost(bass.id, "basses") }; window.location.reload(); }} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="bassTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteBassPost(bass.id, "basses") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>

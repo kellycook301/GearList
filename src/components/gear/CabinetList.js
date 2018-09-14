@@ -38,12 +38,12 @@ export default class CabinetList extends Component {
                                         Wood Type: {cabinet.woodType}
                                     </section>
                                     <p></p>
-                                    <h6>
+                                    <h6 className="cabinetEditDelete">
                                         <Link to={`/gear/edit/cabinet/${cabinet.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteCabinetPost(cabinet.id, "cabinets") }; window.location.reload(); }} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="cabinetTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteCabinetPost(cabinet.id, "cabinets") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>

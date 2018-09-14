@@ -1,8 +1,9 @@
-.trash {
+.bassTrash {
     cursor: pointer;
+    margin-left: 1em;
 }
 
-.trash:hover {
+.bassTrash:hover {
     transform: scale(1.15);
 }
 
@@ -12,4 +13,8 @@
 
 .icon--bass:hover {
     transform: scale(1.1);
+}
+
+.bassEditDelete {
+    display: flex;
 }

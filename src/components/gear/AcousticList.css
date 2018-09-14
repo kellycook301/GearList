@@ -1,8 +1,9 @@
-.trash {
+.acousticTrash {
     cursor: pointer;
+    margin-left: 1em;
 }
 
-.trash:hover {
+.acousticTrash:hover {
     transform: scale(1.15);
 }
 
@@ -12,4 +13,8 @@
 
 .icon--acoustic:hover {
     transform: scale(1.1);
+}
+
+.acousticEditDelete {
+    display: flex;
 }

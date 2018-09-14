@@ -1,8 +1,9 @@
-.trash {
+.pedalTrash {
     cursor: pointer;
+    margin-left: 1em;
 }
 
-.trash:hover {
+.pedalTrash:hover {
     transform: scale(1.15);
 }
 
@@ -12,4 +13,8 @@
 
 .icon--pedal:hover {
     transform: scale(1.1);
+}
+
+.pedalEditDelete {
+    display: flex;
 }

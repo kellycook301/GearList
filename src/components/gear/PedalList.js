@@ -38,12 +38,12 @@ export default class PedalList extends Component {
                                         Special Features: {pedal.features}
                                     </section>
                                     <p></p>
-                                    <h6>
+                                    <h6 className="pedalEditDelete">
                                         <Link to={`/gear/edit/pedal/${pedal.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deletePedalPost(pedal.id, "pedals") }; window.location.reload(); }} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="pedalTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deletePedalPost(pedal.id, "pedals") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>

@@ -1,8 +1,9 @@
-.trash {
+.electricTrash {
     cursor: pointer;
+    margin-left: 1em;
 }
 
-.trash:hover {
+.electricTrash:hover {
     transform: scale(1.15);
 }
 
@@ -11,5 +12,9 @@
 }
 
 .icon--electric:hover {
-    transform: scale(1.06);
+    transform: scale(1.05);
+}
+
+.electricEditDelete {
+    display: flex;
 }

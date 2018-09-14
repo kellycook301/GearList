@@ -1,8 +1,9 @@
-.trash {
+.ampTrash {
     cursor: pointer;
+    margin-left: 1em;
 }
 
-.trash:hover {
+.ampTrash:hover {
     transform: scale(1.15);
 }
 
@@ -12,4 +13,8 @@
 
 .icon--amp:hover {
     transform: scale(1.1);
+}
+
+.ampEditDelete {
+    display: flex;
 }

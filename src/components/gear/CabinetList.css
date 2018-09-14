@@ -1,8 +1,9 @@
-.trash {
+.cabinetTrash {
     cursor: pointer;
+    margin-left: 1em;
 }
 
-.trash:hover {
+.cabinetTrash:hover {
     transform: scale(1.15);
 }
 
@@ -12,4 +13,8 @@
 
 .icon--cab:hover {
     transform: scale(1.1);
+}
+
+.cabinetEditDelete {
+    display: flex;
 }

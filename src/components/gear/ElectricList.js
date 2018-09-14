@@ -43,12 +43,12 @@ export default class ElectricList extends Component {
                                         Special Features: {electric.features}
                                     </section>
                                     <p></p>
-                                    <h6>
+                                    <h6 className="electricEditDelete">
                                         <Link to={`/gear/edit/electric/${electric.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteElectricPost(electric.id, "electrics") }; window.location.reload(); }} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="electricTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteElectricPost(electric.id, "electrics") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>
