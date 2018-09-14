@@ -21,7 +21,7 @@ export default class BassList extends Component {
                             <div key={bass.id} className="card">
                                 <div className="card-header bg-primary">
                                 <img src={bassGuitar} className="icon--bass" />
-                                    <h3>{bass.make} {bass.model}</h3>
+                                    <h3>My {bass.make} {bass.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">

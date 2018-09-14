@@ -244,13 +244,50 @@ export default class GearForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Here Is Your Gear!</h1>
+                <h1>My Gear List!</h1>
                 <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel} Add Gear</Button>
 
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                     <ModalBody>
-                        <Button color="primary" onClick={this.acousticNested}>Acoustic Guitar</Button>
+                        <Button color="secondary" onClick={this.amplifierNested}>Amplifier</Button>
+                        <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Amplifier Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="amplifierForm">
+                                    <FormGroup>
+                                        <Label for="amplifierMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="amplifierModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierModel" placeholder="Model (ex. JCM 800)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="amplifierPowerSection">Power Section:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierPowerSection" placeholder="Power Section (ex. Solid State Power Section)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="amplifierPreampSection">Preamp Section:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierPreampSection" placeholder="Preamp Section (ex. Tube Preamp Section)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="amplifierHeadCombo">Head or Combo Amp:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierHeadCombo" placeholder="Head or Combo Amp (ex. 2x12 Combo)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="amplifierSpecialFeatures">Special Features:</Label>
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids) If no special features have been added, please enter 'none.'" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
+                                <Button color="secondary" onClick={this.amplifierNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+                        <p></p>
+                        <Button color="warning" onClick={this.acousticNested}>Acoustic Guitar</Button>
                         <Modal isOpen={this.state.acousticModal} toggle={this.acousticNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader className="acousticHeader">Acoustic Guitar Features</ModalHeader>
                             <ModalBody className="acousticMake">
@@ -287,8 +324,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-
-                        <Button color="primary" onClick={this.electricNested}>Electric Guitar</Button>
+                        <Button color="danger" onClick={this.electricNested}>Electric Guitar</Button>
                         <Modal isOpen={this.state.electricModal} toggle={this.electricNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Electric Guitar Features</ModalHeader>
                             <ModalBody>
@@ -325,7 +361,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-
+                        <p></p>
                         <Button color="primary" onClick={this.bassNested}>Bass Guitar</Button>
                         <Modal isOpen={this.state.bassModal} toggle={this.bassNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Bass Guitar Features</ModalHeader>
@@ -363,43 +399,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
 
-                        <p></p>
-                        <Button color="primary" onClick={this.amplifierNested}>Amplifier</Button>
-                        <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                            <ModalHeader>Amplifier Features</ModalHeader>
-                            <ModalBody>
-                                <Form className="amplifierForm">
-                                    <FormGroup>
-                                        <Label for="amplifierMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="amplifierModel">Model:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierModel" placeholder="Model (ex. JCM 800)" />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="amplifierPowerSection">Power Section:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierPowerSection" placeholder="Power Section (ex. Solid State Power Section)" />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="amplifierPreampSection">Preamp Section:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierPreampSection" placeholder="Preamp Section (ex. Tube Preamp Section)" />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="amplifierHeadCombo">Head or Combo Amp:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierHeadCombo" placeholder="Head or Combo Amp (ex. 2x12 Combo)" />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="amplifierSpecialFeatures">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids) If no special features have been added, please enter 'none.'" />
-                                    </FormGroup>
-                                </Form>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
-                                <Button color="secondary" onClick={this.amplifierNested}>Back</Button>{' '}
-                            </ModalFooter>
-                        </Modal>
+
                     </ModalBody>
                     <ModalFooter>
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>

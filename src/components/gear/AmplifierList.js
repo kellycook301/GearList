@@ -21,7 +21,7 @@ export default class AmplifierList extends Component {
                             <div key={amplifier.id} className="card">
                                 <div className="card-header bg-secondary">
                                     <img src={amp} className="icon--amp" />
-                                    <h3>{amplifier.make} {amplifier.model}</h3>
+                                    <h3>My {amplifier.make} {amplifier.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">

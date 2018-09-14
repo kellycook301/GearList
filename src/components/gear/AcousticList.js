@@ -21,7 +21,7 @@ export default class AcousticList extends Component {
                             <div key={acoustic.id} className="card">
                                 <div className="card-header bg-warning">
                                 <img src={acousticGuitar} className="icon--acoustic" />
-                                    <h3>{acoustic.make} {acoustic.model}</h3>
+                                    <h3>My {acoustic.make} {acoustic.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">

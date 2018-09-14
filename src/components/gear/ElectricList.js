@@ -20,7 +20,7 @@ export default class ElectricList extends Component {
                             <div key={electric.id} className="card">
                                 <div className="card-header bg-danger">
                                 <img src={electricGuitar} className="icon--electric" />
-                                    <h3>{electric.make} {electric.model}</h3>
+                                    <h3>My {electric.make} {electric.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">
