@@ -21,6 +21,7 @@ export default class GearForm extends Component {
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
+        this.pedalNested = this.pedalNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
 
         this.state = {
@@ -53,7 +54,11 @@ export default class GearForm extends Component {
             amplifierPowerSection: "",
             amplifierPreampSection: "",
             amplifierHeadCombo: "",
-            amplifierSpecialFeatures: ""
+            amplifierSpecialFeatures: "",
+            pedalMake: "",
+            pedalModel: "",
+            pedalType: "",
+            pedalSpecialFeatures: ""
         };
     }
 
@@ -87,6 +92,13 @@ export default class GearForm extends Component {
     amplifierNested() {
         this.setState({
             ampModal: !this.state.ampModal,
+            closeAll: false
+        });
+    }
+
+    pedalNested() {
+        this.setState({
+            pedalModal: !this.state.pedalModal,
             closeAll: false
         });
     }
@@ -241,6 +253,34 @@ export default class GearForm extends Component {
         }
     }
 
+    createPedalPost = evt => {
+        evt.preventDefault()
+        if (this.state.pedalMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.pedalModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.pedalType === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.pedalSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const pedal = {
+                make: this.state.pedalMake,
+                model: this.state.pedalModel,
+                type: this.state.pedalType,
+                features: this.state.pedalSpecialFeatures,
+            }
+            console.log(pedal, "pedals")
+            // Create the post for acoustic and redirect user to the gear list page
+            this.props.addPedal(pedal, "pedals").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+        }
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -361,7 +401,6 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <p></p>
                         <Button color="primary" onClick={this.bassNested}>Bass Guitar</Button>
                         <Modal isOpen={this.state.bassModal} toggle={this.bassNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Bass Guitar Features</ModalHeader>
@@ -398,7 +437,35 @@ export default class GearForm extends Component {
                                 <Button color="secondary" onClick={this.bassNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-
+                        <p></p>
+                        <Button color="success" onClick={this.pedalNested}>Effects Pedal</Button>
+                        <Modal isOpen={this.state.pedalModal} toggle={this.pedalNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Effect Pedal Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="bassForm">
+                                    <FormGroup>
+                                        <Label for="pedalMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalMake" placeholder="Make (ex. Boss)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="pedalModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalModel" placeholder="Model (ex .Big Muff)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="pedalType">Type:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalType" placeholder="Type (ex. Delay)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="pedalSpecialFeatures">Special Features:</Label>
+                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalSpecialFeatures" placeholder="Special Features (ex. 'Keeley Seeing-Eye' Mod) If no special features have been added, please enter 'none.'" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createPedalPost}>Submit</Button>
+                                <Button color="secondary" onClick={this.pedalNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
 
                     </ModalBody>
                     <ModalFooter>

@@ -4,48 +4,43 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import electricGuitar from "./images/electric.png"
+import effectPedal from "./images/effectPedal.png"
 
 library.add(faTrash)
 library.add(faPen)
 
-export default class ElectricList extends Component {
+
+export default class PedalList extends Component {
     render() {
         return (
             <React.Fragment>
-                <section className="electricEntries">
+                <section className="pedalEntries">
                     {
-                        this.props.electrics.map(electric =>
+                        this.props.pedals.map(pedal =>
 
-                            <div key={electric.id} className="card">
-                                <div className="card-header bg-danger">
-                                <img src={electricGuitar} className="icon--electric" />
-                                    <h3>My {electric.make} {electric.model}</h3>
+                            <div key={pedal.id} className="card">
+                                <div className="card-header bg-success">
+                                    <img src={effectPedal} className="icon--pedal" />
+                                    <h3>My {pedal.make} {pedal.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make: {electric.make}
+                                        Make: {pedal.make}
                                     </section>
                                     <section className="card-title">
-                                        Model: {electric.model}
+                                        Model: {pedal.model}
                                     </section>
                                     <section className="card-title">
-                                        Strings: {electric.strings}
+                                        Type: {pedal.type}
                                     </section>
                                     <section className="card-title">
-                                        Pickup: {electric.pickups}
-                                    </section>
-                                    <section className="card-title">
-                                        Body: {electric.body}
-                                    </section>
-                                    <section className="card-title">
-                                        Special Features: {electric.features}
+                                        Special Features: {pedal.features}
                                     </section>
                                     <p></p>
                                     <h6>
-                                        <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deleteElectricPost(electric.id, "electrics")} />
+                                        <FontAwesomeIcon icon="trash" color="red" onClick={() => this.props.deletePedalPost(pedal.id, "pedals")} />
                                         <p></p>
-                                        <Link to={`/gear/edit/electric/${electric.id}`}><FontAwesomeIcon
+                                        <Link to={`/gear/edit/pedal/${pedal.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" /></Link>
                                     </h6>
