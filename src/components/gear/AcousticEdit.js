@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import acousticGuitar from "./images/acoustic_(md).png"
 
 export default class AcousticEdit extends Component {
 
@@ -40,6 +41,7 @@ export default class AcousticEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <img src={acousticGuitar} className="icon--acoustic" />
                 <h3 className="edit-post">What About Your Acoustic Guitar Would You Like To Edit?</h3>
                 <form className="acousticForm">
                     <div className="form-group">
