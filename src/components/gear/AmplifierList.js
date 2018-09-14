@@ -4,6 +4,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
+import amp from "./images/amplifier.png"
+
 library.add(faTrash)
 library.add(faPen)
 
@@ -17,7 +19,10 @@ export default class AmplifierList extends Component {
                         this.props.amplifiers.map(amplifier =>
 
                             <div key={amplifier.id} className="card">
-                                <div className="card-header bg-success"></div>
+                                <div className="card-header bg-secondary">
+                                    <img src={amp} className="icon--amp" />
+                                    <h3>{amplifier.make} {amplifier.model}</h3>
+                                </div>
                                 <div className="card-body">
                                     <section className="card-title">
                                         Make: {amplifier.make}

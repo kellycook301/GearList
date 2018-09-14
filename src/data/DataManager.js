@@ -48,7 +48,7 @@ export default Object.create(null, {
     },
     findUser: {
         value: (email, password) => {
-            return fetch(`http://localhost:3000/users?inputEmail=${email}&inputPassword=${password}`)
+            return fetch(`http://localhost:5002/users?inputEmail=${email}&inputPassword=${password}`)
                 .then(response => response.json())
         }
     }

@@ -4,6 +4,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
+import bassGuitar from "./images/bass.png"
+
 library.add(faTrash)
 library.add(faPen)
 
@@ -17,7 +19,10 @@ export default class BassList extends Component {
                         this.props.basses.map(bass =>
 
                             <div key={bass.id} className="card">
-                                <div className="card-header bg-success"></div>
+                                <div className="card-header bg-primary">
+                                <img src={bassGuitar} className="icon--bass" />
+                                    <h3>{bass.make} {bass.model}</h3>
+                                </div>
                                 <div className="card-body">
                                     <section className="card-title">
                                         Make: {bass.make}

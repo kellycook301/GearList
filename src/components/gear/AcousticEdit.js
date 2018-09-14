@@ -70,7 +70,7 @@ export default class AcousticEdit extends Component {
                             defaultValue={this.state.strings} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="acousticGuitarPickup" className="acousticGuitarPickup">Strings:</label>
+                        <label htmlFor="acousticGuitarPickup" className="acousticGuitarPickup">Pickup:</label>
                         <input type="text" required="true"
                             className="form-control pickup-field"
                             onChange={this.handleFieldChange.bind(this)}
@@ -97,7 +97,7 @@ export default class AcousticEdit extends Component {
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createAcousticPost}
-                        className="btn btn-success">Submit Edited Post</button>
+                        className="btn btn-warning">Submit Edited Post</button>
                 </form>
             </React.Fragment>
         )

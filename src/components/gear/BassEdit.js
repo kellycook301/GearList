@@ -97,7 +97,7 @@ export default class BassEdit extends Component {
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createBassPost}
-                        className="btn btn-success">Submit Edited Post</button>
+                        className="btn btn-primary">Submit Edited Post</button>
                 </form>
             </React.Fragment>
         )

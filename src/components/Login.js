@@ -55,44 +55,29 @@ export default class Login extends Component {
     render() {
         return (
             <form onSubmit={this.handleLogin}>
-                <h1 className="h3 mb-3 font-weight-normal">Sign In</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <label htmlFor="inputEmail">
-                    Username:
+                    Email address:
                 </label>
+                <p></p>
                 <input onChange={this.handleFieldChange} type="email"
-                    id="signInEmail"
+                    id="email"
                     placeholder="Email address"
                     required="" autoFocus="" />
-                    <p></p>
+                <p></p>
                 <label htmlFor="inputPassword">
                     Password:
                 </label>
+                <p></p>
                 <input onChange={this.handleFieldChange} type="password"
-                    id="signInPassword"
+                    id="password"
                     placeholder="Password"
                     required="" />
-                    <p></p>
-                <button type="submit">
-                    Sign in
+                <p></p>
+                <button type="submit" onClick={this.handleLogin}>
+                    Sign In
                 </button>
                 <p></p>
-                <h1 className="h3 mb-3 font-weight-normal">Register</h1>
-                <label htmlFor="inputEmail">
-                    Username:
-                </label>
-                <input onChange={this.handleFieldChange} type="email"
-                    id="registerEmail"
-                    placeholder="Email address"
-                    required="" autoFocus="" />
-                    <p></p>
-                <label htmlFor="inputPassword">
-                    Password:
-                </label>
-                <input onChange={this.handleFieldChange} type="password"
-                    id="registerPassword"
-                    placeholder="Password"
-                    required="" />
-                    <p></p>
                 <button type="submit" onClick={this.constructNewUser}>
                     Register
                 </button>

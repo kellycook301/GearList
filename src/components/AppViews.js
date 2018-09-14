@@ -3,11 +3,16 @@ import React, { Component } from "react"
 import Login from './Login'
 import DataManager from '../data/DataManager'
 
+// The monstrous form component
 import GearForm from './gear/GearForm'
+
+// The Components where gear is listed
 import AcousticList from './gear/AcousticList'
 import ElectricList from './gear/ElectricList'
 import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
+
+// The Components where gear is edited
 import AcousticEdit from './gear/AcousticEdit'
 import ElectricEdit from './gear/ElectricEdit'
 import BassEdit from './gear/BassEdit'
@@ -19,11 +24,11 @@ export default class AppViews extends Component {
     isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
     state = {
-        users: [],
         acoustics: [],
         electrics: [],
         basses: [],
-        amplifiers: []
+        amplifiers: [],
+        users: []
     }
 
     // ADDING A USER

@@ -97,7 +97,7 @@ export default class ElectricEdit extends Component {
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createElectricPost}
-                        className="btn btn-success">Submit Edited Post</button>
+                        className="btn btn-danger">Submit Edited Post</button>
                 </form>
             </React.Fragment>
         )
