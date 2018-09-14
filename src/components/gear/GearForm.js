@@ -331,7 +331,7 @@ export default class GearForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>My Gear List!</h1>
+                <h1>MyGearList!</h1>
                 <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel} Add Gear</Button>
                 <p></p>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>

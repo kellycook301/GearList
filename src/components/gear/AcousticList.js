@@ -47,7 +47,7 @@ export default class AcousticList extends Component {
                                     <h6>
                                         <Link to={`/gear/edit/acoustic/${acoustic.id}`}><FontAwesomeIcon
                                             icon="pen"
-                                            color="blue" /></Link>
+                                            color="blue" className="pen" /></Link>
                                         <p></p>
                                         <FontAwesomeIcon icon="trash" color="red" className="trash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteAcousticPost(acoustic.id, "acoustics") }; window.location.reload(); }} />
                                     </h6>

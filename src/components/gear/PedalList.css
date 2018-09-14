@@ -1,3 +1,15 @@
 .trash {
     cursor: pointer;
 }
+
+.trash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--pedal:hover {
+    transform: scale(1.1);
+}
