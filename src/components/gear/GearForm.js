@@ -215,7 +215,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.acousticNested()
             this.toggle()
         }
 
@@ -257,7 +257,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.electricNested()
             this.toggle()
         }
     }
@@ -295,11 +295,9 @@ export default class GearForm extends Component {
                 neck: this.state.bassGuitarNeck,
                 features: this.state.bassGuitarSpecialFeatures,
             }
-            console.log(bass, "basses")
-            // Create the post for acoustic and redirect user to the gear list page
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.bassNested()
             this.toggle()
         }
     }
@@ -337,11 +335,9 @@ export default class GearForm extends Component {
                 matching: this.state.amplifierMatching,
                 features: this.state.amplifierSpecialFeatures,
             }
-            console.log(amplifier, "amplifiers")
-            // Create the post for acoustic and redirect user to the gear list page
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.amplifierNested()
             this.toggle()
         }
     }
@@ -376,10 +372,9 @@ export default class GearForm extends Component {
                 speakers: this.state.comboSpeakers,
                 features: this.state.comboSpecialFeatures,
             }
-            console.log(combo, "combos")
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.comboNested()
             this.toggle()
         }
     }
@@ -417,11 +412,9 @@ export default class GearForm extends Component {
                 jacks: this.state.overdriveTopSideLoaded,
                 features: this.state.overdriveSpecialFeatures,
             }
-            console.log(overdrive, "overdrives")
-            // Create the post for acoustic and redirect user to the gear list page
             this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.overdriveNested()
             this.toggle()
         }
     }
@@ -459,11 +452,9 @@ export default class GearForm extends Component {
                 jacks: this.state.modulationTopSideLoaded,
                 features: this.state.modulationSpecialFeatures,
             }
-            console.log(modulation, "modulations")
-            // Create the post for acoustic and redirect user to the gear list page
             this.props.addModulation(modulation, "modulations").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.modulationNested()
             this.toggle()
         }
     }
@@ -503,7 +494,7 @@ export default class GearForm extends Component {
             }
             this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.processorNested()
             this.toggle()
         }
     }
@@ -541,11 +532,9 @@ export default class GearForm extends Component {
                 openClosedBack: this.state.cabinetOpenClosedBack,
                 slantedStraight: this.state.cabinetSlantedStraight
             }
-            console.log(cabinet, "cabinets")
-            // Create the post for acoustic and redirect user to the gear list page
             this.props.addCabinet(cabinet, "cabinets").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
-            window.location.reload();
+            this.cabinetNested()
             this.toggle()
         }
     }
@@ -595,7 +584,11 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
+                                <Button color="primary" onClick={(e) => {
+                                    this.toggle();
+                                    this.createAmplifierPost(e)
+                                }}>
+                                    Submit</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.amplifierNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
