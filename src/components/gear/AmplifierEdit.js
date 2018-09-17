@@ -91,11 +91,11 @@ export default class AmplifierEdit extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="amplifierSpecialFeatures" className="amplifierSpecialFeatures">Special Features:</label>
-                        <input type="textarea" required="true"
+                        <input type="text" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="features"
-                            placeholder="Special Features (ex. Fortin Modded. Smoother Mids) If no special features have been added, please enter 'none.'"
+                            placeholder="Special Features (ex. Fortin Modded. Smoother Mids or 'none')"
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createAmplifierPost}

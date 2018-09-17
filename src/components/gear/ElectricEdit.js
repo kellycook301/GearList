@@ -91,11 +91,11 @@ export default class ElectricEdit extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="electricGuitarSpecialFeatures" className="electricGuitarSpecialFeatures">Special Features:</label>
-                        <input type="textarea" required="true"
+                        <input type="text" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="features"
-                            placeholder="Special Features (ex. Evertune bridge installed) If no special features have been added, please enter 'none.'"
+                            placeholder="Special Features (ex. Evertune bridge installed or 'none')"
                             defaultValue={this.state.features} />
                     </div>
                     <button type="submit" onClick={this.createElectricPost}

@@ -11,7 +11,7 @@ import AcousticList from './gear/AcousticList'
 import ElectricList from './gear/ElectricList'
 import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
-import PedalList from './gear/PedalList'
+import OverdriveList from './gear/OverdriveList'
 import CabinetList from './gear/CabinetList'
 
 // The Components where gear is edited
@@ -19,7 +19,7 @@ import AcousticEdit from './gear/AcousticEdit'
 import ElectricEdit from './gear/ElectricEdit'
 import BassEdit from './gear/BassEdit'
 import AmplifierEdit from './gear/AmplifierEdit'
-import PedalEdit from './gear/PedalEdit'
+import OverdriveEdit from './gear/OverdriveEdit'
 import CabinetEdit from './gear/CabinetEdit'
 
 export default class AppViews extends Component {
@@ -32,7 +32,7 @@ export default class AppViews extends Component {
         electrics: [],
         basses: [],
         amplifiers: [],
-        pedals: [],
+        overdrives: [],
         cabinets: [],
         users: []
     }
@@ -111,24 +111,24 @@ export default class AppViews extends Component {
             amplifiers: amplifiers
         }))
 
-    // PEDAL PEDAL RELATED POSTS
-    addPedal = (pedal, link) => DataManager.post(pedal, link)
-        .then(() => DataManager.getAll("pedals"))
-        .then(pedals => this.setState({
-            pedals: pedals
+    // PEDAL RELATED POSTS
+    addOverdrive = (overdrive, link) => DataManager.post(overdrive, link)
+        .then(() => DataManager.getAll("overdrives"))
+        .then(overdrives => this.setState({
+            overdrives: overdrives
         }))
-    editPedalPost = (pedal, id, link) => DataManager.put(pedal, id, link)
-        .then(() => DataManager.getAll("pedals"))
-        .then(pedals => this.setState({
-            pedals: pedals 
+    editOverdrivePost = (overdrive, id, link) => DataManager.put(overdrive, id, link)
+        .then(() => DataManager.getAll("overdrives"))
+        .then(overdrives => this.setState({
+            overdrives: overdrives 
         }))
-    deletePedalPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("pedals"))
-        .then(pedals => this.setState({
-            pedals: pedals
+    deleteOverdrivePost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("overdrives"))
+        .then(overdrives => this.setState({
+            overdrives: overdrives
         }))
 
-    // CABINET PEDAL RELATED POSTS
+    // CABINET RELATED POSTS
     addCabinet = (cabinet, link) => DataManager.post(cabinet, link)
         .then(() => DataManager.getAll("cabinets"))
         .then(cabinets => this.setState({
@@ -151,7 +151,7 @@ export default class AppViews extends Component {
             .then(() => DataManager.getAll("electrics").then(electrics => _state.electrics = electrics))
             .then(() => DataManager.getAll("basses").then(basses => _state.basses = basses))
             .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
-            .then(() => DataManager.getAll("pedals").then(pedals => _state.pedals = pedals))
+            .then(() => DataManager.getAll("overdrives").then(overdrives => _state.overdrives = overdrives))
             .then(() => DataManager.getAll("cabinets").then(cabinets => _state.cabinets = cabinets))
             .then(() => DataManager.getAll("users").then(users => _state.users = users))
             .then(() => { this.setState(_state) })
@@ -188,9 +188,9 @@ export default class AppViews extends Component {
                                 editAmplifierPost={this.editAmplifierPost}
                                 amplifiers={this.state.amplifiers}
                                 
-                                addPedal={this.addPedal}
-                                editPedalPost={this.editPedalPost}
-                                pedals={this.state.pedals}
+                                addOverdrive={this.addOverdrive}
+                                editOverdrivePost={this.editOverdrivePost}
+                                overdrives={this.state.overdrives}
 
                                 addCabinet={this.addCabinet}
                                 editCabinetPost={this.editCabinetPost}
@@ -265,20 +265,20 @@ export default class AppViews extends Component {
                             amplifiers={this.state.amplifiers} />
                     }} />
 
-                    {/* Pedal Related */}
+                    {/* Overdrive Pedal Related */}
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
-                            return <PedalList {...props}
-                                pedals={this.state.pedals}
-                                deletePedalPost={this.deletePedalPost} />
+                            return <OverdriveList {...props}
+                            overdrives={this.state.overdrives}
+                                deleteOverdrivePost={this.deleteOverdrivePost} />
                         } else {
                             return <Redirect to="/login" />
                         }
                     }} />
-                    <Route path="/gear/edit/pedal/:pedalId(\d+)" render={(props) => {
-                        return <PedalEdit {...props}
-                            editPedalPost={this.editPedalPost}
-                            pedals={this.state.pedals} />
+                    <Route path="/gear/edit/overdrive/:overdriveId(\d+)" render={(props) => {
+                        return <OverdriveEdit {...props}
+                            editOverdrivePost={this.editOverdrivePost}
+                            overdrives={this.state.overdrives} />
                     }} />
 
                     {/* Cabinet Related */}

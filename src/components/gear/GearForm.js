@@ -22,7 +22,7 @@ export default class GearForm extends Component {
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
-        this.pedalNested = this.pedalNested.bind(this);
+        this.overdriveNested = this.overdriveNested.bind(this);
         this.cabinetNested = this.cabinetNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
 
@@ -57,14 +57,18 @@ export default class GearForm extends Component {
             amplifierPreampSection: "",
             amplifierHeadCombo: "",
             amplifierSpecialFeatures: "",
-            pedalMake: "",
-            pedalModel: "",
-            pedalType: "",
-            pedalSpecialFeatures: "",
+            overdriveMake: "",
+            overdriveModel: "",
+            overdriveType: "",
+            overdrivePowerDraw: "",
+            overdriveTopSideLoaded: "",
+            overdriveSpecialFeatures: "",
             cabinetMake: "",
             cabinetModel: "",
             cabinetSpeakers: "",
-            cabinetWoodType: ""
+            cabinetWoodType: "",
+            cabinetTolexColor: "",
+            cabinetOpenClosedBack: ""
         };
     }
 
@@ -102,9 +106,9 @@ export default class GearForm extends Component {
         });
     }
 
-    pedalNested() {
+    overdriveNested() {
         this.setState({
-            pedalModal: !this.state.pedalModal,
+            overdriveModal: !this.state.overdriveModal,
             closeAll: false
         });
     }
@@ -270,30 +274,38 @@ export default class GearForm extends Component {
         }
     }
 
-    createPedalPost = evt => {
+    createOverdrivePost = evt => {
         evt.preventDefault()
-        if (this.state.pedalMake === "") {
+        if (this.state.overdriveMake === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.pedalModel === "") {
+        else if (this.state.overdriveModel === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.pedalType === "") {
+        else if (this.state.overdriveType === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.pedalSpecialFeatures === "") {
+        else if (this.state.overdrivePowerDraw === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.overdriveTopSideLoaded === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.overdriveSpecialFeatures === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else {
-            const pedal = {
-                make: this.state.pedalMake,
-                model: this.state.pedalModel,
-                type: this.state.pedalType,
-                features: this.state.pedalSpecialFeatures,
+            const overdrive = {
+                make: this.state.overdriveMake,
+                model: this.state.overdriveModel,
+                style: this.state.overdriveStyle,
+                draw: this.state.overdrivePowerDraw,
+                jacks: this.state.overdriveTopSideLoaded,
+                features: this.state.overdriveSpecialFeatures,
             }
-            console.log(pedal, "pedals")
+            console.log(overdrive, "overdrives")
             // Create the post for acoustic and redirect user to the gear list page
-            this.props.addPedal(pedal, "pedals").then(() => this.props.history.push("/gear"))
+            this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.toggle()
         }
@@ -313,16 +325,24 @@ export default class GearForm extends Component {
         else if (this.state.cabinetWoodType === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
+        else if (this.state.cabinetTolexColor === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.cabinetOpenClosedBack === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
         else {
-            const pedal = {
+            const cabinet = {
                 make: this.state.cabinetMake,
                 model: this.state.cabinetModel,
                 speakers: this.state.cabinetSpeakers,
                 woodType: this.state.cabinetWoodType,
+                tolexColor: this.state.cabinetTolexColor,
+                openClosedBack: this.state.cabinetOpenClosedBack
             }
-            console.log(pedal, "pedals")
+            console.log(cabinet, "cabinets")
             // Create the post for acoustic and redirect user to the gear list page
-            this.props.addCabinet(pedal, "cabinets").then(() => this.props.history.push("/gear"))
+            this.props.addCabinet(cabinet, "cabinets").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.toggle()
         }
@@ -364,7 +384,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="amplifierSpecialFeatures">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids) If no special features have been added, please enter 'none.'" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids or 'none')" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -401,7 +421,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp) If no special features have been added, please enter 'none.'" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp or 'none')" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -438,7 +458,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarSpecialFeatures" placeholder="Special Features (ex. Evertune bridge installed) If no special features have been added, please enter 'none.'" />
+                                        <Input type="texta" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarSpecialFeatures" placeholder="Special Features (ex. Evertune bridge installed or 'none')" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -475,7 +495,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleText">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarSpecialFeatures" placeholder="Special Features (ex. Hipshot Xtender installed) If no special features have been added, please enter 'none.'" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarSpecialFeatures" placeholder="Special Features (ex. Hipshot Xtender installed or 'none')" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
@@ -485,32 +505,40 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="#00e676 green accent-3" onClick={this.pedalNested}>Effects Pedal</Button>
-                        <Modal isOpen={this.state.pedalModal} toggle={this.pedalNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                        <Button color="#00e676 green accent-3" onClick={this.overdriveNested}>Overdrive Pedal</Button>
+                        <Modal isOpen={this.state.overdriveModal} toggle={this.overdriveNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Effect Pedal Features</ModalHeader>
                             <ModalBody>
-                                <Form className="bassForm">
+                                <Form className="overdriveForm">
                                     <FormGroup>
-                                        <Label for="pedalMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalMake" placeholder="Make (ex. Boss)" />
+                                        <Label for="overdriveMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdriveMake" placeholder="Make (ex. JHS)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="pedalModel">Model:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalModel" placeholder="Model (ex. Big Muff)" />
+                                        <Label for="overdriveModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdriveModel" placeholder="Model (ex. Moonshine)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="pedalType">Type:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalType" placeholder="Type (ex. Delay)" />
+                                        <Label for="overdriveStyle">Style:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdriveStyle" placeholder="Style (ex. Bluesbreaker)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="pedalSpecialFeatures">Special Features:</Label>
-                                        <Input type="textarea" onChange={this.handleFieldChange.bind(this)} name="text" id="pedalSpecialFeatures" placeholder="Special Features (ex. 'Keeley Seeing-Eye' Mod) If no special features have been added, please enter 'none.'" />
+                                        <Label for="overdrivePowerDraw">Power Draw:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdrivePowerDraw" placeholder="Power Draw (ex. 9V or 18V)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="overdriveTopSideLoaded">Power Draw:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdriveTopSideLoaded" placeholder="Side or Top-Mounted Jacks (ex. Top-Mounted)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="overdriveSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdriveSpecialFeatures" placeholder="Special Features (ex. 'Keeley Seeing-Eye' Mod or 'none')" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createPedalPost}>Submit</Button>
-                                <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalNested}>Back</Button>{' '}
+                                <Button color="primary" onClick={this.createOverdrivePost}>Submit</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.overdriveNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
                         <p></p>
@@ -534,6 +562,14 @@ export default class GearForm extends Component {
                                     <FormGroup>
                                         <Label for="cabinetWoodType">Wood Type:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetWoodType" placeholder="Wood Type (ex. Birch)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="cabinetTolexColor">Tolex Color:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetTolexColor" placeholder="Tolex Color (ex. Matamp Green) If no tolex, leave 'none' or 'natural finish'" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="cabinetOpenClosedBack">Open or Closed Back:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetOpenClosedBack" placeholder="Open or Closed Back (ex. Closed Back)" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>

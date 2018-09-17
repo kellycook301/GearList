@@ -69,11 +69,11 @@ export default class CabinetEdit extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="cabinetWoodType" className="cabinetWoodType">Wood Type:</label>
-                        <input type="textarea" required="true"
+                        <input type="text" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="features"
-                            placeholder="SWood Type (ex. Birch)"
+                            placeholder="Wood Type (ex. Birch)"
                             defaultValue={this.state.woodType} />
                     </div>
                     <button type="submit" onClick={this.createCabinetPost}
