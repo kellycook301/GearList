@@ -19,7 +19,7 @@ export default class ComboList extends Component {
                     {
                         this.props.combos.map(combo =>
 
-                            <div key={combo.id} className="card comboCard" style={{width: 450}}>
+                            <div key={combo.id} className="card comboCard" style={{width: 400}}>
                                 <div className="card-header bg-#ffcc80 orange lighten-3">
                                     <img src={comboAmp} className="icon--comboAmp" />
                                     <h3>My {combo.make} {combo.model}</h3>

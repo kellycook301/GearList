@@ -1,0 +1,25 @@
+.distortionTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.distortionTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--overdrive:hover {
+    transform: scale(1.1);
+}
+
+.distortionEditDelete {
+    display: flex;
+}
+
+.distortionCard {
+    float: left;
+    margin: 0.5em;
+}

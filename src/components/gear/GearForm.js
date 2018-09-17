@@ -26,6 +26,7 @@ export default class GearForm extends Component {
         this.comboNested = this.comboNested.bind(this);
         this.pedalChoiceNested = this.pedalChoiceNested.bind(this);
         this.overdriveNested = this.overdriveNested.bind(this);
+        this.distortionNested = this.distortionNested.bind(this);
         this.modulationNested = this.modulationNested.bind(this);
         this.processorNested = this.processorNested.bind(this);
         this.cabinetNested = this.cabinetNested.bind(this);
@@ -42,6 +43,7 @@ export default class GearForm extends Component {
             comboModal: false,
             pedalChoiceModal: false,
             overdriveModal: false,
+            distortionModal: false,
             modulationModal: false,
             closeAll: false,
             acousticGuitarMake: "",
@@ -173,6 +175,13 @@ export default class GearForm extends Component {
     overdriveNested() {
         this.setState({
             overdriveModal: !this.state.overdriveModal,
+            closeAll: false
+        });
+    }
+
+    distortionNested() {
+        this.setState({
+            distortionModal: !this.state.distortionModal,
             closeAll: false
         });
     }
@@ -450,6 +459,47 @@ export default class GearForm extends Component {
         }
     }
 
+    createDistortionPost = evt => {
+        evt.preventDefault()
+        if (this.state.distortionMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.distortionModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.distortionStyle === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.distortionPowerDraw === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.distortionTrueBypass === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.distortionTopSideLoaded === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.distortionSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const distortion = {
+                make: this.state.distortionMake,
+                model: this.state.distortionModel,
+                style: this.state.distortionStyle,
+                draw: this.state.distortionPowerDraw,
+                bypass: this.state.distortionTrueBypass,
+                jacks: this.state.distortionTopSideLoaded,
+                features: this.state.distortionSpecialFeatures,
+            }
+            this.props.addDistortion(distortion, "distortions").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            this.distortionNested()
+            this.pedalChoiceNested()
+            this.toggle()
+        }
+    }
+
     createModulationPost = evt => {
         evt.preventDefault()
         if (this.state.modulationMake === "") {
@@ -602,7 +652,9 @@ export default class GearForm extends Component {
                                 <p></p>
                                 <Button color="#03a9f4 light-blue" onClick={this.modulationNested}>Modulation Pedal</Button>
                                 <p></p>
-                                <Button color="#212121 grey darken-4" onClick={this.processorNested}>Processor Pedal</Button>
+                                <Button color="#616161 grey darken-2" onClick={this.processorNested}>Processor Pedal</Button>
+                                <p></p>
+                                <Button color="#ff5252 red accent-2" onClick={this.distortionNested}>Distortion Pedal</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalChoiceNested}>Back</Button>{' '}
                                 </ModalFooter>
@@ -703,7 +755,6 @@ export default class GearForm extends Component {
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.comboNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-
 
                         <Modal isOpen={this.state.acousticModal} toggle={this.acousticNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader className="acousticHeader">Acoustic Guitar Features</ModalHeader>
@@ -867,8 +918,47 @@ export default class GearForm extends Component {
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.overdriveNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-
                         <p></p>
+
+                        <Modal isOpen={this.state.distortionModal} toggle={this.distortionNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Distortion Pedal Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="distortionForm">
+                                    <FormGroup>
+                                        <Label for="distortionMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="distortionMake" placeholder="Make (ex. Lone Wolf Audio)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="distortionModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="distortionModel" placeholder="Model (ex. Metalzone)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="distortionStyle">Style:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="distortionStyle" placeholder="Style (ex. Rat)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="distortionPowerDraw">Power Draw:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="distortionPowerDraw" placeholder="Power Draw (ex. 9V or 18V)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="distortionTrueBypass">True Bypass:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="distortionTrueBypass" placeholder="True Bypass (ex. Yes!)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="distortionTopSideLoaded">Side or Top-Mounted Jacks:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="distortionTopSideLoaded" placeholder="Side or Top-Mounted Jacks (ex. Top-Mounted)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="distortionSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="distortionSpecialFeatures" placeholder="Special Features (ex. 'Analogman Modded' Mod or 'none')" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createDistortionPost}>Submit</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.distortionNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
 
                         <Modal isOpen={this.state.modulationModal} toggle={this.modulationNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Modulation Pedal Features</ModalHeader>

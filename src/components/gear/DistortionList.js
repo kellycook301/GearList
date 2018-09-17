@@ -4,55 +4,55 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import bassGuitar from "./images/bass.png"
-import "./BassList.css"
+import distortionPedal from "./images/distortion_(md).png"
+import "./DistortionList.css"
 
 library.add(faTrash)
 library.add(faPen)
 
 
-export default class BassList extends Component {
+export default class DistortionList extends Component {
     render() {
         return (
             <React.Fragment>
-                <section className="bassEntries">
+                <section className="overdriveEntries">
                     {
-                        this.props.basses.map(bass =>
+                        this.props.distortions.map(distortion =>
 
-                            <div key={bass.id} className="card bassCard" style={{width: 400}}>
-                                <div className="card-header bg-#0091ea light-blue accent-4">
-                                    <img src={bassGuitar} className="icon--bass" />
-                                    <h3>My {bass.make} {bass.model}</h3>
+                            <div key={distortion.id} className="card distortionCard" style={{width: 400}}>
+                                <div className="card-header bg-#ff5252 red accent-2">
+                                    <img src={distortionPedal} className="icon--distortion" />
+                                    <h3>My {distortion.make} {distortion.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make: {bass.make}
+                                        Make: {distortion.make}
                                     </section>
                                     <section className="card-title">
-                                        Model: {bass.model}
+                                        Model: {distortion.model}
                                     </section>
                                     <section className="card-title">
-                                        Strings: {bass.strings}
+                                        Style: {distortion.style}
                                     </section>
                                     <section className="card-title">
-                                        Pickup: {bass.pickups}
+                                        Power Draw: {distortion.draw}
                                     </section>
                                     <section className="card-title">
-                                        Body: {bass.body}
+                                        True Bypass: {distortion.bypass}
                                     </section>
                                     <section className="card-title">
-                                        Neck and Fretboard Material: {bass.neck}
+                                        Side or Top-Mounted Jacks: {distortion.jacks}
                                     </section>
                                     <section className="card-title">
-                                        Special Features: {bass.features}
+                                        Special Features: {distortion.features}
                                     </section>
                                     <p></p>
-                                    <h6 className="bassEditDelete">
-                                        <Link to={`/gear/edit/bass/${bass.id}`}><FontAwesomeIcon
+                                    <h6 className="distortionEditDelete">
+                                        <Link to={`/gear/edit/distortion/${distortion.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="bassTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteBassPost(bass.id, "basses") }; window.location.reload(); }} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="distortionTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteDistortionPost(distortion.id, "distortions") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>
@@ -64,3 +64,4 @@ export default class BassList extends Component {
         )
     }
 }
+

@@ -19,7 +19,7 @@ export default class ProcessorList extends Component {
                     {
                         this.props.processors.map(processor =>
 
-                            <div key={processor.id} className="card processorCard" style={{width: 450}}>
+                            <div key={processor.id} className="card processorCard" style={{width: 400}}>
                                 <div className="card-header bg-#616161 grey darken-2">
                                     <img src={processorPedal} className="icon--processor"/>
                                     <h3>My {processor.make} {processor.model}</h3>

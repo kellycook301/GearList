@@ -13,6 +13,7 @@ import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
 import ComboList from './gear/ComboList'
 import OverdriveList from './gear/OverdriveList'
+import DistortionList from './gear/DistortionList'
 import ModulationList from './gear/ModulationList'
 import ProcessorList from './gear/ProcessorList'
 import CabinetList from './gear/CabinetList'
@@ -24,6 +25,7 @@ import BassEdit from './gear/BassEdit'
 import AmplifierEdit from './gear/AmplifierEdit'
 import ComboEdit from './gear/ComboEdit'
 import OverdriveEdit from './gear/OverdriveEdit'
+import DistortionEdit from './gear/DistortionEdit'
 import ModulationEdit from './gear/ModulationEdit'
 import ProcessorEdit from './gear/ProcessorEdit'
 import CabinetEdit from './gear/CabinetEdit'
@@ -40,6 +42,7 @@ export default class AppViews extends Component {
         amplifiers: [],
         combos: [],
         overdrives: [],
+        distortions: [],
         modulations: [],
         processors: [],
         cabinets: [],
@@ -154,6 +157,23 @@ export default class AppViews extends Component {
             overdrives: overdrives
         }))
 
+    // DISTORTION RELATED POSTS
+    addDistortion = (distortion, link) => DataManager.post(distortion, link)
+        .then(() => DataManager.getAll("distortions"))
+        .then(distortions => this.setState({
+            distortions: distortions
+        }))
+    editDistortionPost = (overdrive, id, link) => DataManager.put(overdrive, id, link)
+        .then(() => DataManager.getAll("distortions"))
+        .then(distortions => this.setState({
+            distortions: distortions
+        }))
+    deleteDistortionPost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("distortions"))
+        .then(distortions => this.setState({
+            distortions: distortions
+        }))
+
     // MODULATION RELATED POSTS
     addModulation = (modulation, link) => DataManager.post(modulation, link)
         .then(() => DataManager.getAll("modulations"))
@@ -213,6 +233,7 @@ export default class AppViews extends Component {
             .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
             .then(() => DataManager.getAll("combos").then(combos => _state.combos = combos))
             .then(() => DataManager.getAll("overdrives").then(overdrives => _state.overdrives = overdrives))
+            .then(() => DataManager.getAll("distortions").then(distortions => _state.distortions = distortions))
             .then(() => DataManager.getAll("modulations").then(modulations => _state.modulations = modulations))
             .then(() => DataManager.getAll("processors").then(processors => _state.processors = processors))
             .then(() => DataManager.getAll("cabinets").then(cabinets => _state.cabinets = cabinets))
@@ -258,6 +279,10 @@ export default class AppViews extends Component {
                                 addOverdrive={this.addOverdrive}
                                 editOverdrivePost={this.editOverdrivePost}
                                 overdrives={this.state.overdrives}
+
+                                addDistortion={this.addDistortion}
+                                editDistortionPost={this.editDistortionPost}
+                                distortions={this.state.distortions}
 
                                 addModulation={this.addModulation}
                                 editModulationPost={this.editModulationPost}
@@ -370,6 +395,22 @@ export default class AppViews extends Component {
                         return <OverdriveEdit {...props}
                             editOverdrivePost={this.editOverdrivePost}
                             overdrives={this.state.overdrives} />
+                    }} />
+
+                    {/* Distortion Pedal Related */}
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <DistortionList {...props}
+                                distortions={this.state.distortions}
+                                deleteDistortionPost={this.deleteDistortionPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route path="/gear/edit/distortion/:distortionId(\d+)" render={(props) => {
+                        return <DistortionEdit {...props}
+                            editDistortionPost={this.editDistortionPost}
+                            distortions={this.state.distortions} />
                     }} />
 
                     {/* Modulation Pedal Related */}

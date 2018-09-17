@@ -19,7 +19,7 @@ export default class ModulationList extends Component {
                     {
                         this.props.modulations.map(modulation =>
 
-                            <div key={modulation.id} className="card modulationCard" style={{width: 450}}>
+                            <div key={modulation.id} className="card modulationCard" style={{width: 400}}>
                                 <div className="card-header bg-#03a9f4 light-blue">
                                     <img src={modulationPedal} className="icon--modulation"/>
                                     <h3>My {modulation.make} {modulation.model}</h3>

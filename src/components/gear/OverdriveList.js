@@ -19,7 +19,7 @@ export default class OverdriveList extends Component {
                     {
                         this.props.overdrives.map(overdrive =>
 
-                            <div key={overdrive.id} className="card overdriveCard" style={{width: 450}}>
+                            <div key={overdrive.id} className="card overdriveCard" style={{width: 400}}>
                                 <div className="card-header bg-#00e676 green accent-3">
                                     <img src={overdrivePedal} className="icon--overdrive" />
                                     <h3>My {overdrive.make} {overdrive.model}</h3>
