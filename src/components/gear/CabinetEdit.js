@@ -8,6 +8,8 @@ export default class CabinetEdit extends Component {
             cabinetModel: "",
             cabinetSpeakers: "",
             cabinetWoodType: "",
+            cabinetTolex: "",
+            cabinetSlantedStraight: "",
             id: null
     }
 
@@ -22,13 +24,15 @@ export default class CabinetEdit extends Component {
         this.setState(stateToChange)
     }
 
-    createcabinetPost = evt => {
+    createCabinetPost = evt => {
         evt.preventDefault()
         const newCabinetPost = {
             make: this.state.make,
             model: this.state.model,
             speakers: this.state.speakers,
             woodType: this.state.woodType,
+            tolex: this.state.tolex,
+            slantedStraight: this.state.slantedStraight,
             id: this.state.id
         }
         this.props.editCabinetPost(newCabinetPost, this.state.id, "cabinets").then(() => this.props.history.push("/gear"))
@@ -75,6 +79,24 @@ export default class CabinetEdit extends Component {
                             id="features"
                             placeholder="Wood Type (ex. Birch)"
                             defaultValue={this.state.woodType} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="cabinetTolex" className="cabinetTolex">Tolex Color:</label>
+                        <input type="text" required="true"
+                            className="form-control features-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="features"
+                            placeholder="Tolex Color (ex. Green)"
+                            defaultValue={this.state.tolex} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="cabinetSlantedStraight" className="cabinetSlantedStraight">Slanted or Straight:</label>
+                        <input type="text" required="true"
+                            className="form-control features-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="features"
+                            placeholder="Slanted or Straight (ex. Slanted)"
+                            defaultValue={this.state.slantedStraight} />
                     </div>
                     <button type="submit" onClick={this.createCabinetPost}
                         className="btn btn-#ffa726 orange lighten-1">Submit Edited Post</button>

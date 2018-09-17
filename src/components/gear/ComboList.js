@@ -21,7 +21,7 @@ export default class ComboList extends Component {
 
                             <div key={combo.id} className="card comboCard" style={{width: 450}}>
                                 <div className="card-header bg-#ffcc80 orange lighten-3">
-                                    <img src={comboAmp} className="icon--amp" />
+                                    <img src={comboAmp} className="icon--comboAmp" />
                                     <h3>My {combo.make} {combo.model}</h3>
                                 </div>
                                 <div className="card-body">
@@ -38,7 +38,10 @@ export default class ComboList extends Component {
                                         Preamp Section: {combo.preampSection}
                                     </section>
                                     <section className="card-title">
-                                        Speakers: {combo.comboSpeakers}
+                                        Wattage: {combo.wattage}
+                                    </section>
+                                    <section className="card-title">
+                                        Speakers: {combo.speakers}
                                     </section>
                                     <section className="card-title">
                                         Special Features: {combo.features}

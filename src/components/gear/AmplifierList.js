@@ -38,7 +38,10 @@ export default class AmplifierList extends Component {
                                         Preamp Section: {amplifier.preampSection}
                                     </section>
                                     <section className="card-title">
-                                        Head or Combo: {amplifier.amplifierHeadCombo}
+                                        Amplifier Wattage: {amplifier.wattage}
+                                    </section>
+                                    <section className="card-title">
+                                    Matching Cabinet for Amplifier?: {amplifier.matching}
                                     </section>
                                     <section className="card-title">
                                         Special Features: {amplifier.features}

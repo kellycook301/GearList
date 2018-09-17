@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'mdbreact/dist/css/mdb.css';
@@ -21,7 +20,6 @@ export default class GearForm extends Component {
         this.acousticNested = this.acousticNested.bind(this);
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
-        this.amplifierChoiceNested = this.amplifierChoiceNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
         this.comboNested = this.comboNested.bind(this);
         this.overdriveNested = this.overdriveNested.bind(this);
@@ -33,15 +31,14 @@ export default class GearForm extends Component {
             acousticModal: false,
             electricModal: false,
             bassModal: false,
-            ampChoiceModal: false,
             ampModal: false,
-            comboModal: false,
             closeAll: false,
             acousticGuitarMake: "",
             acousticGuitarModel: "",
             acousticGuitarStrings: "",
             acousticGuitarPickup: "",
-            acousticGuitarBodyWood: "",
+            acousticGuitarBackSides: "",
+            acousticGuitarTop: "",
             acousticGuitarSpecialFeatures: "",
             electricGuitarMake: "",
             electricGuitarModel: "",
@@ -59,12 +56,14 @@ export default class GearForm extends Component {
             amplifierModel: "",
             amplifierPowerSection: "",
             amplifierPreampSection: "",
-            amplifierHeadCombo: "",
+            amplifierWattage: "",
+            amplifierMatching: "",
             amplifierSpecialFeatures: "",
             comboMake: "",
             comboModel: "",
             comboPowerSection: "",
             comboPreampSection: "",
+            comboWattage: "",
             comboSpeakers: "",
             comboSpecialFeatures: "",
             overdriveMake: "",
@@ -78,7 +77,8 @@ export default class GearForm extends Component {
             cabinetSpeakers: "",
             cabinetWoodType: "",
             cabinetTolexColor: "",
-            cabinetOpenClosedBack: ""
+            cabinetOpenClosedBack: "",
+            cabinetSlantedStraight: ""
         };
     }
 
@@ -105,13 +105,6 @@ export default class GearForm extends Component {
     bassNested() {
         this.setState({
             bassModal: !this.state.bassModal,
-            closeAll: false
-        });
-    }
-
-    amplifierChoiceNested() {
-        this.setState({
-            amplifierChoiceModal: !this.state.amplifierChoiceModal,
             closeAll: false
         });
     }
@@ -165,7 +158,10 @@ export default class GearForm extends Component {
         else if (this.state.acousticGuitarPickup === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.acousticGuitarBodyWood === "") {
+        else if (this.state.acousticGuitarBackSides === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticGuitarTop === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else if (this.state.acousticGuitarSpecialFeatures === "") {
@@ -177,7 +173,8 @@ export default class GearForm extends Component {
                 model: this.state.acousticGuitarModel,
                 strings: this.state.acousticGuitarStrings,
                 pickup: this.state.acousticGuitarPickup,
-                body: this.state.acousticGuitarBodyWood,
+                backSides: this.state.acousticGuitarBackSides,
+                top: this.state.acousticGuitarTop,
                 features: this.state.acousticGuitarSpecialFeatures,
             }
             // Create the post for acoustic and redirect user to the gear list page
@@ -275,7 +272,10 @@ export default class GearForm extends Component {
         else if (this.state.amplifierPreampSection === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.amplifierHeadCombo === "") {
+        else if (this.state.amplifierWattage === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.amplifierMatchingCab === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else if (this.state.amplifierSpecialFeatures === "") {
@@ -287,8 +287,9 @@ export default class GearForm extends Component {
                 model: this.state.amplifierModel,
                 powerSection: this.state.amplifierPowerSection,
                 preampSection: this.state.amplifierPreampSection,
-                amplifierHeadCombo: this.state.amplifierHeadCombo,
-                features: this.state.amplifierSpecialFeatures
+                wattage: this.state.amplifierWattage,
+                matching: this.state.amplifierMatching,
+                features: this.state.amplifierSpecialFeatures,
             }
             console.log(amplifier, "amplifiers")
             // Create the post for acoustic and redirect user to the gear list page
@@ -324,10 +325,11 @@ export default class GearForm extends Component {
                 model: this.state.comboModel,
                 powerSection: this.state.comboPowerSection,
                 preampSection: this.state.comboPreampSection,
+                wattage: this.state.comboWattage,
                 speakers: this.state.comboSpeakers,
-                features: this.state.comboSpecialFeatures
+                features: this.state.comboSpecialFeatures,
             }
-            // Create the post for combo amp and redirect user to the gear list page
+            console.log(combo, "combos")
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.toggle()
@@ -391,6 +393,9 @@ export default class GearForm extends Component {
         else if (this.state.cabinetOpenClosedBack === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
+        else if (this.state.cabinetSlantedStraight === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
         else {
             const cabinet = {
                 make: this.state.cabinetMake,
@@ -398,7 +403,8 @@ export default class GearForm extends Component {
                 speakers: this.state.cabinetSpeakers,
                 woodType: this.state.cabinetWoodType,
                 tolexColor: this.state.cabinetTolexColor,
-                openClosedBack: this.state.cabinetOpenClosedBack
+                openClosedBack: this.state.cabinetOpenClosedBack,
+                slantedStraight: this.state.cabinetSlantedStraight
             }
             console.log(cabinet, "cabinets")
             // Create the post for acoustic and redirect user to the gear list page
@@ -417,15 +423,7 @@ export default class GearForm extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                     <ModalBody>
-                        <Button color="#616161 grey darken-2" onClick={this.amplifierChoiceNested}>Amplifier</Button>
-                        <Modal isOpen={this.state.amplifierChoiceModal} toggle={this.amplifierChoiceModal} onClose={this.state.closeAll ? this.toggle : undefined}>
-                            <ModalHeader>What Kind of Amplifier?</ModalHeader>
-                            <Button color="success" onClick={this.amplifierNested}>Amplifier Head</Button>
-                            <Button color="primary" onClick={this.comboNested}>Combo Amp</Button>
-                            <ModalFooter>
-                                <Button color="#9575cd deep-purple lighten-2" onClick={this.amplifierChoiceNested}>Back</Button>{' '}
-                            </ModalFooter>
-                        </Modal>
+                        <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier Head</Button>
                         <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -447,8 +445,12 @@ export default class GearForm extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierPreampSection" placeholder="Preamp Section (ex. Tube Preamp Section)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="amplifierHeadCombo">Head or Combo Amp:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierHeadCombo" placeholder="Head or Combo Amp (ex. 2x12 Combo)" />
+                                        <Label for="amplifierWattage">Amplifier Wattage:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierWattage" placeholder="Amplifier Wattage (ex. 50 Watts)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="amplifierMatching">Matching Cabinet for Amplifier?:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierMatching" placeholder="Matching Cabinet for Amplifier (ex. Yes)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="amplifierSpecialFeatures">Special Features:</Label>
@@ -462,6 +464,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
+                        <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested}>Combo Amplifier</Button>
                         <Modal isOpen={this.state.comboModal} toggle={this.comboNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Combo Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -481,6 +484,10 @@ export default class GearForm extends Component {
                                     <FormGroup>
                                         <Label for="comboPreampSection">Preamp Section:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboPreampSection" placeholder="Preamp Section (ex. Tube Preamp Section)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="comboWattage">Amplifier Wattage:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboWattage" placeholder="Amplifier Wattage (ex. 50 Watts)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="comboSpeakers">Speakers:</Label>
@@ -504,7 +511,7 @@ export default class GearForm extends Component {
                             <ModalBody className="acousticMake">
                                 <Form className="acousticForm">
                                     <FormGroup>
-                                        <Label>Make:</Label>
+                                        <Label for="acousticMake">Make:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
@@ -512,7 +519,7 @@ export default class GearForm extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarModel" placeholder="Model (ex. 514ce)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="acousticGuitarStrings" className="acousticStrings">Strings:</Label>
+                                        <Label for="acousticGuitarStrings">Strings:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarStrings" placeholder="Strings (ex. Elixir 12-53)" />
                                     </FormGroup>
                                     <FormGroup>
@@ -520,11 +527,15 @@ export default class GearForm extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarPickup" placeholder="Pickup (if no pickup is installed, please enter 'none.')" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="acousticGuitarBodyWood">Body Wood:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarBodyWood" placeholder="Body Wood (ex. Indian Rosewood)" />
+                                        <Label for="acousticGuitarTop">Top:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarTop" placeholder="Top (ex. Sitka Spruce)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="exampleText">Special Features:</Label>
+                                        <Label for="acousticGuitarBackSides">Back and Sides:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarBackSides" placeholder="Back and Sides (ex. Indian Rosewood)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="specialFeatures">Special Features:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp or 'none')" />
                                     </FormGroup>
                                 </Form>
@@ -592,6 +603,10 @@ export default class GearForm extends Component {
                                     <FormGroup>
                                         <Label for="bassGuitarPickups">Pickups:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarPickups" placeholder="Pickups (ex. Bareknuckle '58 Split Coil)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="bassGuitarNeck">Neck and Fretboard Material:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="bassGuitarNeck" placeholder="Neck and Fretboard Material (ex. Maple Neck w/ Ebony Fretboard)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="bassGuitarBodyWood">Body Wood:</Label>
@@ -672,8 +687,12 @@ export default class GearForm extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetTolexColor" placeholder="Tolex Color (ex. Matamp Green) If no tolex, leave 'none' or 'natural finish'" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="cabinetOpenClosedBack">Open or Closed Back:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetOpenClosedBack" placeholder="Open or Closed Back (ex. Closed Back)" />
+                                        <Label for="cabinetOpenClosedBack">Open, Partial, or Closed Back:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetOpenClosedBack" placeholder="Open, Partial, or Closed Back (ex. Closed Back)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="cabinetSlantedStraight">Slanted or Straight:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="cabinetSlantedStraight" placeholder="Slanted or Straight (ex. Slanted)" />
                                     </FormGroup>
                                 </Form>
                             </ModalBody>

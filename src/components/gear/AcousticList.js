@@ -38,7 +38,10 @@ export default class AcousticList extends Component {
                                         Pickup: {acoustic.pickup}
                                     </section>
                                     <section className="card-title">
-                                        Body: {acoustic.body}
+                                        Top: {acoustic.top}
+                                    </section>
+                                    <section className="card-title">
+                                        Back And Sides: {acoustic.backSides}
                                     </section>
                                     <section className="card-title">
                                         Special Features: {acoustic.features}

@@ -125,7 +125,6 @@ export default class AppViews extends Component {
         .then(combos => this.setState({
             combos: combos 
         }))
-
     deleteComboPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("combos"))
         .then(combos => this.setState({

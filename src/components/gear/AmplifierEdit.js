@@ -8,7 +8,8 @@ export default class AmplifierEdit extends Component {
             amplifierModel: "",
             amplifierPowerSection: "",
             amplifierPreampSection: "",
-            amplifierHeadCombo: "",
+            amplifierWattage: "",
+            amplifierMatching: "",
             amplifierSpecialFeatures: "",
             id: null
     }
@@ -31,7 +32,8 @@ export default class AmplifierEdit extends Component {
             model: this.state.model,
             powerSection: this.state.powerSection,
             preampSection: this.state.preampSection,
-            amplifierHeadCombo: this.state.amplifierHeadCombo,
+            wattage: this.state.wattage,
+            matching: this.state.matching,
             features: this.state.features,
             id: this.state.id
         }
@@ -81,13 +83,22 @@ export default class AmplifierEdit extends Component {
                             defaultValue={this.state.preampSection} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="amplifierHeadCombo" className="amplifierHeadCombo">Head or Combo:</label>
+                        <label htmlFor="amplifierWattage" className="amplifierWattage">Matching Cabinet for Amplifier?:</label>
+                        <input type="text" required="true"
+                            className="form-control matching-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="matching"
+                            placeholder="Matching Cabinet for Amplifier (ex. Yes)"
+                            defaultValue={this.state.matching} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="amplifierMatching" className="amplifierMatching">Matching Cabinet for Amplifier?:</label>
                         <input type="text" required="true"
                             className="form-control headCombo-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="headCombo"
-                            placeholder="Head or Combo Amp (ex. 2x12 Combo)"
-                            defaultValue={this.state.amplifierHeadCombo} />
+                            id="wattage"
+                            placeholder="Wattage (ex. 50 Watts)"
+                            defaultValue={this.state.wattage} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="amplifierSpecialFeatures" className="amplifierSpecialFeatures">Special Features:</label>

@@ -8,6 +8,7 @@ export default class ComboEdit extends Component {
             comboModel: "",
             comboPowerSection: "",
             comboPreampSection: "",
+            comboWattage: "",
             comboSpeakers: "",
             comboSpecialFeatures: "",
             id: null
@@ -31,7 +32,8 @@ export default class ComboEdit extends Component {
             model: this.state.model,
             powerSection: this.state.powerSection,
             preampSection: this.state.preampSection,
-            comboSpeakers: this.state.comboSpeakers,
+            wattage: this.state.wattage,
+            speakers: this.state.speakers,
             features: this.state.features,
             id: this.state.id
         }
@@ -41,7 +43,7 @@ export default class ComboEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={comboAmp} className="icon--amp" />
+                <img src={comboAmp} className="icon--comboAmp" />
                 <h3 className="edit-post">What About Your Combo Amplifier Would You Like To Edit?</h3>
                 <form className="comboForm">
                     <div className="form-group">
@@ -81,13 +83,22 @@ export default class ComboEdit extends Component {
                             defaultValue={this.state.preampSection} />
                     </div>
                     <div className="form-group">
+                        <label htmlFor="comboWattage" className="comboWattage">Amplifier Wattage:</label>
+                        <input type="text" required="true"
+                            className="form-control wattage-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="wattage"
+                            placeholder="Amplifier Wattage (ex. 100 Watts)"
+                            defaultValue={this.state.wattage} />
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="comboSpeakers" className="comboSpeakers">Speakers:</label>
                         <input type="text" required="true"
-                            className="form-control headCombo-field"
+                            className="form-control speakers-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="speakers"
                             placeholder="Speakers (ex. V30s)"
-                            defaultValue={this.state.comboSpeakers} />
+                            defaultValue={this.state.speakers} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="comboSpecialFeatures" className="comboSpecialFeatures">Special Features:</label>

@@ -3,14 +3,15 @@ import acousticGuitar from "./images/acoustic_(md).png"
 
 export default class AcousticEdit extends Component {
 
-   state = {
-            acousticGuitarMake: "",
-            acousticGuitarModel: "",
-            acousticGuitarStrings: "",
-            acousticGuitarPickup: "",
-            acousticGuitarBodyWood: "",
-            acousticGuitarSpecialFeatures: "",
-            id: null
+    state = {
+        acousticGuitarMake: "",
+        acousticGuitarModel: "",
+        acousticGuitarStrings: "",
+        acousticGuitarPickup: "",
+        acousticGuitarTop: "",
+        acousticGuitarBackSides: "",
+        acousticGuitarSpecialFeatures: "",
+        id: null
     }
 
     componentDidMount() {
@@ -31,7 +32,8 @@ export default class AcousticEdit extends Component {
             model: this.state.model,
             strings: this.state.strings,
             pickup: this.state.pickup,
-            body: this.state.body,
+            top: this.state.top,
+            backSides: this.state.backSides,
             features: this.state.features,
             id: this.state.id
         }
@@ -81,13 +83,22 @@ export default class AcousticEdit extends Component {
                             defaultValue={this.state.pickup} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="acousticGuitarBodyWood" className="acousticGuitarBodyWood">Body Wood:</label>
+                        <label htmlFor="acousticGuitarTop" className="acousticGuitarTop">Top:</label>
                         <input type="text" required="true"
-                            className="form-control body-field"
+                            className="form-control top-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="body"
-                            placeholder="Body Wood (ex. Indian Rosewood)"
-                            defaultValue={this.state.body} />
+                            id="top"
+                            placeholder="Top (ex. Sitka Spruce)"
+                            defaultValue={this.state.top} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="acousticGuitarBackSides" className="acousticGuitarBackSides">Back And Sides:</label>
+                        <input type="text" required="true"
+                            className="form-control back-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="back"
+                            placeholder="Back and Sides (ex. Indian Rosewood)"
+                            defaultValue={this.state.backSides} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="acousticGuitarSpecialFeatures" className="acousticGuitarSpecialFeatures">Special Features:</label>
