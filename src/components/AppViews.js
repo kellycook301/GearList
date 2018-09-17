@@ -13,6 +13,8 @@ import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
 import ComboList from './gear/ComboList'
 import OverdriveList from './gear/OverdriveList'
+import ModulationList from './gear/ModulationList'
+import ProcessorList from './gear/ProcessorList'
 import CabinetList from './gear/CabinetList'
 
 // The Components where gear is edited
@@ -22,6 +24,8 @@ import BassEdit from './gear/BassEdit'
 import AmplifierEdit from './gear/AmplifierEdit'
 import ComboEdit from './gear/ComboEdit'
 import OverdriveEdit from './gear/OverdriveEdit'
+import ModulationEdit from './gear/ModulationEdit'
+import ProcessorEdit from './gear/ProcessorEdit'
 import CabinetEdit from './gear/CabinetEdit'
 
 export default class AppViews extends Component {
@@ -36,6 +40,8 @@ export default class AppViews extends Component {
         amplifiers: [],
         combos: [],
         overdrives: [],
+        modulations: [],
+        processors: [],
         cabinets: [],
         users: []
     }
@@ -106,7 +112,7 @@ export default class AppViews extends Component {
     editAmplifierPost = (amplifier, id, link) => DataManager.put(amplifier, id, link)
         .then(() => DataManager.getAll("amplifiers"))
         .then(amplifiers => this.setState({
-            amplifiers: amplifiers 
+            amplifiers: amplifiers
         }))
     deleteAmplifierPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("amplifiers"))
@@ -123,7 +129,7 @@ export default class AppViews extends Component {
     editComboPost = (combo, id, link) => DataManager.put(combo, id, link)
         .then(() => DataManager.getAll("combos"))
         .then(combos => this.setState({
-            combos: combos 
+            combos: combos
         }))
     deleteComboPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("combos"))
@@ -131,7 +137,7 @@ export default class AppViews extends Component {
             combos: combos
         }))
 
-    // PEDAL RELATED POSTS
+    // OVERDRIVE RELATED POSTS
     addOverdrive = (overdrive, link) => DataManager.post(overdrive, link)
         .then(() => DataManager.getAll("overdrives"))
         .then(overdrives => this.setState({
@@ -140,12 +146,46 @@ export default class AppViews extends Component {
     editOverdrivePost = (overdrive, id, link) => DataManager.put(overdrive, id, link)
         .then(() => DataManager.getAll("overdrives"))
         .then(overdrives => this.setState({
-            overdrives: overdrives 
+            overdrives: overdrives
         }))
     deleteOverdrivePost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("overdrives"))
         .then(overdrives => this.setState({
             overdrives: overdrives
+        }))
+
+    // MODULATION RELATED POSTS
+    addModulation = (modulation, link) => DataManager.post(modulation, link)
+        .then(() => DataManager.getAll("modulations"))
+        .then(modulations => this.setState({
+            modulations: modulations
+        }))
+    editModulationPost = (modulation, id, link) => DataManager.put(modulation, id, link)
+        .then(() => DataManager.getAll("modulations"))
+        .then(modulations => this.setState({
+            modulations: modulations
+        }))
+    deleteModulationPost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("modulations"))
+        .then(modulations => this.setState({
+            modulations: modulations
+        }))
+
+    // DIGITAL PROCESSOR RELATED POSTS
+    addProcessor = (processor, link) => DataManager.post(processor, link)
+        .then(() => DataManager.getAll("processors"))
+        .then(processors => this.setState({
+            processors: processors
+        }))
+    editProcessorPost = (processor, id, link) => DataManager.put(processor, id, link)
+        .then(() => DataManager.getAll("processors"))
+        .then(processors => this.setState({
+            processors: processors
+        }))
+    deleteProcessorPost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("processors"))
+        .then(processors => this.setState({
+            processors: processors
         }))
 
     // CABINET RELATED POSTS
@@ -157,7 +197,7 @@ export default class AppViews extends Component {
     editCabinetPost = (cabinet, id, link) => DataManager.put(cabinet, id, link)
         .then(() => DataManager.getAll("cabinets"))
         .then(cabinets => this.setState({
-            cabinets: cabinets 
+            cabinets: cabinets
         }))
     deleteCabinetPost = (id, link) => DataManager.removeAndList(id, link)
         .then(() => DataManager.getAll("cabinets"))
@@ -173,6 +213,8 @@ export default class AppViews extends Component {
             .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
             .then(() => DataManager.getAll("combos").then(combos => _state.combos = combos))
             .then(() => DataManager.getAll("overdrives").then(overdrives => _state.overdrives = overdrives))
+            .then(() => DataManager.getAll("modulations").then(modulations => _state.modulations = modulations))
+            .then(() => DataManager.getAll("processors").then(processors => _state.processors = processors))
             .then(() => DataManager.getAll("cabinets").then(cabinets => _state.cabinets = cabinets))
             .then(() => DataManager.getAll("users").then(users => _state.users = users))
             .then(() => { this.setState(_state) })
@@ -212,15 +254,23 @@ export default class AppViews extends Component {
                                 addCombo={this.addCombo}
                                 editComboPost={this.editComboPost}
                                 combos={this.state.combos}
-                                
+
                                 addOverdrive={this.addOverdrive}
                                 editOverdrivePost={this.editOverdrivePost}
                                 overdrives={this.state.overdrives}
 
+                                addModulation={this.addModulation}
+                                editModulationPost={this.editModulationPost}
+                                modulations={this.state.modulations}
+
+                                addProcessor={this.addProcessor}
+                                editProcessorPost={this.editProcessorPost}
+                                processors={this.state.processors}
+
                                 addCabinet={this.addCabinet}
                                 editCabinetPost={this.editCabinetPost}
                                 cabinets={this.state.cabinets}
-                                />
+                            />
                         } else {
                             return <Redirect to="/login" />
                         }
@@ -310,7 +360,7 @@ export default class AppViews extends Component {
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <OverdriveList {...props}
-                            overdrives={this.state.overdrives}
+                                overdrives={this.state.overdrives}
                                 deleteOverdrivePost={this.deleteOverdrivePost} />
                         } else {
                             return <Redirect to="/login" />
@@ -320,6 +370,38 @@ export default class AppViews extends Component {
                         return <OverdriveEdit {...props}
                             editOverdrivePost={this.editOverdrivePost}
                             overdrives={this.state.overdrives} />
+                    }} />
+
+                    {/* Modulation Pedal Related */}
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <ModulationList {...props}
+                                modulations={this.state.modulations}
+                                deleteModulationPost={this.deleteModulationPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route path="/gear/edit/modulation/:modulationId(\d+)" render={(props) => {
+                        return <ModulationEdit {...props}
+                            editModulationPost={this.editModulationPost}
+                            modulations={this.state.modulations} />
+                    }} />
+
+                    {/* Processor Pedal Related */}
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <ProcessorList {...props}
+                                processors={this.state.processors}
+                                deleteProcessorPost={this.deleteProcessorPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route path="/gear/edit/processor/:processorId(\d+)" render={(props) => {
+                        return <ProcessorEdit {...props}
+                            editProcessorPost={this.editProcessorPost}
+                            processors={this.state.processors} />
                     }} />
 
                     {/* Cabinet Related */}
@@ -337,7 +419,7 @@ export default class AppViews extends Component {
                             editCabinetPost={this.editCabinetPost}
                             cabinets={this.state.cabinets} />
                     }} />
-                    
+
                 </div>
             </React.Fragment>
         )

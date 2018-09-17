@@ -1,25 +1,25 @@
-.cabinetTrash {
+.processorTrash {
     cursor: pointer;
     margin-left: 1em;
 }
 
-.cabinetTrash:hover {
+.processorTrash:hover {
     transform: scale(1.15);
 }
 
-.pen:hover {
+.processorPen:hover {
     transform: scale(1.2)
 }
 
-.icon--cabinet:hover {
+.icon--processor:hover {
     transform: scale(1.1);
 }
 
-.cabinetEditDelete {
+.processorEditDelete {
     display: flex;
 }
 
-.cabCard {
+.processorCard {
     float: left;
     margin: 0.5em;
 }

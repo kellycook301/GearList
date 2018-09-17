@@ -23,6 +23,8 @@ export default class GearForm extends Component {
         this.amplifierNested = this.amplifierNested.bind(this);
         this.comboNested = this.comboNested.bind(this);
         this.overdriveNested = this.overdriveNested.bind(this);
+        this.modulationNested = this.modulationNested.bind(this);
+        this.processorNested = this.processorNested.bind(this);
         this.cabinetNested = this.cabinetNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
 
@@ -32,6 +34,8 @@ export default class GearForm extends Component {
             electricModal: false,
             bassModal: false,
             ampModal: false,
+            overdriveModal: false,
+            modulationModal: false,
             closeAll: false,
             acousticGuitarMake: "",
             acousticGuitarModel: "",
@@ -75,6 +79,20 @@ export default class GearForm extends Component {
             overdriveTrueBypass: "",
             overdriveTopSideLoaded: "",
             overdriveSpecialFeatures: "",
+            modulationMake: "",
+            modulationModel: "",
+            modulationType: "",
+            modulationPowerDraw: "",
+            modulationTrueBypass: "",
+            modulationTopSideLoaded: "",
+            modulationSpecialFeatures: "",
+            processorMake: "",
+            processorModel: "",
+            processorStyle: "",
+            proceesorSize: "",
+            processorMIDI: "",
+            processorPowerAmp: "",
+            processorSpecialFeatures: "",
             cabinetMake: "",
             cabinetModel: "",
             cabinetSpeakers: "",
@@ -133,6 +151,20 @@ export default class GearForm extends Component {
         });
     }
 
+    modulationNested() {
+        this.setState({
+            modulationModal: !this.state.modulationModal,
+            closeAll: false
+        });
+    }
+
+    processorNested() {
+        this.setState({
+            processorModal: !this.state.processorModal,
+            closeAll: false
+        });
+    }
+
     cabinetNested() {
         this.setState({
             cabinetModal: !this.state.cabinetModal,
@@ -183,6 +215,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
             this.toggle()
         }
 
@@ -224,6 +257,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
             this.toggle()
         }
     }
@@ -265,6 +299,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
             this.toggle()
         }
     }
@@ -306,6 +341,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
             this.toggle()
         }
     }
@@ -343,6 +379,7 @@ export default class GearForm extends Component {
             console.log(combo, "combos")
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
             this.toggle()
         }
     }
@@ -384,6 +421,89 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
+            this.toggle()
+        }
+    }
+
+    createModulationPost = evt => {
+        evt.preventDefault()
+        if (this.state.modulationMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.modulationModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.modulationType === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.modulationPowerDraw === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.modulationTrueBypass === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.modulationTopSideLoaded === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.modulationSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const modulation = {
+                make: this.state.modulationMake,
+                model: this.state.modulationModel,
+                type: this.state.modulationType,
+                draw: this.state.modulationPowerDraw,
+                bypass: this.state.modulationTrueBypass,
+                jacks: this.state.modulationTopSideLoaded,
+                features: this.state.modulationSpecialFeatures,
+            }
+            console.log(modulation, "modulations")
+            // Create the post for acoustic and redirect user to the gear list page
+            this.props.addModulation(modulation, "modulations").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
+            this.toggle()
+        }
+    }
+
+    createProcessorPost = evt => {
+        evt.preventDefault()
+        if (this.state.processorMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorStyle === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorSize === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorMIDI === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorPowerAmp === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const processor = {
+                make: this.state.processorMake,
+                model: this.state.processorModel,
+                style: this.state.processorStyle,
+                size: this.state.processorSize,
+                bypass: this.state.processorMIDI,
+                jacks: this.state.processorPowerAmp,
+                features: this.state.processorSpecialFeatures,
+            }
+            this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
             this.toggle()
         }
     }
@@ -425,6 +545,7 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addCabinet(cabinet, "cabinets").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
+            window.location.reload();
             this.toggle()
         }
     }
@@ -684,6 +805,87 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
+                        <Button color="#03a9f4 light-blue" onClick={this.modulationNested}>Modulation Pedal</Button>
+                        <Modal isOpen={this.state.modulationModal} toggle={this.modulationNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Modulation Pedal Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="modulationForm">
+                                    <FormGroup>
+                                        <Label for="modulationMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="modulationMake" placeholder="Make (ex. Boss)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="modulationModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="modulationModel" placeholder="Model (ex. DD-2)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="modulationType">Type:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="modulationType" placeholder="Style (ex. Chorus)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="modulationPowerDraw">Power Draw:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="modulationPowerDraw" placeholder="Power Draw (ex. 9V or 18V)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="modulationTrueBypass">True Bypass:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="modulationTrueBypass" placeholder="True Bypass (ex. Yes!)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="modulationTopSideLoaded">Side or Top-Mounted Jacks:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="modulationTopSideLoaded" placeholder="Side or Top-Mounted Jacks (ex. Top-Mounted)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="modulationSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="modulationSpecialFeatures" placeholder="Special Features (ex. 'No Tremolo Volume Drop' Mod or 'none')" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createModulationPost}>Submit</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.modulationNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+                        <Button color="#212121 grey darken-4" onClick={this.processorNested}>Processor Pedal</Button>
+                        <Modal isOpen={this.state.processorModal} toggle={this.processorNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Digital Processor Pedal Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="processorForm">
+                                    <FormGroup>
+                                        <Label for="processorMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="processorMake" placeholder="Make (ex. Line 6)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="processorModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="processorModel" placeholder="Model (ex. Helix)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="processorStyle">Style:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="processorStyle" placeholder="Style (ex. Amp Modeler)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="processorSize">Size:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="processorSize" placeholder="Unit Size (ex. Small, Medium, Large)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="processorMIDI">MIDI Capable?:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="processorMIDI" placeholder="Has MIDI Capabilities (ex. Yes!)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="processorPowerAmp">Has Power Amp Built In:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="processorPowerAmp" placeholder="Has Power Amp Built In (ex. Yes!)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="processorSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="processorSpecialFeatures" placeholder="Special Features (ex. 'Signed By Steve Vai?' or 'none')" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createProcessorPost}>Submit</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.processorNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+                        <p></p>
                         <Button color="#ffa726 orange lighten-1" onClick={this.cabinetNested}>Speaker Cabinet</Button>
                         <Modal isOpen={this.state.cabinetModal} toggle={this.cabinetNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Speaker Cabinet Features</ModalHeader>
@@ -724,7 +926,6 @@ export default class GearForm extends Component {
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.cabinetNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-
                     </ModalBody>
                     <ModalFooter>
                         <Button color="#9575cd deep-purple lighten-2" onClick={this.toggle}>Cancel</Button>

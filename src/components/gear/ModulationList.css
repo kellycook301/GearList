@@ -1,9 +1,9 @@
-.cabinetTrash {
+.modulationTrash {
     cursor: pointer;
     margin-left: 1em;
 }
 
-.cabinetTrash:hover {
+.modulationTrash:hover {
     transform: scale(1.15);
 }
 
@@ -11,15 +11,15 @@
     transform: scale(1.2)
 }
 
-.icon--cabinet:hover {
+.icon--modulation:hover {
     transform: scale(1.1);
 }
 
-.cabinetEditDelete {
+.modulationEditDelete {
     display: flex;
 }
 
-.cabCard {
+.modulationCard {
     float: left;
     margin: 0.5em;
 }

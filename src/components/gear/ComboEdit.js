@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import comboAmp from "./images/combo_(md).png"
+import comboAmp from "./images/combo_(lg).png"
 
 export default class ComboEdit extends Component {
 

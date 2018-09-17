@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import effect from "./images/cabinet_(md).png"
+import effect from "./images/cabinet_(lg).png"
 
 export default class CabinetEdit extends Component {
 
@@ -43,7 +43,7 @@ export default class CabinetEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={effect} className="icon--effect" />
+                <img src={effect} className="icon--cabinet" />
                 <h3 className="edit-post">What About Your Speaker Cabinet Would You Like To Edit?</h3>
                 <form className="cabinetForm">
                     <div className="form-group">
