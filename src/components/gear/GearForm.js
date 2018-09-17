@@ -21,8 +21,9 @@ export default class GearForm extends Component {
         this.acousticNested = this.acousticNested.bind(this);
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
+        this.amplifierChoiceNested = this.amplifierChoiceNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
-        this.amplifierNested = this.amplifierNested.bind(this);
+        this.comboNested = this.comboNested.bind(this);
         this.overdriveNested = this.overdriveNested.bind(this);
         this.cabinetNested = this.cabinetNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
@@ -32,7 +33,9 @@ export default class GearForm extends Component {
             acousticModal: false,
             electricModal: false,
             bassModal: false,
+            ampChoiceModal: false,
             ampModal: false,
+            comboModal: false,
             closeAll: false,
             acousticGuitarMake: "",
             acousticGuitarModel: "",
@@ -58,6 +61,12 @@ export default class GearForm extends Component {
             amplifierPreampSection: "",
             amplifierHeadCombo: "",
             amplifierSpecialFeatures: "",
+            comboMake: "",
+            comboModel: "",
+            comboPowerSection: "",
+            comboPreampSection: "",
+            comboSpeakers: "",
+            comboSpecialFeatures: "",
             overdriveMake: "",
             overdriveModel: "",
             overdriveStyle: "",
@@ -100,9 +109,23 @@ export default class GearForm extends Component {
         });
     }
 
+    amplifierChoiceNested() {
+        this.setState({
+            amplifierChoiceModal: !this.state.amplifierChoiceModal,
+            closeAll: false
+        });
+    }
+
     amplifierNested() {
         this.setState({
             ampModal: !this.state.ampModal,
+            closeAll: false
+        });
+    }
+
+    comboNested() {
+        this.setState({
+            comboModal: !this.state.comboModal,
             closeAll: false
         });
     }
@@ -162,7 +185,7 @@ export default class GearForm extends Component {
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.toggle()
         }
-        
+
     }
 
     createElectricPost = evt => {
@@ -246,13 +269,13 @@ export default class GearForm extends Component {
         else if (this.state.amplifierModel === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.amplifierStrings === "") {
+        else if (this.state.amplifierPowerSection === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.amplifierPickup === "") {
+        else if (this.state.amplifierPreampSection === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.amplifierBodyWood === "") {
+        else if (this.state.amplifierHeadCombo === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else if (this.state.amplifierSpecialFeatures === "") {
@@ -265,11 +288,47 @@ export default class GearForm extends Component {
                 powerSection: this.state.amplifierPowerSection,
                 preampSection: this.state.amplifierPreampSection,
                 amplifierHeadCombo: this.state.amplifierHeadCombo,
-                features: this.state.amplifierSpecialFeatures,
+                features: this.state.amplifierSpecialFeatures
             }
             console.log(amplifier, "amplifiers")
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            this.toggle()
+        }
+    }
+
+    createComboPost = evt => {
+        evt.preventDefault()
+        if (this.state.comboMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.comboModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.comboPowerSection === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.comboPreampSection === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.comboSpeakers === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.comboSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const combo = {
+                make: this.state.comboMake,
+                model: this.state.comboModel,
+                powerSection: this.state.comboPowerSection,
+                preampSection: this.state.comboPreampSection,
+                speakers: this.state.comboSpeakers,
+                features: this.state.comboSpecialFeatures
+            }
+            // Create the post for combo amp and redirect user to the gear list page
+            this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.toggle()
         }
@@ -358,7 +417,15 @@ export default class GearForm extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                     <ModalBody>
-                        <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier Head</Button>
+                        <Button color="#616161 grey darken-2" onClick={this.amplifierChoiceNested}>Amplifier</Button>
+                        <Modal isOpen={this.state.amplifierChoiceModal} toggle={this.amplifierChoiceModal} onClose={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>What Kind of Amplifier?</ModalHeader>
+                            <Button color="success" onClick={this.amplifierNested}>Amplifier Head</Button>
+                            <Button color="primary" onClick={this.comboNested}>Combo Amp</Button>
+                            <ModalFooter>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.amplifierChoiceNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
                         <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -395,14 +462,13 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="#616161 grey darken-2" onClick={this.comboNested}>Combo Amplifier</Button>
                         <Modal isOpen={this.state.comboModal} toggle={this.comboNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                            <ModalHeader>Amplifier Features</ModalHeader>
+                            <ModalHeader>Combo Amplifier Features</ModalHeader>
                             <ModalBody>
                                 <Form className="comboForm">
                                     <FormGroup>
                                         <Label for="comboMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comborMake" placeholder="Make (ex. Dr. Z)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboMake" placeholder="Make (ex. Dr. Z)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="comboModel">Model:</Label>
@@ -418,7 +484,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="comboSpeakers">Speakers:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboHeadCombo" placeholder="Speakers (ex. V30s)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboSpeakers" placeholder="Speakers (ex. V30s)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="comboSpecialFeatures">Special Features:</Label>

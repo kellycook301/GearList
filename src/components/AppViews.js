@@ -11,6 +11,7 @@ import AcousticList from './gear/AcousticList'
 import ElectricList from './gear/ElectricList'
 import BassList from './gear/BassList'
 import AmplifierList from './gear/AmplifierList'
+import ComboList from './gear/ComboList'
 import OverdriveList from './gear/OverdriveList'
 import CabinetList from './gear/CabinetList'
 
@@ -19,6 +20,7 @@ import AcousticEdit from './gear/AcousticEdit'
 import ElectricEdit from './gear/ElectricEdit'
 import BassEdit from './gear/BassEdit'
 import AmplifierEdit from './gear/AmplifierEdit'
+import ComboEdit from './gear/ComboEdit'
 import OverdriveEdit from './gear/OverdriveEdit'
 import CabinetEdit from './gear/CabinetEdit'
 
@@ -32,7 +34,7 @@ export default class AppViews extends Component {
         electrics: [],
         basses: [],
         amplifiers: [],
-        comboAmps: [],
+        combos: [],
         overdrives: [],
         cabinets: [],
         users: []
@@ -112,6 +114,24 @@ export default class AppViews extends Component {
             amplifiers: amplifiers
         }))
 
+    // COMBO AMPLIFIER RELATED POSTS
+    addCombo = (combo, link) => DataManager.post(combo, link)
+        .then(() => DataManager.getAll("combos"))
+        .then(combos => this.setState({
+            combos: combos
+        }))
+    editComboPost = (combo, id, link) => DataManager.put(combo, id, link)
+        .then(() => DataManager.getAll("combos"))
+        .then(combos => this.setState({
+            combos: combos 
+        }))
+
+    deleteComboPost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("combos"))
+        .then(combos => this.setState({
+            combos: combos
+        }))
+
     // PEDAL RELATED POSTS
     addOverdrive = (overdrive, link) => DataManager.post(overdrive, link)
         .then(() => DataManager.getAll("overdrives"))
@@ -152,6 +172,7 @@ export default class AppViews extends Component {
             .then(() => DataManager.getAll("electrics").then(electrics => _state.electrics = electrics))
             .then(() => DataManager.getAll("basses").then(basses => _state.basses = basses))
             .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
+            .then(() => DataManager.getAll("combos").then(combos => _state.combos = combos))
             .then(() => DataManager.getAll("overdrives").then(overdrives => _state.overdrives = overdrives))
             .then(() => DataManager.getAll("cabinets").then(cabinets => _state.cabinets = cabinets))
             .then(() => DataManager.getAll("users").then(users => _state.users = users))
@@ -188,6 +209,10 @@ export default class AppViews extends Component {
                                 addAmplifier={this.addAmplifier}
                                 editAmplifierPost={this.editAmplifierPost}
                                 amplifiers={this.state.amplifiers}
+
+                                addCombo={this.addCombo}
+                                editComboPost={this.editComboPost}
+                                combos={this.state.combos}
                                 
                                 addOverdrive={this.addOverdrive}
                                 editOverdrivePost={this.editOverdrivePost}
@@ -264,6 +289,22 @@ export default class AppViews extends Component {
                         return <AmplifierEdit {...props}
                             editAmplifierPost={this.editAmplifierPost}
                             amplifiers={this.state.amplifiers} />
+                    }} />
+
+                    {/* Combo Amp Related */}
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <ComboList {...props}
+                                combos={this.state.combos}
+                                deleteComboPost={this.deleteComboPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route path="/gear/edit/combo/:comboId(\d+)" render={(props) => {
+                        return <ComboEdit {...props}
+                            editComboPost={this.editComboPost}
+                            combos={this.state.combos} />
                     }} />
 
                     {/* Overdrive Pedal Related */}
