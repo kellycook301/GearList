@@ -40,6 +40,9 @@ export default class ElectricList extends Component {
                                         Body: {electric.body}
                                     </section>
                                     <section className="card-title">
+                                        Neck and Fretboard Material: {electric.neck}
+                                    </section>
+                                    <section className="card-title">
                                         Special Features: {electric.features}
                                     </section>
                                     <p></p>

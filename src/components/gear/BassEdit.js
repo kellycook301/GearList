@@ -9,6 +9,7 @@ export default class BassEdit extends Component {
             bassGuitarStrings: "",
             bassGuitarPickups: "",
             bassGuitarBodyWood: "",
+            bassGuitarNeck: "",
             bassGuitarSpecialFeatures: "",
             id: null
     }
@@ -32,6 +33,7 @@ export default class BassEdit extends Component {
             strings: this.state.strings,
             pickups: this.state.pickups,
             body: this.state.body,
+            neck: this.state.neck,
             features: this.state.features,
             id: this.state.id
         }
@@ -88,6 +90,15 @@ export default class BassEdit extends Component {
                             id="body"
                             placeholder="Body Wood (ex. Swamp Ash)"
                             defaultValue={this.state.body} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="bassGuitarNeck" className="bassGuitarNeck">Neck and Fretboard Material:</label>
+                        <input type="text" required="true"
+                            className="form-control body-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="neck"
+                            placeholder="Neck and Fretboard Material (ex. Maple Neck with Ebony Fretboard)"
+                            defaultValue={this.state.neck} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="bassGuitarSpecialFeatures" className="bassGuitarSpecialFeatures">Special Features:</label>

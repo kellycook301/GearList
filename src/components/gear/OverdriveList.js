@@ -38,6 +38,9 @@ export default class OverdriveList extends Component {
                                         Power Draw: {overdrive.draw}
                                     </section>
                                     <section className="card-title">
+                                        True Bypass: {overdrive.bypass}
+                                    </section>
+                                    <section className="card-title">
                                         Side or Top-Mounted Jacks: {overdrive.jacks}
                                     </section>
                                     <section className="card-title">

@@ -9,6 +9,7 @@ export default class ElectricEdit extends Component {
             electricGuitarStrings: "",
             electricGuitarPickups: "",
             electricGuitarBodyWood: "",
+            electricGuitarNeck: "",
             electricGuitarSpecialFeatures: "",
             id: null
     }
@@ -32,6 +33,7 @@ export default class ElectricEdit extends Component {
             strings: this.state.strings,
             pickups: this.state.pickups,
             body: this.state.body,
+            neck: this.state.neck,
             features: this.state.features,
             id: this.state.id
         }
@@ -88,6 +90,15 @@ export default class ElectricEdit extends Component {
                             id="body"
                             placeholder="Body Wood (ex. Alder)"
                             defaultValue={this.state.body} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="electricGuitarNeck" className="electricGuitarNeck">Neck and Fretboard Material:</label>
+                        <input type="text" required="true"
+                            className="form-control body-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="neck"
+                            placeholder="Neck and Fretboard Material (ex. Maple Neck with Ebony Fretboard)"
+                            defaultValue={this.state.neck} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="electricGuitarSpecialFeatures" className="electricGuitarSpecialFeatures">Special Features:</label>

@@ -8,6 +8,7 @@ export default class OverdriveEdit extends Component {
             overdriveModel: "",
             overdriveStyle: "",
             overdrivePowerDraw: "",
+            overdriveTrueBypass: "",
             overdriveTopSideLoaded: "",
             overdriveSpecialFeatures: "",
             id: null
@@ -31,6 +32,7 @@ export default class OverdriveEdit extends Component {
             model: this.state.model,
             style: this.state.style,
             draw: this.state.draw,
+            bypass: this.state.bypass,
             jacks: this.state.jacks,
             features: this.state.features,
             id: this.state.id
@@ -81,13 +83,22 @@ export default class OverdriveEdit extends Component {
                             defaultValue={this.state.powerDraw} />
                     </div>
                     <div className="form-group">
+                        <label htmlFor="overdriveTrueBypass" className="overdriveTrueBypass">True Bypass:</label>
+                        <input type="text" required="true"
+                            className="form-control power-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="bypass"
+                            placeholder="True Bypass (ex. Yes!)"
+                            defaultValue={this.state.bypass} />
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="overdriveTopSideLoaded" className="overdriveTopSideLoaded">Side or Top-Mounted Jacks:</label>
                         <input type="text" required="true"
                             className="form-control power-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="jacks"
                             placeholder="Side or Top-Mounted Jacks (ex. Top-Mounted)"
-                            defaultValue={this.state.powerDraw} />
+                            defaultValue={this.state.jacks} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="overdriveSpecialFeatures" className="overdriveSpecialFeatures">Special Features:</label>

@@ -45,11 +45,13 @@ export default class GearForm extends Component {
             electricGuitarStrings: "",
             electricGuitarPickups: "",
             electricGuitarBodyWood: "",
+            electricGuitarNeck: "",
             electricGuitarSpecialFeatures: "",
             bassGuitarMake: "",
             bassGuitarModel: "",
             bassGuitarStrings: "",
             bassGuitarPickups: "",
+            bassGuitarNeck: "",
             bassGuitarBodyWood: "",
             bassGuitarSpecialFeatures: "",
             amplifierMake: "",
@@ -70,6 +72,7 @@ export default class GearForm extends Component {
             overdriveModel: "",
             overdriveStyle: "",
             overdrivePowerDraw: "",
+            overdriveTrueBypass: "",
             overdriveTopSideLoaded: "",
             overdriveSpecialFeatures: "",
             cabinetMake: "",
@@ -202,6 +205,9 @@ export default class GearForm extends Component {
         else if (this.state.electricGuitarBodyWood === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
+        else if (this.state.electricGuitarNeck === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
         else if (this.state.electricGuitarSpecialFeatures === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
@@ -212,6 +218,7 @@ export default class GearForm extends Component {
                 strings: this.state.electricGuitarStrings,
                 pickups: this.state.electricGuitarPickups,
                 body: this.state.electricGuitarBodyWood,
+                neck: this.state.electricGuitarNeck,
                 features: this.state.electricGuitarSpecialFeatures,
             }
             // Create the post for acoustic and redirect user to the gear list page
@@ -238,6 +245,9 @@ export default class GearForm extends Component {
         else if (this.state.bassGuitarBodyWood === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
+        else if (this.state.bassGuitarNeck === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
         else if (this.state.bassGuitarSpecialFeatures === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
@@ -248,6 +258,7 @@ export default class GearForm extends Component {
                 strings: this.state.bassGuitarStrings,
                 pickups: this.state.bassGuitarPickups,
                 body: this.state.bassGuitarBodyWood,
+                neck: this.state.bassGuitarNeck,
                 features: this.state.bassGuitarSpecialFeatures,
             }
             console.log(bass, "basses")
@@ -350,6 +361,9 @@ export default class GearForm extends Component {
         else if (this.state.overdrivePowerDraw === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
+        else if (this.state.overdriveTrueBypass === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
         else if (this.state.overdriveTopSideLoaded === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
@@ -362,6 +376,7 @@ export default class GearForm extends Component {
                 model: this.state.overdriveModel,
                 style: this.state.overdriveStyle,
                 draw: this.state.overdrivePowerDraw,
+                bypass: this.state.overdriveTrueBypass,
                 jacks: this.state.overdriveTopSideLoaded,
                 features: this.state.overdriveSpecialFeatures,
             }
@@ -568,6 +583,10 @@ export default class GearForm extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarPickups" placeholder="Pickups (ex. Seymour Duncan Pearly Gates)" />
                                     </FormGroup>
                                     <FormGroup>
+                                        <Label for="electricGuitarNeck">Neck and Fretboard Material:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarNeck" placeholder="Neck and Fretboard Material (ex. Maple Neck w/ Ebony Fretboard)" />
+                                    </FormGroup>
+                                    <FormGroup>
                                         <Label for="electricGuitarBodyWood">Body Wood:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="electricGuitarBodyWood" placeholder="Body Wood (ex. Alder)" />
                                     </FormGroup>
@@ -644,6 +663,10 @@ export default class GearForm extends Component {
                                     <FormGroup>
                                         <Label for="overdrivePowerDraw">Power Draw:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdrivePowerDraw" placeholder="Power Draw (ex. 9V or 18V)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="overdriveTrueBypass">True Bypass:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdriveTrueBypass" placeholder="True Bypass (ex. Yes!)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="overdriveTopSideLoaded">Side or Top-Mounted Jacks:</Label>

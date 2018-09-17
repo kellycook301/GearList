@@ -41,6 +41,9 @@ export default class BassList extends Component {
                                         Body: {bass.body}
                                     </section>
                                     <section className="card-title">
+                                        Neck and Fretboard Material: {bass.neck}
+                                    </section>
+                                    <section className="card-title">
                                         Special Features: {bass.features}
                                     </section>
                                     <p></p>
