@@ -17,11 +17,14 @@ export default class GearForm extends Component {
         super(props);
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.guitarChoiceNested = this.guitarChoiceNested.bind(this);
         this.acousticNested = this.acousticNested.bind(this);
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
+        this.ampChoiceNested = this.ampChoiceNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
         this.comboNested = this.comboNested.bind(this);
+        this.pedalChoiceNested = this.pedalChoiceNested.bind(this);
         this.overdriveNested = this.overdriveNested.bind(this);
         this.modulationNested = this.modulationNested.bind(this);
         this.processorNested = this.processorNested.bind(this);
@@ -30,10 +33,14 @@ export default class GearForm extends Component {
 
         this.state = {
             modal: false,
+            guitarChoiceModal: false,
             acousticModal: false,
             electricModal: false,
             bassModal: false,
+            ampChoiceModal: false,
             ampModal: false,
+            comboModal: false,
+            pedalChoiceModal: false,
             overdriveModal: false,
             modulationModal: false,
             closeAll: false,
@@ -109,6 +116,12 @@ export default class GearForm extends Component {
         });
     }
 
+    guitarChoiceNested() {
+        this.setState({
+            guitarChoiceModal: !this.state.guitarChoiceModal
+        })
+    }
+
     acousticNested() {
         this.setState({
             acousticModal: !this.state.acousticModal,
@@ -130,6 +143,12 @@ export default class GearForm extends Component {
         });
     }
 
+    ampChoiceNested() {
+        this.setState({
+            ampChoiceModal: !this.state.ampChoiceModal
+        })
+    }
+
     amplifierNested() {
         this.setState({
             ampModal: !this.state.ampModal,
@@ -142,6 +161,13 @@ export default class GearForm extends Component {
             comboModal: !this.state.comboModal,
             closeAll: false
         });
+    }
+
+    pedalChoiceNested() {
+        this.setState({
+            pedalChoiceModal: !this.state.pedalChoiceModal,
+            closeAll: false
+        })
     }
 
     overdriveNested() {
@@ -258,6 +284,7 @@ export default class GearForm extends Component {
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.electricNested()
+            this.guitarChoiceNested()
             this.toggle()
         }
     }
@@ -298,6 +325,7 @@ export default class GearForm extends Component {
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.bassNested()
+            this.guitarChoiceNested()
             this.toggle()
         }
     }
@@ -338,6 +366,7 @@ export default class GearForm extends Component {
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.amplifierNested()
+            this.ampChoiceNested()
             this.toggle()
         }
     }
@@ -375,6 +404,7 @@ export default class GearForm extends Component {
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.comboNested()
+            this.ampChoiceNested()
             this.toggle()
         }
     }
@@ -415,6 +445,7 @@ export default class GearForm extends Component {
             this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.overdriveNested()
+            this.pedalChoiceNested()
             this.toggle()
         }
     }
@@ -455,6 +486,7 @@ export default class GearForm extends Component {
             this.props.addModulation(modulation, "modulations").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.modulationNested()
+            this.pedalChoiceNested()
             this.toggle()
         }
     }
@@ -495,6 +527,7 @@ export default class GearForm extends Component {
             this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.processorNested()
+            this.pedalChoiceNested()
             this.toggle()
         }
     }
@@ -548,7 +581,49 @@ export default class GearForm extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                     <ModalBody>
-                        <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier Head</Button>
+                        <Button color="primary" onClick={this.ampChoiceNested}>Amplifier</Button>
+                        <Modal isOpen={this.state.ampChoiceModal} toggle={this.ampChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalBody>
+                                <ModalHeader>What Kind of Amplifier Would You Like to Add?</ModalHeader>
+                                <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier Head</Button>
+                                <p></p>
+                                <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested}>Combo Amplifier</Button>
+                                <ModalFooter>
+                                    <Button color="#9575cd deep-purple lighten-2" onClick={this.ampChoiceNested}>Back</Button>{' '}
+                                </ModalFooter>
+                            </ModalBody>
+                        </Modal>
+                        <p></p>
+                        <Button color="#00e676 green accent-3" onClick={this.pedalChoiceNested}>Pedal</Button>
+                        <Modal isOpen={this.state.pedalChoiceModal} toggle={this.pedalChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalBody>
+                                <ModalHeader>What Kind of Effects Pedal Would You Like to Add?</ModalHeader>
+                                <Button color="#00e676 green accent-3" onClick={this.overdriveNested}>Overdrive Pedal</Button>
+                                <p></p>
+                                <Button color="#03a9f4 light-blue" onClick={this.modulationNested}>Modulation Pedal</Button>
+                                <p></p>
+                                <Button color="#212121 grey darken-4" onClick={this.processorNested}>Processor Pedal</Button>
+                                <ModalFooter>
+                                    <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalChoiceNested}>Back</Button>{' '}
+                                </ModalFooter>
+                            </ModalBody>
+                        </Modal>
+                        <p></p>
+                        <Button color="#ef5350 red lighten-1" onClick={this.guitarChoiceNested}>Guitar</Button>
+                        <Modal isOpen={this.state.guitarChoiceModal} toggle={this.guitarChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalBody>
+                                <ModalHeader>What Kind of Guitar Would You Like to Add?</ModalHeader>
+                                <Button color="#a1887f brown lighten-2" onClick={this.acousticNested}>Acoustic Guitar</Button>
+                                <p></p>
+                                <Button color="#0091ea light-blue accent-4" onClick={this.bassNested}>Bass Guitar</Button>
+                                <p></p>
+                                <Button color="#ef5350 red lighten-1" onClick={this.electricNested}>Electric Guitar</Button>
+                                <ModalFooter>
+                                    <Button color="#9575cd deep-purple lighten-2" onClick={this.guitarChoiceNested}>Back</Button>{' '}
+                                </ModalFooter>
+                            </ModalBody>
+                        </Modal>
+
                         <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -584,16 +659,11 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={(e) => {
-                                    this.toggle();
-                                    this.createAmplifierPost(e)
-                                }}>
-                                    Submit</Button>
+                                <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.amplifierNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
-                        <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested}>Combo Amplifier</Button>
+
                         <Modal isOpen={this.state.comboModal} toggle={this.comboNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Combo Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -633,8 +703,8 @@ export default class GearForm extends Component {
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.comboNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
-                        <Button color="#a1887f brown lighten-2" onClick={this.acousticNested}>Acoustic Guitar</Button>
+
+
                         <Modal isOpen={this.state.acousticModal} toggle={this.acousticNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader className="acousticHeader">Acoustic Guitar Features</ModalHeader>
                             <ModalBody className="acousticMake">
@@ -675,7 +745,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="#ef5350 red lighten-1" onClick={this.electricNested}>Electric Guitar</Button>
+
                         <Modal isOpen={this.state.electricModal} toggle={this.electricNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Electric Guitar Features</ModalHeader>
                             <ModalBody>
@@ -716,7 +786,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="#0091ea light-blue accent-4" onClick={this.bassNested}>Bass Guitar</Button>
+
                         <Modal isOpen={this.state.bassModal} toggle={this.bassNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Bass Guitar Features</ModalHeader>
                             <ModalBody>
@@ -757,7 +827,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="#00e676 green accent-3" onClick={this.overdriveNested}>Overdrive Pedal</Button>
+
                         <Modal isOpen={this.state.overdriveModal} toggle={this.overdriveNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Effect Pedal Features</ModalHeader>
                             <ModalBody>
@@ -797,8 +867,9 @@ export default class GearForm extends Component {
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.overdriveNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
+
                         <p></p>
-                        <Button color="#03a9f4 light-blue" onClick={this.modulationNested}>Modulation Pedal</Button>
+
                         <Modal isOpen={this.state.modulationModal} toggle={this.modulationNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Modulation Pedal Features</ModalHeader>
                             <ModalBody>
@@ -838,7 +909,7 @@ export default class GearForm extends Component {
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.modulationNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <Button color="#212121 grey darken-4" onClick={this.processorNested}>Processor Pedal</Button>
+
                         <Modal isOpen={this.state.processorModal} toggle={this.processorNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Digital Processor Pedal Features</ModalHeader>
                             <ModalBody>
