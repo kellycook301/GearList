@@ -8,7 +8,8 @@ export default class CabinetEdit extends Component {
             cabinetModel: "",
             cabinetSpeakers: "",
             cabinetWoodType: "",
-            cabinetTolex: "",
+            cabinetTolexColor: "",
+            cabinetOpenClosedBack: "",
             cabinetSlantedStraight: "",
             id: null
     }
@@ -32,6 +33,7 @@ export default class CabinetEdit extends Component {
             speakers: this.state.speakers,
             woodType: this.state.woodType,
             tolex: this.state.tolex,
+            back: this.state.back,
             slantedStraight: this.state.slantedStraight,
             id: this.state.id
         }
@@ -85,16 +87,25 @@ export default class CabinetEdit extends Component {
                         <input type="text" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="features"
+                            id="tolex"
                             placeholder="Tolex Color (ex. Green)"
                             defaultValue={this.state.tolex} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="cabinetSlantedStraight" className="cabinetSlantedStraight">Slanted or Straight:</label>
+                        <label htmlFor="cabinetOpenClosedBack" className="cabinetOpenClosedBack">Open, Partial, or Closed Back:</label>
                         <input type="text" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="features"
+                            id="back"
+                            placeholder="Open, Partial, or Closed Back (ex. Closed Back)"
+                            defaultValue={this.state.back} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="cabinetSlantedStraight" className="cabinetSlantedStraight">Slanted or Straight:</label>
+                        <input type="text" required="true"
+                            className="form-control slantedStraight-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="slantedStraight"
                             placeholder="Slanted or Straight (ex. Slanted)"
                             defaultValue={this.state.slantedStraight} />
                     </div>

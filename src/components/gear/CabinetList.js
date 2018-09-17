@@ -38,10 +38,10 @@ export default class CabinetList extends Component {
                                         Wood Type: {cabinet.woodType}
                                     </section>
                                     <section className="card-title">
-                                        Tolex Color: {cabinet.tolexColor}
+                                        Tolex Color: {cabinet.tolex}
                                     </section>
                                     <section className="card-title">
-                                        Open, Partial, or Closed Back: {cabinet.openClosedBack}
+                                        Open, Partial, or Closed Back: {cabinet.back}
                                     </section>
                                     <section className="card-title">
                                         Slanted or Straight: {cabinet.slantedStraight}

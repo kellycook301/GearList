@@ -74,13 +74,13 @@ export default class OverdriveEdit extends Component {
                             defaultValue={this.state.style} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="overdriveDraw" className="overdriveDraw">Power Draw:</label>
+                        <label htmlFor="overdrivePowerDraw" className="overdrivePowerDraw">Power Draw:</label>
                         <input type="text" required="true"
                             className="form-control power-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="draw"
                             placeholder="Power Draw (ex. 9V or 18V)"
-                            defaultValue={this.state.powerDraw} />
+                            defaultValue={this.state.draw} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="overdriveTrueBypass" className="overdriveTrueBypass">True Bypass:</label>
