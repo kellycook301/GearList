@@ -32,6 +32,7 @@ export default class AppViews extends Component {
         electrics: [],
         basses: [],
         amplifiers: [],
+        comboAmps: [],
         overdrives: [],
         cabinets: [],
         users: []

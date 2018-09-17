@@ -6,7 +6,7 @@ export default class OverdriveEdit extends Component {
    state = {
             overdriveMake: "",
             overdriveModel: "",
-            overdriveType: "",
+            overdriveStyle: "",
             overdrivePowerDraw: "",
             overdriveTopSideLoaded: "",
             overdriveSpecialFeatures: "",
@@ -29,7 +29,7 @@ export default class OverdriveEdit extends Component {
         const newOverdrivePost = {
             make: this.state.make,
             model: this.state.model,
-            type: this.state.type,
+            style: this.state.style,
             draw: this.state.draw,
             jacks: this.state.jacks,
             features: this.state.features,

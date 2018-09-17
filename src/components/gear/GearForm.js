@@ -22,6 +22,7 @@ export default class GearForm extends Component {
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
+        this.amplifierNested = this.amplifierNested.bind(this);
         this.overdriveNested = this.overdriveNested.bind(this);
         this.cabinetNested = this.cabinetNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
@@ -59,7 +60,7 @@ export default class GearForm extends Component {
             amplifierSpecialFeatures: "",
             overdriveMake: "",
             overdriveModel: "",
-            overdriveType: "",
+            overdriveStyle: "",
             overdrivePowerDraw: "",
             overdriveTopSideLoaded: "",
             overdriveSpecialFeatures: "",
@@ -282,7 +283,7 @@ export default class GearForm extends Component {
         else if (this.state.overdriveModel === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.overdriveType === "") {
+        else if (this.state.overdriveStyle === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else if (this.state.overdrivePowerDraw === "") {
@@ -357,7 +358,7 @@ export default class GearForm extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                     <ModalBody>
-                        <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier</Button>
+                        <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier Head</Button>
                         <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -391,6 +392,43 @@ export default class GearForm extends Component {
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.amplifierNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+                        <p></p>
+                        <Button color="#616161 grey darken-2" onClick={this.comboNested}>Combo Amplifier</Button>
+                        <Modal isOpen={this.state.comboModal} toggle={this.comboNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Amplifier Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="comboForm">
+                                    <FormGroup>
+                                        <Label for="comboMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comborMake" placeholder="Make (ex. Dr. Z)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="comboModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboModel" placeholder="Model (ex. Carmen Ghia)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="comboPowerSection">Power Section:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboPowerSection" placeholder="Power Section (ex. Solid State Power Section)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="comboPreampSection">Preamp Section:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboPreampSection" placeholder="Preamp Section (ex. Tube Preamp Section)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="comboSpeakers">Speakers:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboHeadCombo" placeholder="Speakers (ex. V30s)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="comboSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboSpecialFeatures" placeholder="Special Features (ex. Fortin Modded. Smoother Mids or 'none')" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createComboPost}>Submit</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.comboNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
                         <p></p>
@@ -527,7 +565,7 @@ export default class GearForm extends Component {
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdrivePowerDraw" placeholder="Power Draw (ex. 9V or 18V)" />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="overdriveTopSideLoaded">Power Draw:</Label>
+                                        <Label for="overdriveTopSideLoaded">Side or Top-Mounted Jacks:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="overdriveTopSideLoaded" placeholder="Side or Top-Mounted Jacks (ex. Top-Mounted)" />
                                     </FormGroup>
                                     <FormGroup>

@@ -32,7 +32,7 @@ export default class OverdriveList extends Component {
                                         Model: {overdrive.model}
                                     </section>
                                     <section className="card-title">
-                                        Type: {overdrive.type}
+                                        Style: {overdrive.style}
                                     </section>
                                     <section className="card-title">
                                         Power Draw: {overdrive.draw}

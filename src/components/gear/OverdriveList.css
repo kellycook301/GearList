@@ -1,9 +1,9 @@
-.pedalTrash {
+.overdriveTrash {
     cursor: pointer;
     margin-left: 1em;
 }
 
-.pedalTrash:hover {
+.overdriveTrash:hover {
     transform: scale(1.15);
 }
 
@@ -11,15 +11,15 @@
     transform: scale(1.2)
 }
 
-.icon--pedal:hover {
+.icon--overdrive:hover {
     transform: scale(1.1);
 }
 
-.pedalEditDelete {
+.overdriveEditDelete {
     display: flex;
 }
 
-.pedalCard {
+.overdriveCard {
     float: left;
     margin: 0.5em;
 }
