@@ -16,6 +16,11 @@
     flex-direction: row;
 }
 
+.loginHeader, .loginFooter, .registerHeader, .registerFooter {
+    background-color: #4385c6;
+    color: white;
+}
+
 .signInButton, .registerButton, .passwordField, .emailField {
     width: 100%;
 }

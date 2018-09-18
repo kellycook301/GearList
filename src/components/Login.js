@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap';
 import DataManager from "../data/DataManager"
-// import acousticBackground from "./gear/images/acoustic_background.jpg"
+
 import "./Login.css"
 
 export default class Login extends Component {
@@ -58,7 +58,7 @@ export default class Login extends Component {
         return (
             <div className="signInRegister">
                 <Card className="signInCard">
-                    <CardHeader>Already Have An Account?</CardHeader>
+                    <CardHeader className="loginHeader">Already Have An Account?</CardHeader>
                     <CardBody>
                         <CardTitle>Sign In!</CardTitle>
                         <label htmlFor="inputEmail">
@@ -83,11 +83,11 @@ export default class Login extends Component {
                             Sign In
                         </button>
                     </CardBody>
-                    <CardFooter></CardFooter>
+                    <CardFooter className="loginFooter"></CardFooter>
                 </Card>
 
                 <Card className="registerCard">
-                    <CardHeader>Don't Have An Account?</CardHeader>
+                    <CardHeader className="registerHeader">Don't Have An Account?</CardHeader>
                     <CardBody>
                         <CardTitle>Register!</CardTitle>
                         <label htmlFor="inputEmail">
@@ -112,7 +112,7 @@ export default class Login extends Component {
                             Register
                         </button>
                     </CardBody>
-                    <CardFooter></CardFooter>
+                    <CardFooter className="registerFooter"></CardFooter>
                 </Card>
             </div>
         );
