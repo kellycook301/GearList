@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 // import acousticGuitar from "./images/acoustic.png"
-import "./AcousticEdit.css"
 
 export default class AcousticEdit extends Component {
 
@@ -46,7 +45,7 @@ export default class AcousticEdit extends Component {
             <React.Fragment>
                 {/* <img src={acousticGuitar} className="icon--acoustic" /> */}
                 <h3 className="edit-post">What About Your Acoustic Guitar Would You Like To Edit?</h3>
-                <form className="acousticForm">
+                <form className="acousticEditForm">
                     <div className="form-group">
                         <label htmlFor="acousticGuitarMake" className="acousticGuitarMake">Make:</label>
                         <input type="text" required="true"

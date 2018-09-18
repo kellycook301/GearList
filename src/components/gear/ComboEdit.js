@@ -45,7 +45,7 @@ export default class ComboEdit extends Component {
             <React.Fragment>
                 <img src={comboAmp} className="icon--comboAmp" />
                 <h3 className="edit-post">What About Your Combo Amplifier Would You Like To Edit?</h3>
-                <form className="comboForm">
+                <form className="comboEditForm">
                     <div className="form-group">
                         <label htmlFor="comboMake" className="comboMake">Make:</label>
                         <input type="text" required="true"

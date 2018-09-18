@@ -46,7 +46,7 @@ export default class ProcessorEdit extends Component {
             <React.Fragment>
                 <img src={effect} className="icon--processor" />
                 <h3 className="edit-post">What About Your Proceesor Pedal Would You Like To Edit?</h3>
-                <form className="processorForm">
+                <form className="processorEditForm">
                     <div className="form-group">
                         <label htmlFor="processorMake" className="processorMake">Make:</label>
                         <input type="text" required="true"

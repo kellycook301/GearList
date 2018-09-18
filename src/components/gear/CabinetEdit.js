@@ -45,7 +45,7 @@ export default class CabinetEdit extends Component {
             <React.Fragment>
                 <img src={effect} className="icon--cabinet" />
                 <h3 className="edit-post">What About Your Speaker Cabinet Would You Like To Edit?</h3>
-                <form className="cabinetForm">
+                <form className="cabinetEditForm">
                     <div className="form-group">
                         <label htmlFor="cabinetMake" className="cabinetMake">Make:</label>
                         <input type="text" required="true"

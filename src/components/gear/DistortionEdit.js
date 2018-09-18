@@ -45,7 +45,7 @@ export default class DistortionEdit extends Component {
             <React.Fragment>
                 <img src={distortionPedal} className="icon--distortion" />
                 <h3 className="edit-post">What About Your Distortion Pedal Would You Like To Edit?</h3>
-                <form className="distortionForm">
+                <form className="distortionEditForm">
                     <div className="form-group">
                         <label htmlFor="distortionMake" className="distortionMake">Make:</label>
                         <input type="text" required="true"

@@ -45,7 +45,7 @@ export default class BassEdit extends Component {
             <React.Fragment>
                 <img src={bassGuitar} className="icon--bass" />
                 <h3 className="edit-post">What About Your Bass Guitar Would You Like To Edit?</h3>
-                <form className="bassForm">
+                <form className="bassEditForm">
                     <div className="form-group">
                         <label htmlFor="bassGuitarMake" className="bassGuitarMake">Make:</label>
                         <input type="text" required="true"

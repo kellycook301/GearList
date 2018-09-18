@@ -45,7 +45,7 @@ export default class ModulationEdit extends Component {
             <React.Fragment>
                 <img src={effect} className="icon--modulation" />
                 <h3 className="edit-post">What About Your modulation Pedal Would You Like To Edit?</h3>
-                <form className="modulationForm">
+                <form className="modulationEditForm">
                     <div className="form-group">
                         <label htmlFor="modulationMake" className="modulationMake">Make:</label>
                         <input type="text" required="true"

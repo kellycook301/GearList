@@ -46,7 +46,7 @@ export default class OverdriveEdit extends Component {
             <React.Fragment>
                 <img src={effect} className="icon--overdrive" />
                 <h3 className="edit-post">What About Your Overdrive Pedal Would You Like To Edit?</h3>
-                <form className="overdriveForm">
+                <form className="overdriveEditForm">
                     <div className="form-group">
                         <label htmlFor="overdriveMake" className="overdriveMake">Make:</label>
                         <input type="text" required="true"
