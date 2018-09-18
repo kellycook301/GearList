@@ -634,45 +634,45 @@ export default class GearForm extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>
                     <ModalBody>
-                        <Button color="primary" onClick={this.ampChoiceNested}>Amplifier</Button>
+                        <Button color="primary" onClick={this.ampChoiceNested} className="ampButton">Amplifier</Button>
                         <Modal isOpen={this.state.ampChoiceModal} toggle={this.ampChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
                                 <ModalHeader>What Kind of Amplifier Would You Like to Add?</ModalHeader>
-                                <Button color="#616161 grey darken-2" onClick={this.amplifierNested}>Amplifier Head</Button>
+                                <Button color="#616161 grey darken-2" onClick={this.amplifierNested} className="ampHeadButton">Amplifier Head</Button>
                                 <p></p>
-                                <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested}>Combo Amplifier</Button>
+                                <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested} className="comboAmpButton">Combo Amplifier</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.ampChoiceNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </ModalBody>
                         </Modal>
                         <p></p>
-                        <Button color="#00e676 green accent-3" onClick={this.pedalChoiceNested}>Pedal</Button>
+                        <Button color="#00e676 green accent-3" onClick={this.pedalChoiceNested} className="pedalButton">Pedal</Button>
                         <Modal isOpen={this.state.pedalChoiceModal} toggle={this.pedalChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
                                 <ModalHeader>What Kind of Effects Pedal Would You Like to Add?</ModalHeader>
-                                <Button color="#00e676 green accent-3" onClick={this.overdriveNested}>Overdrive Pedal</Button>
+                                <Button color="#00e676 green accent-3" onClick={this.overdriveNested} className="overdriveButton">Overdrive Pedal</Button>
                                 <p></p>
-                                <Button color="#03a9f4 light-blue" onClick={this.modulationNested}>Modulation Pedal</Button>
+                                <Button color="#03a9f4 light-blue" onClick={this.modulationNested} className="modulationButton">Modulation Pedal</Button>
                                 <p></p>
-                                <Button color="#616161 grey darken-2" onClick={this.processorNested}>Processor Pedal</Button>
+                                <Button color="#616161 grey darken-2" onClick={this.processorNested} className="processorButton">Processor Pedal</Button>
                                 <p></p>
-                                <Button color="#ff5252 red accent-2" onClick={this.distortionNested}>Distortion Pedal</Button>
+                                <Button color="#ff5252 red accent-2" onClick={this.distortionNested} className="distortionButton">Distortion Pedal</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalChoiceNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </ModalBody>
                         </Modal>
                         <p></p>
-                        <Button color="#ef5350 red lighten-1" onClick={this.guitarChoiceNested}>Guitar</Button>
+                        <Button color="#ef5350 red lighten-1" onClick={this.guitarChoiceNested} className="guitarButton">Guitar</Button>
                         <Modal isOpen={this.state.guitarChoiceModal} toggle={this.guitarChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
                                 <ModalHeader>What Kind of Guitar Would You Like to Add?</ModalHeader>
-                                <Button color="#a1887f brown lighten-2" onClick={this.acousticNested}>Acoustic Guitar</Button>
+                                <Button color="#a1887f brown lighten-2" onClick={this.acousticNested} className="acousticButton">Acoustic Guitar</Button>
                                 <p></p>
-                                <Button color="#0091ea light-blue accent-4" onClick={this.bassNested}>Bass Guitar</Button>
+                                <Button color="#0091ea light-blue accent-4" onClick={this.bassNested} className="bassButton">Bass Guitar</Button>
                                 <p></p>
-                                <Button color="#ef5350 red lighten-1" onClick={this.electricNested}>Electric Guitar</Button>
+                                <Button color="#ef5350 red lighten-1" onClick={this.electricNested} className="electricButton">Electric Guitar</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.guitarChoiceNested}>Back</Button>{' '}
                                 </ModalFooter>
@@ -1043,7 +1043,7 @@ export default class GearForm extends Component {
                             </ModalFooter>
                         </Modal>
                         <p></p>
-                        <Button color="#ffa726 orange lighten-1" onClick={this.cabinetNested}>Speaker Cabinet</Button>
+                        <Button color="#ffa726 orange lighten-1" onClick={this.cabinetNested} className="cabinetButton">Speaker Cabinet</Button>
                         <Modal isOpen={this.state.cabinetModal} toggle={this.cabinetNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Speaker Cabinet Features</ModalHeader>
                             <ModalBody>

@@ -3,3 +3,7 @@
     margin: 0 auto;
     margin-top: 1em;
 }
+
+.ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton {
+    width: 100%;
+}
