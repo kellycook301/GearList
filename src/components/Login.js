@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';  
+import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
 import DataManager from "../data/DataManager"
 // import acousticBackground from "./gear/images/acoustic_background.jpg"
 import "./Login.css"
@@ -56,29 +56,66 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
-            {/* <img src={acousticBackground} className="acousticBackground" /> */}
-            <Card className="signInCard">
-              <CardHeader>Sign In</CardHeader>
-              <CardBody>
-                <CardTitle>Special Title Treatment</CardTitle>
-                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                <Button>Go somewhere</Button>
-              </CardBody>
-              <CardFooter></CardFooter>
-            </Card>
-      
-            <Card className="registerCard">
-              <CardHeader>Register</CardHeader>
-              <CardBody>
-                <CardTitle>Special Title Treatment</CardTitle>
-                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                <Button>Go somewhere</Button>
-              </CardBody>
-              <CardFooter></CardFooter>
-            </Card>
-          </div>
+            <div className="signInRegister">
+                <Card className="signInCard">
+                    <CardHeader>Already Have An Account?</CardHeader>
+                    <CardBody>
+                        <CardTitle>Sign In!</CardTitle>
+                        <label htmlFor="inputEmail">
+                            Email Address:
+                        </label>
+                        <input onChange={this.handleFieldChange} type="email"
+                            id="email"
+                            className="emailField"
+                            placeholder="Email Address"
+                            required="" autoFocus="" />
+                        <p></p>
+                        <label htmlFor="inputPassword">
+                            Password:
+                        </label>
+                        <input onChange={this.handleFieldChange} type="password"
+                            id="password"
+                            className="passwordField"
+                            placeholder="Password"
+                            required="" />
+                        <p></p>
+                        <button type="submit" onClick={this.handleLogin} className="signInButton">
+                            Sign In
+                        </button>
+                    </CardBody>
+                    <CardFooter></CardFooter>
+                </Card>
+
+                <Card className="registerCard">
+                    <CardHeader>Don't Have An Account?</CardHeader>
+                    <CardBody>
+                        <CardTitle>Register!</CardTitle>
+                        <label htmlFor="inputEmail">
+                            Email Address:
+                        </label>
+                        <input onChange={this.handleFieldChange} type="email"
+                            id="email"
+                            className="emailField"
+                            placeholder="Email Address"
+                            required="" autoFocus="" />
+                        <p></p>
+                        <label htmlFor="inputPassword">
+                            Password:
+                        </label>
+                        <input onChange={this.handleFieldChange} type="password"
+                            id="password"
+                            className="passwordField"
+                            placeholder="Password"
+                            required="" />
+                        <p></p>
+                        <button type="submit" onClick={this.constructNewUser} className="registerButton">
+                            Register
+                        </button>
+                    </CardBody>
+                    <CardFooter></CardFooter>
+                </Card>
+            </div>
         );
-      };
-    
+    };
+
 }

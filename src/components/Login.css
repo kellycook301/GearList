@@ -6,10 +6,14 @@
 }
 
 .signInCard, .registerCard {
-    width: 30%;
-    display: table;
+    width: 25%;
     margin: 0 auto;
-    margin-top: 2em;
+    margin-top: 10em;
+}
+
+.signInRegister {
+    display: flex;
+    flex-direction: row;
 }
 
 .signInButton, .registerButton, .passwordField, .emailField {
@@ -22,5 +26,7 @@
 }
 
 body {
-    background-image: url('./gear/images/acoustic_background6.jpg')
+    background-image: url('./gear/images/acoustic_background5.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
