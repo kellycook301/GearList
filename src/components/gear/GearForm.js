@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'mdbreact/dist/css/mdb.css';
+import "./GearForm.css"
 
 export default class GearForm extends Component {
 
@@ -625,8 +626,10 @@ export default class GearForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>MyGearList!</h1>
-                <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel} Add Gear</Button>
+                <h1 className="logoName">MyGearList!</h1>
+                <div className="addGearButton">
+                    <Button color="primary" className="addGear" onClick={this.toggle}>{this.props.buttonLabel}Add Gear</Button>
+                </div>
                 <p></p>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} className="modalHeader">What Would You Like To Add?</ModalHeader>

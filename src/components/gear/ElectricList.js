@@ -45,7 +45,7 @@ export default class ElectricList extends Component {
                                     <section className="card-title">
                                         Special Features: {electric.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="electricEditDelete">
                                         <Link to={`/gear/edit/electric/${electric.id}`}><FontAwesomeIcon
                                             icon="pen"

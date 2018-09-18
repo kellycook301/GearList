@@ -46,7 +46,7 @@ export default class AcousticList extends Component {
                                     <section className="card-title">
                                         Special Features: {acoustic.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="acousticEditDelete">
                                         <Link to={`/gear/edit/acoustic/${acoustic.id}`}><FontAwesomeIcon
                                             icon="pen"

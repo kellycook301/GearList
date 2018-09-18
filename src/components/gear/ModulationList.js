@@ -46,7 +46,7 @@ export default class ModulationList extends Component {
                                     <section className="card-title">
                                         Special Features: {modulation.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="modulationEditDelete">
                                         <Link to={`/gear/edit/modulation/${modulation.id}`}><FontAwesomeIcon
                                             icon="pen"

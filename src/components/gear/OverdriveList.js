@@ -46,7 +46,7 @@ export default class OverdriveList extends Component {
                                     <section className="card-title">
                                         Special Features: {overdrive.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="overdriveEditDelete">
                                         <Link to={`/gear/edit/overdrive/${overdrive.id}`}><FontAwesomeIcon
                                             icon="pen"

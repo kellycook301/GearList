@@ -46,7 +46,7 @@ export default class CabinetList extends Component {
                                     <section className="card-title">
                                         Slanted or Straight: {cabinet.slantedStraight}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="cabinetEditDelete">
                                         <Link to={`/gear/edit/cabinet/${cabinet.id}`}><FontAwesomeIcon
                                             icon="pen"

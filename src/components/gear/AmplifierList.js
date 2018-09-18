@@ -46,7 +46,7 @@ export default class AmplifierList extends Component {
                                     <section className="card-title">
                                         Special Features: {amplifier.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="ampEditDelete">
                                         <Link to={`/gear/edit/amplifier/${amplifier.id}`}><FontAwesomeIcon
                                             icon="pen"

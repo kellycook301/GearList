@@ -46,7 +46,7 @@ export default class DistortionList extends Component {
                                     <section className="card-title">
                                         Special Features: {distortion.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="distortionEditDelete">
                                         <Link to={`/gear/edit/distortion/${distortion.id}`}><FontAwesomeIcon
                                             icon="pen"

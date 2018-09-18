@@ -46,7 +46,7 @@ export default class ProcessorList extends Component {
                                     <section className="card-title">
                                         Special Features: {processor.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="processorEditDelete">
                                         <Link to={`/gear/edit/processor/${processor.id}`}><FontAwesomeIcon
                                             icon="pen"

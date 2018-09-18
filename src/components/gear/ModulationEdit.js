@@ -71,7 +71,7 @@ export default class ModulationEdit extends Component {
                             onChange={this.handleFieldChange.bind(this)}
                             id="type"
                             placeholder="Type (ex. Chorus)"
-                            defaultValue={this.state.style} />
+                            defaultValue={this.state.type} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="modulationPowerDraw" className="modulationPowerDraw">Power Draw:</label>

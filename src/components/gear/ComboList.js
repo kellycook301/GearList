@@ -46,7 +46,7 @@ export default class ComboList extends Component {
                                     <section className="card-title">
                                         Special Features: {combo.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="comboEditDelete">
                                         <Link to={`/gear/edit/combo/${combo.id}`}><FontAwesomeIcon
                                             icon="pen"

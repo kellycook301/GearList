@@ -46,7 +46,7 @@ export default class BassList extends Component {
                                     <section className="card-title">
                                         Special Features: {bass.features}
                                     </section>
-                                    <p></p>
+                                    <hr></hr>
                                     <h6 className="bassEditDelete">
                                         <Link to={`/gear/edit/bass/${bass.id}`}><FontAwesomeIcon
                                             icon="pen"
