@@ -44,7 +44,7 @@ export default class ProcessorEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={effect} className="icon--effect" />
+                <img src={effect} className="icon--processor" />
                 <h3 className="edit-post">What About Your Proceesor Pedal Would You Like To Edit?</h3>
                 <form className="processorForm">
                     <div className="form-group">

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import electricGuitar from "./images/electric_(md).png"
+import guitar from "./images/electric2.png"
 
 export default class ElectricEdit extends Component {
 
@@ -43,7 +43,7 @@ export default class ElectricEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={electricGuitar} className="icon--electric" />
+                <img src={guitar} className="icon--electric" />
                 <h3 className="edit-post">What About Your Electric Guitar Would You Like To Edit?</h3>
                 <form className="electricForm">
                     <div className="form-group">
