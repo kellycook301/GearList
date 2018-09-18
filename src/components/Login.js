@@ -1,5 +1,8 @@
 import React, { Component } from "react"
+import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';  
 import DataManager from "../data/DataManager"
+// import acousticBackground from "./gear/images/acoustic_background.jpg"
+import "./Login.css"
 
 export default class Login extends Component {
 
@@ -51,37 +54,31 @@ export default class Login extends Component {
         this.props.addUser(user, "users").then(() => this.props.history.push("/"))
     }
 
-
     render() {
         return (
-            <form onSubmit={this.handleLogin}>
-                <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label htmlFor="inputEmail">
-                    Email address:
-                </label>
-                <p></p>
-                <input onChange={this.handleFieldChange} type="email"
-                    id="email"
-                    placeholder="Email address"
-                    required="" autoFocus="" />
-                <p></p>
-                <label htmlFor="inputPassword">
-                    Password:
-                </label>
-                <p></p>
-                <input onChange={this.handleFieldChange} type="password"
-                    id="password"
-                    placeholder="Password"
-                    required="" />
-                <p></p>
-                <button type="submit" onClick={this.handleLogin}>
-                    Sign In
-                </button>
-                <p></p>
-                <button type="submit" onClick={this.constructNewUser}>
-                    Register
-                </button>
-            </form>
-        )
-    }
+            <div>
+            {/* <img src={acousticBackground} className="acousticBackground" /> */}
+            <Card className="signInCard">
+              <CardHeader>Sign In</CardHeader>
+              <CardBody>
+                <CardTitle>Special Title Treatment</CardTitle>
+                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                <Button>Go somewhere</Button>
+              </CardBody>
+              <CardFooter></CardFooter>
+            </Card>
+      
+            <Card className="registerCard">
+              <CardHeader>Register</CardHeader>
+              <CardBody>
+                <CardTitle>Special Title Treatment</CardTitle>
+                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                <Button>Go somewhere</Button>
+              </CardBody>
+              <CardFooter></CardFooter>
+            </Card>
+          </div>
+        );
+      };
+    
 }
