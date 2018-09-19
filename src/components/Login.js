@@ -90,7 +90,7 @@ export default class Login extends Component {
                 <Card className="registerCard">
                     <CardHeader className="loginHeader">Don't Have An Account?</CardHeader>
                     <CardBody>
-                        <CardTitle>Register</CardTitle>
+                        <CardTitle>Register!</CardTitle>
                         <label htmlFor="inputEmail">
                             Email Address:
                         </label>
