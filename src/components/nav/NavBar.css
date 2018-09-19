@@ -1,0 +1,15 @@
+.myGearButton, .logoutButton {
+    float: left;
+    flex-direction: row-reverse;
+}
+
+.nav-pills {
+    flex-direction: row-reverse;
+}
+
+
+.icon--capstoneLogo {
+    margin-left: auto;
+	margin-right: auto;
+	display: block;
+}

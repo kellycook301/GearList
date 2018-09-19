@@ -7,3 +7,7 @@
 .ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton {
     width: 100%;
 }
+
+.gearHome {
+    background-color: white;
+}

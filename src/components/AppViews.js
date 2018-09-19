@@ -2,6 +2,8 @@ import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import Login from './Login'
 import DataManager from '../data/DataManager'
+import Navbar from "./nav/Navbar"
+
 
 // The monstrous form component
 import GearForm from './gear/GearForm'
@@ -245,223 +247,224 @@ export default class AppViews extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="viewArea">
+                    <div className="viewArea">
 
-                    <Route path="/login" render={(props) => {
-                        return <Login {...props}
-                            addUser={this.addUser} />
-                    }} />
+                        <Route path="/login" render={(props) => {
+                            return <Login {...props}
+                                addUser={this.addUser} />
+                        }} />
 
-                    {/* GEAR ENTRIES */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <GearForm {...props}
-                                addAcoustic={this.addAcoustic}
+                        {/* GEAR ENTRIES */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <GearForm {...props}
+
+                                    addAcoustic={this.addAcoustic}
+                                    editAcousticPost={this.editAcousticPost}
+                                    acoustics={this.state.acoustics}
+
+                                    addElectric={this.addElectric}
+                                    editElectricPost={this.editElectricPost}
+                                    electrics={this.state.electrics}
+
+                                    addBass={this.addBass}
+                                    editBassPost={this.editBassPost}
+                                    basses={this.state.basses}
+
+                                    addAmplifier={this.addAmplifier}
+                                    editAmplifierPost={this.editAmplifierPost}
+                                    amplifiers={this.state.amplifiers}
+
+                                    addCombo={this.addCombo}
+                                    editComboPost={this.editComboPost}
+                                    combos={this.state.combos}
+
+                                    addOverdrive={this.addOverdrive}
+                                    editOverdrivePost={this.editOverdrivePost}
+                                    overdrives={this.state.overdrives}
+
+                                    addDistortion={this.addDistortion}
+                                    editDistortionPost={this.editDistortionPost}
+                                    distortions={this.state.distortions}
+
+                                    addModulation={this.addModulation}
+                                    editModulationPost={this.editModulationPost}
+                                    modulations={this.state.modulations}
+
+                                    addProcessor={this.addProcessor}
+                                    editProcessorPost={this.editProcessorPost}
+                                    processors={this.state.processors}
+
+                                    addCabinet={this.addCabinet}
+                                    editCabinetPost={this.editCabinetPost}
+                                    cabinets={this.state.cabinets}
+                                />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+
+                        {/* Acoustic Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <AcousticList {...props}
+                                    acoustics={this.state.acoustics}
+                                    deleteAcousticPost={this.deleteAcousticPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/acoustic/:acousticId(\d+)" render={(props) => {
+                            return <AcousticEdit {...props}
                                 editAcousticPost={this.editAcousticPost}
-                                acoustics={this.state.acoustics}
+                                acoustics={this.state.acoustics} />
+                        }} />
 
-                                addElectric={this.addElectric}
+                        {/* Electric Related  */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <ElectricList {...props}
+                                    electrics={this.state.electrics}
+                                    deleteElectricPost={this.deleteElectricPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/electric/:electricId(\d+)" render={(props) => {
+                            return <ElectricEdit {...props}
                                 editElectricPost={this.editElectricPost}
-                                electrics={this.state.electrics}
+                                electrics={this.state.electrics} />
+                        }} />
 
-                                addBass={this.addBass}
+                        {/* Bass Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <BassList {...props}
+                                    basses={this.state.basses}
+                                    deleteBassPost={this.deleteBassPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/bass/:bassId(\d+)" render={(props) => {
+                            return <BassEdit {...props}
                                 editBassPost={this.editBassPost}
-                                basses={this.state.basses}
+                                basses={this.state.basses} />
+                        }} />
 
-                                addAmplifier={this.addAmplifier}
+                        {/* Amplifier Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <AmplifierList {...props}
+                                    amplifiers={this.state.amplifiers}
+                                    deleteAmplifierPost={this.deleteAmplifierPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/amplifier/:amplifierId(\d+)" render={(props) => {
+                            return <AmplifierEdit {...props}
                                 editAmplifierPost={this.editAmplifierPost}
-                                amplifiers={this.state.amplifiers}
+                                amplifiers={this.state.amplifiers} />
+                        }} />
 
-                                addCombo={this.addCombo}
+                        {/* Combo Amp Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <ComboList {...props}
+                                    combos={this.state.combos}
+                                    deleteComboPost={this.deleteComboPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/combo/:comboId(\d+)" render={(props) => {
+                            return <ComboEdit {...props}
                                 editComboPost={this.editComboPost}
-                                combos={this.state.combos}
+                                combos={this.state.combos} />
+                        }} />
 
-                                addOverdrive={this.addOverdrive}
+                        {/* Overdrive Pedal Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <OverdriveList {...props}
+                                    overdrives={this.state.overdrives}
+                                    deleteOverdrivePost={this.deleteOverdrivePost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/overdrive/:overdriveId(\d+)" render={(props) => {
+                            return <OverdriveEdit {...props}
                                 editOverdrivePost={this.editOverdrivePost}
-                                overdrives={this.state.overdrives}
+                                overdrives={this.state.overdrives} />
+                        }} />
 
-                                addDistortion={this.addDistortion}
+                        {/* Distortion Pedal Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <DistortionList {...props}
+                                    distortions={this.state.distortions}
+                                    deleteDistortionPost={this.deleteDistortionPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/distortion/:distortionId(\d+)" render={(props) => {
+                            return <DistortionEdit {...props}
                                 editDistortionPost={this.editDistortionPost}
-                                distortions={this.state.distortions}
+                                distortions={this.state.distortions} />
+                        }} />
 
-                                addModulation={this.addModulation}
+                        {/* Modulation Pedal Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <ModulationList {...props}
+                                    modulations={this.state.modulations}
+                                    deleteModulationPost={this.deleteModulationPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/modulation/:modulationId(\d+)" render={(props) => {
+                            return <ModulationEdit {...props}
                                 editModulationPost={this.editModulationPost}
-                                modulations={this.state.modulations}
+                                modulations={this.state.modulations} />
+                        }} />
 
-                                addProcessor={this.addProcessor}
+                        {/* Processor Pedal Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <ProcessorList {...props}
+                                    processors={this.state.processors}
+                                    deleteProcessorPost={this.deleteProcessorPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/processor/:processorId(\d+)" render={(props) => {
+                            return <ProcessorEdit {...props}
                                 editProcessorPost={this.editProcessorPost}
-                                processors={this.state.processors}
+                                processors={this.state.processors} />
+                        }} />
 
-                                addCabinet={this.addCabinet}
+                        {/* Cabinet Related */}
+                        <Route exact path="/gear" render={(props) => {
+                            if (this.isAuthenticated()) {
+                                return <CabinetList {...props}
+                                    cabinets={this.state.cabinets}
+                                    deleteCabinetPost={this.deleteCabinetPost} />
+                            } else {
+                                return <Redirect to="/login" />
+                            }
+                        }} />
+                        <Route path="/gear/edit/cabinet/:cabinetId(\d+)" render={(props) => {
+                            return <CabinetEdit {...props}
                                 editCabinetPost={this.editCabinetPost}
-                                cabinets={this.state.cabinets}
-                            />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
+                                cabinets={this.state.cabinets} />
+                        }} />
 
-                    {/* Acoustic Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <AcousticList {...props}
-                                acoustics={this.state.acoustics}
-                                deleteAcousticPost={this.deleteAcousticPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/acoustic/:acousticId(\d+)" render={(props) => {
-                        return <AcousticEdit {...props}
-                            editAcousticPost={this.editAcousticPost}
-                            acoustics={this.state.acoustics} />
-                    }} />
-
-                    {/* Electric Related  */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <ElectricList {...props}
-                                electrics={this.state.electrics}
-                                deleteElectricPost={this.deleteElectricPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/electric/:electricId(\d+)" render={(props) => {
-                        return <ElectricEdit {...props}
-                            editElectricPost={this.editElectricPost}
-                            electrics={this.state.electrics} />
-                    }} />
-
-                    {/* Bass Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <BassList {...props}
-                                basses={this.state.basses}
-                                deleteBassPost={this.deleteBassPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/bass/:bassId(\d+)" render={(props) => {
-                        return <BassEdit {...props}
-                            editBassPost={this.editBassPost}
-                            basses={this.state.basses} />
-                    }} />
-
-                    {/* Amplifier Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <AmplifierList {...props}
-                                amplifiers={this.state.amplifiers}
-                                deleteAmplifierPost={this.deleteAmplifierPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/amplifier/:amplifierId(\d+)" render={(props) => {
-                        return <AmplifierEdit {...props}
-                            editAmplifierPost={this.editAmplifierPost}
-                            amplifiers={this.state.amplifiers} />
-                    }} />
-
-                    {/* Combo Amp Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <ComboList {...props}
-                                combos={this.state.combos}
-                                deleteComboPost={this.deleteComboPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/combo/:comboId(\d+)" render={(props) => {
-                        return <ComboEdit {...props}
-                            editComboPost={this.editComboPost}
-                            combos={this.state.combos} />
-                    }} />
-
-                    {/* Overdrive Pedal Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <OverdriveList {...props}
-                                overdrives={this.state.overdrives}
-                                deleteOverdrivePost={this.deleteOverdrivePost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/overdrive/:overdriveId(\d+)" render={(props) => {
-                        return <OverdriveEdit {...props}
-                            editOverdrivePost={this.editOverdrivePost}
-                            overdrives={this.state.overdrives} />
-                    }} />
-
-                    {/* Distortion Pedal Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <DistortionList {...props}
-                                distortions={this.state.distortions}
-                                deleteDistortionPost={this.deleteDistortionPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/distortion/:distortionId(\d+)" render={(props) => {
-                        return <DistortionEdit {...props}
-                            editDistortionPost={this.editDistortionPost}
-                            distortions={this.state.distortions} />
-                    }} />
-
-                    {/* Modulation Pedal Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <ModulationList {...props}
-                                modulations={this.state.modulations}
-                                deleteModulationPost={this.deleteModulationPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/modulation/:modulationId(\d+)" render={(props) => {
-                        return <ModulationEdit {...props}
-                            editModulationPost={this.editModulationPost}
-                            modulations={this.state.modulations} />
-                    }} />
-
-                    {/* Processor Pedal Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <ProcessorList {...props}
-                                processors={this.state.processors}
-                                deleteProcessorPost={this.deleteProcessorPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/processor/:processorId(\d+)" render={(props) => {
-                        return <ProcessorEdit {...props}
-                            editProcessorPost={this.editProcessorPost}
-                            processors={this.state.processors} />
-                    }} />
-
-                    {/* Cabinet Related */}
-                    <Route exact path="/gear" render={(props) => {
-                        if (this.isAuthenticated()) {
-                            return <CabinetList {...props}
-                                cabinets={this.state.cabinets}
-                                deleteCabinetPost={this.deleteCabinetPost} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
-                    <Route path="/gear/edit/cabinet/:cabinetId(\d+)" render={(props) => {
-                        return <CabinetEdit {...props}
-                            editCabinetPost={this.editCabinetPost}
-                            cabinets={this.state.cabinets} />
-                    }} />
-
-                </div>
+                    </div>
             </React.Fragment>
         )
     }

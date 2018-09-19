@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Navbar from "./nav/Navbar"
+import Footer from "./Footer.js"
 import AppViews from "./AppViews"
 
 
@@ -13,6 +14,7 @@ class MyGearList extends Component {
             <React.Fragment>
                 <Navbar />
                 <AppViews />
+                <Footer />
             </React.Fragment>
         )
     }

@@ -492,6 +492,7 @@ export default class GearForm extends Component {
                 bypass: this.state.distortionTrueBypass,
                 jacks: this.state.distortionTopSideLoaded,
                 features: this.state.distortionSpecialFeatures,
+                // userId: this.state.userId,
             }
             this.props.addDistortion(distortion, "distortions").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")

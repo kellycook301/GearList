@@ -1,11 +1,13 @@
 import React, { Component } from "react"
 import { Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap';
-import DataManager from "../data/DataManager"
+import { Col, Container, Row, Footer } from 'mdbreact';
 
-import "./Login.css"
+import DataManager from "../data/DataManager"
+import './Login.css'
 
 export default class Login extends Component {
 
+    
     // Set initial state
     state = {
         email: "",
@@ -51,7 +53,8 @@ export default class Login extends Component {
             password: this.state.password,
         }
 
-        this.props.addUser(user, "users").then(() => this.props.history.push("/"))
+        alert("Thank you for registering! You will now be directed to the homepage!")
+        this.props.addUser(user, "users").then(() => this.props.history.push("/gear"))
     }
 
     render() {
@@ -83,13 +86,11 @@ export default class Login extends Component {
                             Sign In
                         </button>
                     </CardBody>
-                    <CardFooter className="loginFooter"></CardFooter>
                 </Card>
-
                 <Card className="registerCard">
-                    <CardHeader className="registerHeader">Don't Have An Account?</CardHeader>
+                    <CardHeader className="loginHeader">Don't Have An Account?</CardHeader>
                     <CardBody>
-                        <CardTitle>Register!</CardTitle>
+                        <CardTitle>Register</CardTitle>
                         <label htmlFor="inputEmail">
                             Email Address:
                         </label>
@@ -112,9 +113,10 @@ export default class Login extends Component {
                             Register
                         </button>
                     </CardBody>
-                    <CardFooter className="registerFooter"></CardFooter>
                 </Card>
+                
             </div>
+            
         );
     };
 
