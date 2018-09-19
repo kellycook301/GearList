@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import amp from "./images/amplifier_(md).png"
+import './AmplifierEdit.css'
 
 export default class AmplifierEdit extends Component {
 
@@ -43,7 +44,7 @@ export default class AmplifierEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={amp} className="icon--amp" />
+                <img src={amp} className="icon--ampEdit" />
                 <h3 className="edit-post">What About Your Amplifier Would You Like To Edit?</h3>
                 <form className="amplifierEditForm">
                     <div className="form-group">

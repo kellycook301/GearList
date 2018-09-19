@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import distortionPedal from "./images/distortion_(md).png"
+import distortionPedal from "./images/distortion_(lg).png"
+import './DistortionEdit.css'
 
 export default class DistortionEdit extends Component {
 
@@ -43,7 +44,7 @@ export default class DistortionEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={distortionPedal} className="icon--distortion" />
+                <img src={distortionPedal} className="icon--distortionEdit" />
                 <h3 className="edit-post">What About Your Distortion Pedal Would You Like To Edit?</h3>
                 <form className="distortionEditForm">
                     <div className="form-group">

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import effect from "./images/processor_(lg).png"
-import "./ProcessorList.css"
+import "./ProcessorEdit.css"
 
 export default class ProcessorEdit extends Component {
 
@@ -44,7 +44,7 @@ export default class ProcessorEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={effect} className="icon--processor" />
+                <img src={effect} className="icon--processorEdit" />
                 <h3 className="edit-post">What About Your Proceesor Pedal Would You Like To Edit?</h3>
                 <form className="processorEditForm">
                     <div className="form-group">

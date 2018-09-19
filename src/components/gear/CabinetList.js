@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import cab from "./images/cabinet.png"
+import cab from "./images/cabinet_(md).png"
 import "./CabinetList.css"
 
 library.add(faTrash)

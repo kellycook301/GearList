@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import effect from "./images/modulation_(lg).png"
+import './ModulationEdit.css'
 
 export default class ModulationEdit extends Component {
 
@@ -43,7 +44,7 @@ export default class ModulationEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={effect} className="icon--modulation" />
+                <img src={effect} className="icon--modulationEdit" />
                 <h3 className="edit-post">What About Your modulation Pedal Would You Like To Edit?</h3>
                 <form className="modulationEditForm">
                     <div className="form-group">

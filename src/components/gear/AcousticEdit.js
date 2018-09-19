@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-// import acousticGuitar from "./images/acoustic.png"
+import acousticGuitar from "./images/acoustic_(md).png"
+import './AcousticEdit.css'
 
 export default class AcousticEdit extends Component {
 
@@ -43,7 +44,7 @@ export default class AcousticEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                {/* <img src={acousticGuitar} className="icon--acoustic" /> */}
+                <img src={acousticGuitar} className="icon--acousticEdit" />
                 <h3 className="edit-post">What About Your Acoustic Guitar Would You Like To Edit?</h3>
                 <form className="acousticEditForm">
                     <div className="form-group">
@@ -84,7 +85,7 @@ export default class AcousticEdit extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="acousticGuitarTop" className="acousticGuitarTop">Top:</label>
-                        <input type="text" required="true"
+                        <input type="text" required="true" 
                             className="form-control top-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="top"
@@ -96,7 +97,7 @@ export default class AcousticEdit extends Component {
                         <input type="text" required="true"
                             className="form-control back-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="back"
+                            id="backSides"
                             placeholder="Back and Sides (ex. Indian Rosewood)"
                             defaultValue={this.state.backSides} />
                     </div>

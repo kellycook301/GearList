@@ -638,40 +638,32 @@ export default class GearForm extends Component {
                         <Modal isOpen={this.state.ampChoiceModal} toggle={this.ampChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
                                 <ModalHeader>What Kind of Amplifier Would You Like to Add?</ModalHeader>
-                                <Button color="#616161 grey darken-2" onClick={this.amplifierNested} className="ampHeadButton">Amplifier Head</Button>
-                                <p></p>
+                                <Button color="#616161 grey darken-2" onClick={this.amplifierNested} className="ampHeadButton" >Amplifier Head</Button>
                                 <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested} className="comboAmpButton">Combo Amplifier</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.ampChoiceNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </ModalBody>
                         </Modal>
-                        <p></p>
                         <Button color="#00e676 green accent-3" onClick={this.pedalChoiceNested} className="pedalButton">Pedal</Button>
                         <Modal isOpen={this.state.pedalChoiceModal} toggle={this.pedalChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
                                 <ModalHeader>What Kind of Effects Pedal Would You Like to Add?</ModalHeader>
                                 <Button color="#00e676 green accent-3" onClick={this.overdriveNested} className="overdriveButton">Overdrive Pedal</Button>
-                                <p></p>
                                 <Button color="#03a9f4 light-blue" onClick={this.modulationNested} className="modulationButton">Modulation Pedal</Button>
-                                <p></p>
                                 <Button color="#616161 grey darken-2" onClick={this.processorNested} className="processorButton">Processor Pedal</Button>
-                                <p></p>
                                 <Button color="#ff5252 red accent-2" onClick={this.distortionNested} className="distortionButton">Distortion Pedal</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalChoiceNested}>Back</Button>{' '}
                                 </ModalFooter>
                             </ModalBody>
                         </Modal>
-                        <p></p>
                         <Button color="#ef5350 red lighten-1" onClick={this.guitarChoiceNested} className="guitarButton">Guitar</Button>
                         <Modal isOpen={this.state.guitarChoiceModal} toggle={this.guitarChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
                                 <ModalHeader>What Kind of Guitar Would You Like to Add?</ModalHeader>
                                 <Button color="#a1887f brown lighten-2" onClick={this.acousticNested} className="acousticButton">Acoustic Guitar</Button>
-                                <p></p>
                                 <Button color="#0091ea light-blue accent-4" onClick={this.bassNested} className="bassButton">Bass Guitar</Button>
-                                <p></p>
                                 <Button color="#ef5350 red lighten-1" onClick={this.electricNested} className="electricButton">Electric Guitar</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.guitarChoiceNested}>Back</Button>{' '}
@@ -714,7 +706,7 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createAmplifierPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createAmplifierPost}>Add Amplifier Head</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.amplifierNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
@@ -754,7 +746,7 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createComboPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createComboPost}>Add Combo Amp</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.comboNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
@@ -794,11 +786,10 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createAcousticPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createAcousticPost}>Add Acoustic Guitar</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.acousticNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
 
                         <Modal isOpen={this.state.electricModal} toggle={this.electricNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Electric Guitar Features</ModalHeader>
@@ -835,11 +826,10 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createElectricPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createElectricPost}>Add Electric Guitar</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.electricNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
 
                         <Modal isOpen={this.state.bassModal} toggle={this.bassNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Bass Guitar Features</ModalHeader>
@@ -876,11 +866,10 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createBassPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createBassPost}>Add Bass Guitar</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.bassNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
 
                         <Modal isOpen={this.state.overdriveModal} toggle={this.overdriveNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Effect Pedal Features</ModalHeader>
@@ -917,11 +906,10 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createOverdrivePost}>Submit</Button>
+                                <Button color="primary" onClick={this.createOverdrivePost}>Add Overdrive Pedal</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.overdriveNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
 
                         <Modal isOpen={this.state.distortionModal} toggle={this.distortionNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Distortion Pedal Features</ModalHeader>
@@ -958,7 +946,7 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createDistortionPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createDistortionPost}>Add Distortion Pedal</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.distortionNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
@@ -998,7 +986,7 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createModulationPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createModulationPost}>Add Modulation Pedal</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.modulationNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
@@ -1038,11 +1026,11 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createProcessorPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createProcessorPost}>Add Processor Pedal</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.processorNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
-                        <p></p>
+
                         <Button color="#ffa726 orange lighten-1" onClick={this.cabinetNested} className="cabinetButton">Speaker Cabinet</Button>
                         <Modal isOpen={this.state.cabinetModal} toggle={this.cabinetNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Speaker Cabinet Features</ModalHeader>
@@ -1079,7 +1067,7 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createCabinetPost}>Submit</Button>
+                                <Button color="primary" onClick={this.createCabinetPost}>Add Speaker Cabinet</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.cabinetNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>

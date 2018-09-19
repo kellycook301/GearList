@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import comboAmp from "./images/combo_(lg).png"
+import './ComboEdit.css'
 
 export default class ComboEdit extends Component {
 
@@ -43,7 +44,7 @@ export default class ComboEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={comboAmp} className="icon--comboAmp" />
+                <img src={comboAmp} className="icon--comboAmpEdit" />
                 <h3 className="edit-post">What About Your Combo Amplifier Would You Like To Edit?</h3>
                 <form className="comboEditForm">
                     <div className="form-group">

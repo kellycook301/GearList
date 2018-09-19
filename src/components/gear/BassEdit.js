@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import bassGuitar from "./images/bass_(md).png"
+import bassGuitar from "./images/bass_(lg).png"
+import './BassEdit.css'
 
 export default class BassEdit extends Component {
 
@@ -43,7 +44,7 @@ export default class BassEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={bassGuitar} className="icon--bass" />
+                <img src={bassGuitar} className="icon--bassEdit" />
                 <h3 className="edit-post">What About Your Bass Guitar Would You Like To Edit?</h3>
                 <form className="bassEditForm">
                     <div className="form-group">

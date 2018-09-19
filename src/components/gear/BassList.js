@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import bassGuitar from "./images/bass.png"
+import bassGuitar from "./images/bass_(md).png"
 import "./BassList.css"
 
 library.add(faTrash)

@@ -12,13 +12,13 @@ body {
 }
 
 .addGearButton {
-    display: table;
+    display: flex;
     margin: 0 auto;
-    float: right;
 }
 
 .ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton {
     width: 100%;
+    padding-bottom: 1.3em;
 }
 
 .gearHome {

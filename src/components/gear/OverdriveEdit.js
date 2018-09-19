@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import effect from "./images/overdrive_(lg).png"
+import './OverdriveEdit.css'
 
 
 export default class OverdriveEdit extends Component {
@@ -44,7 +45,7 @@ export default class OverdriveEdit extends Component {
     render() {
         return (
             <React.Fragment>
-                <img src={effect} className="icon--overdrive" />
+                <img src={effect} className="icon--overdriveEdit" />
                 <h3 className="edit-post">What About Your Overdrive Pedal Would You Like To Edit?</h3>
                 <form className="overdriveEditForm">
                     <div className="form-group">
