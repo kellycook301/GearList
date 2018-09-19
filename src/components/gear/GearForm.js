@@ -3,8 +3,26 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, La
 import 'mdbreact/dist/css/mdb.css';
 import "./GearForm.css"
 
+// I wanted to use reactstrap because I really wanted to incorporate multiple modals into 
+// my capstone. 
+// I also wanted to use more than the 8 colors that come stock with bootstrap, so I
+// npm installed MDB React, which allows for MAAAAANY more color options.
+
+// Below is my ungodly gear form. I wanted to use multiple modals because I really enjoy its
+// functionality. You will click on "add gear." This will load a modal asking for what kind of
+// gear you want to add. A secondary modal will not populate when selecting "Speaker Cabinet" because
+// there is only really one kind of speaker cabinet. However, clicking on amplifier, guitar, or pedal
+// will populate a secondary modal. After selecting a more specific entry you will be prompted to
+// fill out a form. You will notice that the form will focus on the first input field.
+// After filling out the form you will be able to add that item to your gear list. You
+// may also close out of the modal whenever you wish. This is toggle that modal off. There
+// are multiple nested modals with specific names. They will close as well when you choose to
+// close out of one or add an item to your gear list. It took me a hot second to figure that out,
+// but was veeeeeeery simple upon figuring it out. That was a personal discovery. That's all for the form! 
+
 export default class GearForm extends Component {
 
+    userId = JSON.parse(sessionStorage.getItem("credentials")).id;
     // set intial state
     state = {}
 
@@ -247,6 +265,7 @@ export default class GearForm extends Component {
                 backSides: this.state.acousticGuitarBackSides,
                 top: this.state.acousticGuitarTop,
                 features: this.state.acousticGuitarSpecialFeatures,
+                userId: this.state.userId,
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
@@ -289,6 +308,7 @@ export default class GearForm extends Component {
                 body: this.state.electricGuitarBodyWood,
                 neck: this.state.electricGuitarNeck,
                 features: this.state.electricGuitarSpecialFeatures,
+                userId: this.state.userId,
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
@@ -331,6 +351,7 @@ export default class GearForm extends Component {
                 body: this.state.bassGuitarBodyWood,
                 neck: this.state.bassGuitarNeck,
                 features: this.state.bassGuitarSpecialFeatures,
+                userId: this.state.userId,
             }
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -372,6 +393,7 @@ export default class GearForm extends Component {
                 wattage: this.state.amplifierWattage,
                 matching: this.state.amplifierMatching,
                 features: this.state.amplifierSpecialFeatures,
+                userId: this.state.userId,
             }
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -410,6 +432,7 @@ export default class GearForm extends Component {
                 wattage: this.state.comboWattage,
                 speakers: this.state.comboSpeakers,
                 features: this.state.comboSpecialFeatures,
+                userId: this.state.userId,
             }
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -451,6 +474,7 @@ export default class GearForm extends Component {
                 bypass: this.state.overdriveTrueBypass,
                 jacks: this.state.overdriveTopSideLoaded,
                 features: this.state.overdriveSpecialFeatures,
+                userId: this.state.userId,
             }
             this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -492,7 +516,7 @@ export default class GearForm extends Component {
                 bypass: this.state.distortionTrueBypass,
                 jacks: this.state.distortionTopSideLoaded,
                 features: this.state.distortionSpecialFeatures,
-                // userId: this.state.userId,
+                userId: this.state.userId,
             }
             this.props.addDistortion(distortion, "distortions").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -534,6 +558,7 @@ export default class GearForm extends Component {
                 bypass: this.state.modulationTrueBypass,
                 jacks: this.state.modulationTopSideLoaded,
                 features: this.state.modulationSpecialFeatures,
+                userId: this.state.userId,
             }
             this.props.addModulation(modulation, "modulations").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -575,6 +600,7 @@ export default class GearForm extends Component {
                 bypass: this.state.processorMIDI,
                 jacks: this.state.processorPowerAmp,
                 features: this.state.processorSpecialFeatures,
+                userId: this.state.userId,
             }
             this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -615,7 +641,8 @@ export default class GearForm extends Component {
                 woodType: this.state.cabinetWoodType,
                 tolexColor: this.state.cabinetTolexColor,
                 openClosedBack: this.state.cabinetOpenClosedBack,
-                slantedStraight: this.state.cabinetSlantedStraight
+                slantedStraight: this.state.cabinetSlantedStraight,
+                userId: this.state.userId,
             }
             this.props.addCabinet(cabinet, "cabinets").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -677,7 +704,7 @@ export default class GearForm extends Component {
                                 <Form className="amplifierForm">
                                     <FormGroup>
                                         <Label for="amplifierMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="amplifierModel">Model:</Label>
@@ -717,7 +744,7 @@ export default class GearForm extends Component {
                                 <Form className="comboForm">
                                     <FormGroup>
                                         <Label for="comboMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboMake" placeholder="Make (ex. Dr. Z)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="comboMake" placeholder="Make (ex. Dr. Z)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="comboModel">Model:</Label>

@@ -12,24 +12,25 @@ body {
 
 .signInRegister {
     display: flex;
-    margin-top: 2em;
 }
 
-.signInCard, .registerCard {
+.signInCard {
     margin: 0 auto;
 }
 
-.registerCard {
-    margin-right: 17%;
-}
-
-.loginHeader, .loginFooter, .registerHeader, .registerFooter {
+.loginHeader {
     background-color: #4385c6;
     color: white;
 }
 
-.signInButton, .registerButton, .passwordField, .emailField {
+.passwordField, .emailField {
     width: 100%;
+}
+
+.signInButton, .registerButton {
+    width: 100%;
+    margin: 0 auto;
+    
 }
 
 .formFooter {

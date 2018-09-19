@@ -1,12 +1,14 @@
 import React, { Component } from "react"
-import { Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
+import { Button, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 
 import DataManager from "../data/DataManager"
 import './Login.css'
 
+// The login was kind of a pain but I referred to some amigos here to help out!
+// Teamwork makes the dream work.
+
 export default class Login extends Component {
 
-    
     // Set initial state
     state = {
         email: "",
@@ -20,6 +22,7 @@ export default class Login extends Component {
         this.setState(stateToChange)
     }
 
+
     // Simplistic handler for login submit
     handleLogin = (e) => {
         e.preventDefault()
@@ -31,8 +34,8 @@ export default class Login extends Component {
                 let loginUser = users.find(u => u.email === this.state.email && u.password === this.state.password)
                 if (loginUser) {
                     sessionStorage.setItem("credentials", JSON.stringify(
-                            loginUser
-                        )
+                        loginUser
+                    )
                     )
                     this.props.history.push("/gear")
                 } else {
@@ -40,6 +43,7 @@ export default class Login extends Component {
                 }
             })
     }
+
 
     constructNewUser = evt => {
         evt.preventDefault()
@@ -57,7 +61,7 @@ export default class Login extends Component {
         return (
             <div className="signInRegister">
                 <Card className="signInCard">
-                    <CardHeader className="loginHeader">Already Have An Account?</CardHeader>
+                    <CardHeader className="loginHeader">Sign In Or Register</CardHeader>
                     <CardBody>
                         <CardTitle>Sign In!</CardTitle>
                         <label htmlFor="inputEmail">
@@ -76,19 +80,19 @@ export default class Login extends Component {
                             id="password"
                             className="passwordField"
                             placeholder="Password"
+                            onKeyPress={this.handleChange}
                             required="" />
                         <p></p>
-                        <button type="submit" onClick={this.handleLogin} className="signInButton">
+                        <Button color="primary" type="submit" onClick={this.handleLogin} className="signInButton">
                             Sign In
-                        </button>
-                        <p></p>
-                        <button type="submit" onClick={this.constructNewUser} className="registerButton">
+                        </Button>
+                        <Button color="primary" type="submit" onClick={this.constructNewUser} className="registerButton">
                             Register
-                        </button>
+                        </Button>
                     </CardBody>
                 </Card>
             </div>
-            
+
         );
     };
 

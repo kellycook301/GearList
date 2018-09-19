@@ -49,6 +49,8 @@ export default class AppViews extends Component {
         users: []
     }
 
+    // All of the fancy functions to add, edit, and delete. All hail CRUD.
+
     // ADDING A USER
     addUser = (user, link) => DataManager.post(user, link)
         .then(users => this.setState({
@@ -224,6 +226,8 @@ export default class AppViews extends Component {
         .then(cabinets => this.setState({
             cabinets: cabinets
         }))
+    
+    // Putting all entries on the DOM. Always a good time to see your work displayed for all to see. 
 
     componentDidMount() {
         const _state = {}
@@ -322,6 +326,7 @@ export default class AppViews extends Component {
                     <Route exact path="/gear" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <ElectricList {...props}
+                            
                                 electrics={this.state.electrics}
                                 deleteElectricPost={this.deleteElectricPost} />
                         } else {

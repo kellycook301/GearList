@@ -3,6 +3,7 @@ import Navbar from "./nav/Navbar"
 import Footer from "./Footer.js"
 import AppViews from "../AppViews"
 
+// This loads the navbar, everything in AppViews, and the Footer that I made.
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./MyGearList.css"

@@ -16,7 +16,12 @@ export default class OverdriveEdit extends Component {
             id: null
     }
 
+    // window.scrollTo forces the screen to render to the top when you click on the edit icon. Otherwise
+    // the edit screen will present itself wherever your scroll bar was on the gear page.
+    // This is a neat trick! Thanks, Google!
+    
     componentDidMount() {
+        window.scrollTo(0, 0)
         const overdrive = this.props.overdrives.find(a => a.id === parseInt(this.props.match.params.overdriveId, 0))
         this.setState(overdrive);
     }
