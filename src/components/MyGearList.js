@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Navbar from "./nav/Navbar"
 import Footer from "./Footer.js"
-import AppViews from "./AppViews"
+import AppViews from "../AppViews"
 
 
 import "bootstrap/dist/css/bootstrap.min.css"

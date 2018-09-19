@@ -42,6 +42,7 @@ export default class Login extends Component {
     }
 
     constructNewUser = evt => {
+        evt.preventDefault()
         const user = {
             email: this.state.email,
             password: this.state.password,

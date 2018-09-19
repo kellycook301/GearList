@@ -1,7 +1,20 @@
-.addGearButton, .logoName {
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 4em;
+}
+
+.addGearButton {
     display: table;
     margin: 0 auto;
-    margin-top: 1em;
+    float: right;
 }
 
 .ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton {
