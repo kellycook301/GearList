@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import { Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap';
-import { Col, Container, Row, Footer } from 'mdbreact';
+import { Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 
 import DataManager from "../data/DataManager"
 import './Login.css'
@@ -25,19 +24,15 @@ export default class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault()
 
-        let email = this.state.email;
-        let password = this.state.password;
+        // let email = this.state.email;
+        // let password = this.state.password;
         DataManager.getAll("users")
             .then(users => {
-                let loginUser = users.find(u => u.inputEmail === email && u.inputPassword === password)
+                let loginUser = users.find(u => u.email === this.state.email && u.password === this.state.password)
                 if (loginUser) {
-                    sessionStorage.setItem(
-                        "credentials",
-                        JSON.stringify({
-                            email: this.state.email,
-                            password: this.state.password,
-                            id: loginUser.id
-                        })
+                    sessionStorage.setItem("credentials", JSON.stringify(
+                            loginUser
+                        )
                     )
                     this.props.history.push("/gear")
                 } else {
@@ -47,14 +42,14 @@ export default class Login extends Component {
     }
 
     constructNewUser = evt => {
-        evt.preventDefault()
         const user = {
             email: this.state.email,
             password: this.state.password,
         }
 
         alert("Thank you for registering! You will now be directed to the homepage!")
-        this.props.addUser(user, "users").then(() => this.props.history.push("/gear"))
+        this.props.addUser(user, "users")
+        // .then(() => this.props.history.push("/login"))
     }
 
     render() {
@@ -85,36 +80,12 @@ export default class Login extends Component {
                         <button type="submit" onClick={this.handleLogin} className="signInButton">
                             Sign In
                         </button>
-                    </CardBody>
-                </Card>
-                <Card className="registerCard">
-                    <CardHeader className="loginHeader">Don't Have An Account?</CardHeader>
-                    <CardBody>
-                        <CardTitle>Register!</CardTitle>
-                        <label htmlFor="inputEmail">
-                            Email Address:
-                        </label>
-                        <input onChange={this.handleFieldChange} type="email"
-                            id="email"
-                            className="emailField"
-                            placeholder="Email Address"
-                            required="" autoFocus="" />
-                        <p></p>
-                        <label htmlFor="inputPassword">
-                            Password:
-                        </label>
-                        <input onChange={this.handleFieldChange} type="password"
-                            id="password"
-                            className="passwordField"
-                            placeholder="Password"
-                            required="" />
                         <p></p>
                         <button type="submit" onClick={this.constructNewUser} className="registerButton">
                             Register
                         </button>
                     </CardBody>
                 </Card>
-                
             </div>
             
         );

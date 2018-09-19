@@ -2,7 +2,7 @@ import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import Login from './Login'
 import DataManager from '../data/DataManager'
-import Navbar from "./nav/Navbar"
+// import Navbar from "./nav/Navbar"
 
 
 // The monstrous form component

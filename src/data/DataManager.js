@@ -3,12 +3,14 @@ const remoteURL = "http://localhost:5002"
 export default Object.create(null, {
     get: {
         value: function (id, link) {
-            return fetch(`${remoteURL}/${link}/${id}`).then(e => e.json())
+            return fetch(`${remoteURL}/${link}/${id}`)
+            .then(e => e.json())
         }
     },
     getAll: {
         value: function (link) {
-            return fetch(`${remoteURL}/${link}`).then(e => e.json())
+            return fetch(`${remoteURL}/${link}`)
+            .then(e => e.json())
         }
     },
     removeAndList: {

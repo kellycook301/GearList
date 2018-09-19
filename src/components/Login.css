@@ -12,14 +12,11 @@ body {
 
 .signInRegister {
     display: flex;
+    margin-top: 2em;
 }
 
 .signInCard, .registerCard {
     margin: 0 auto;
-}
-
-.signInCard {
-    margin-left: 17%;
 }
 
 .registerCard {
