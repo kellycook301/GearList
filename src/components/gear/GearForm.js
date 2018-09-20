@@ -43,11 +43,13 @@ export default class GearForm extends Component {
         this.ampChoiceNested = this.ampChoiceNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
         this.comboNested = this.comboNested.bind(this);
+        this.processorNested = this.processorNested.bind(this);
+        this.practiceAmpNested = this.practiceAmpNested.bind(this);
         this.pedalChoiceNested = this.pedalChoiceNested.bind(this);
         this.overdriveNested = this.overdriveNested.bind(this);
         this.distortionNested = this.distortionNested.bind(this);
         this.modulationNested = this.modulationNested.bind(this);
-        this.processorNested = this.processorNested.bind(this);
+        this.practiceAmpNested = this.practiceAmpNested.bind(this);
         this.cabinetNested = this.cabinetNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
 
@@ -121,6 +123,13 @@ export default class GearForm extends Component {
             processorMIDI: "",
             processorPowerAmp: "",
             processorSpecialFeatures: "",
+            practiceAmpMake: "",
+            practiceAmpModel: "",
+            practiceAmpStyle: "",
+            practiceAmpWattage: "",
+            practiceAmpMIDI: "",
+            practiceAmpSpeakers: "",
+            practiceAmpSpecialFeatures: "",
             cabinetMake: "",
             cabinetModel: "",
             cabinetSpeakers: "",
@@ -166,7 +175,8 @@ export default class GearForm extends Component {
 
     ampChoiceNested() {
         this.setState({
-            ampChoiceModal: !this.state.ampChoiceModal
+            ampChoiceModal: !this.state.ampChoiceModal,
+            closeAll: false
         })
     }
 
@@ -180,6 +190,13 @@ export default class GearForm extends Component {
     comboNested() {
         this.setState({
             comboModal: !this.state.comboModal,
+            closeAll: false
+        });
+    }
+
+    practiceAmpNested() {
+        this.setState({
+            practiceAmpModal: !this.state.practiceAmpModal,
             closeAll: false
         });
     }
@@ -271,6 +288,7 @@ export default class GearForm extends Component {
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.acousticNested()
+            this.guitarChoiceNested()
             this.toggle()
         }
 
@@ -417,6 +435,9 @@ export default class GearForm extends Component {
         else if (this.state.comboPreampSection === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
+        else if (this.state.comboWattage === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
         else if (this.state.comboSpeakers === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
@@ -437,6 +458,90 @@ export default class GearForm extends Component {
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.comboNested()
+            this.ampChoiceNested()
+            this.toggle()
+        }
+    }
+
+    createProcessorPost = evt => {
+        evt.preventDefault()
+        if (this.state.processorMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorStyle === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorSize === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorMIDI === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorPowerAmp === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.processorSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const processor = {
+                make: this.state.processorMake,
+                model: this.state.processorModel,
+                style: this.state.processorStyle,
+                size: this.state.processorSize,
+                bypass: this.state.processorMIDI,
+                jacks: this.state.processorPowerAmp,
+                features: this.state.processorSpecialFeatures,
+                userId: this.state.userId,
+            }
+            this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            this.processorNested()
+            this.pedalChoiceNested()
+            this.toggle()
+        }
+    }
+
+    createPracticeAmpPost = evt => {
+        evt.preventDefault()
+        if (this.state.practiceAmpMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.practiceAmpModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.practiceAmpStyle === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.practiceAmpWattage === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.practiceAmpMIDI === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.practiceAmpSpeakers === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.practiceAmpSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const practice = {
+                make: this.state.practiceAmpMake,
+                model: this.state.practiceAmpModel,
+                style: this.state.practiceAmpStyle,
+                wattage: this.state.practiceAmpWattage,
+                MIDI: this.state.practiceAmpMIDI,
+                speakers: this.state.practiceAmpSpeakers,
+                features: this.state.practiceAmpSpecialFeatures,
+                userId: this.state.userId,
+            }
+            this.props.addPracticeAmp(practice, "practices").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            this.practiceAmpNested()
             this.ampChoiceNested()
             this.toggle()
         }
@@ -568,48 +673,6 @@ export default class GearForm extends Component {
         }
     }
 
-    createProcessorPost = evt => {
-        evt.preventDefault()
-        if (this.state.processorMake === "") {
-            window.alert("Please make sure to fill out all text fields before submitting!")
-        }
-        else if (this.state.processorModel === "") {
-            window.alert("Please make sure to fill out all text fields before submitting!")
-        }
-        else if (this.state.processorStyle === "") {
-            window.alert("Please make sure to fill out all text fields before submitting!")
-        }
-        else if (this.state.processorSize === "") {
-            window.alert("Please make sure to fill out all text fields before submitting!")
-        }
-        else if (this.state.processorMIDI === "") {
-            window.alert("Please make sure to fill out all text fields before submitting!")
-        }
-        else if (this.state.processorPowerAmp === "") {
-            window.alert("Please make sure to fill out all text fields before submitting!")
-        }
-        else if (this.state.processorSpecialFeatures === "") {
-            window.alert("Please make sure to fill out all text fields before submitting!")
-        }
-        else {
-            const processor = {
-                make: this.state.processorMake,
-                model: this.state.processorModel,
-                style: this.state.processorStyle,
-                size: this.state.processorSize,
-                bypass: this.state.processorMIDI,
-                jacks: this.state.processorPowerAmp,
-                features: this.state.processorSpecialFeatures,
-                userId: this.state.userId,
-            }
-            this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
-            this.processorNested()
-            this.pedalChoiceNested()
-            this.toggle()
-        }
-    }
-
     createCabinetPost = evt => {
         evt.preventDefault()
         if (this.state.cabinetMake === "") {
@@ -667,6 +730,8 @@ export default class GearForm extends Component {
                                 <ModalHeader>What Kind of Amplifier Would You Like to Add?</ModalHeader>
                                 <Button color="#616161 grey darken-2" onClick={this.amplifierNested} className="ampHeadButton" >Amplifier Head</Button>
                                 <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested} className="comboAmpButton">Combo Amplifier</Button>
+                                <Button color="#ffcc80 orange lighten-3" onClick={this.practiceAmpNested} className="practiceAmpButton">Practice Amplifier</Button>
+                                <Button color="#616161 grey darken-2" onClick={this.processorNested} className="processorButton">Amp Modeler</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.ampChoiceNested}>Back</Button>{' '}
                                 </ModalFooter>
@@ -678,7 +743,7 @@ export default class GearForm extends Component {
                                 <ModalHeader>What Kind of Effects Pedal Would You Like to Add?</ModalHeader>
                                 <Button color="#00e676 green accent-3" onClick={this.overdriveNested} className="overdriveButton">Overdrive Pedal</Button>
                                 <Button color="#03a9f4 light-blue" onClick={this.modulationNested} className="modulationButton">Modulation Pedal</Button>
-                                <Button color="#616161 grey darken-2" onClick={this.processorNested} className="processorButton">Processor Pedal</Button>
+
                                 <Button color="#ff5252 red accent-2" onClick={this.distortionNested} className="distortionButton">Distortion Pedal</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalChoiceNested}>Back</Button>{' '}
@@ -704,7 +769,7 @@ export default class GearForm extends Component {
                                 <Form className="amplifierForm">
                                     <FormGroup>
                                         <Label for="amplifierMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="amplifierModel">Model:</Label>
@@ -784,7 +849,7 @@ export default class GearForm extends Component {
                                 <Form className="acousticForm">
                                     <FormGroup>
                                         <Label for="acousticMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticGuitarModel">Model:</Label>
@@ -1019,7 +1084,7 @@ export default class GearForm extends Component {
                         </Modal>
 
                         <Modal isOpen={this.state.processorModal} toggle={this.processorNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                            <ModalHeader>Digital Processor Pedal Features</ModalHeader>
+                            <ModalHeader>Amplifier Modeler Features</ModalHeader>
                             <ModalBody>
                                 <Form className="processorForm">
                                     <FormGroup>
@@ -1053,8 +1118,48 @@ export default class GearForm extends Component {
                                 </Form>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createProcessorPost}>Add Processor Pedal</Button>
+                                <Button color="primary" onClick={this.createProcessorPost}>Add Amp Modeler</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.processorNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+
+                        <Modal isOpen={this.state.practiceAmpModal} toggle={this.practiceAmpNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Practice Amp Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="practiceAmpForm">
+                                    <FormGroup>
+                                        <Label for="practiceAmpMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="practiceAmpMake" placeholder="Make (ex. Peavey)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="practiceAmpModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="practiceAmpModel" placeholder="Model (ex. Decade)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="practiceAmpStyle">Style:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="practiceAmpStyle" placeholder="Style (ex. Digital)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="practiceAmpWattage">Wattage:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="practiceAmpWattage" placeholder="Wattage (ex. 10 Watts)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="practiceAmpMIDI">MIDI Capable?:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="practiceAmpMIDI" placeholder="Has MIDI Capabilities (ex. Yes!)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="practiceAmpSpeakers">Speakers:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="practiceAmpSpeakers" placeholder="Speakers (ex. Peavey Black Shadow)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="practiceAmpSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="practiceAmpSpecialFeatures" placeholder="Special Features (ex. 'clipped diode' or 'none')" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createPracticeAmpPost}>Add Practice Amp</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.practiceAmpNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
 
