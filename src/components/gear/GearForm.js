@@ -49,7 +49,7 @@ export default class GearForm extends Component {
         this.overdriveNested = this.overdriveNested.bind(this);
         this.distortionNested = this.distortionNested.bind(this);
         this.modulationNested = this.modulationNested.bind(this);
-        this.practiceAmpNested = this.practiceAmpNested.bind(this);
+        this.fuzzNested = this.fuzzNested.bind(this);
         this.cabinetNested = this.cabinetNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
 
@@ -62,9 +62,11 @@ export default class GearForm extends Component {
             ampChoiceModal: false,
             ampModal: false,
             comboModal: false,
+            practiceAmpModal: false,
             pedalChoiceModal: false,
             overdriveModal: false,
             distortionModal: false,
+            fuzzModal: false,
             modulationModal: false,
             closeAll: false,
             acousticGuitarMake: "",
@@ -109,6 +111,20 @@ export default class GearForm extends Component {
             overdriveTrueBypass: "",
             overdriveTopSideLoaded: "",
             overdriveSpecialFeatures: "",
+            distortionMake: "",
+            distortionModel: "",
+            distortionStyle: "",
+            distortionPowerDraw: "",
+            distortionTrueBypass: "",
+            distortionTopSideLoaded: "",
+            distortionSpecialFeatures: "",
+            fuzzMake: "",
+            fuzzmodel: "",
+            fuzzStyle: "",
+            fuzzPowerDraw: "",
+            fuzzTrueBypass: "",
+            fuzzTopSideLoaded: "",
+            fuzzSpecialFeatures: "",
             modulationMake: "",
             modulationModel: "",
             modulationType: "",
@@ -218,6 +234,13 @@ export default class GearForm extends Component {
     distortionNested() {
         this.setState({
             distortionModal: !this.state.distortionModal,
+            closeAll: false
+        });
+    }
+
+    fuzzNested() {
+        this.setState({
+            fuzzModal: !this.state.fuzzModal,
             closeAll: false
         });
     }
@@ -673,6 +696,48 @@ export default class GearForm extends Component {
         }
     }
 
+    createFuzzPost = evt => {
+        evt.preventDefault()
+        if (this.state.fuzzMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.fuzzModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.fuzzType === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.fuzzPowerDraw === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.fuzzTrueBypass === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.fuzzTopSideLoaded === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.fuzzSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const fuzz = {
+                make: this.state.fuzzMake,
+                model: this.state.fuzzModel,
+                type: this.state.fuzzType,
+                draw: this.state.fuzzPowerDraw,
+                bypass: this.state.fuzzTrueBypass,
+                jacks: this.state.fuzzTopSideLoaded,
+                features: this.state.fuzzSpecialFeatures,
+                userId: this.state.userId,
+            }
+            this.props.addFuzz(fuzz, "fuzzes").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            this.fuzzNested()
+            this.pedalChoiceNested()
+            this.toggle()
+        }
+    }
+
     createCabinetPost = evt => {
         evt.preventDefault()
         if (this.state.cabinetMake === "") {
@@ -728,9 +793,9 @@ export default class GearForm extends Component {
                         <Modal isOpen={this.state.ampChoiceModal} toggle={this.ampChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
                                 <ModalHeader>What Kind of Amplifier Would You Like to Add?</ModalHeader>
-                                <Button color="#616161 grey darken-2" onClick={this.amplifierNested} className="ampHeadButton" >Amplifier Head</Button>
+                                <Button color="#757575 grey darken-1" onClick={this.amplifierNested} className="ampHeadButton" >Amplifier Head</Button>
                                 <Button color="#ffcc80 orange lighten-3" onClick={this.comboNested} className="comboAmpButton">Combo Amplifier</Button>
-                                <Button color="#ffcc80 orange lighten-3" onClick={this.practiceAmpNested} className="practiceAmpButton">Practice Amplifier</Button>
+                                <Button color="#e0e0e0 grey lighten-2" onClick={this.practiceAmpNested} className="practiceAmpButton">Practice Amplifier</Button>
                                 <Button color="#616161 grey darken-2" onClick={this.processorNested} className="processorButton">Amp Modeler</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.ampChoiceNested}>Back</Button>{' '}
@@ -742,8 +807,8 @@ export default class GearForm extends Component {
                             <ModalBody>
                                 <ModalHeader>What Kind of Effects Pedal Would You Like to Add?</ModalHeader>
                                 <Button color="#00e676 green accent-3" onClick={this.overdriveNested} className="overdriveButton">Overdrive Pedal</Button>
+                                <Button color="#ff7043 deep-orange lighten-1" onClick={this.fuzzNested} className="fuzzButton">Fuzz Pedal</Button>
                                 <Button color="#03a9f4 light-blue" onClick={this.modulationNested} className="modulationButton">Modulation Pedal</Button>
-
                                 <Button color="#ff5252 red accent-2" onClick={this.distortionNested} className="distortionButton">Distortion Pedal</Button>
                                 <ModalFooter>
                                     <Button color="#9575cd deep-purple lighten-2" onClick={this.pedalChoiceNested}>Back</Button>{' '}
@@ -1040,6 +1105,46 @@ export default class GearForm extends Component {
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createDistortionPost}>Add Distortion Pedal</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.distortionNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+
+                        <Modal isOpen={this.state.fuzzModal} toggle={this.fuzzNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader>Fuzz Pedal Features</ModalHeader>
+                            <ModalBody>
+                                <Form className="fuzzForm">
+                                    <FormGroup>
+                                        <Label for="fuzzMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzMake" placeholder="Make (ex. Electro Harmonix)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="fuzzModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzModel" placeholder="Model (ex. Big Muff)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="fuzzStyle">Style:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzStyle" placeholder="Style (ex. Green Russian)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="fuzzPowerDraw">Power Draw:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzPowerDraw" placeholder="Power Draw (ex. 9V or 18V)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="fuzzTrueBypass">True Bypass:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzTrueBypass" placeholder="True Bypass (ex. Yes!)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="fuzzTopSideLoaded">Side or Top-Mounted Jacks:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzTopSideLoaded" placeholder="Side or Top-Mounted Jacks (ex. Top-Mounted)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="fuzzSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzSpecialFeatures" placeholder="Special Features (ex. 'Analogman Modded' Mod or 'none')" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createFuzzPost}>Add Fuzz Pedal</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.fuzzNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
 

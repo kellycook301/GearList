@@ -15,7 +15,7 @@ export default class DistortionList extends Component {
     render() {
         return (
             <React.Fragment>
-                <section className="overdriveEntries">
+                <section className="distortionEntries">
                     {
                         this.props.distortions.map(distortion =>
 

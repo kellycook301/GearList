@@ -18,7 +18,7 @@ body {
     margin-bottom: -1em;
 }
 
-.ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton {
+.ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton, .practiceAmpButton, .fuzzButton {
     width: 100%;
     padding-bottom: 1.3em;
 }

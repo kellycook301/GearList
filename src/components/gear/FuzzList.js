@@ -4,55 +4,55 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import amp from "./images/amplifier.png"
-import "./AmplifierList.css"
+import fuzzPedal from "./images/fuzz_(md).png"
+import "./FuzzList.css"
 
 library.add(faTrash)
 library.add(faPen)
 
 
-export default class AmplifierList extends Component {
+export default class FuzzList extends Component {
     render() {
         return (
             <React.Fragment>
-                <section className="amplifierEntries">
+                <section className="fuzzEntries">
                     {
-                        this.props.amplifiers.map(amplifier =>
+                        this.props.fuzzes.map(fuzz =>
 
-                            <div key={amplifier.id} className="card ampCard" style={{width: 400}}>
-                                <div className="card-header bg-#757575 grey darken-1">
-                                    <img src={amp} className="icon--amp" />
-                                    <h3>My {amplifier.make} {amplifier.model}</h3>
+                            <div key={fuzz.id} className="card fuzzCard" style={{width: 400}}>
+                                <div className="card-header bg-#ff7043 deep-orange lighten-1">
+                                    <img src={fuzzPedal} className="icon--fuzz" />
+                                    <h3>My {fuzz.make} {fuzz.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make: {amplifier.make}
+                                        Make: {fuzz.make}
                                     </section>
                                     <section className="card-title">
-                                        Model: {amplifier.model}
+                                        Model: {fuzz.model}
                                     </section>
                                     <section className="card-title">
-                                        Power Section: {amplifier.powerSection}
+                                        Style: {fuzz.style}
                                     </section>
                                     <section className="card-title">
-                                        Preamp Section: {amplifier.preampSection}
+                                        Power Draw: {fuzz.draw}
                                     </section>
                                     <section className="card-title">
-                                        Amplifier Wattage: {amplifier.wattage}
+                                        True Bypass: {fuzz.bypass}
                                     </section>
                                     <section className="card-title">
-                                    Matching Cabinet for Amplifier?: {amplifier.matching}
+                                        Side or Top-Mounted Jacks: {fuzz.jacks}
                                     </section>
                                     <section className="card-title">
-                                        Special Features: {amplifier.features}
+                                        Special Features: {fuzz.features}
                                     </section>
                                     <hr></hr>
-                                    <h6 className="ampEditDelete">
-                                        <Link to={`/gear/edit/amplifier/${amplifier.id}`}><FontAwesomeIcon
+                                    <h6 className="fuzzEditDelete">
+                                        <Link to={`/gear/edit/fuzz/${fuzz.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="ampTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteAmplifierPost(amplifier.id, "amplifiers") }; window.location.reload(); }} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="fuzzTrash" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) { this.props.deleteFuzzPost(fuzz.id, "fuzzes") }; window.location.reload(); }} />
                                     </h6>
                                 </div>
                             </div>
@@ -64,3 +64,4 @@ export default class AmplifierList extends Component {
         )
     }
 }
+

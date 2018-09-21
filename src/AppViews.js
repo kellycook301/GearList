@@ -16,6 +16,7 @@ import PracticeAmpList from './components/gear/PracticeAmpList'
 import ComboList from './components/gear/ComboList'
 import OverdriveList from './components/gear/OverdriveList'
 import DistortionList from './components/gear/DistortionList'
+import FuzzList from './components/gear/FuzzList'
 import ModulationList from './components/gear/ModulationList'
 import CabinetList from './components/gear/CabinetList'
 
@@ -29,6 +30,7 @@ import ProcessorEdit from './components/gear/ProcessorEdit'
 import PracticeAmpEdit from './components/gear/PracticeAmpEdit'
 import OverdriveEdit from './components/gear/OverdriveEdit'
 import DistortionEdit from './components/gear/DistortionEdit'
+import FuzzEdit from './components/gear/FuzzEdit'
 import ModulationEdit from './components/gear/ModulationEdit'
 import CabinetEdit from './components/gear/CabinetEdit'
 
@@ -47,6 +49,7 @@ export default class AppViews extends Component {
         practices: [],
         overdrives: [],
         distortions: [],
+        fuzzes: [],
         modulations: [],
         cabinets: [],
         users: []
@@ -213,6 +216,23 @@ export default class AppViews extends Component {
             distortions: distortions
         }))
 
+    // FUZZ RELATED POSTS
+    addFuzz = (fuzz, link) => DataManager.post(fuzz, link)
+        .then(() => DataManager.getAll("fuzzes"))
+        .then(fuzzes => this.setState({
+            fuzzes: fuzzes
+        }))
+    editFuzzPost = (fuzz, id, link) => DataManager.put(fuzz, id, link)
+        .then(() => DataManager.getAll("fuzzes"))
+        .then(fuzzes => this.setState({
+            fuzzes: fuzzes
+        }))
+    deleteFuzzPost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("fuzzes"))
+        .then(fuzzes => this.setState({
+            fuzzes: fuzzes
+        }))
+
     // MODULATION RELATED POSTS
     addModulation = (modulation, link) => DataManager.post(modulation, link)
         .then(() => DataManager.getAll("modulations"))
@@ -229,7 +249,6 @@ export default class AppViews extends Component {
         .then(modulations => this.setState({
             modulations: modulations
         }))
-
 
     // CABINET RELATED POSTS
     addCabinet = (cabinet, link) => DataManager.post(cabinet, link)
@@ -261,6 +280,7 @@ export default class AppViews extends Component {
             .then(() => DataManager.getAll("practices").then(practices => _state.practices = practices))
             .then(() => DataManager.getAll("overdrives").then(overdrives => _state.overdrives = overdrives))
             .then(() => DataManager.getAll("distortions").then(distortions => _state.distortions = distortions))
+            .then(() => DataManager.getAll("fuzzes").then(fuzzes => _state.fuzzes = fuzzes))
             .then(() => DataManager.getAll("modulations").then(modulations => _state.modulations = modulations))
             .then(() => DataManager.getAll("cabinets").then(cabinets => _state.cabinets = cabinets))
             .then(() => DataManager.getAll("users").then(users => _state.users = users))
@@ -318,6 +338,10 @@ export default class AppViews extends Component {
                                 addDistortion={this.addDistortion}
                                 editDistortionPost={this.editDistortionPost}
                                 distortions={this.state.distortions}
+
+                                addFuzz={this.addFuzz}
+                                editFuzzPost={this.editFuzzPost}
+                                fuzzes={this.state.fuzzes}
 
                                 addModulation={this.addModulation}
                                 editModulationPost={this.editModulationPost}
@@ -475,6 +499,22 @@ export default class AppViews extends Component {
                         return <DistortionEdit {...props}
                             editDistortionPost={this.editDistortionPost}
                             distortions={this.state.distortions} />
+                    }} />
+
+                    {/* Fuzz Pedal Related */}
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <FuzzList {...props}
+                                fuzzes={this.state.fuzzes}
+                                deleteFuzzPost={this.deleteFuzzPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route path="/gear/edit/fuzz/:fuzzId(\d+)" render={(props) => {
+                        return <FuzzEdit {...props}
+                            editFuzzPost={this.editFuzzPost}
+                            fuzzes={this.state.fuzzes} />
                     }} />
 
                     {/* Modulation Pedal Related */}
