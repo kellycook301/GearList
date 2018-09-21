@@ -1,0 +1,30 @@
+.acousticBassTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.acousticBassTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--acousticBass:hover {
+    transform: scale(1.1);
+}
+
+.acousticBassEditDelete {
+    display: flex;
+}
+
+.acousticBassCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.acousticBassEditForm {
+    width: 60%;
+}

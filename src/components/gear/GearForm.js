@@ -40,6 +40,7 @@ export default class GearForm extends Component {
         this.acousticNested = this.acousticNested.bind(this);
         this.electricNested = this.electricNested.bind(this);
         this.bassNested = this.bassNested.bind(this);
+        this.acousticBassNested = this.acousticBassNested.bind(this);
         this.ampChoiceNested = this.ampChoiceNested.bind(this);
         this.amplifierNested = this.amplifierNested.bind(this);
         this.comboNested = this.comboNested.bind(this);
@@ -59,6 +60,7 @@ export default class GearForm extends Component {
             acousticModal: false,
             electricModal: false,
             bassModal: false,
+            acousticBassModal: false,
             ampChoiceModal: false,
             ampModal: false,
             comboModal: false,
@@ -76,6 +78,13 @@ export default class GearForm extends Component {
             acousticGuitarBackSides: "",
             acousticGuitarTop: "",
             acousticGuitarSpecialFeatures: "",
+            acousticBassGuitarMake: "",
+            acousticBassGuitarModel: "",
+            acousticBassGuitarStrings: "",
+            acousticBassGuitarPickup: "",
+            acousticBassGuitarBackSides: "",
+            acousticBassGuitarTop: "",
+            acousticBassGuitarSpecialFeatures: "",
             electricGuitarMake: "",
             electricGuitarModel: "",
             electricGuitarStrings: "",
@@ -185,6 +194,13 @@ export default class GearForm extends Component {
     bassNested() {
         this.setState({
             bassModal: !this.state.bassModal,
+            closeAll: false
+        });
+    }
+
+    acousticBassNested() {
+        this.setState({
+            acousticBassModal: !this.state.acousticBassModal,
             closeAll: false
         });
     }
@@ -311,6 +327,50 @@ export default class GearForm extends Component {
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.acousticNested()
+            this.guitarChoiceNested()
+            this.toggle()
+        }
+
+    }
+
+    createAcousticBassPost = evt => {
+        evt.preventDefault()
+        if (this.state.acousticBassGuitarMake === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticBassGuitarModel === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticBassGuitarStrings === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticBassGuitarPickup === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticBassGuitarBackSides === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticBassGuitarTop === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else if (this.state.acousticBassGuitarSpecialFeatures === "") {
+            window.alert("Please make sure to fill out all text fields before submitting!")
+        }
+        else {
+            const acousticBass = {
+                make: this.state.acousticBassGuitarMake,
+                model: this.state.acousticBassGuitarModel,
+                strings: this.state.acousticBassGuitarStrings,
+                pickup: this.state.acousticBassGuitarPickup,
+                backSides: this.state.acousticBassGuitarBackSides,
+                top: this.state.acousticBassGuitarTop,
+                features: this.state.acousticBassGuitarSpecialFeatures,
+                userId: this.state.userId,
+            }
+            // Create the post for acoustic and redirect user to the gear list page
+            this.props.addAcousticBass(acousticBass, "acousticBasses").then(() => this.props.history.push("/gear"))
+            window.alert("Your Post Has Been Added To Your Gear List!")
+            this.acousticBassNested()
             this.guitarChoiceNested()
             this.toggle()
         }
@@ -802,6 +862,19 @@ export default class GearForm extends Component {
                                 </ModalFooter>
                             </ModalBody>
                         </Modal>
+                        <Button color="#ef5350 red lighten-1" onClick={this.guitarChoiceNested} className="guitarButton">Guitar</Button>
+                        <Modal isOpen={this.state.guitarChoiceModal} toggle={this.guitarChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalBody>
+                                <ModalHeader>What Kind of Guitar Would You Like to Add?</ModalHeader>
+                                <Button color="#a1887f brown lighten-2" onClick={this.acousticNested} className="acousticButton">Acoustic Guitar</Button>
+                                <Button color="#0091ea light-blue accent-4" onClick={this.bassNested} className="bassButton">Bass Guitar</Button>
+                                <Button color="#d7ccc8 brown lighten-4" onClick={this.acousticBassNested} className="acousticBassButton">Acoustic Bass Guitar</Button>
+                                <Button color="#ef5350 red lighten-1" onClick={this.electricNested} className="electricButton">Electric Guitar</Button>
+                                <ModalFooter>
+                                    <Button color="#9575cd deep-purple lighten-2" onClick={this.guitarChoiceNested}>Back</Button>{' '}
+                                </ModalFooter>
+                            </ModalBody>
+                        </Modal>
                         <Button color="#00e676 green accent-3" onClick={this.pedalChoiceNested} className="pedalButton">Pedal</Button>
                         <Modal isOpen={this.state.pedalChoiceModal} toggle={this.pedalChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalBody>
@@ -815,19 +888,6 @@ export default class GearForm extends Component {
                                 </ModalFooter>
                             </ModalBody>
                         </Modal>
-                        <Button color="#ef5350 red lighten-1" onClick={this.guitarChoiceNested} className="guitarButton">Guitar</Button>
-                        <Modal isOpen={this.state.guitarChoiceModal} toggle={this.guitarChoiceNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                            <ModalBody>
-                                <ModalHeader>What Kind of Guitar Would You Like to Add?</ModalHeader>
-                                <Button color="#a1887f brown lighten-2" onClick={this.acousticNested} className="acousticButton">Acoustic Guitar</Button>
-                                <Button color="#0091ea light-blue accent-4" onClick={this.bassNested} className="bassButton">Bass Guitar</Button>
-                                <Button color="#ef5350 red lighten-1" onClick={this.electricNested} className="electricButton">Electric Guitar</Button>
-                                <ModalFooter>
-                                    <Button color="#9575cd deep-purple lighten-2" onClick={this.guitarChoiceNested}>Back</Button>{' '}
-                                </ModalFooter>
-                            </ModalBody>
-                        </Modal>
-
                         <Modal isOpen={this.state.ampModal} toggle={this.amplifierNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Amplifier Features</ModalHeader>
                             <ModalBody>
@@ -913,7 +973,7 @@ export default class GearForm extends Component {
                             <ModalBody className="acousticMake">
                                 <Form className="acousticForm">
                                     <FormGroup>
-                                        <Label for="acousticMake">Make:</Label>
+                                        <Label for="acousticGuitarMake">Make:</Label>
                                         <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
@@ -945,6 +1005,46 @@ export default class GearForm extends Component {
                             <ModalFooter>
                                 <Button color="primary" onClick={this.createAcousticPost}>Add Acoustic Guitar</Button>
                                 <Button color="#9575cd deep-purple lighten-2" onClick={this.acousticNested}>Back</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
+
+                        <Modal isOpen={this.state.acousticBassModal} toggle={this.acousticBassModal} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                            <ModalHeader className="acousticBassHeader">Acoustic Bass Guitar Features</ModalHeader>
+                            <ModalBody className="acousticBassMake">
+                                <Form className="acousticBassForm">
+                                    <FormGroup>
+                                        <Label for="acousticBassGuitarMake">Make:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="acousticBassGuitarMake" placeholder="Make (ex. Martin)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="acousticBassGuitarModel">Model:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBassGuitarModel" placeholder="Model (ex. BCPA4)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="acousticBassGuitarStrings">Strings:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBassGuitarStrings" placeholder="Strings (ex. Martin 45-105)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="acousticBassGuitarPickup">Pickup:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBassGuitarPickup" placeholder="Pickup (if no pickup is installed, please enter 'none.')" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="acousticBassGuitarTop">Top:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBassGuitarTop" placeholder="Top (ex. Sitka Spruce)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="acousticBassGuitarBackSides">Back and Sides:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBassGuitarBackSides" placeholder="Back and Sides (ex. Sapele)" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="acousticBassGuitarSpecialFeatures">Special Features:</Label>
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBassGuitarSpecialFeatures" placeholder="Special Features (ex. added Fishman preamp or 'none')" />
+                                    </FormGroup>
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.createAcousticBassPost}>Add Acoustic Bass Guitar</Button>
+                                <Button color="#9575cd deep-purple lighten-2" onClick={this.acousticBassNested}>Back</Button>{' '}
                             </ModalFooter>
                         </Modal>
 

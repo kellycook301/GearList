@@ -10,6 +10,7 @@ import GearForm from './components/gear/GearForm'
 import AcousticList from './components/gear/AcousticList'
 import ElectricList from './components/gear/ElectricList'
 import BassList from './components/gear/BassList'
+import AcousticBassList from './components/gear/AcousticBassList'
 import AmplifierList from './components/gear/AmplifierList'
 import ProcessorList from './components/gear/ProcessorList'
 import PracticeAmpList from './components/gear/PracticeAmpList'
@@ -24,6 +25,7 @@ import CabinetList from './components/gear/CabinetList'
 import AcousticEdit from './components/gear/AcousticEdit'
 import ElectricEdit from './components/gear/ElectricEdit'
 import BassEdit from './components/gear/BassEdit'
+import AcousticBassEdit from './components/gear/AcousticBassEdit'
 import AmplifierEdit from './components/gear/AmplifierEdit'
 import ComboEdit from './components/gear/ComboEdit'
 import ProcessorEdit from './components/gear/ProcessorEdit'
@@ -43,6 +45,7 @@ export default class AppViews extends Component {
         acoustics: [],
         electrics: [],
         basses: [],
+        acousticBasses: [],
         amplifiers: [],
         combos: [],
         processors: [],
@@ -112,6 +115,23 @@ export default class AppViews extends Component {
         .then(() => DataManager.getAll("basses"))
         .then(basses => this.setState({
             basses: basses
+        }))
+
+    // ACOUSTIC BASS RELATED POSTS
+    addAcousticBass = (acousticBass, link) => DataManager.post(acousticBass, link)
+        .then(() => DataManager.getAll("acousticBasses"))
+        .then(acousticBasses => this.setState({
+            acousticBasses: acousticBasses
+        }))
+    editAcousticBassPost = (acousticBass, id, link) => DataManager.put(acousticBass, id, link)
+        .then(() => DataManager.getAll("acousticBasses"))
+        .then(acousticBasses => this.setState({
+            acousticBasses: acousticBasses
+        }))
+    deleteAcousticBassPost = (id, link) => DataManager.removeAndList(id, link)
+        .then(() => DataManager.getAll("acousticBasses"))
+        .then(acousticBasses => this.setState({
+            acousticBasses: acousticBasses
         }))
 
     // AMPLIFIER RELATED POSTS
@@ -274,6 +294,7 @@ export default class AppViews extends Component {
         DataManager.getAll("acoustics").then(acoustics => _state.acoustics = acoustics)
             .then(() => DataManager.getAll("electrics").then(electrics => _state.electrics = electrics))
             .then(() => DataManager.getAll("basses").then(basses => _state.basses = basses))
+            .then(() => DataManager.getAll("acousticBasses").then(acousticBasses => _state.acousticBasses = acousticBasses))
             .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
             .then(() => DataManager.getAll("combos").then(combos => _state.combos = combos))
             .then(() => DataManager.getAll("processors").then(processors => _state.processors = processors))
@@ -314,6 +335,10 @@ export default class AppViews extends Component {
                                 addBass={this.addBass}
                                 editBassPost={this.editBassPost}
                                 basses={this.state.basses}
+
+                                addAcousticBass={this.addAcousticBass}
+                                editAcousticBassPost={this.editAcousticBassPost}
+                                acousticBasses={this.state.acousticBasses}
 
                                 addAmplifier={this.addAmplifier}
                                 editAmplifierPost={this.editAmplifierPost}
@@ -403,6 +428,22 @@ export default class AppViews extends Component {
                         return <BassEdit {...props}
                             editBassPost={this.editBassPost}
                             basses={this.state.basses} />
+                    }} />
+
+                    {/* Acoustic Bass Related */}
+                    <Route exact path="/gear" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <AcousticBassList {...props}
+                                acousticBasses={this.state.acousticBasses}
+                                deleteAcousticBassPost={this.deleteAcousticBassPost} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
+                    <Route path="/gear/edit/acousticBass/:acousticBassId(\d+)" render={(props) => {
+                        return <AcousticBassEdit {...props}
+                            editAcousticBassPost={this.editAcousticBassPost}
+                            acousticBasses={this.state.acousticBasses} />
                     }} />
 
                     {/* Amplifier Related */}
