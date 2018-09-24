@@ -30,8 +30,6 @@ export default class Login extends Component {
         let email = this.state.email;
         let password = this.state.password;
         this.props.loginUser(email, password)
-        console.log("signed in")
-        this.props.history.push('/gear')
     }
 
 

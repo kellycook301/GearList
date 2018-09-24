@@ -29,7 +29,7 @@ class NavBar extends Component {
                 <ul className="nav nav-pills">
                     <li className="nav-item">
                         <Link className="nav-link text-white myGearButton" to="/gear">My Gear</Link>
-                        <Link className="nav-link text-white logoutButton" to="/login" onClick={this.logout}>Logout</Link>
+                        <Link className="nav-link text-white logoutButton" to="/login" onClick={this.props.logout}>Logout</Link>
                     </li>
                 </ul>
             </nav>

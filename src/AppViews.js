@@ -312,6 +312,8 @@ export default class AppViews extends Component {
         }
     }
 
+    // componentDidMount runs once. ComponentDidupdate runs when a new prop is passed in. User is being passed in as a prop.
+
     componentDidUpdate(prevProps) {
         if (this.props.user !== prevProps.user) {
             const _state = {}

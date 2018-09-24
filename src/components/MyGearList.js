@@ -30,6 +30,7 @@ class MyGearList extends Component {
                         })
                     )
                     this.setState({user: loginUser})
+                    //redirect
                 } else {
                     alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")
                 }
@@ -37,7 +38,9 @@ class MyGearList extends Component {
     }
 
     logout() {
+        console.log("this is clearning")
         sessionStorage.clear();
+        console.log(sessionStorage.getItem("loginUser"), "this should be clear")
         this.setState({user: null})
     }
 

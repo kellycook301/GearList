@@ -76,7 +76,7 @@ export default class AmplifierEdit extends Component {
                         <input type="text" required="true"
                             className="form-control power-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="power"
+                            id="powerSection"
                             placeholder="Power Section (ex. Solid State Power Section)"
                             defaultValue={this.state.powerSection} />
                     </div>
@@ -85,27 +85,27 @@ export default class AmplifierEdit extends Component {
                         <input type="text" required="true"
                             className="form-control preamp-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="preamp"
+                            id="preampSection"
                             placeholder="Preamp Section (ex. Tube Preamp Section)"
                             defaultValue={this.state.preampSection} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="amplifierWattage" className="amplifierWattage">Matching Cabinet for Amplifier?:</label>
+                        <label htmlFor="amplifierWattage" className="amplifierWattage">Amplifier Wattage:</label>
+                        <input type="text" required="true"
+                            className="form-control wattage-field"
+                            onChange={this.handleFieldChange.bind(this)}
+                            id="wattage"
+                            placeholder="Wattage (ex. 50 Watts)"
+                            defaultValue={this.state.wattage} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="amplifierMatching" className="amplifierMatching">Matching Cabinet for Amplifier?:</label>
                         <input type="text" required="true"
                             className="form-control matching-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="matching"
                             placeholder="Matching Cabinet for Amplifier (ex. Yes)"
                             defaultValue={this.state.matching} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="amplifierMatching" className="amplifierMatching">Matching Cabinet for Amplifier?:</label>
-                        <input type="text" required="true"
-                            className="form-control headCombo-field"
-                            onChange={this.handleFieldChange.bind(this)}
-                            id="wattage"
-                            placeholder="Wattage (ex. 50 Watts)"
-                            defaultValue={this.state.wattage} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="amplifierSpecialFeatures" className="amplifierSpecialFeatures">Special Features:</label>

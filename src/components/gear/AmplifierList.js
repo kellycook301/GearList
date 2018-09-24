@@ -19,7 +19,7 @@ export default class AmplifierList extends Component {
                     {
                         this.props.amplifiers.map(amplifier =>
 
-                            <div key={amplifier.id} className="card ampCard" style={{width: 400}}>
+                            <div key={amplifier.id} className="card ampCard" style={{ width: 400 }}>
                                 <div className="card-header bg-#757575 grey darken-1">
                                     <img src={amp} className="icon--amp" />
                                     <h3>My {amplifier.make} {amplifier.model}</h3>
@@ -41,7 +41,7 @@ export default class AmplifierList extends Component {
                                         Amplifier Wattage: {amplifier.wattage}
                                     </section>
                                     <section className="card-title">
-                                    Matching Cabinet for Amplifier?: {amplifier.matching}
+                                        Matching Cabinet for Amplifier?: {amplifier.matching}
                                     </section>
                                     <section className="card-title">
                                         Special Features: {amplifier.features}
