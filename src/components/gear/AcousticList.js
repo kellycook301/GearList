@@ -13,7 +13,6 @@ library.add(faPen)
 
 export default class AcousticList extends Component {
     render() {
-        let currentUser = JSON.parse(sessionStorage.getItem("loginUser"))
         return (
             <React.Fragment>
                 <section className="acousticEntries">

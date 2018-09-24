@@ -17,7 +17,9 @@ export default Object.create(null, {
         value: function (id, link) {
             console.log(id)
             return fetch(`${remoteURL}/${link}?loginUser=${id}`)
-            .then(e => e.json())
+            .then(e => {
+                return e.json()
+            })
         }
     },
     removeAndList: {
