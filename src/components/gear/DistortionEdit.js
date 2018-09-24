@@ -41,6 +41,7 @@ export default class DistortionEdit extends Component {
             bypass: this.state.bypass,
             jacks: this.state.jacks,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editDistortionPost(newDistortionPost, this.state.id, "distortions").then(() => this.props.history.push("/gear"))

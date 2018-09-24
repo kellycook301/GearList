@@ -42,6 +42,7 @@ export default class PracticeAmpEdit extends Component {
             MIDI: this.state.MIDI,
             speakers: this.state.speakers,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editPracticeAmpPost(newPracticePost, this.state.id, "practices").then(() => this.props.history.push("/gear"))

@@ -41,6 +41,7 @@ export default class AmplifierEdit extends Component {
             wattage: this.state.wattage,
             matching: this.state.matching,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editAmplifierPost(newAmplifierPost, this.state.id, "amplifiers").then(() => this.props.history.push("/gear"))

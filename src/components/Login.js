@@ -27,21 +27,11 @@ export default class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault()
 
-        // let email = this.state.email;
-        // let password = this.state.password;
-        DataManager.getAll("users")
-            .then(users => {
-                let loginUser = users.find(u => u.email === this.state.email && u.password === this.state.password)
-                if (loginUser) {
-                    sessionStorage.setItem("credentials", JSON.stringify(
-                        loginUser
-                    )
-                    )
-                    this.props.history.push("/gear")
-                } else {
-                    alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")
-                }
-            })
+        let email = this.state.email;
+        let password = this.state.password;
+        this.props.loginUser(email, password)
+        console.log("signed in")
+        this.props.history.push('/gear')
     }
 
 
@@ -53,8 +43,7 @@ export default class Login extends Component {
         }
 
         alert("Thank you for registering! You will now be directed to the homepage!")
-        this.props.addUser(user, "users")
-        // .then(() => this.props.history.push("/login"))
+        this.props.addUser(user, "users").then(() => this.props.history.push("/"))
     }
 
     render() {

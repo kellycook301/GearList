@@ -41,6 +41,7 @@ export default class ProcessorEdit extends Component {
             MIDI: this.state.MIDI,
             powerAmp: this.state.powerAmp,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editProcessorPost(newProcessorPost, this.state.id, "processors").then(() => this.props.history.push("/gear"))

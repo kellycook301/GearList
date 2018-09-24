@@ -41,6 +41,7 @@ export default class FuzzEdit extends Component {
             bypass: this.state.bypass,
             jacks: this.state.jacks,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editFuzzPost(newFuzzPost, this.state.id, "fuzzes").then(() => this.props.history.push("/gear"))

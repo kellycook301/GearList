@@ -22,7 +22,7 @@ import "./GearForm.css"
 
 export default class GearForm extends Component {
 
-    userId = JSON.parse(sessionStorage.getItem("credentials")).id;
+    userId = JSON.parse(sessionStorage.getItem("loginUser")).id;
     // set intial state
     state = {}
 
@@ -161,7 +161,8 @@ export default class GearForm extends Component {
             cabinetWoodType: "",
             cabinetTolexColor: "",
             cabinetOpenClosedBack: "",
-            cabinetSlantedStraight: ""
+            cabinetSlantedStraight: "",
+            loginUser: "",
         };
     }
 
@@ -321,7 +322,7 @@ export default class GearForm extends Component {
                 backSides: this.state.acousticGuitarBackSides,
                 top: this.state.acousticGuitarTop,
                 features: this.state.acousticGuitarSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
@@ -365,7 +366,7 @@ export default class GearForm extends Component {
                 backSides: this.state.acousticBassGuitarBackSides,
                 top: this.state.acousticBassGuitarTop,
                 features: this.state.acousticBassGuitarSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcousticBass(acousticBass, "acousticBasses").then(() => this.props.history.push("/gear"))
@@ -409,7 +410,7 @@ export default class GearForm extends Component {
                 body: this.state.electricGuitarBodyWood,
                 neck: this.state.electricGuitarNeck,
                 features: this.state.electricGuitarSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
@@ -452,7 +453,7 @@ export default class GearForm extends Component {
                 body: this.state.bassGuitarBodyWood,
                 neck: this.state.bassGuitarNeck,
                 features: this.state.bassGuitarSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -494,7 +495,7 @@ export default class GearForm extends Component {
                 wattage: this.state.amplifierWattage,
                 matching: this.state.amplifierMatching,
                 features: this.state.amplifierSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -536,7 +537,7 @@ export default class GearForm extends Component {
                 wattage: this.state.comboWattage,
                 speakers: this.state.comboSpeakers,
                 features: this.state.comboSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -578,7 +579,7 @@ export default class GearForm extends Component {
                 bypass: this.state.processorMIDI,
                 jacks: this.state.processorPowerAmp,
                 features: this.state.processorSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -620,7 +621,7 @@ export default class GearForm extends Component {
                 MIDI: this.state.practiceAmpMIDI,
                 speakers: this.state.practiceAmpSpeakers,
                 features: this.state.practiceAmpSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addPracticeAmp(practice, "practices").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -662,7 +663,7 @@ export default class GearForm extends Component {
                 bypass: this.state.overdriveTrueBypass,
                 jacks: this.state.overdriveTopSideLoaded,
                 features: this.state.overdriveSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -704,7 +705,7 @@ export default class GearForm extends Component {
                 bypass: this.state.distortionTrueBypass,
                 jacks: this.state.distortionTopSideLoaded,
                 features: this.state.distortionSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addDistortion(distortion, "distortions").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -746,7 +747,7 @@ export default class GearForm extends Component {
                 bypass: this.state.modulationTrueBypass,
                 jacks: this.state.modulationTopSideLoaded,
                 features: this.state.modulationSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addModulation(modulation, "modulations").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -788,7 +789,7 @@ export default class GearForm extends Component {
                 bypass: this.state.fuzzTrueBypass,
                 jacks: this.state.fuzzTopSideLoaded,
                 features: this.state.fuzzSpecialFeatures,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addFuzz(fuzz, "fuzzes").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
@@ -830,7 +831,7 @@ export default class GearForm extends Component {
                 tolexColor: this.state.cabinetTolexColor,
                 openClosedBack: this.state.cabinetOpenClosedBack,
                 slantedStraight: this.state.cabinetSlantedStraight,
-                userId: this.state.userId,
+                loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addCabinet(cabinet, "cabinets").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")

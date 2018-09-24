@@ -41,6 +41,7 @@ export default class BassEdit extends Component {
             body: this.state.body,
             neck: this.state.neck,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editBassPost(newBassPost, this.state.id, "basses").then(() => this.props.history.push("/gear"))

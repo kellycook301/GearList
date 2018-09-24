@@ -41,6 +41,7 @@ export default class ComboEdit extends Component {
             wattage: this.state.wattage,
             speakers: this.state.speakers,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editComboPost(newComboPost, this.state.id, "combos").then(() => this.props.history.push("/gear"))

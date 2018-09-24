@@ -42,6 +42,7 @@ export default class OverdriveEdit extends Component {
             bypass: this.state.bypass,
             jacks: this.state.jacks,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editOverdrivePost(newOverdrivePost, this.state.id, "overdrives").then(() => this.props.history.push("/gear"))

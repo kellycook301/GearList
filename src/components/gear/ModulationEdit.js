@@ -41,6 +41,7 @@ export default class ModulationEdit extends Component {
             bypass: this.state.bypass,
             jacks: this.state.jacks,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editModulationPost(newModulationPost, this.state.id, "modulations").then(() => this.props.history.push("/gear"))

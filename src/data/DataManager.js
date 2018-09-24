@@ -13,6 +13,13 @@ export default Object.create(null, {
             .then(e => e.json())
         }
     },
+    getAllUserInfo: {
+        value: function (id, link) {
+            console.log(id)
+            return fetch(`${remoteURL}/${link}?loginUser=${id}`)
+            .then(e => e.json())
+        }
+    },
     removeAndList: {
         value: function (id, link) {
             return fetch(`${remoteURL}/${link}/${id}`, {
@@ -50,8 +57,8 @@ export default Object.create(null, {
     },
     findUser: {
         value: (email, password) => {
-            return fetch(`http://localhost:5002/users?inputEmail=${email}&inputPassword=${password}`)
+            return fetch(`http://localhost:5003/users?inputEmail=${email}&inputPassword=${password}`)
                 .then(response => response.json())
         }
-    }
+    },
 })

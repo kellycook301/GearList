@@ -41,6 +41,7 @@ export default class CabinetEdit extends Component {
             tolex: this.state.tolex,
             back: this.state.back,
             slantedStraight: this.state.slantedStraight,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editCabinetPost(newCabinetPost, this.state.id, "cabinets").then(() => this.props.history.push("/gear"))

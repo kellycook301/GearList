@@ -9,8 +9,8 @@ import './NavBar.css'
 // I used Canva for the color. Then I loaded it into Gimp to crop it, resize it, and get it
 // to be the same color as the navbar.
 // I also included a logout button which clears session storage. Since the app is always
-// checking to see if you are authenticated, it recognizes that the credentials
-// have been removed and redirects you to the login page.
+// checking to see if you are authenticated, it recognizes that the loginUser
+// has been removed and redirects you to the login page.
 
 class NavBar extends Component {
     toggle() {
@@ -19,9 +19,6 @@ class NavBar extends Component {
         });
     }
 
-    logout() {
-        sessionStorage.clear();
-    }
 
     render() {
         return (

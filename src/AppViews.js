@@ -38,8 +38,9 @@ import CabinetEdit from './components/gear/CabinetEdit'
 
 export default class AppViews extends Component {
 
-    // check if credentials are in session storage
-    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+    // check if loginUser is in session storage
+    isAuthenticated = () => sessionStorage.getItem("loginUser") !== null
+
 
     state = {
         acoustics: [],
@@ -291,21 +292,24 @@ export default class AppViews extends Component {
 
     componentDidMount() {
         const _state = {}
-        DataManager.getAll("acoustics").then(acoustics => _state.acoustics = acoustics)
-            .then(() => DataManager.getAll("electrics").then(electrics => _state.electrics = electrics))
-            .then(() => DataManager.getAll("basses").then(basses => _state.basses = basses))
-            .then(() => DataManager.getAll("acousticBasses").then(acousticBasses => _state.acousticBasses = acousticBasses))
-            .then(() => DataManager.getAll("amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
-            .then(() => DataManager.getAll("combos").then(combos => _state.combos = combos))
-            .then(() => DataManager.getAll("processors").then(processors => _state.processors = processors))
-            .then(() => DataManager.getAll("practices").then(practices => _state.practices = practices))
-            .then(() => DataManager.getAll("overdrives").then(overdrives => _state.overdrives = overdrives))
-            .then(() => DataManager.getAll("distortions").then(distortions => _state.distortions = distortions))
-            .then(() => DataManager.getAll("fuzzes").then(fuzzes => _state.fuzzes = fuzzes))
-            .then(() => DataManager.getAll("modulations").then(modulations => _state.modulations = modulations))
-            .then(() => DataManager.getAll("cabinets").then(cabinets => _state.cabinets = cabinets))
-            .then(() => DataManager.getAll("users").then(users => _state.users = users))
+        console.log(this.props.user)
+        if (this.props.user){
+            DataManager.getAllUserInfo(this.props.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "electrics").then(electrics => _state.electrics = electrics))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "basses").then(basses => _state.basses = basses))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "acousticBasses").then(acousticBasses => _state.acousticBasses = acousticBasses))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "combos").then(combos => _state.combos = combos))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "processors").then(processors => _state.processors = processors))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "practices").then(practices => _state.practices = practices))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "overdrives").then(overdrives => _state.overdrives = overdrives))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "distortions").then(distortions => _state.distortions = distortions))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "fuzzes").then(fuzzes => _state.fuzzes = fuzzes))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "modulations").then(modulations => _state.modulations = modulations))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "cabinets").then(cabinets => _state.cabinets = cabinets))
+            .then(() => DataManager.getAllUserInfo(this.props.user.id, "users").then(users => _state.users = users))
             .then(() => { this.setState(_state) })
+        }    
     }
 
     // ROUTES
@@ -316,7 +320,8 @@ export default class AppViews extends Component {
 
                     <Route path="/login" render={(props) => {
                         return <Login {...props}
-                            addUser={this.addUser} />
+                            addUser={this.addUser}
+                            loginUser={this.props.login} />
                     }} />
 
                     {/* GEAR ENTRIES */}
@@ -451,7 +456,8 @@ export default class AppViews extends Component {
                         if (this.isAuthenticated()) {
                             return <AmplifierList {...props}
                                 amplifiers={this.state.amplifiers}
-                                deleteAmplifierPost={this.deleteAmplifierPost} />
+                                deleteAmplifierPost={this.deleteAmplifierPost}
+                                />
                         } else {
                             return <Redirect to="/login" />
                         }

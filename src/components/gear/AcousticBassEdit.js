@@ -41,6 +41,7 @@ export default class AcousticBassEdit extends Component {
             top: this.state.top,
             backSides: this.state.backSides,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editAcousticBassPost(newAcousticBassPost, this.state.id, "acousticBasses").then(() => this.props.history.push("/gear"))

@@ -41,6 +41,7 @@ export default class ElectricEdit extends Component {
             body: this.state.body,
             neck: this.state.neck,
             features: this.state.features,
+            loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             id: this.state.id
         }
         this.props.editElectricPost(newElectricPost, this.state.id, "electrics").then(() => this.props.history.push("/gear"))
