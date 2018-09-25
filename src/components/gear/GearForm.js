@@ -895,7 +895,7 @@ export default class GearForm extends Component {
                                 <Form className="amplifierForm">
                                     <FormGroup>
                                         <Label for="amplifierMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" autofocus="autofocus" id="amplifierMake" placeholder="Make (ex. Marshall)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="amplifierModel">Model:</Label>
@@ -975,7 +975,7 @@ export default class GearForm extends Component {
                                 <Form className="acousticForm">
                                     <FormGroup>
                                         <Label for="acousticGuitarMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autoFocus="autoFocus" name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticGuitarModel">Model:</Label>
@@ -1015,7 +1015,7 @@ export default class GearForm extends Component {
                                 <Form className="acousticBassForm">
                                     <FormGroup>
                                         <Label for="acousticBassGuitarMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="acousticBassGuitarMake" placeholder="Make (ex. Martin)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autoFocus="autoFocus" name="text" id="acousticBassGuitarMake" placeholder="Make (ex. Martin)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticBassGuitarModel">Model:</Label>

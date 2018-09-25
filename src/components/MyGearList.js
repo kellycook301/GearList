@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Redirect } from 'react-router-dom'
 import Navbar from "./nav/Navbar"
 import Footer from "./Footer.js"
 import AppViews from "../AppViews"
@@ -12,11 +13,10 @@ import "./MyGearList.css"
 
 class MyGearList extends Component {
     state = {
-        user: JSON.parse(sessionStorage.getItem("loginUser"))
+        user: {}
     }
 
     login = (email, password) => {
-        console.log("in app views")
         DataManager.getAll("users")
             .then(users => {
                 let loginUser = users.find(u => u.email === email && u.password === password)
@@ -30,21 +30,28 @@ class MyGearList extends Component {
                         })
                     )
                     this.setState({user: loginUser})
-                    //redirect
+                    
                 } else {
                     alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")
                 }
             })
     }
 
+    // function for redirecting
+    // redirect = () => {
+    //     this.props.history.push('/gear')
+    // }
+
     logout() {
-        console.log("this is clearning")
         sessionStorage.clear();
-        console.log(sessionStorage.getItem("loginUser"), "this should be clear")
         this.setState({user: null})
     }
 
     render() {
+        if (!this.state.user) {
+            return <Redirect to='/login' />
+        }
+
         return (
             <React.Fragment>
                 <Navbar 

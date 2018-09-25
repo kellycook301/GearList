@@ -27,3 +27,12 @@
 .amplifierEditForm {
     width: 60%;
 }
+
+.deleteAmplifierButton, .cancelAmplifierButton {
+    width: 100%;
+}
+
+.icon--musician {
+    display: flex;
+    margin: 0 auto;
+}
