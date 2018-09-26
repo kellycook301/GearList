@@ -21,6 +21,7 @@ class MyGearList extends Component {
             .then(users => {
                 let loginUser = users.find(u => u.email === email && u.password === password)
                 if (loginUser) {
+                    this.setState({user: loginUser})
                     sessionStorage.setItem(
                         "loginUser",
                         JSON.stringify({
@@ -29,7 +30,6 @@ class MyGearList extends Component {
                         id: loginUser.id
                         })
                     )
-                    this.setState({user: loginUser})
                     
                 } else {
                     alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")

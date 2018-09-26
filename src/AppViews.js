@@ -315,10 +315,11 @@ export default class AppViews extends Component {
 
     // componentDidMount runs once. ComponentDidupdate runs when a new prop is passed in / different user signs in.
     // User is being passed in as a prop. Previous user's entries are briefly displayed before new user data is printed to the DOM.
-
+    
     componentDidUpdate(prevProps) {
         if (this.props.user.id !== prevProps.user.id) {
             const _state = {}
+            if (this.state.user.id !== null){
             DataManager.getAllUserInfo(this.state.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
                 .then(() => DataManager.getAllUserInfo(this.state.user.id, "electrics").then(electrics => _state.electrics = electrics))
                 .then(() => DataManager.getAllUserInfo(this.state.user.id, "basses").then(basses => _state.basses = basses))
@@ -334,11 +335,13 @@ export default class AppViews extends Component {
                 .then(() => DataManager.getAllUserInfo(this.state.user.id, "cabinets").then(cabinets => _state.cabinets = cabinets))
                 .then(() => DataManager.getAllUserInfo(this.state.user.id, "users").then(users => _state.users = users))
                 .then(() => { this.setState(_state) })
+            }
         }
     }
 
     // ROUTES
     render() {
+
         return (
             <React.Fragment>
                 <div className="viewArea">
