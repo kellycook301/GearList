@@ -1,0 +1,38 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    display: table;
+    margin: 0;
+}
+
+.signInRegister {
+    display: flex;
+}
+
+.signInCard {
+    margin: 0 auto;
+}
+
+.loginHeader {
+    background-color: #4385c6;
+    color: white;
+}
+
+.passwordField, .emailField {
+    width: 100%;
+}
+
+.signInButton, .registerButton {
+    width: 100%;
+    margin: 0 auto;
+    
+}
+
+.formFooter {
+    position: absolute;
+}

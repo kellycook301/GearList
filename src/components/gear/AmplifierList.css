@@ -1,0 +1,38 @@
+.ampTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.ampTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--amp:hover {
+    transform: scale(1.1);
+}
+
+.ampEditDelete {
+    display: flex;
+}
+
+.ampCard {
+    float: left;
+    margin: 0.5em;
+}
+
+.amplifierEditForm {
+    width: 60%;
+}
+
+.deleteAmplifierButton, .cancelAmplifierButton {
+    width: 100%;
+}
+
+.icon--musician {
+    display: flex;
+    margin: 0 auto;
+}

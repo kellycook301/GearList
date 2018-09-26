@@ -1,0 +1,30 @@
+.fuzzTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.fuzzTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--fuzz:hover {
+    transform: scale(1.1);
+}
+
+.fuzzEditDelete {
+    display: flex;
+}
+
+.fuzzCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.fuzzEditForm {
+    width: 60%;
+}

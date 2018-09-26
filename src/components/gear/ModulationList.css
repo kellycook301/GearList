@@ -1,0 +1,30 @@
+.modulationTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.modulationTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--modulation:hover {
+    transform: scale(1.1);
+}
+
+.modulationEditDelete {
+    display: flex;
+}
+
+.modulationCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.modulationEditForm {
+    width: 60%;
+}

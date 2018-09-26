@@ -1,0 +1,30 @@
+.comboTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.comboTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--comboAmp:hover {
+    transform: scale(1.1);
+}
+
+.comboEditDelete {
+    display: flex;
+}
+
+.comboCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.comboEditForm {
+    width: 60%;
+}

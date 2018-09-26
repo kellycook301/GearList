@@ -1,0 +1,30 @@
+.acousticTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.acousticTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--acoustic:hover {
+    transform: scale(1.1);
+}
+
+.acousticEditDelete {
+    display: flex;
+}
+
+.acousticCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.acousticEditForm {
+    width: 60%;
+}

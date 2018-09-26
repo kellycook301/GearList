@@ -7,7 +7,6 @@ import App from './App'
 ReactDOM.render(
     <Router>
         <div>
-        <App />
         <MyGearList />
         </div>
     </Router>

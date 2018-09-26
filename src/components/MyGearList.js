@@ -1,17 +1,65 @@
 import React, { Component } from "react"
+import { Redirect } from 'react-router-dom'
 import Navbar from "./nav/Navbar"
-import AppViews from "./AppViews"
+import Footer from "./Footer.js"
+import AppViews from "../AppViews"
+import DataManager from "../data/DataManager"
+
+// This loads the navbar, everything in AppViews, and the Footer that I made.
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./MyGearList.css"
 
 
 class MyGearList extends Component {
+    state = {
+        user: {}
+    }
+
+    login = (email, password) => {
+        DataManager.getAll("users")
+            .then(users => {
+                let loginUser = users.find(u => u.email === email && u.password === password)
+                if (loginUser) {
+                    sessionStorage.setItem(
+                        "loginUser",
+                        JSON.stringify({
+                        email: loginUser.email,
+                        password: loginUser.password,
+                        id: loginUser.id
+                        })
+                    )
+                    this.setState({user: loginUser})
+                    
+                } else {
+                    alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")
+                }
+            })
+    }
+
+    // function for redirecting
+    // redirect = () => {
+    //     this.props.history.push('/gear')
+    // }
+
+    logout() {
+        sessionStorage.clear();
+        this.setState({user: null})
+    }
+
     render() {
+        if (!this.state.user) {
+            return <Redirect to='/login' />
+        }
+
         return (
             <React.Fragment>
-                <Navbar />
-                <AppViews />
+                <Navbar 
+                logout={this.logout}/>
+                <AppViews 
+                login={this.login}
+                user={this.state.user}/>
+                <Footer />
             </React.Fragment>
         )
     }

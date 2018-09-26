@@ -3,12 +3,23 @@ const remoteURL = "http://localhost:5002"
 export default Object.create(null, {
     get: {
         value: function (id, link) {
-            return fetch(`${remoteURL}/${link}/${id}`).then(e => e.json())
+            return fetch(`${remoteURL}/${link}/${id}`)
+            .then(e => e.json())
         }
     },
     getAll: {
         value: function (link) {
-            return fetch(`${remoteURL}/${link}`).then(e => e.json())
+            return fetch(`${remoteURL}/${link}`)
+            .then(e => e.json())
+        }
+    },
+    getAllUserInfo: {
+        value: function (id, link) {
+            console.log(id)
+            return fetch(`${remoteURL}/${link}?loginUser=${id}`)
+            .then(e => {
+                return e.json()
+            })
         }
     },
     removeAndList: {
@@ -22,6 +33,7 @@ export default Object.create(null, {
     },
     post: {
         value: function (newItem, link) {
+            console.log(newItem)
             return fetch(`${remoteURL}/${link}`, {
                 method: "POST",
                 headers: {
@@ -47,8 +59,8 @@ export default Object.create(null, {
     },
     findUser: {
         value: (email, password) => {
-            return fetch(`http://localhost:5002/users?inputEmail=${email}&inputPassword=${password}`)
+            return fetch(`http://localhost:5003/users?inputEmail=${email}&inputPassword=${password}`)
                 .then(response => response.json())
         }
-    }
+    },
 })

@@ -1,0 +1,30 @@
+.overdriveTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.overdriveTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--overdrive:hover {
+    transform: scale(1.1);
+}
+
+.overdriveEditDelete {
+    display: flex;
+}
+
+.overdriveCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.overdriveEditForm {
+    width: 60%;
+}

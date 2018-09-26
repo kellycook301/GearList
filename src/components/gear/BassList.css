@@ -1,0 +1,30 @@
+.bassTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.bassTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--bass:hover {
+    transform: scale(1.1);
+}
+
+.bassEditDelete {
+    display: flex;
+}
+
+.bassCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.bassEditForm {
+    width: 60%;
+}

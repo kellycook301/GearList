@@ -1,0 +1,30 @@
+.practiceTrash {
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.practiceTrash:hover {
+    transform: scale(1.15);
+}
+
+.pen:hover {
+    transform: scale(1.2)
+}
+
+.icon--practice:hover {
+    transform: scale(1.05);
+}
+
+.practiceEditDelete {
+    display: flex;
+}
+
+.practiceCard {
+    float: left;
+    margin: 0.5em;
+
+}
+
+.practiceEditForm {
+    width: 60%;
+}
