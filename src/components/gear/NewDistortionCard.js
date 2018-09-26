@@ -5,15 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Modal, ModalBody } from 'reactstrap';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import amp from "./images/amplifier.png"
+import distortionPedal from "./images/distortion_(md).png"
 import musician from "./images/Musician.png"
-import "./AmplifierList.css"
+import "./DistortionList.css"
 
 library.add(faTrash)
 library.add(faPen)
 
 
-export default class NewAmpCard extends Component {
+export default class NewDistortionCard extends Component {
 
     constructor(props) {
         super(props);
@@ -21,10 +21,10 @@ export default class NewAmpCard extends Component {
             modal: false
         };
 
-        this.ampToggle = this.ampToggle.bind(this);
+        this.distortionToggle = this.distortionToggle.bind(this);
     }
 
-    ampToggle() {
+    distortionToggle() {
         this.setState({
             modal: !this.state.modal
         });
@@ -33,50 +33,50 @@ export default class NewAmpCard extends Component {
     render() {
         return (
             <React.Fragment>
-                <section className="amplifierEntries">
+                <section className="distortionEntries">
                     {
-                            <div key={this.props.amplifier.id} className="card ampCard" style={{ width: 400 }}>
-                                <div className="card-header bg-#757575 grey darken-1">
-                                    <img src={amp} className="icon--amp" />
-                                    <h3>My {this.props.amplifier.make} {this.props.amplifier.model}</h3>
+                            <div key={this.props.distortion.id} className="card distortionCard" style={{width: 400}}>
+                                <div className="card-header bg-#ff5252 red accent-2">
+                                    <img src={distortionPedal} className="icon--distortion" />
+                                    <h3>My {this.props.distortion.make} {this.props.distortion.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make: {this.props.amplifier.make}
+                                        Make: {this.props.distortion.make}
                                     </section>
                                     <section className="card-title">
-                                        Model: {this.props.amplifier.model}
+                                        Model: {this.props.distortion.model}
                                     </section>
                                     <section className="card-title">
-                                        Power Section: {this.props.amplifier.powerSection}
+                                        Style: {this.props.distortion.style}
                                     </section>
                                     <section className="card-title">
-                                        Preamp Section: {this.props.amplifier.preampSection}
+                                        Power Draw: {this.props.distortion.draw}
                                     </section>
                                     <section className="card-title">
-                                        Amplifier Wattage: {this.props.amplifier.wattage}
+                                        True Bypass: {this.props.distortion.bypass}
                                     </section>
                                     <section className="card-title">
-                                        Matching Cabinet for Amplifier?: {this.props.amplifier.matching}
+                                        Side or Top-Mounted Jacks: {this.props.distortion.jacks}
                                     </section>
                                     <section className="card-title">
-                                        Special Features: {this.props.amplifier.features}
+                                        Special Features: {this.props.distortion.features}
                                     </section>
                                     <hr></hr>
-                                    <h6 className="ampEditDelete">
-                                        <Link to={`/gear/edit/amplifier/${this.props.amplifier.id}`}><FontAwesomeIcon
+                                    <h6 className="distortionEditDelete">
+                                        <Link to={`/gear/edit/distortion/${this.props.distortion.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="ampTrash" onClick={this.ampToggle} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="distortionTrash" onClick={this.distortionToggle} />
                                     </h6>
                                     <div>
-                                        <Modal isOpen={this.state.modal} ampToggle={this.ampToggle} className={this.props.className}>
+                                        <Modal isOpen={this.state.modal} distortionToggle={this.distortionToggle} className={this.props.className}>
                                             <ModalBody>
                                                 <h4>Are You Sure You Want To Delete This Post?</h4>
                                                 <img src={musician} className="icon--musician" />
-                                                <Button color="danger" className="deleteAmplifierButton" onClick={ () => this.props.deleteAmplifierPost(this.props.amplifier.id, "amplifiers") }>Delete</Button>{' '}
-                                                <Button color="secondary" className="cancelAmplifierButton" onClick={this.ampToggle}>Cancel</Button>
+                                                <Button color="danger" className="deleteAmplifierButton" onClick={ () => this.props.deleteDistortionPost(this.props.distortion.id, "distortions") }>Delete</Button>{' '}
+                                                <Button color="secondary" className="cancelAmplifierButton" onClick={this.distortionToggle}>Cancel</Button>
                                             </ModalBody>
                                         </Modal>
                                     </div>

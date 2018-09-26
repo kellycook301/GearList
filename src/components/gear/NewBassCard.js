@@ -5,15 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Modal, ModalBody } from 'reactstrap';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import amp from "./images/amplifier.png"
+import bassGuitar from "./images/bass_(md).png"
 import musician from "./images/Musician.png"
-import "./AmplifierList.css"
+import "./BassList.css"
 
 library.add(faTrash)
 library.add(faPen)
 
 
-export default class NewAmpCard extends Component {
+export default class NewBassCard extends Component {
 
     constructor(props) {
         super(props);
@@ -21,10 +21,10 @@ export default class NewAmpCard extends Component {
             modal: false
         };
 
-        this.ampToggle = this.ampToggle.bind(this);
+        this.bassToggle = this.bassToggle.bind(this);
     }
 
-    ampToggle() {
+    bassToggle() {
         this.setState({
             modal: !this.state.modal
         });
@@ -33,50 +33,50 @@ export default class NewAmpCard extends Component {
     render() {
         return (
             <React.Fragment>
-                <section className="amplifierEntries">
+                <section className="bassEntries">
                     {
-                            <div key={this.props.amplifier.id} className="card ampCard" style={{ width: 400 }}>
-                                <div className="card-header bg-#757575 grey darken-1">
-                                    <img src={amp} className="icon--amp" />
-                                    <h3>My {this.props.amplifier.make} {this.props.amplifier.model}</h3>
+                            <div key={this.props.bass.id} className="card bassCard" style={{width: 400}}>
+                                <div className="card-header bg-#0091ea light-blue accent-4">
+                                    <img src={bassGuitar} className="icon--bass" />
+                                    <h3>My {this.props.bass.make} {this.props.bass.model}</h3>
                                 </div>
                                 <div className="card-body">
                                     <section className="card-title">
-                                        Make: {this.props.amplifier.make}
+                                        Make: {this.props.bass.make}
                                     </section>
                                     <section className="card-title">
-                                        Model: {this.props.amplifier.model}
+                                        Model: {this.props.bass.model}
                                     </section>
                                     <section className="card-title">
-                                        Power Section: {this.props.amplifier.powerSection}
+                                        Strings: {this.props.bass.strings}
                                     </section>
                                     <section className="card-title">
-                                        Preamp Section: {this.props.amplifier.preampSection}
+                                        Pickup: {this.props.bass.pickups}
                                     </section>
                                     <section className="card-title">
-                                        Amplifier Wattage: {this.props.amplifier.wattage}
+                                        Body: {this.props.bass.body}
                                     </section>
                                     <section className="card-title">
-                                        Matching Cabinet for Amplifier?: {this.props.amplifier.matching}
+                                        Neck and Fretboard Material: {this.props.bass.neck}
                                     </section>
                                     <section className="card-title">
-                                        Special Features: {this.props.amplifier.features}
+                                        Special Features: {this.props.bass.features}
                                     </section>
                                     <hr></hr>
-                                    <h6 className="ampEditDelete">
-                                        <Link to={`/gear/edit/amplifier/${this.props.amplifier.id}`}><FontAwesomeIcon
+                                    <h6 className="bassEditDelete">
+                                        <Link to={`/gear/edit/bass/${this.props.bass.id}`}><FontAwesomeIcon
                                             icon="pen"
                                             color="blue" className="pen" /></Link>
                                         <p></p>
-                                        <FontAwesomeIcon icon="trash" color="red" className="ampTrash" onClick={this.ampToggle} />
+                                        <FontAwesomeIcon icon="trash" color="red" className="bassTrash" onClick={this.bassToggle} />
                                     </h6>
                                     <div>
-                                        <Modal isOpen={this.state.modal} ampToggle={this.ampToggle} className={this.props.className}>
+                                        <Modal isOpen={this.state.modal} bassToggle={this.bassToggle} className={this.props.className}>
                                             <ModalBody>
                                                 <h4>Are You Sure You Want To Delete This Post?</h4>
                                                 <img src={musician} className="icon--musician" />
-                                                <Button color="danger" className="deleteAmplifierButton" onClick={ () => this.props.deleteAmplifierPost(this.props.amplifier.id, "amplifiers") }>Delete</Button>{' '}
-                                                <Button color="secondary" className="cancelAmplifierButton" onClick={this.ampToggle}>Cancel</Button>
+                                                <Button color="danger" className="deleteAmplifierButton" onClick={ () => this.props.deleteBassPost(this.props.bass.id, "basses") }>Delete</Button>{' '}
+                                                <Button color="secondary" className="cancelAmplifierButton" onClick={this.bassToggle}>Cancel</Button>
                                             </ModalBody>
                                         </Modal>
                                     </div>
