@@ -12,9 +12,7 @@ import "./MyGearList.css"
 
 
 class MyGearList extends Component {
-    state = {
-        user: {}
-    }
+
 
     login = (email, password) => {
         DataManager.getAll("users")
@@ -37,11 +35,6 @@ class MyGearList extends Component {
             })
     }
 
-    // function for redirecting
-    // redirect = () => {
-    //     this.props.history.push('/gear')
-    // }
-
     logout() {
         sessionStorage.clear();
         this.setState({user: null})
@@ -56,9 +49,9 @@ class MyGearList extends Component {
             <React.Fragment>
                 <Navbar 
                 logout={this.logout}/>
-                <AppViews 
-                login={this.login}
-                user={this.state.user}/>
+
+                <AppViews />
+
                 <Footer />
             </React.Fragment>
         )

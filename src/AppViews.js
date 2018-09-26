@@ -294,7 +294,7 @@ export default class AppViews extends Component {
 
     componentDidMount() {
         const _state = {}
-        if (this.props.user.id) {
+        if (this.state.user.id) {
             DataManager.getAllUserInfo(this.state.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
                 .then(() => DataManager.getAllUserInfo(this.state.user.id, "electrics").then(electrics => _state.electrics = electrics))
                 .then(() => DataManager.getAllUserInfo(this.state.user.id, "basses").then(basses => _state.basses = basses))
@@ -317,7 +317,7 @@ export default class AppViews extends Component {
     // User is being passed in as a prop. Previous user's entries are briefly displayed before new user data is printed to the DOM.
     
     componentDidUpdate(prevProps) {
-        if (this.props.user.id !== prevProps.user.id) {
+        if (this.state.user.id !== prevProps.user.id) {
             const _state = {}
             if (this.state.user.id !== null){
             DataManager.getAllUserInfo(this.state.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
