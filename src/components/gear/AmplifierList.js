@@ -11,7 +11,6 @@ library.add(faPen)
 export default class AmplifierList extends Component {
 
     render() {
-        console.log(this.props)
         return (
             <React.Fragment>
                 <section className="amplifierEntries">

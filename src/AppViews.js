@@ -310,30 +310,6 @@ export default class AppViews extends Component {
         }
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.user !== prevProps.user) {
-    //         const _state = {}
-    //         DataManager.getAllUserInfo(this.props.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "electrics").then(electrics => _state.electrics = electrics))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "basses").then(basses => _state.basses = basses))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "acousticBasses").then(acousticBasses => _state.acousticBasses = acousticBasses))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "combos").then(combos => _state.combos = combos))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "processors").then(processors => _state.processors = processors))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "practices").then(practices => _state.practices = practices))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "overdrives").then(overdrives => _state.overdrives = overdrives))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "distortions").then(distortions => _state.distortions = distortions))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "fuzzes").then(fuzzes => _state.fuzzes = fuzzes))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "modulations").then(modulations => _state.modulations = modulations))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "cabinets").then(cabinets => _state.cabinets = cabinets))
-    //             .then(() => DataManager.getAllUserInfo(this.props.user.id, "users").then(users => _state.users = users))
-    //             .then(() => { this.setState(_state) })
-    //     }
-    // }
-
-    // componentDidMount runs once. ComponentDidupdate runs when a new prop is passed in / different user signs in.
-    // User is being passed in as a prop. Previous user's entries are briefly displayed before new user data is printed to the DOM.
-
     // ROUTES
     render() {
 

@@ -63,7 +63,7 @@ export default class Login extends Component {
                             id="email"
                             className="emailField"
                             placeholder="Email Address"
-                            required="" autoFocus="" />
+                            required="" />
                         <p></p>
                         <label htmlFor="inputPassword">
                             Password:
