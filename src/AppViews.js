@@ -322,6 +322,7 @@ export default class AppViews extends Component {
                             addUser={this.addUser}
                             loginUser={this.props.login} />
                     }} />
+                    
 
                     {/* GEAR ENTRIES */}
                     <Route exact path="/gear" render={(props) => {

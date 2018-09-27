@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Redirect } from 'react-router-dom'
-import Navbar from "./nav/Navbar"
+import Logo from './nav/Logo'
 import Footer from "./Footer.js"
 import AppViews from "../AppViews"
 import DataManager from "../data/DataManager"
@@ -51,8 +51,7 @@ class MyGearList extends Component {
 
         return (
             <React.Fragment>
-                <Navbar
-                    logout={this.logout} />
+                <Logo />
                 <AppViews
                     login={this.login}
                     key={this.state.key}

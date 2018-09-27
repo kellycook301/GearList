@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Navbar from "../nav/Navbar"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'mdbreact/dist/css/mdb.css';
 import "./GearForm.css"
@@ -843,6 +844,8 @@ export default class GearForm extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                logout={this.logout} />
                 <div className="addGearButton">
                     <Button color="primary" className="addGear" onClick={this.toggle}>{this.props.buttonLabel}Add Gear</Button>
                 </div>
