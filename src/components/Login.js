@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { Button, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 
-import DataManager from "../data/DataManager"
 import './Login.css'
 
 // The login was kind of a pain but I referred to some amigos here to help out!
@@ -29,7 +28,13 @@ export default class Login extends Component {
 
         let email = this.state.email;
         let password = this.state.password;
-        this.props.loginUser(email, password)
+        this.props.loginUser(email, password).then(succeeded => {
+            if (succeeded) {
+                this.props.history.push('/gear')
+            }else {
+                alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")
+            }
+        })
     }
 
 

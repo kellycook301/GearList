@@ -12,32 +12,36 @@ import "./MyGearList.css"
 
 
 class MyGearList extends Component {
-
+    state = {
+        key: Math.random(),
+        user: sessionStorage.getItem("loginUser") || {}
+    }
 
     login = (email, password) => {
-        DataManager.getAll("users")
+        return DataManager.getAll("users")
             .then(users => {
                 let loginUser = users.find(u => u.email === email && u.password === password)
                 if (loginUser) {
-                    this.setState({user: loginUser})
                     sessionStorage.setItem(
                         "loginUser",
                         JSON.stringify({
-                        email: loginUser.email,
-                        password: loginUser.password,
-                        id: loginUser.id
+                            email: loginUser.email,
+                            password: loginUser.password,
+                            id: loginUser.id
                         })
                     )
-                    
+                    this.setState({ user: loginUser, key: Math.random() })
+                    return true
+
                 } else {
-                    alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")
+                    return false
                 }
             })
     }
 
     logout() {
         sessionStorage.clear();
-        this.setState({user: null})
+        this.setState({ user: null, key: Math.random() })
     }
 
     render() {
@@ -47,11 +51,12 @@ class MyGearList extends Component {
 
         return (
             <React.Fragment>
-                <Navbar 
-                logout={this.logout}/>
-
-                <AppViews />
-
+                <Navbar
+                    logout={this.logout} />
+                <AppViews
+                    login={this.login}
+                    key={this.state.key}
+                    user={this.state.user} />
                 <Footer />
             </React.Fragment>
         )

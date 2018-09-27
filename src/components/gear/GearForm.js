@@ -584,7 +584,7 @@ export default class GearForm extends Component {
             this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.processorNested()
-            this.pedalChoiceNested()
+            this.ampChoiceNested()
             this.toggle()
         }
     }
