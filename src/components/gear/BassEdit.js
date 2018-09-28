@@ -84,7 +84,7 @@ export default class BassEdit extends Component {
                             defaultValue={this.state.strings} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="bassGuitarPickups" className="bassGuitarPickups">Strings:</label>
+                        <label htmlFor="bassGuitarPickups" className="bassGuitarPickups">Pickups:</label>
                         <input type="text" required="true"
                             className="form-control pickups-field"
                             onChange={this.handleFieldChange.bind(this)}

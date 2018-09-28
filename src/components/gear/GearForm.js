@@ -860,7 +860,7 @@ export default class GearForm extends Component {
                 <div>
                     <Modal isOpen={this.state.addModal} toggle={this.addToggle} className={this.props.className}>
                         <ModalBody>
-                            <h4 className="addedNotification">Your post has been added!</h4>
+                            <h4 className="addedNotification">Your Post Has Been Added!</h4>
                             <img src={musician} className="icon--musician" />
                             <Button color="secondary" className="addedButton" onClick={this.addToggle}>Close</Button>
                         </ModalBody>

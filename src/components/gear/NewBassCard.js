@@ -35,7 +35,7 @@ export default class NewBassCard extends Component {
             <React.Fragment>
                 <section className="bassEntries">
                     {
-                            <div key={this.props.bass.id} className="card bassCard" style={{width: 400}}>
+                            <div key={this.props.bass.id} className="card bassCard" style={{width: 425}}>
                                 <div className="card-header bg-#0091ea light-blue accent-4">
                                     <img src={bassGuitar} className="icon--bass" />
                                     <h3>My {this.props.bass.make} {this.props.bass.model}</h3>

@@ -35,7 +35,7 @@ export default class NewAmpCard extends Component {
             <React.Fragment>
                 <section className="amplifierEntries">
                     {
-                            <div key={this.props.amplifier.id} className="card ampCard" style={{ width: 400 }}>
+                            <div key={this.props.amplifier.id} className="card ampCard" style={{ width: 432 }}>
                                 <div className="card-header bg-#757575 grey darken-1">
                                     <img src={amp} className="icon--amp" />
                                     <h3>My {this.props.amplifier.make} {this.props.amplifier.model}</h3>
