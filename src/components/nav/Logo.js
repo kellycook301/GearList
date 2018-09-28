@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import capstoneLogo from "../gear/images/Capstone_Logo4.png"
+import capstoneLogo from "../gear/images/Capstone_Logo9.png"
 import "bootstrap/dist/css/bootstrap.min.css"
 import './NavBar.css'
 
