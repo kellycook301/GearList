@@ -336,10 +336,10 @@ export default class GearForm extends Component {
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.acousticNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
 
     }
@@ -381,10 +381,10 @@ export default class GearForm extends Component {
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcousticBass(acousticBass, "acousticBasses").then(() => this.props.history.push("/gear"))
             // toggle a modal
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.acousticBassNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
 
     }
@@ -425,10 +425,10 @@ export default class GearForm extends Component {
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.electricNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -467,10 +467,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.bassNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -509,10 +509,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.amplifierNested()
             this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -551,10 +551,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.comboNested()
             this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -593,10 +593,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.processorNested()
             this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -635,10 +635,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addPracticeAmp(practice, "practices").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.practiceAmpNested()
             this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -677,10 +677,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.overdriveNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -719,10 +719,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addDistortion(distortion, "distortions").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.distortionNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -761,10 +761,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addModulation(modulation, "modulations").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.modulationNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -803,10 +803,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addFuzz(fuzz, "fuzzes").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.fuzzNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
