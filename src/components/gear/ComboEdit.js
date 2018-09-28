@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import comboAmp from "./images/combo_(lg).png"
 import './ComboEdit.css'
 
@@ -50,6 +51,8 @@ export default class ComboEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={comboAmp} className="icon--comboAmpEdit" />
                 <h3 className="edit-post">What About Your Combo Amplifier Would You Like To Edit?</h3>
                 <form className="comboEditForm">

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import effect from "./images/practiceAmp_(lg).png"
 import './PracticeAmpEdit.css'
 
@@ -51,6 +52,8 @@ export default class PracticeAmpEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={effect} className="icon--practiceAmpEdit" />
                 <h3 className="edit-post">What About Your Practice Amp Would You Like To Edit?</h3>
                 <form className="practiceEditForm">

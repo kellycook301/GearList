@@ -1,24 +1,25 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import amp from "./images/amplifier_(md).png"
 import './AmplifierEdit.css'
 
 export default class AmplifierEdit extends Component {
 
-   state = {
-            amplifierMake: "",
-            amplifierModel: "",
-            amplifierPowerSection: "",
-            amplifierPreampSection: "",
-            amplifierWattage: "",
-            amplifierMatching: "",
-            amplifierSpecialFeatures: "",
-            id: null
+    state = {
+        amplifierMake: "",
+        amplifierModel: "",
+        amplifierPowerSection: "",
+        amplifierPreampSection: "",
+        amplifierWattage: "",
+        amplifierMatching: "",
+        amplifierSpecialFeatures: "",
+        id: null
     }
 
     // window.scrollTo forces the screen to render to the top when you click on the edit icon. Otherwise
     // the edit screen will present itself wherever your scroll bar was on the gear page.
     // This is a neat trick! Thanks, Google!
-    
+
     componentDidMount() {
         window.scrollTo(0, 0)
         const amplifier = this.props.amplifiers.find(a => a.id === parseInt(this.props.match.params.amplifierId, 0))
@@ -50,6 +51,8 @@ export default class AmplifierEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={amp} className="icon--ampEdit" />
                 <h3 className="edit-post">What About Your Amplifier Would You Like To Edit?</h3>
                 <form className="amplifierEditForm">

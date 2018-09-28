@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import effect from "./images/modulation_(lg).png"
 import './ModulationEdit.css'
 
@@ -50,6 +51,8 @@ export default class ModulationEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={effect} className="icon--modulationEdit" />
                 <h3 className="edit-post">What About Your modulation Pedal Would You Like To Edit?</h3>
                 <form className="modulationEditForm">

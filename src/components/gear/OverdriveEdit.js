@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import effect from "./images/overdrive_(lg).png"
 import './OverdriveEdit.css'
 
@@ -51,6 +52,8 @@ export default class OverdriveEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={effect} className="icon--overdriveEdit" />
                 <h3 className="edit-post">What About Your Overdrive Pedal Would You Like To Edit?</h3>
                 <form className="overdriveEditForm">

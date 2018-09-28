@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from "../nav/Navbar"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import musician from "./images/Musician.png"
 import 'mdbreact/dist/css/mdb.css';
 import "./GearForm.css"
 
@@ -37,6 +38,7 @@ export default class GearForm extends Component {
         super(props);
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.addToggle = this.addToggle.bind(this);
         this.guitarChoiceNested = this.guitarChoiceNested.bind(this);
         this.acousticNested = this.acousticNested.bind(this);
         this.electricNested = this.electricNested.bind(this);
@@ -72,6 +74,7 @@ export default class GearForm extends Component {
             fuzzModal: false,
             modulationModal: false,
             closeAll: false,
+            addModal: false,
             acousticGuitarMake: "",
             acousticGuitarModel: "",
             acousticGuitarStrings: "",
@@ -170,6 +173,12 @@ export default class GearForm extends Component {
     toggle() {
         this.setState({
             modal: !this.state.modal
+        });
+    }
+
+    addToggle() {
+        this.setState({
+            addModal: !this.state.addModal
         });
     }
 
@@ -371,6 +380,7 @@ export default class GearForm extends Component {
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcousticBass(acousticBass, "acousticBasses").then(() => this.props.history.push("/gear"))
+            // toggle a modal
             window.alert("Your Post Has Been Added To Your Gear List!")
             this.acousticBassNested()
             this.guitarChoiceNested()
@@ -835,9 +845,9 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addCabinet(cabinet, "cabinets").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.cabinetNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -845,7 +855,17 @@ export default class GearForm extends Component {
         return (
             <React.Fragment>
                 <Navbar
-                logout={this.logout} />
+                    logout={this.logout} />
+
+                <div>
+                    <Modal isOpen={this.state.addModal} toggle={this.addToggle} className={this.props.className}>
+                        <ModalBody>
+                            <h4 className="addedNotification">Your post has been added!</h4>
+                            <img src={musician} className="icon--musician" />
+                            <Button color="secondary" className="addedButton" onClick={this.addToggle}>Close</Button>
+                        </ModalBody>
+                    </Modal>
+                </div>
                 <div className="addGearButton">
                     <Button color="primary" className="addGear" onClick={this.toggle}>{this.props.buttonLabel}Add Gear</Button>
                 </div>
