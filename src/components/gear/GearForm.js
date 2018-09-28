@@ -776,7 +776,7 @@ export default class GearForm extends Component {
         else if (this.state.fuzzModel === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.fuzzType === "") {
+        else if (this.state.fuzzStyle === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else if (this.state.fuzzPowerDraw === "") {
@@ -795,7 +795,7 @@ export default class GearForm extends Component {
             const fuzz = {
                 make: this.state.fuzzMake,
                 model: this.state.fuzzModel,
-                type: this.state.fuzzType,
+                style: this.state.fuzzStyle,
                 draw: this.state.fuzzPowerDraw,
                 bypass: this.state.fuzzTrueBypass,
                 jacks: this.state.fuzzTopSideLoaded,
@@ -839,8 +839,8 @@ export default class GearForm extends Component {
                 model: this.state.cabinetModel,
                 speakers: this.state.cabinetSpeakers,
                 woodType: this.state.cabinetWoodType,
-                tolexColor: this.state.cabinetTolexColor,
-                openClosedBack: this.state.cabinetOpenClosedBack,
+                tolex: this.state.cabinetTolexColor,
+                back: this.state.cabinetOpenClosedBack,
                 slantedStraight: this.state.cabinetSlantedStraight,
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
@@ -1246,7 +1246,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="fuzzStyle">Style:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzStyle" placeholder="Style (ex. Green Russian)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzStyle" placeholder="Style (ex. Civil War)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="fuzzPowerDraw">Power Draw:</Label>

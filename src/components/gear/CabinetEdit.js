@@ -88,7 +88,7 @@ export default class CabinetEdit extends Component {
                         <input type="text" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="features"
+                            id="woodType"
                             placeholder="Wood Type (ex. Birch)"
                             defaultValue={this.state.woodType} />
                     </div>
