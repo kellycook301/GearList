@@ -35,7 +35,7 @@ export default class NewCabinetCard extends Component {
             <React.Fragment>
                 <section className="cabinetEntries">
                     {
-                        <div key={this.props.cabinet.id} className="card cabCard" style={{ width: 400 }}>
+                        <div key={this.props.cabinet.id} className="card cabCard" style={{ width: 432 }}>
                             <div className="card-header bg-#ffa726 orange lighten-1">
                                 <img src={cab} className="icon--cab" />
                                 <h3>My {this.props.cabinet.make} {this.props.cabinet.model}</h3>

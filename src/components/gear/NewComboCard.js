@@ -35,7 +35,7 @@ export default class ComboList extends Component {
             <React.Fragment>
                 <section className="comboEntries">
                     {
-                        <div key={this.props.combo.id} className="card comboCard" style={{ width: 400 }}>
+                        <div key={this.props.combo.id} className="card comboCard" style={{ width: 432 }}>
                             <div className="card-header bg-#ffcc80 orange lighten-3">
                                 <img src={comboAmp} className="icon--comboAmp" />
                                 <h3>My {this.props.combo.make} {this.props.combo.model}</h3>

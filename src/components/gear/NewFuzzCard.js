@@ -35,7 +35,7 @@ export default class FuzzList extends Component {
             <React.Fragment>
                 <section className="fuzzEntries">
                     {
-                            <div key={this.props.fuzz.id} className="card fuzzCard" style={{width: 400}}>
+                            <div key={this.props.fuzz.id} className="card fuzzCard" style={{width: 432}}>
                                 <div className="card-header bg-#ff7043 deep-orange lighten-1">
                                     <img src={fuzzPedal} className="icon--fuzz" />
                                     <h3>My {this.props.fuzz.make} {this.props.fuzz.model}</h3>

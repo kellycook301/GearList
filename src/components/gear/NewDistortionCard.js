@@ -35,7 +35,7 @@ export default class NewDistortionCard extends Component {
             <React.Fragment>
                 <section className="distortionEntries">
                     {
-                            <div key={this.props.distortion.id} className="card distortionCard" style={{width: 400}}>
+                            <div key={this.props.distortion.id} className="card distortionCard" style={{width: 432}}>
                                 <div className="card-header bg-#ff5252 red accent-2">
                                     <img src={distortionPedal} className="icon--distortion" />
                                     <h3>My {this.props.distortion.make} {this.props.distortion.model}</h3>

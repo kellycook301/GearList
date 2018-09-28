@@ -23,6 +23,14 @@ body {
     padding-bottom: 1.3em;
 }
 
+.addedButton {
+    margin: 0 auto;
+}
+
+.icon--musician {
+    padding-bottom: 0.3em;
+}
+
 .addedNotification {
     text-align: center;
 }

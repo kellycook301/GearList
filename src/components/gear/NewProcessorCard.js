@@ -35,7 +35,7 @@ export default class NewProcessorCard extends Component {
             <React.Fragment>
                 <section className="processorEntries">
                     {
-                            <div key={this.props.processor.id} className="card processorCard" style={{width: 400}}>
+                            <div key={this.props.processor.id} className="card processorCard" style={{width: 432}}>
                                 <div className="card-header bg-#616161 grey darken-2">
                                     <img src={processorPedal} className="icon--processor"/>
                                     <h3>My {this.props.processor.make} {this.props.processor.model}</h3>
