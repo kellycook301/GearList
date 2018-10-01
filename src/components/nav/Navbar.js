@@ -24,7 +24,7 @@ class NavBar extends Component {
             <nav className=".navbar.navbar-default.navbar-static-top light-blue flex-md-nowrap p-0 gearLogout">
                 <ul className="nav nav-pills">
                     <li className="nav-item">
-                        <Link className="nav-link text-white myGearButton" to="/gear">My Gear</Link>
+                        <Link className="nav-link text-white myGearButton" to="/gear">Home</Link>
                         <Link className="nav-link text-white logoutButton" to="/login" onClick={this.props.logout}>Logout</Link>
                     </li>
                 </ul>

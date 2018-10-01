@@ -5,23 +5,6 @@ import musician from "./images/Musician.png"
 import 'mdbreact/dist/css/mdb.css';
 import "./GearForm.css"
 
-// I wanted to use reactstrap because I really wanted to incorporate multiple modals into 
-// my capstone. 
-// I also wanted to use more than the 8 colors that come stock with bootstrap, so I
-// npm installed MDB React, which allows for MAAAAANY more color options.
-
-// Below is my ungodly gear form. I wanted to use multiple modals because I really enjoy its
-// functionality. You will click on "add gear." This will load a modal asking for what kind of
-// gear you want to add. A secondary modal will not populate when selecting "Speaker Cabinet" because
-// there is only really one kind of speaker cabinet. However, clicking on amplifier, guitar, or pedal
-// will populate a secondary modal. After selecting a more specific entry you will be prompted to
-// fill out a form. You will notice that the form will focus on the first input field.
-// After filling out the form you will be able to add that item to your gear list. You
-// may also close out of the modal whenever you wish. This is toggle that modal off. There
-// are multiple nested modals with specific names. They will close as well when you choose to
-// close out of one or add an item to your gear list. It took me a hot second to figure that out,
-// but was veeeeeeery simple upon figuring it out. That was a personal discovery. That's all for the form! 
-
 export default class GearForm extends Component {
 
     userId = JSON.parse(sessionStorage.getItem("loginUser")).id;
