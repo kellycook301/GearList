@@ -1,7 +1,7 @@
 
 # Hello And Welcome To My Gear List!
 
-With this app you may create a visual representation of the guitar and bass gear that you have.
+With this app you may create a visual representation of the music gear that you have.
 
 Let's get started!
 
@@ -21,3 +21,7 @@ Now let's say you have sold something you have listed in your gear list. You may
 ## Logging Out
 Whenever you would like to log out you may click on the logout button in the upper right-hand corner. This will take you back to the login page where you may log in again when you would like!
 
+Alt-H2
+------
+
+## The Process
