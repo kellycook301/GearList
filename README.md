@@ -38,15 +38,15 @@ One thing I did to fix the force reload of the page was actually implement a del
 
 And here we are! All done. Very happy with the project even though there's some small stuff I wanted to have added. Here's a list of the plugins and things I used in my project.
 
-*ReactStrap for modals, buttons, etc.
-*MDB React for more color options compared to regular old Bootstrap.
-*Iconscout for the instrument and musician icons.
-*Canva for the logo
-*Gimp (a free photo editing app similar to Photoshop. I used this for editing the logo)
-*Fontawesome for the trashcan and pencil icons
+* ReactStrap for modals, buttons, etc.
+* MDB React for more color options compared to regular old Bootstrap.
+* Iconscout for the instrument and musician icons.
+* Canva for the logo
+* Gimp (a free photo editing app similar to Photoshop. I used this for editing the logo)
+* Fontawesome for the trashcan and pencil icons
 
 Shouts out to...
-*Cohort 27 for being awesome!
-*Brenda, Meg, Jenna, and Steve for helping with app issues!
-*Coffee for keeping me ENERGIZED.
-*My family for always believing in me. Thank you thank you thank you!
+* Cohort 27 for being awesome!
+* Brenda, Meg, Jenna, and Steve for helping with app issues!
+* Coffee for keeping me ENERGIZED.
+* My family for always believing in me. Thank you thank you thank you!
