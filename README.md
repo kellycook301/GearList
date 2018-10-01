@@ -24,7 +24,9 @@ Whenever you would like to log out you may click on the logout button in the upp
 ------
 
 ## The Process
-Everything below details the process of how the app was created. All in all it was a fun and challenging process. I was thinking of ideas for what to do for my capstone. I remember Brenda (our main instructor for the front-end development class) saying that we should work on something that we enjoy. Because if your project isn't on something you're passionate about, then it becomes more of a chore. I remember browsing for icons on IconScout and found some PNGs of instruments. I then thought about making an app that will show a list of the music gear that you own and these icons could be displayed in cards for each entry. I then drew out how i would want the app to look (see below).
+Everything below details the process of how the app was created. All in all it was a fun and challenging process. I was thinking of ideas for what to do for my capstone. I remember Brenda (our main instructor for the front-end development class) saying that we should work on something that we enjoy. Because if your project isn't on something you're passionate about, then it becomes more of a chore. I remember browsing for icons on IconScout and found some PNGs of instruments. I then thought about making an app that will show a list of the music gear that you own and these icons could be displayed in cards for each entry. I then drew out how I would want the app to look (see below).
+
+![alt text](https://github.com/kellycook301/GearList/blob/master/App%20Layout%201_final.JPG)
 
 I knew we'd have to have a login page. I originally wanted to have separate sign in and register cards but the login proved to be quite a challenge, so I condensed it into a single sign in/register card. Fun!
 
