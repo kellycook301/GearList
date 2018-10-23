@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { Button, Card, CardHeader, Modal, ModalBody, CardBody, CardTitle } from 'reactstrap';
 import musician from "./gear/images/Musician.png"
-
 import './Login.css'
 
 // The login was kind of a pain but I referred to some amigos here to help out!
@@ -85,12 +84,13 @@ export default class Login extends Component {
                 <div>
                     <Modal isOpen={this.state.noAccountModal} toggle={this.noAccountToggle} className={this.props.className}>
                         <ModalBody>
-                            <h4 className="addedNotification">I'm Sorry. We Do Not Seem To Recognize That Username Or Password. Feel Free To Register With Us!</h4>
+                            <h4 className="addedNotification">I'm Sorry. We Do Not Seem To Recognize That Username Or Password. Try Again Or Feel Free To Register With Us!</h4>
                             <img src={musician} className="icon--musician" />
                             <Button color="secondary" className="addedButton" onClick={this.noAccountToggle}>Close</Button>
                         </ModalBody>
                     </Modal>
                 </div>
+
                 <div className="signInRegister">
                     <Card className="signInCard">
                         <CardHeader className="loginHeader">Sign In Or Register</CardHeader>

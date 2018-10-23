@@ -981,7 +981,7 @@ export default class GearForm extends Component {
                                 <Form className="acousticForm">
                                     <FormGroup>
                                         <Label for="acousticGuitarMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="true" name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticGuitarModel">Model:</Label>
