@@ -9,7 +9,7 @@ Let's get started!
 
 1. Clone the git repository
 ```
-git@github.com:kellycook301/GearList.git
+git clone @github.com:kellycook301/GearList.git
 ```
 
 
