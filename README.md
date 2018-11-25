@@ -12,6 +12,21 @@ Let's get started!
 git clone https://github.com/kellycook301/GearList.git
 ```
 
+2. In project's root directory install modules
+```
+npm install
+```
+
+3. Run the project in the root directory
+```
+npm start
+```
+
+4. Run JSON server within the api directory
+```
+cd api 
+json-server -p 5002 -w MyGearList.json
+```
 
 To launch the app simply bring up the login page and create an account. Once you create an account you can go ahead and log into your page.
 Here you will see your profile. At first your gear list will be blank. Let's change that!
