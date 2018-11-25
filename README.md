@@ -8,6 +8,9 @@ Let's get started!
 ## Launching The App
 
 1. Clone the git repository
+```
+git@github.com:kellycook301/GearList.git
+```
 
 
 To launch the app simply bring up the login page and create an account. Once you create an account you can go ahead and log into your page.
