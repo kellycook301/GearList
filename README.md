@@ -12,7 +12,7 @@ Let's get started!
 git clone https://github.com/kellycook301/GearList.git
 ```
 
-2. In project's root directory install modules
+2. Install modules in the project's root directory 
 ```
 npm install
 ```
