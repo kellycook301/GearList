@@ -1,11 +1,13 @@
 
-# Hello And Welcome To My Gear List!
+# Hello And Welcome To MyGearList!
 
 With this app you may create a visual representation of the music gear that you have.
 
 Let's get started!
 
 ## Launching The App
+
+Let's get the app set up first.
 
 1. Clone the git repository
 ```
