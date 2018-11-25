@@ -6,6 +6,10 @@ With this app you may create a visual representation of the music gear that you 
 Let's get started!
 
 ## Launching The App
+
+1. Clone the git repository
+
+
 To launch the app simply bring up the login page and create an account. Once you create an account you can go ahead and log into your page.
 Here you will see your profile. At first your gear list will be blank. Let's change that!
 
