@@ -5,7 +5,7 @@ import './NavBar.css'
 
 // I wanted to include a logo in the Navbar. I couldn't get it to work quite the way I wanted
 // so I kinda fudged it by getting the Navbar and my logo to be the same color.
-// I used Canva for the color. Then I loaded it into Gimp to crop it, resize it, and get it
+// I used Canva for the color. Then I loaded it into Gimp, an image processor, to crop it, resize it, and get it
 // to be the same color as the navbar.
 // I also included a logout button which clears session storage. Since the app is always
 // checking to see if you are authenticated, it recognizes that the loginUser

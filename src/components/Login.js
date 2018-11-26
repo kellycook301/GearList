@@ -60,6 +60,7 @@ export default class Login extends Component {
         })
     }
 
+    // For creating a new user
     constructNewUser = evt => {
         evt.preventDefault()
         const user = {
