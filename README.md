@@ -30,7 +30,11 @@ cd api
 json-server -p 5002 -w MyGearList.json
 ```
 
-To launch the app simply bring up the login page and create an account. Once you create an account you can go ahead and log into your page.
+To launch the app simply bring up the login page by going to...
+```
+http://localhost:3000/login
+```
+Go ahead and create an account. Once you create an account you can go ahead and log into your page.
 Here you will see your profile. At first your gear list will be blank. Let's change that!
 
 ## Adding Some Gear
