@@ -1,6 +1,8 @@
 
 # Hello And Welcome To MyGearList!
 
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImagesMGLLogo.png)
+
 With this app you may create a visual representation of the music gear that you have.
 
 Let's get started!
