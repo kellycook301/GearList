@@ -89,7 +89,11 @@ You will be prompted to confirm its deletion.
 You may choose at this point to have the post listed or confirm the entry's deletion. If you do have it deleted it will no longer be listed in your gear list.
 
 ## Logging Out
-Whenever you would like to log out you may click on the logout button in the upper right-hand corner. This will take you back to the login page where you may log in again when you would like!
+Whenever you would like to log out you may click on the logout button in the upper right-hand corner. 
+
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewLogout.png)
+
+This will take you back to the login page where you may log in again when you would like!
 
 ------
 
