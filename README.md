@@ -70,7 +70,7 @@ Once you have selected what you are looking to add, you will be asked to fill ou
 
 After the fields have been filled out you may save the entry to your gear list!
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/TheNewestPost.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/BestTheNewestPost.png)
 
 ## Editing A Post
 Let's say you have an acoustic guitar listed and you recently had it restrung with some different strings. You may edit the initial post by clicking on the "pencil" icon.
