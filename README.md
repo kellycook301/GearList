@@ -56,11 +56,11 @@ A form will populate asking you what you would like to add.
 
 You may select amplifier, pedal, guitar, or speaker cabinet. 
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewWhat_Would_You1.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/BestNewWhat_Would_You1.png)
 
 Upon clicking one of them you will be asked what KIND of amp, pedal, or guitar you would like to add.
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewWhat_Would_You2.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/BestNewWhat_Would_You2.png)
 
 (Since there's really only ONE kind of speaker cabinet, an additional window does not open). 
 
