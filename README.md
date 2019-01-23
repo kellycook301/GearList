@@ -50,8 +50,6 @@ At first your gear list will be blank. Let's change that!
 ## Adding Some Gear
 To create your first post click on "Add Gear." 
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/Add_Gear.png)
-
 A form will populate asking you what you would like to add. 
 
 ![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewAdd_Gear.png)
