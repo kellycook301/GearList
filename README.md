@@ -84,7 +84,7 @@ Now let's say you have sold something you have listed in your gear list. You may
 
 You will be prompted to confirm its deletion. 
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewRUSure.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewestRUSure.png)
 
 You may choose at this point to have the post listed or confirm the entry's deletion. If you do have it deleted it will no longer be listed in your gear list.
 
