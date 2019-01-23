@@ -54,7 +54,7 @@ To create your first post click on "Add Gear."
 
 A form will populate asking you what you would like to add. 
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/What_Would_You1.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewAdd_Gear.png)
 
 You may select amplifier, pedal, guitar, or speaker cabinet. Upon clicking one of them you will be asked what KIND of amp, pedal, or guitar you would like to add. Since there's really only ONE kind of speaker cabinet, an additional window does not open. Once you have selected what you are looking to add, you will be asked to fill out some specifics. After the fields have been filled out you may save the entry to your gear list!
 
