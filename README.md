@@ -3,7 +3,7 @@
 
 ![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/MGLLogo.png)
 
-With this app you may create a visual representation of the music gear that you have.
+With this app you may create a visual representation of the music gear that you have. I created MyGearList because it combines my two loves; musical gear and lists. Now you too can have a visually appealing list of the musical gear that you own!
 
 Let's get started!
 
