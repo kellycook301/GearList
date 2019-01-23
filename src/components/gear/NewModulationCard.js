@@ -35,7 +35,7 @@ export default class NewModulationCard extends Component {
             <React.Fragment>
                 <section className="modulationEntries">
                     {
-                            <div key={this.props.modulation.id} className="card modulationCard" style={{width: 400}}>
+                            <div key={this.props.modulation.id} className="card modulationCard" style={{width: 432}}>
                                 <div className="card-header bg-#03a9f4 light-blue">
                                     <img src={modulationPedal} className="icon--modulation"/>
                                     <h3>My {this.props.modulation.make} {this.props.modulation.model}</h3>

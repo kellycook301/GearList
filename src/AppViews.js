@@ -41,7 +41,6 @@ export default class AppViews extends Component {
     // check if loginUser is in session storage
     isAuthenticated = () => sessionStorage.getItem("loginUser") !== null
 
-
     state = {
         acoustics: [],
         electrics: [],
@@ -56,9 +55,7 @@ export default class AppViews extends Component {
         fuzzes: [],
         modulations: [],
         cabinets: [],
-        users: [],
-        user: JSON.parse(sessionStorage.getItem("loginUser"))
-
+        users: []
     }
 
     // All of the fancy functions to add, edit, and delete. All hail CRUD.
@@ -70,222 +67,222 @@ export default class AppViews extends Component {
         }))
 
     // ACOUSTIC RELATED POSTS
-    addAcoustic = (acoustic, link) => DataManager.post(acoustic, link)
-        .then(() => DataManager.getAll("acoustics"))
+    addAcoustic = (object) => DataManager.post(object, "acoustics")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "acoustics"))
         .then(acoustics => this.setState({
             acoustics: acoustics
         }))
-    editAcousticPost = (acoustic, id, link) => DataManager.put(acoustic, id, link)
-        .then(() => DataManager.getAll("acoustics"))
+    editAcousticPost = (object, acousticId) => DataManager.put(object, acousticId, "acoustics")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "acoustics"))
         .then(acoustics => this.setState({
             acoustics: acoustics
         }))
-    deleteAcousticPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("acoustics"))
+    deleteAcousticPost = (id) => DataManager.removeAndList(id, "acoustics")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "acoustics"))
         .then(acoustics => this.setState({
             acoustics: acoustics
         }))
 
     // ELECTRIC RELATED POSTS
-    addElectric = (electric, link) => DataManager.post(electric, link)
-        .then(() => DataManager.getAll("electrics"))
+    addElectric = (object) => DataManager.post(object, "electrics")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "electrics"))
         .then(electrics => this.setState({
             electrics: electrics
         }))
-    editElectricPost = (electric, id, link) => DataManager.put(electric, id, link)
-        .then(() => DataManager.getAll("electrics"))
+    editElectricPost = (object, electricId) => DataManager.put(object, electricId, "electrics")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "electrics"))
         .then(electrics => this.setState({
             electrics: electrics
         }))
-    deleteElectricPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("electrics"))
+    deleteElectricPost = (id) => DataManager.removeAndList(id, "electrics")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "electrics"))
         .then(electrics => this.setState({
             electrics: electrics
         }))
 
     // BASS RELATED POSTS
-    addBass = (bass, link) => DataManager.post(bass, link)
-        .then(() => DataManager.getAll("basses"))
+    addBass = (object) => DataManager.post(object, "basses")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "basses"))
         .then(basses => this.setState({
             basses: basses
         }))
-    editBassPost = (bass, id, link) => DataManager.put(bass, id, link)
-        .then(() => DataManager.getAll("basses"))
+    editBassPost = (object, bassId) => DataManager.put(object, bassId, "basses")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "basses"))
         .then(basses => this.setState({
             basses: basses
         }))
-    deleteBassPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("basses"))
+    deleteBassPost = (id) => DataManager.removeAndList(id, "basses")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "basses"))
         .then(basses => this.setState({
             basses: basses
         }))
 
     // ACOUSTIC BASS RELATED POSTS
-    addAcousticBass = (acousticBass, link) => DataManager.post(acousticBass, link)
-        .then(() => DataManager.getAll("acousticBasses"))
+    addAcousticBass = (object) => DataManager.post(object, "acousticBasses")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "acousticBasses"))
         .then(acousticBasses => this.setState({
             acousticBasses: acousticBasses
         }))
-    editAcousticBassPost = (acousticBass, id, link) => DataManager.put(acousticBass, id, link)
-        .then(() => DataManager.getAll("acousticBasses"))
+    editAcousticBassPost = (object, abousticBassId) => DataManager.put(object, abousticBassId, "acousticBasses")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "acousticBasses"))
         .then(acousticBasses => this.setState({
             acousticBasses: acousticBasses
         }))
-    deleteAcousticBassPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("acousticBasses"))
+    deleteAcousticBassPost = (id) => DataManager.removeAndList(id, "acousticBasses")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "acousticBasses"))
         .then(acousticBasses => this.setState({
             acousticBasses: acousticBasses
         }))
 
     // AMPLIFIER RELATED POSTS
-    addAmplifier = (amplifier, link) => DataManager.post(amplifier, link)
-        .then(() => DataManager.getAll("amplifiers"))
+    addAmplifier = (object) => DataManager.post(object, "amplifiers")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "amplifiers"))
         .then(amplifiers => this.setState({
             amplifiers: amplifiers
         }))
-    editAmplifierPost = (amplifier, id, link) => DataManager.put(amplifier, id, link)
-        .then(() => DataManager.getAll("amplifiers"))
+    editAmplifierPost = (object, ampId) => DataManager.put(object, ampId, "amplifiers")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "amplifiers"))
         .then(amplifiers => this.setState({
             amplifiers: amplifiers
         }))
-    deleteAmplifierPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("amplifiers"))
+    deleteAmplifierPost = (id) => DataManager.removeAndList(id, "amplifiers")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "amplifiers"))
         .then(amplifiers => this.setState({
             amplifiers: amplifiers
         }))
 
     // COMBO AMPLIFIER RELATED POSTS
-    addCombo = (combo, link) => DataManager.post(combo, link)
-        .then(() => DataManager.getAll("combos"))
+    addCombo = (object) => DataManager.post(object, "combos")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "combos"))
         .then(combos => this.setState({
             combos: combos
         }))
-    editComboPost = (combo, id, link) => DataManager.put(combo, id, link)
-        .then(() => DataManager.getAll("combos"))
+    editComboPost = (object, comboId) => DataManager.put(object, comboId, "combos")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "combos"))
         .then(combos => this.setState({
             combos: combos
         }))
-    deleteComboPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("combos"))
+    deleteComboPost = (id) => DataManager.removeAndList(id, "combos")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "combos"))
         .then(combos => this.setState({
             combos: combos
         }))
 
     // AMP MODELER RELATED POSTS
-    addProcessor = (processor, link) => DataManager.post(processor, link)
-        .then(() => DataManager.getAll("processors"))
+    addProcessor = (object) => DataManager.post(object, "processors")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "processors"))
         .then(processors => this.setState({
             processors: processors
         }))
-    editProcessorPost = (processor, id, link) => DataManager.put(processor, id, link)
-        .then(() => DataManager.getAll("processors"))
+    editProcessorPost = (object, processorId) => DataManager.put(object, processorId, "processors")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "processors"))
         .then(processors => this.setState({
             processors: processors
         }))
-    deleteProcessorPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("processors"))
+    deleteProcessorPost = (id) => DataManager.removeAndList(id, "processors")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "processors"))
         .then(processors => this.setState({
             processors: processors
         }))
 
     // PRACTICE RELATED POSTS
-    addPracticeAmp = (practice, link) => DataManager.post(practice, link)
-        .then(() => DataManager.getAll("practices"))
+    addPracticeAmp = (object) => DataManager.post(object, "practices")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "practices"))
         .then(practices => this.setState({
             practices: practices
         }))
-    editPracticeAmpPost = (practice, id, link) => DataManager.put(practice, id, link)
-        .then(() => DataManager.getAll("practices"))
+    editPracticeAmpPost = (object, practiceId) => DataManager.put(object, practiceId, "practices")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "practices"))
         .then(practices => this.setState({
             practices: practices
         }))
-    deletePracticeAmpPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("practices"))
+    deletePracticeAmpPost = (id) => DataManager.removeAndList(id, "practices")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "practices"))
         .then(practices => this.setState({
             practices: practices
         }))
 
     // OVERDRIVE RELATED POSTS
-    addOverdrive = (overdrive, link) => DataManager.post(overdrive, link)
-        .then(() => DataManager.getAll("overdrives"))
+    addOverdrive = (object) => DataManager.post(object, "overdrives")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "overdrives"))
         .then(overdrives => this.setState({
             overdrives: overdrives
         }))
-    editOverdrivePost = (overdrive, id, link) => DataManager.put(overdrive, id, link)
-        .then(() => DataManager.getAll("overdrives"))
+    editOverdrivePost = (object, overdriveId) => DataManager.put(object, overdriveId, "overdrives")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "overdrives"))
         .then(overdrives => this.setState({
             overdrives: overdrives
         }))
-    deleteOverdrivePost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("overdrives"))
+    deleteOverdrivePost = (id) => DataManager.removeAndList(id, "overdrives")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "overdrives"))
         .then(overdrives => this.setState({
             overdrives: overdrives
         }))
 
     // DISTORTION RELATED POSTS
-    addDistortion = (distortion, link) => DataManager.post(distortion, link)
-        .then(() => DataManager.getAll("distortions"))
+    addDistortion = (object) => DataManager.post(object, "distortions")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "distortions"))
         .then(distortions => this.setState({
             distortions: distortions
         }))
-    editDistortionPost = (overdrive, id, link) => DataManager.put(overdrive, id, link)
-        .then(() => DataManager.getAll("distortions"))
+    editDistortionPost = (object, distortionId) => DataManager.put(object, distortionId, "distortions")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "distortions"))
         .then(distortions => this.setState({
             distortions: distortions
         }))
-    deleteDistortionPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("distortions"))
+    deleteDistortionPost = (id) => DataManager.removeAndList(id, "distortions")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "distortions"))
         .then(distortions => this.setState({
             distortions: distortions
         }))
 
     // FUZZ RELATED POSTS
-    addFuzz = (fuzz, link) => DataManager.post(fuzz, link)
-        .then(() => DataManager.getAll("fuzzes"))
+    addFuzz = (object) => DataManager.post(object, "fuzzes")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "fuzzes"))
         .then(fuzzes => this.setState({
             fuzzes: fuzzes
         }))
-    editFuzzPost = (fuzz, id, link) => DataManager.put(fuzz, id, link)
-        .then(() => DataManager.getAll("fuzzes"))
+    editFuzzPost = (object, fuzzId) => DataManager.put(object, fuzzId, "fuzzes")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "fuzzes"))
         .then(fuzzes => this.setState({
             fuzzes: fuzzes
         }))
-    deleteFuzzPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("fuzzes"))
+    deleteFuzzPost = (id) => DataManager.removeAndList(id, "fuzzes")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "fuzzes"))
         .then(fuzzes => this.setState({
             fuzzes: fuzzes
         }))
 
     // MODULATION RELATED POSTS
-    addModulation = (modulation, link) => DataManager.post(modulation, link)
-        .then(() => DataManager.getAll("modulations"))
+    addModulation = (object) => DataManager.post(object, "modulations")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "modulations"))
         .then(modulations => this.setState({
             modulations: modulations
         }))
-    editModulationPost = (modulation, id, link) => DataManager.put(modulation, id, link)
-        .then(() => DataManager.getAll("modulations"))
+    editModulationPost = (object, modulationId) => DataManager.put(object, modulationId, "modulations")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "modulations"))
         .then(modulations => this.setState({
             modulations: modulations
         }))
-    deleteModulationPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("modulations"))
+    deleteModulationPost = (id) => DataManager.removeAndList(id, "modulations")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "modulations"))
         .then(modulations => this.setState({
             modulations: modulations
         }))
 
     // CABINET RELATED POSTS
-    addCabinet = (cabinet, link) => DataManager.post(cabinet, link)
-        .then(() => DataManager.getAll("cabinets"))
+    addCabinet = (object) => DataManager.post(object, "cabinets")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "cabinets"))
         .then(cabinets => this.setState({
             cabinets: cabinets
         }))
-    editCabinetPost = (cabinet, id, link) => DataManager.put(cabinet, id, link)
-        .then(() => DataManager.getAll("cabinets"))
+    editCabinetPost = (object, cabinetId) => DataManager.put(object, cabinetId, "cabinets")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "cabinets"))
         .then(cabinets => this.setState({
             cabinets: cabinets
         }))
-    deleteCabinetPost = (id, link) => DataManager.removeAndList(id, link)
-        .then(() => DataManager.getAll("cabinets"))
+    deleteCabinetPost = (id) => DataManager.removeAndList(id, "cabinets")
+        .then(() => DataManager.getAllUserInfo(this.props.user.id, "cabinets"))
         .then(cabinets => this.setState({
             cabinets: cabinets
         }))
@@ -294,51 +291,28 @@ export default class AppViews extends Component {
 
     componentDidMount() {
         const _state = {}
-        if (this.props.user.id) {
-            DataManager.getAllUserInfo(this.state.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "electrics").then(electrics => _state.electrics = electrics))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "basses").then(basses => _state.basses = basses))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "acousticBasses").then(acousticBasses => _state.acousticBasses = acousticBasses))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "combos").then(combos => _state.combos = combos))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "processors").then(processors => _state.processors = processors))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "practices").then(practices => _state.practices = practices))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "overdrives").then(overdrives => _state.overdrives = overdrives))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "distortions").then(distortions => _state.distortions = distortions))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "fuzzes").then(fuzzes => _state.fuzzes = fuzzes))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "modulations").then(modulations => _state.modulations = modulations))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "cabinets").then(cabinets => _state.cabinets = cabinets))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "users").then(users => _state.users = users))
-                .then(() => { this.setState(_state) })
-        }
-    }
-
-    // componentDidMount runs once. ComponentDidupdate runs when a new prop is passed in / different user signs in.
-    // User is being passed in as a prop. Previous user's entries are briefly displayed before new user data is printed to the DOM.
-
-    componentDidUpdate(prevProps) {
-        if (this.props.user.id !== prevProps.user.id) {
-            const _state = {}
-            DataManager.getAllUserInfo(this.state.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "electrics").then(electrics => _state.electrics = electrics))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "basses").then(basses => _state.basses = basses))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "acousticBasses").then(acousticBasses => _state.acousticBasses = acousticBasses))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "combos").then(combos => _state.combos = combos))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "processors").then(processors => _state.processors = processors))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "practices").then(practices => _state.practices = practices))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "overdrives").then(overdrives => _state.overdrives = overdrives))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "distortions").then(distortions => _state.distortions = distortions))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "fuzzes").then(fuzzes => _state.fuzzes = fuzzes))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "modulations").then(modulations => _state.modulations = modulations))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "cabinets").then(cabinets => _state.cabinets = cabinets))
-                .then(() => DataManager.getAllUserInfo(this.state.user.id, "users").then(users => _state.users = users))
+        if (this.props.user) {
+            DataManager.getAllUserInfo(this.props.user.id, "acoustics").then(acoustics => _state.acoustics = acoustics)
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "electrics").then(electrics => _state.electrics = electrics))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "basses").then(basses => _state.basses = basses))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "acousticBasses").then(acousticBasses => _state.acousticBasses = acousticBasses))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "amplifiers").then(amplifiers => _state.amplifiers = amplifiers))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "combos").then(combos => _state.combos = combos))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "processors").then(processors => _state.processors = processors))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "practices").then(practices => _state.practices = practices))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "overdrives").then(overdrives => _state.overdrives = overdrives))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "distortions").then(distortions => _state.distortions = distortions))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "fuzzes").then(fuzzes => _state.fuzzes = fuzzes))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "modulations").then(modulations => _state.modulations = modulations))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "cabinets").then(cabinets => _state.cabinets = cabinets))
+                .then(() => DataManager.getAllUserInfo(this.props.user.id, "users").then(users => _state.users = users))
                 .then(() => { this.setState(_state) })
         }
     }
 
     // ROUTES
     render() {
+
         return (
             <React.Fragment>
                 <div className="viewArea">
@@ -348,6 +322,7 @@ export default class AppViews extends Component {
                             addUser={this.addUser}
                             loginUser={this.props.login} />
                     }} />
+                    
 
                     {/* GEAR ENTRIES */}
                     <Route exact path="/gear" render={(props) => {

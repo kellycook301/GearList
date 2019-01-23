@@ -15,7 +15,6 @@ export default Object.create(null, {
     },
     getAllUserInfo: {
         value: function (id, link) {
-            console.log(id)
             return fetch(`${remoteURL}/${link}?loginUser=${id}`)
             .then(e => {
                 return e.json()

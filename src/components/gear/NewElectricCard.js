@@ -35,7 +35,7 @@ export default class NewElectricCard extends Component {
             <React.Fragment>
                 <section className="electricEntries">
                     {
-                            <div key={this.props.electric.id} className="card electricCard" style={{width: 400}}>
+                            <div key={this.props.electric.id} className="card electricCard" style={{width: 432}}>
                                 <div className="card-header bg-#ef5350 red lighten-1">
                                     <img src={electricGuitar} className="icon--electric" />
                                     <h3>My {this.props.electric.make} {this.props.electric.model}</h3>

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import effect from "./images/cabinet_(lg).png"
 import './CabinetEdit.css'
 
@@ -50,6 +51,8 @@ export default class CabinetEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={effect} className="icon--cabinetEdit" />
                 <h3 className="edit-post">What About Your Speaker Cabinet Would You Like To Edit?</h3>
                 <form className="cabinetEditForm">
@@ -85,7 +88,7 @@ export default class CabinetEdit extends Component {
                         <input type="text" required="true"
                             className="form-control features-field"
                             onChange={this.handleFieldChange.bind(this)}
-                            id="features"
+                            id="woodType"
                             placeholder="Wood Type (ex. Birch)"
                             defaultValue={this.state.woodType} />
                     </div>

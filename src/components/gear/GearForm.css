@@ -18,9 +18,21 @@ body {
     margin-bottom: -1em;
 }
 
-.ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton, .practiceAmpButton, .fuzzButton, .acousticBassButton {
+.ampButton, .pedalButton, .guitarButton, .cabinetButton, .ampHeadButton, .comboAmpButton, .overdriveButton, .modulationButton, .processorButton, .distortionButton, .acousticButton, .bassButton, .electricButton, .practiceAmpButton, .fuzzButton, .acousticBassButton, .addedButton {
     width: 100%;
     padding-bottom: 1.3em;
+}
+
+.addedButton {
+    margin: 0 auto;
+}
+
+.icon--musician {
+    padding-bottom: 0.3em;
+}
+
+.addedNotification {
+    text-align: center;
 }
 
 .gearHome {

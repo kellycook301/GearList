@@ -35,7 +35,7 @@ export default class NewOverdriveCard extends Component {
             <React.Fragment>
                 <section className="overdriveEntries">
                     {
-                            <div key={this.props.overdrive.id} className="card overdriveCard" style={{width: 400}}>
+                            <div key={this.props.overdrive.id} className="card overdriveCard" style={{width: 432}}>
                                 <div className="card-header bg-#00e676 green accent-3">
                                     <img src={overdrivePedal} className="icon--overdrive" />
                                     <h3>My {this.props.overdrive.make} {this.props.overdrive.model}</h3>

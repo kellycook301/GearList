@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import NewOverdriveCard from './NewAmpCard'
+import NewOverdriveCard from './NewOverdriveCard'
 import "./OverdriveList.css"
 
 library.add(faTrash)
 library.add(faPen)
 
-
 export default class OverdriveList extends Component {
+
     render() {
         return (
             <React.Fragment>

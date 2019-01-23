@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import guitar from "./images/electric_(lg).png"
 import './ElectricEdit.css'
 
@@ -50,6 +51,8 @@ export default class ElectricEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={guitar} className="icon--electricEdit" />
                 <h3 className="edit-post">What About Your Electric Guitar Would You Like To Edit?</h3>
                 <form className="electricEditForm">

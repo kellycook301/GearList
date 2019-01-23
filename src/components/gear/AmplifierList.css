@@ -30,6 +30,11 @@
 
 .deleteAmplifierButton, .cancelAmplifierButton {
     width: 100%;
+    margin: 0 auto;
+}
+
+.deleteAmplifierButton {
+    margin-bottom: 1em;
 }
 
 .icon--musician {

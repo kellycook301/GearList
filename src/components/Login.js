@@ -1,13 +1,35 @@
 import React, { Component } from "react"
-import { Button, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
-
-import DataManager from "../data/DataManager"
+import { Button, Card, CardHeader, Modal, ModalBody, CardBody, CardTitle } from 'reactstrap';
+import musician from "./gear/images/Musician.png"
 import './Login.css'
 
 // The login was kind of a pain but I referred to some amigos here to help out!
 // Teamwork makes the dream work.
 
 export default class Login extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          registerModal: false,
+          noAccountModal: false
+        };
+    
+        this.registerToggle = this.registerToggle.bind(this);
+        this.noAccountToggle = this.noAccountToggle.bind(this);
+      }
+    
+      registerToggle() {
+        this.setState({
+          registerModal: !this.state.registerModal
+        });
+      }
+
+      noAccountToggle() {
+        this.setState({
+          noAccountModal: !this.state.noAccountModal
+        });
+      }
 
     // Set initial state
     state = {
@@ -29,57 +51,81 @@ export default class Login extends Component {
 
         let email = this.state.email;
         let password = this.state.password;
-        this.props.loginUser(email, password)
+        this.props.loginUser(email, password).then(succeeded => {
+            if (succeeded) {
+                this.props.history.push('/gear')
+            } else {
+                this.noAccountToggle()
+            }
+        })
     }
 
-
+    // For creating a new user
     constructNewUser = evt => {
         evt.preventDefault()
         const user = {
             email: this.state.email,
             password: this.state.password,
         }
-
-        alert("Thank you for registering! You will now be directed to the homepage!")
-        this.props.addUser(user, "users").then(() => this.props.history.push("/"))
+        this.props.addUser(user, "users").then(this.registerToggle())
     }
 
     render() {
         return (
-            <div className="signInRegister">
-                <Card className="signInCard">
-                    <CardHeader className="loginHeader">Sign In Or Register</CardHeader>
-                    <CardBody>
-                        <CardTitle>Sign In!</CardTitle>
-                        <label htmlFor="inputEmail">
-                            Email Address:
-                        </label>
-                        <input onChange={this.handleFieldChange} type="email"
-                            id="email"
-                            className="emailField"
-                            placeholder="Email Address"
-                            required="" autoFocus="" />
-                        <p></p>
-                        <label htmlFor="inputPassword">
-                            Password:
-                        </label>
-                        <input onChange={this.handleFieldChange} type="password"
-                            id="password"
-                            className="passwordField"
-                            placeholder="Password"
-                            onKeyPress={this.handleChange}
-                            required="" />
-                        <p></p>
-                        <Button color="primary" type="submit" onClick={this.handleLogin} className="signInButton">
-                            Sign In
-                        </Button>
-                        <Button color="primary" type="submit" onClick={this.constructNewUser} className="registerButton">
-                            Register
-                        </Button>
-                    </CardBody>
-                </Card>
-            </div>
+            <React.Fragment>
+                <div>
+                    <Modal isOpen={this.state.registerModal} toggle={this.registerToggle} className={this.props.className}>
+                        <ModalBody>
+                            <h4 className="addedNotification">Thanks For Registering! Go Log In!</h4>
+                            <img src={musician} className="icon--musician" />
+                            <Button color="secondary" className="addedButton" onClick={this.registerToggle}>Close</Button>
+                        </ModalBody>
+                    </Modal>
+                </div>
+                <div>
+                    <Modal isOpen={this.state.noAccountModal} toggle={this.noAccountToggle} className={this.props.className}>
+                        <ModalBody>
+                            <h4 className="addedNotification">I'm Sorry. We Do Not Seem To Recognize That Username Or Password. Try Again Or Feel Free To Register With Us!</h4>
+                            <img src={musician} className="icon--musician" />
+                            <Button color="secondary" className="addedButton" onClick={this.noAccountToggle}>Close</Button>
+                        </ModalBody>
+                    </Modal>
+                </div>
 
+                <div className="signInRegister">
+                    <Card className="signInCard">
+                        <CardHeader className="loginHeader">Sign In Or Register</CardHeader>
+                        <CardBody>
+                            <CardTitle>Sign In!</CardTitle>
+                            <label htmlFor="inputEmail">
+                                Email Address:
+                        </label>
+                            <input onChange={this.handleFieldChange} type="email"
+                                id="email"
+                                className="emailField"
+                                placeholder="Email Address"
+                                required="" />
+                            <p></p>
+                            <label htmlFor="inputPassword">
+                                Password:
+                        </label>
+                            <input onChange={this.handleFieldChange} type="password"
+                                id="password"
+                                className="passwordField"
+                                placeholder="Password"
+                                onKeyPress={this.handleChange}
+                                required="" />
+                            <p></p>
+                            <Button color="primary" type="submit" onClick={this.handleLogin} className="signInButton">
+                                Sign In
+                        </Button>
+                            <Button color="primary" type="submit" onClick={this.constructNewUser} className="registerButton">
+                                Register
+                        </Button>
+                        </CardBody>
+                    </Card>
+                </div>
+            </React.Fragment>
         );
     };
 

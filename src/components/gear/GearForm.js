@@ -1,24 +1,9 @@
 import React, { Component } from 'react'
+import Navbar from "../nav/Navbar"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import musician from "./images/Musician.png"
 import 'mdbreact/dist/css/mdb.css';
 import "./GearForm.css"
-
-// I wanted to use reactstrap because I really wanted to incorporate multiple modals into 
-// my capstone. 
-// I also wanted to use more than the 8 colors that come stock with bootstrap, so I
-// npm installed MDB React, which allows for MAAAAANY more color options.
-
-// Below is my ungodly gear form. I wanted to use multiple modals because I really enjoy its
-// functionality. You will click on "add gear." This will load a modal asking for what kind of
-// gear you want to add. A secondary modal will not populate when selecting "Speaker Cabinet" because
-// there is only really one kind of speaker cabinet. However, clicking on amplifier, guitar, or pedal
-// will populate a secondary modal. After selecting a more specific entry you will be prompted to
-// fill out a form. You will notice that the form will focus on the first input field.
-// After filling out the form you will be able to add that item to your gear list. You
-// may also close out of the modal whenever you wish. This is toggle that modal off. There
-// are multiple nested modals with specific names. They will close as well when you choose to
-// close out of one or add an item to your gear list. It took me a hot second to figure that out,
-// but was veeeeeeery simple upon figuring it out. That was a personal discovery. That's all for the form! 
 
 export default class GearForm extends Component {
 
@@ -36,6 +21,7 @@ export default class GearForm extends Component {
         super(props);
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.addToggle = this.addToggle.bind(this);
         this.guitarChoiceNested = this.guitarChoiceNested.bind(this);
         this.acousticNested = this.acousticNested.bind(this);
         this.electricNested = this.electricNested.bind(this);
@@ -71,6 +57,7 @@ export default class GearForm extends Component {
             fuzzModal: false,
             modulationModal: false,
             closeAll: false,
+            addModal: false,
             acousticGuitarMake: "",
             acousticGuitarModel: "",
             acousticGuitarStrings: "",
@@ -169,6 +156,12 @@ export default class GearForm extends Component {
     toggle() {
         this.setState({
             modal: !this.state.modal
+        });
+    }
+
+    addToggle() {
+        this.setState({
+            addModal: !this.state.addModal
         });
     }
 
@@ -326,10 +319,10 @@ export default class GearForm extends Component {
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcoustic(acoustic, "acoustics").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.acousticNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
 
     }
@@ -370,10 +363,11 @@ export default class GearForm extends Component {
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addAcousticBass(acousticBass, "acousticBasses").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
+            // toggle a modal
             this.acousticBassNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
 
     }
@@ -414,10 +408,10 @@ export default class GearForm extends Component {
             }
             // Create the post for acoustic and redirect user to the gear list page
             this.props.addElectric(electric, "electrics").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.electricNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -456,10 +450,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addBass(bass, "basses").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.bassNested()
             this.guitarChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -498,10 +492,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addAmplifier(amplifier, "amplifiers").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.amplifierNested()
             this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -540,10 +534,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addCombo(combo, "combos").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.comboNested()
             this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -582,10 +576,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addProcessor(processor, "processors").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.processorNested()
-            this.pedalChoiceNested()
+            this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -624,10 +618,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addPracticeAmp(practice, "practices").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.practiceAmpNested()
             this.ampChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -666,10 +660,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addOverdrive(overdrive, "overdrives").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.overdriveNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -708,10 +702,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addDistortion(distortion, "distortions").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.distortionNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -750,10 +744,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addModulation(modulation, "modulations").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.modulationNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -765,7 +759,7 @@ export default class GearForm extends Component {
         else if (this.state.fuzzModel === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
-        else if (this.state.fuzzType === "") {
+        else if (this.state.fuzzStyle === "") {
             window.alert("Please make sure to fill out all text fields before submitting!")
         }
         else if (this.state.fuzzPowerDraw === "") {
@@ -784,7 +778,7 @@ export default class GearForm extends Component {
             const fuzz = {
                 make: this.state.fuzzMake,
                 model: this.state.fuzzModel,
-                type: this.state.fuzzType,
+                style: this.state.fuzzStyle,
                 draw: this.state.fuzzPowerDraw,
                 bypass: this.state.fuzzTrueBypass,
                 jacks: this.state.fuzzTopSideLoaded,
@@ -792,10 +786,10 @@ export default class GearForm extends Component {
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addFuzz(fuzz, "fuzzes").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.fuzzNested()
             this.pedalChoiceNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
@@ -828,21 +822,33 @@ export default class GearForm extends Component {
                 model: this.state.cabinetModel,
                 speakers: this.state.cabinetSpeakers,
                 woodType: this.state.cabinetWoodType,
-                tolexColor: this.state.cabinetTolexColor,
-                openClosedBack: this.state.cabinetOpenClosedBack,
+                tolex: this.state.cabinetTolexColor,
+                back: this.state.cabinetOpenClosedBack,
                 slantedStraight: this.state.cabinetSlantedStraight,
                 loginUser: JSON.parse(sessionStorage.getItem("loginUser")).id,
             }
             this.props.addCabinet(cabinet, "cabinets").then(() => this.props.history.push("/gear"))
-            window.alert("Your Post Has Been Added To Your Gear List!")
             this.cabinetNested()
             this.toggle()
+            this.addToggle()
         }
     }
 
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
+
+                <div>
+                    <Modal isOpen={this.state.addModal} toggle={this.addToggle} className={this.props.className}>
+                        <ModalBody>
+                            <h4 className="addedNotification">Your Post Has Been Added!</h4>
+                            <img src={musician} className="icon--musician" />
+                            <Button color="secondary" className="addedButton" onClick={this.addToggle}>Close</Button>
+                        </ModalBody>
+                    </Modal>
+                </div>
                 <div className="addGearButton">
                     <Button color="primary" className="addGear" onClick={this.toggle}>{this.props.buttonLabel}Add Gear</Button>
                 </div>
@@ -895,7 +901,7 @@ export default class GearForm extends Component {
                                 <Form className="amplifierForm">
                                     <FormGroup>
                                         <Label for="amplifierMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" autofocus="autofocus" id="amplifierMake" placeholder="Make (ex. Marshall)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="amplifierMake" placeholder="Make (ex. Marshall)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="amplifierModel">Model:</Label>
@@ -935,7 +941,7 @@ export default class GearForm extends Component {
                                 <Form className="comboForm">
                                     <FormGroup>
                                         <Label for="comboMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="autofocus" name="text" id="comboMake" placeholder="Make (ex. Dr. Z)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="comboMake" placeholder="Make (ex. Dr. Z)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="comboModel">Model:</Label>
@@ -975,7 +981,7 @@ export default class GearForm extends Component {
                                 <Form className="acousticForm">
                                     <FormGroup>
                                         <Label for="acousticGuitarMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autoFocus="autoFocus" name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autofocus="true" name="text" id="acousticGuitarMake" placeholder="Make (ex. Taylor)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticGuitarModel">Model:</Label>
@@ -1015,7 +1021,7 @@ export default class GearForm extends Component {
                                 <Form className="acousticBassForm">
                                     <FormGroup>
                                         <Label for="acousticBassGuitarMake">Make:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} autoFocus="autoFocus" name="text" id="acousticBassGuitarMake" placeholder="Make (ex. Martin)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="acousticBassGuitarMake" placeholder="Make (ex. Martin)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="acousticBassGuitarModel">Model:</Label>
@@ -1223,7 +1229,7 @@ export default class GearForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="fuzzStyle">Style:</Label>
-                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzStyle" placeholder="Style (ex. Green Russian)" />
+                                        <Input type="text" onChange={this.handleFieldChange.bind(this)} name="text" id="fuzzStyle" placeholder="Style (ex. Civil War)" />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="fuzzPowerDraw">Power Draw:</Label>

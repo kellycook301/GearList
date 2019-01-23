@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import bassGuitar from "./images/bass_(lg).png"
 import './BassEdit.css'
 
@@ -50,6 +51,8 @@ export default class BassEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={bassGuitar} className="icon--bassEdit" />
                 <h3 className="edit-post">What About Your Bass Guitar Would You Like To Edit?</h3>
                 <form className="bassEditForm">
@@ -81,7 +84,7 @@ export default class BassEdit extends Component {
                             defaultValue={this.state.strings} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="bassGuitarPickups" className="bassGuitarPickups">Strings:</label>
+                        <label htmlFor="bassGuitarPickups" className="bassGuitarPickups">Pickups:</label>
                         <input type="text" required="true"
                             className="form-control pickups-field"
                             onChange={this.handleFieldChange.bind(this)}

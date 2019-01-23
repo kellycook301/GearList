@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import distortionPedal from "./images/distortion_(lg).png"
 import './DistortionEdit.css'
 
@@ -50,6 +51,8 @@ export default class DistortionEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={distortionPedal} className="icon--distortionEdit" />
                 <h3 className="edit-post">What About Your Distortion Pedal Would You Like To Edit?</h3>
                 <form className="distortionEditForm">

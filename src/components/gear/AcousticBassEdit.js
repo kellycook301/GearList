@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import acousticBassGuitar from "./images/acousticBass_(lg).png"
 import './AcousticBassEdit.css'
 
@@ -18,7 +19,7 @@ export default class AcousticBassEdit extends Component {
     // window.scrollTo forces the screen to render to the top when you click on the edit icon. Otherwise
     // the edit screen will present itself wherever your scroll bar was on the gear page.
     // This is a neat trick! Thanks, Google!
-    
+
     componentDidMount() {
         window.scrollTo(0, 0)
         const acousticBass = this.props.acousticBasses.find(a => a.id === parseInt(this.props.match.params.acousticBassId, 0))
@@ -50,6 +51,8 @@ export default class AcousticBassEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={acousticBassGuitar} className="icon--acousticBassEdit" />
                 <h3 className="edit-post">What About Your Acoustic Bass Guitar Would You Like To Edit?</h3>
                 <form className="acousticBassEditForm">
@@ -91,7 +94,7 @@ export default class AcousticBassEdit extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="acousticBassGuitarTop" className="acousticBassGuitarTop">Top:</label>
-                        <input type="text" required="true" 
+                        <input type="text" required="true"
                             className="form-control top-field"
                             onChange={this.handleFieldChange.bind(this)}
                             id="top"

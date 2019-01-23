@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import acousticGuitar from "./images/acoustic_(md).png"
 import './AcousticEdit.css'
 
@@ -50,6 +51,9 @@ export default class AcousticEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                logout={this.logout} />
+
                 <img src={acousticGuitar} className="icon--acousticEdit" />
                 <h3 className="edit-post">What About Your Acoustic Guitar Would You Like To Edit?</h3>
                 <form className="acousticEditForm">

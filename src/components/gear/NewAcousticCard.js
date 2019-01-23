@@ -35,7 +35,7 @@ export default class NewAcousticCard extends Component {
             <React.Fragment>
                 <section className="acousticEntries">
                     {
-                        <div key={this.props.acoustic.id} className="card acousticCard" style={{ width: 400 }}>
+                        <div key={this.props.acoustic.id} className="card acousticCard" style={{ width: 432 }}>
                             <div className="card-header bg-#a1887f brown lighten-2">
                                 <img src={acousticGuitar} className="icon--acoustic" />
                                 <h3>My {this.props.acoustic.make} {this.props.acoustic.model}</h3>

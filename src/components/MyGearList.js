@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Redirect } from 'react-router-dom'
-import Navbar from "./nav/Navbar"
+import Logo from './nav/Logo'
 import Footer from "./Footer.js"
 import AppViews from "../AppViews"
 import DataManager from "../data/DataManager"
@@ -13,38 +13,35 @@ import "./MyGearList.css"
 
 class MyGearList extends Component {
     state = {
-        user: {}
+        key: Math.random(),
+        user: sessionStorage.getItem("loginUser") || {}
     }
 
     login = (email, password) => {
-        DataManager.getAll("users")
+        return DataManager.getAll("users")
             .then(users => {
                 let loginUser = users.find(u => u.email === email && u.password === password)
                 if (loginUser) {
                     sessionStorage.setItem(
                         "loginUser",
                         JSON.stringify({
-                        email: loginUser.email,
-                        password: loginUser.password,
-                        id: loginUser.id
+                            email: loginUser.email,
+                            password: loginUser.password,
+                            id: loginUser.id
                         })
                     )
-                    this.setState({user: loginUser})
-                    
+                    this.setState({ user: loginUser, key: Math.random() })
+                    return true
+
                 } else {
-                    alert("I'm sorry. We do not seem to recognize that username or password. Please check again or feel free to register with us!")
+                    return false
                 }
             })
     }
 
-    // function for redirecting
-    // redirect = () => {
-    //     this.props.history.push('/gear')
-    // }
-
     logout() {
         sessionStorage.clear();
-        this.setState({user: null})
+        this.setState({ user: null, key: Math.random() })
     }
 
     render() {
@@ -54,11 +51,11 @@ class MyGearList extends Component {
 
         return (
             <React.Fragment>
-                <Navbar 
-                logout={this.logout}/>
-                <AppViews 
-                login={this.login}
-                user={this.state.user}/>
+                <Logo />
+                <AppViews
+                    login={this.login}
+                    key={this.state.key}
+                    user={this.state.user} />
                 <Footer />
             </React.Fragment>
         )

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Navbar from "../nav/Navbar"
 import fuzzPedal from "./images/fuzz_(lg).png"
 import './FuzzEdit.css'
 
@@ -50,6 +51,8 @@ export default class FuzzEdit extends Component {
     render() {
         return (
             <React.Fragment>
+                <Navbar
+                    logout={this.logout} />
                 <img src={fuzzPedal} className="icon--fuzzEdit" />
                 <h3 className="edit-post">What About Your Fuzz Pedal Would You Like To Edit?</h3>
                 <form className="fuzzEditForm">
