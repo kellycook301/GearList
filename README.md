@@ -77,6 +77,8 @@ Let's say you have an acoustic guitar listed and you recently had it restrung wi
 
 Here you may change whatever you need to update. Once you are done you may save the changes. Or if you need not update the post at all, go ahead and click "cancel."
 
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewEdited_Post.png)
+
 ## Deleting A Post
 Now let's say you have sold something you have listed in your gear list. You may delete your entry by clicking on the trashcan icon. 
 
