@@ -106,7 +106,9 @@ Everything below details the process of how the app was created. All in all it w
 
 ![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/App_Layout2.JPG)
 
-I knew we'd have to have a login page. I originally wanted to have separate sign in and register cards but the login proved to be quite a challenge, so I condensed it into a single sign in/register card. Fun!
+I knew we'd have to have a login page. I originally wanted to have separate sign in and register cards but instead I condensed it into a single sign in/register card.
+
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/Login_Layout.JPG)
 
 The first day was spent trying to tackle the login portion of the process. I floundered the first day and started to work on the actual app the next day. I wanted to get the basic layout with the "add gear" button on the page. What I really wanted to implement were some forms contained within modals. Thankfully, ReactStrap had just what I needed. Because the instruments all have different criteria, I had to make a LOT of different forms. So there was going to be a lot of data passed in. I started with only a select few kinds of gear but realized I needed more for variety's sake. By the end of the first week I had pretty much met MVP. Data was getting passed in and populated to the DOM in card form. I was very happy. I just wanted to tighten up some of the things.
 
