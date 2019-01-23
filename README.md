@@ -38,7 +38,7 @@ http://localhost:3000/login
 ```
 Go ahead and create an account. 
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewRegister.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/BestNewRegister.png)
 
 Once you create an account you can go ahead and log into your page.
 Here you will see your profile. 
