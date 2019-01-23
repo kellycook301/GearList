@@ -66,7 +66,7 @@ Upon clicking one of them you will be asked what KIND of amp, pedal, or guitar y
 
 Once you have selected what you are looking to add, you will be asked to fill out some specifics. 
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewFeatures.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewestFeatures.png)
 
 After the fields have been filled out you may save the entry to your gear list!
 
