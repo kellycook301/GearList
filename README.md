@@ -95,7 +95,7 @@ You may choose at this point to have the post listed or confirm the entry's dele
 ## Logging Out
 Whenever you would like to log out you may click on the logout button in the upper right-hand corner. 
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/NewLogout.png)
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/BestNewLogout.png)
 
 This will take you back to the login page where you may log in again when you would like!
 
