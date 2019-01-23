@@ -58,12 +58,6 @@ Everything below details the process of how the app was created. All in all it w
 
 I knew we'd have to have a login page. I originally wanted to have separate sign in and register cards but the login proved to be quite a challenge, so I condensed it into a single sign in/register card. Fun!
 
-![alt text](https://github.com/kellycook301/GearList/blob/master/App%20Layout%202_final2.JPG)
-
-![alt text](https://github.com/kellycook301/GearList/blob/master/App%20Layout%203_final2.JPG)
-
-![alt text](https://github.com/kellycook301/GearList/blob/master/App%20Layout%204_final.jpg)
-
 The first day was spent trying to tackle the login portion of the process. I floundered the first day and started to work on the actual app the next day. I wanted to get the basic layout with the "add gear" button on the page. What I really wanted to implement were some forms contained within modals. Thankfully, ReactStrap had just what I needed. Because the instruments all have different criteria, I had to make a LOT of different forms. So there was going to be a lot of data passed in. I started with only a select few kinds of gear but realized I needed more for variety's sake. By the end of the first week I had pretty much met MVP. Data was getting passed in and populated to the DOM in card form. I was very happy. I just wanted to tighten up some of the things.
 
 I ran into some trouble with setting state in some areas. I was trying to figure out a cool way to have it work with the delete function. At first when you clicked on the trashcan icon to delete the post you would be prompted with the "localhost:3000 Would you like to delete this post?" thing and it would delete the post but it would still show it until the page refreshed. I found something to force reload the page, but hated the functionality of it. Because we're using React, it should just update state. I didn't end up fixing that until week three. By the end of week two I had pretty much fully met MVP. The login was working and you could easily edit and delete posts. One of my stretch goals was implementing different users. The following week proved to be very mentally challenging.
