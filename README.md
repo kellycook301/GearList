@@ -36,7 +36,11 @@ To launch the app simply bring up the login page by going to...
 ```
 http://localhost:3000/login
 ```
-Go ahead and create an account. Once you create an account you can go ahead and log into your page.
+Go ahead and create an account. 
+
+![alt text](https://github.com/kellycook301/GearList/blob/master/readmeImages/Register.png)
+
+Once you create an account you can go ahead and log into your page.
 Here you will see your profile. At first your gear list will be blank. Let's change that!
 
 ## Adding Some Gear
