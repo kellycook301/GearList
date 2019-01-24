@@ -5,6 +5,16 @@
 
 With this app you may create a visual representation of the music gear that you have. I created MyGearList because it combines my two loves; musical gear and lists. Now you too can have a visually appealing list of the musical gear that you own!
 
+## The Tech
+
+* React
+* ReactStrap for modals, buttons, etc
+* MDB React for additional color options
+* Iconscout for the instrument and musician icons
+* Canva for the logo
+* Gimp
+* Fontawesome for the trashcan and pencil icons
+
 Let's get started!
 
 ## Launching The App
@@ -114,20 +124,14 @@ The first day was spent trying to tackle the login portion of the process. I flo
 
 I ran into some trouble with setting state in some areas. I was trying to figure out a cool way to have it work with the delete function. At first when you clicked on the trashcan icon to delete the post you would be prompted with the "localhost:3000 Would you like to delete this post?" thing and it would delete the post but it would still show it until the page refreshed. I found something to force reload the page, but hated the functionality of it. Because we're using React, it should just update state. I didn't end up fixing that until week three. By the end of week two I had pretty much fully met MVP. The login was working and you could easily edit and delete posts. One of my stretch goals was implementing different users. The following week proved to be very mentally challenging.
 
-During week three I came in to have someone guide me through the process of implementing different users. Meg, a teaching assistant, said it would be easier than I thought. Turns out my project was a little wonky and a LOT of bandaids needed to be placed onto my project to get it up and running the way I wanted. Serious shouts out to Brenda, Jenna, Meg, and Steve for their help and guidance. At one point I thought that I would be presenting my MVP project. Thankfully, it was all working the way I wanted.
+During week three I came in to have someone guide me through the process of implementing different users. Meg, a teaching assistant, said it would be easier than I thought. It proved to be more difficult, but the feature was able to be implemented. Serious shouts out to Brenda, Jenna, Meg, and Steve for their help and guidance. 
 
 One thing I did to fix the force reload of the page was actually implement a delete modal. When you click on the trashcan a modal pops up with a message asking if you want to have the post deleted. You may choose to cancel or delete the post and it updates state. I also have a similar post applied to when you add something to your list. Instead of the "localhost:3000" message popping up, a modal appears confirming the addition of your post. I thought it would just look better that way.
 
-And here we are! All done. Very happy with the project even though there's some small stuff I wanted to have added. Here's a list of the plugins and things I used in my project.
-
-* ReactStrap for modals, buttons, etc.
-* MDB React for more color options compared to regular old Bootstrap.
-* Iconscout for the instrument and musician icons.
-* Canva for the logo
-* Gimp (a free photo editing app similar to Photoshop. I used this for editing the logo)
-* Fontawesome for the trashcan and pencil icons
+And here we are! All done. Very happy with the project even though there's some small stuff I wanted to have added. 
 
 Shouts out to...
+
 * Cohort 27 for being awesome!
 * Brenda, Meg, Jenna, and Steve for helping with app issues!
 * Coffee for keeping me ENERGIZED.
